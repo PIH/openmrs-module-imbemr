@@ -58,6 +58,19 @@
         @HEMOGLOBIN@ = 3ccc7158-26fe-102b-80cb-0017a47871b2
         @SERUM_CHLORIDE@ = 3cd76e82-26fe-102b-80cb-0017a47871b2
         @Electroencephalogram@ = 356d0244-2ce4-4e7e-a207-63e537de72d5
+        @HEAD_CT@ = 3cd498d8-26fe-102b-80cb-0017a47871b2
+        @NORMAL@ = 3cd750a0-26fe-102b-80cb-0017a47871b2
+        @ABNORMAL@ = 3cd75230-26fe-102b-80cb-0017a47871b2
+        @Other_tests_or_procedures@ = 66ad3230-59b2-4232-821e-a9ae86819e03
+        @Other_tests_or_procedures_Results@ = b6aab915-428d-49ca-aa19-fdf26d3d7683
+        @Other_tests_or_procedures_and_their_results@ = a09cf86a-3329-46fd-9f16-09954493eef5
+        @Head_CT_MRI_non_coded@ = b533e9e1-aba0-4427-882d-5b78a8c4670b
+        @ASAT_RESULT@ = 68ba31fa-e2ae-45c1-8d6d-f116c27f190e
+        <!--@ALAT_RESULT@ = fd826b26-0343-41d6-b51c-81f3b75e388c-->
+        @SERUM_GLUTAMIC_PYRUVIC_TRANSAMINASE@ = 3cd27760-26fe-102b-80cb-0017a47871b2
+        @ALKALINE_PHOSPHATASE@ = 3cd42f4c-26fe-102b-80cb-0017a47871b2
+        @TOTAL_BILIRUBIN@ = 3cd278fa-26fe-102b-80cb-0017a47871b2
+        @SERUM_ALBUMIN@ = 3cd49bf8-26fe-102b-80cb-0017a47871b2
     </macros>
 
     <style>
@@ -79,6 +92,88 @@
         }
     </style>
 
+
+    <translations defaultLocale="en">
+        <!--header-->
+        <code name="INVESTIGATIONS">
+            <variant locale="en" value="INVESTIGATIONS"/>
+            <variant locale="rw" value="IBIZAMINI"/>
+        </code>
+        <code name="Last_name">
+            <variant locale="en" value="Last name"/>
+            <variant locale="rw" value="Izina ryakabiri"/>
+        </code>
+        <code name="First_name">
+            <variant locale="en" value="First name"/>
+            <variant locale="rw" value="Izina ryambere"/>
+        </code>
+        <code name="Date">
+            <variant locale="en" value="Date"/>
+            <variant locale="rw" value="Itariki"/>
+        </code>
+        <code name="Provider">
+            <variant locale="en" value="Provider"/>
+            <variant locale="rw" value="Muganga"/>
+        </code>
+        <code name="Mental_Health">
+            <variant locale="en" value="MENTAL HEALTH"/>
+            <variant locale="rw" value="UBUZIMA BWO MU MUTWE"/>
+        </code>
+        <code name="Clinic">
+            <variant locale="en" value="Clinic"/>
+            <variant locale="rw" value="Ivuriro"/>
+        </code>
+
+        <!--Body-->
+
+        <code name="HIV_test_label">
+            <variant locale="en" value="HIV test"/>
+            <variant locale="rw" value="Agakoko gatera Sida"/>
+        </code>
+        <code name="answer_positive">
+            <variant locale="en" value="POS"/>
+            <variant locale="rw" value="Ararwaye"/>
+        </code>
+        <code name="answer_negative">
+            <variant locale="en" value="NEG"/>
+            <variant locale="rw" value="NI MUZIMA"/>
+        </code>
+        <code name="CBC">
+            <variant locale="en" value="Complete Blood Count"/>
+            <variant locale="rw" value="IKIZAMINI CY'AMARASO"/>
+        </code>
+        <code name="Liver_Function_Test">
+            <variant locale="en" value="Liver Function Test"/>
+            <variant locale="rw" value="Ibizamini by'umwijima"/>
+        </code>
+        <code name="Electrolytes">
+            <variant locale="en" value="Electrolytes"/>
+            <variant locale="rw" value="Imyunyungugu yo mu mubiri"/>
+        </code>
+        <code name="EEG">
+            <variant locale="en" value="EEG"/>
+            <variant locale="rw" value="Ikizamini gisuzuma Igicuri"/>
+        </code>
+        <code name="Head_Imaging">
+            <variant locale="en" value="Head Imaging - CT/MRI"/>
+            <variant locale="rw" value="Guca mu cyuma-Igice cy'umutwe"/>
+        </code>
+        <code name="Other">
+            <variant locale="en" value="Other"/>
+            <variant locale="rw" value="Ibindi"/>
+        </code>
+        <code name="Procedure_Test_heading">
+            <variant locale="en" value="Procedure/Test"/>
+            <variant locale="rw" value="Ikizamini cyasabwe"/>
+        </code>
+        <code name="Result_and_date_heading">
+            <variant locale="en" value="Result and date"/>
+            <variant locale="rw" value="Ibisubizo by’ibizamini n'itariki"/>
+        </code>
+    </translations>
+
+
+
     <span style="float:right">Paper Form ID: $paperFormId</span>
 
     <section headerLabel="1. Encounter Details">
@@ -91,32 +186,35 @@
                         Inshuti Mu Buzima <br /> PIH Rwanda
                     </h2></td>
                 <td>
-                    <strong>INVESTIGATIONS </strong>/ IBIZAMINI
-
+                    <strong>
+                        <lookup expression="fn.message('INVESTIGATIONS')"/>
+                    </strong>
                     <br/>
                     <b> IMB ID: <lookup class="value"
                                         expression="patientIdentifiers.get(&quot;IMB ID&quot;)" /> <lookup class="value"
                                                                                                            expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" /></b>
                     <br/>
-                    Nom / Last name: <lookup class="value" expression="patient.personName.familyName" />
+                    <lookup expression="fn.message('Last_name')"/> : <lookup class="value" expression="patient.personName.familyName" />
 
                 </td>
                 <td>
-                    <strong>MENTAL HEALTH: UBUZIMA BWO MU MUTWE</strong>
+                    <strong>
+                        <lookup expression="fn.message('Mental_Health')"/>
+                    </strong>
                     <br/><br/>
-                    Prénom/ First name: <lookup class="value" expression="patient.personName.givenName" />
+                    <lookup expression="fn.message('First_name')"/> : <lookup class="value" expression="patient.personName.givenName" />
 
                 </td>
             </tr>
             <tr>
-                <td>Clinique / Clinic: <encounterLocation/>
+                <td><lookup expression="fn.message('Clinic')"/>: <encounterLocation/>
                 </td>
-                <td>Date: <encounterDate id="encounterDate" default="today" />
+                <td><lookup expression="fn.message('Date')"/>: <encounterDate id="encounterDate" default="today" />
 
 
                 </td>
                 <td>
-                    Provider:<encounterProvider id="encounterProvider"
+                    <lookup expression="fn.message('Provider')"/>:<encounterProvider id="encounterProvider"
                                                 role="Provider" default="currentUser"/>
                 </td>
             </tr>
@@ -127,114 +225,300 @@
         <table class="baseline-aligned" border="1">
 
             <tr>
-                <th>EMR</th>
+                <th >EMR</th>
                 <th>
-                    <strong>Procedure/Test /</strong> <br/>
-                    procédure/<strong><br/>
-                    Ikizamini cyasabwe </strong>
-
+                    <lookup expression="fn.message('Procedure_Test_heading')"/>
                 </th>
+                <th></th>
                 <th>
-                    <strong>Result and date/</strong>
-                    résultat/<strong>Ibisubizo by’ibizamini n'itariki</strong>
+                    <lookup expression="fn.message('Result_and_date_heading')"/>
                 </th>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    HIV test/<strong>Agakoko gatera Sida</strong>
+                    <!--HIV test/<strong>Agakoko gatera Sida</strong>-->
+                    <lookup expression="fn.message('HIV_test_label')"/>
                 </td>
-                <td>
-                    <obs conceptId="$@RESULT_OF_HIV_TEST@" answerConceptIds="$@POSITIVE@,$@NEGATIVE@" answerLabels="POS,NEG" style="radio"/>
+                <td></td>
+                <td >
+                    <obs conceptId="$@RESULT_OF_HIV_TEST@" answerConceptIds="$@POSITIVE@,$@NEGATIVE@" answerCodes="answer_positive,answer_negative" style="radio"/>
                 </td>
             </tr>
             <tr>
-                <td></td>
-                <td>
-                    Complete Blood Count/<strong>IKIZAMINI CY'AMARASO</strong>
-                </td>
-                <td>
-                    <obs conceptId="$@HEMATOCRIT@" labelText="HEMATOCRIT" showDate="true" dateLabel="Date"/>
-                    <obs conceptId="$@HEMOGLOBIN@" labelText="HEMOGLOBIN" showDate="true" dateLabel="Date"/>
-                    <br/><br/>
-                    <obs conceptId="$@MEAN_CELL_HEMOGLOBIN_CONCENTRATION@" labelText="MEAN CELL HEMOGLOBIN CONCENTRATION" showDate="true" dateLabel="Date"/>
-                    <br/>
-                    <obs conceptId="$@MEAN_CORPUSCULAR_HEMOGLOBIN@" labelText="MEAN CORPUSCULAR HEMOGLOBIN" showDate="true" dateLabel="Date"/>
-                    <br/><br/>
-                    <obs conceptId="$@MEAN_CORPUSCULAR_VOLUME@" labelText="MEAN CORPUSCULAR VOLUME" showDate="true" dateLabel="Date"/>
-                    <obs conceptId="$@PLATELETS@" labelText="PLATELETS" showDate="true" dateLabel="Date"/>
-                    <br/><br/>
-                    <obs conceptId="$@RED_BLOOD_CELLS@" labelText="RED BLOOD CELLS" showDate="true" dateLabel="Date"/>
-                    <obs conceptId="$@RED_CELL_DISTRIBUTION_WIDTH@" labelText="RED CELL DISTRIBUTION WIDTH" showDate="true" dateLabel="Date"/>
-                    <br/><br/>
-                    <obs conceptId="$@WHITE_BLOOD_CELLS@" labelText="WHITE BLOOD CELLS" showDate="true" dateLabel="Date"/>
-                    <obs conceptId="$@NEUTROPHILS@" labelText="NEUTROPHILS" showDate="true" dateLabel="Date"/>
-                    <br/><br/>
-                    <obs conceptId="$@EOSINOPHILS@" labelText="EOSINOPHILS" showDate="true" dateLabel="Date"/>
-                    <obs conceptId="$@BASOPHILS@" labelText="BASOPHILS" showDate="true" dateLabel="Date"/>
-                    <br/><br/>
-                    <obs conceptId="$@LYMPHOCYTES@" labelText="LYMPHOCYTES" showDate="true" dateLabel="Date"/>
-                    <obs conceptId="$@MONOCYTES@" labelText="MONOCYTES" showDate="true" dateLabel="Date"/>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    Liver Function Test/<strong>Ibizamini by'umwijima</strong>
-                </td>
-                <td>
+                <td rowspan="14"></td>
 
+                <td rowspan="14">
+                    <lookup expression="fn.message('CBC')"/>
+                </td>
+                <td>
+                    HEMATOCRIT
+                </td>
+                <td>
+                    <obs conceptId="$@HEMATOCRIT@" showDate="true" dateLabel="Date"/>
                 </td>
             </tr>
             <tr>
-                <td></td>
                 <td>
-                    Electrolytes/<strong>Imyunyungugu yo mu mubiri</strong>
+                    HEMOGLOBIN
                 </td>
                 <td>
-                    <obs conceptId="$@SERUM_SODIUM@" labelText="SERUM SODIUM" showDate="true" dateLabel="Date"/>
-                    <obs conceptId="$@SERUM_POTASSIUM@" labelText="SERUM POTASSIUM" showDate="true" dateLabel="Date"/>
-                    <br/><br/>
-                    <obs conceptId="$@SERUM_CALCIUM@" labelText="SERUM CALCIUM" showDate="true" dateLabel="Date"/>
-                    <obs conceptId="$@SERUM_CARBON_DIOXIDE@" labelText="SERUM CARBON DIOXIDE" showDate="true" dateLabel="Date"/>
-                    <br/><br/>
-                    <obs conceptId="$@BLOOD_UREA_NITROGEN@" labelText="BLOOD UREA NITROGEN" showDate="true" dateLabel="Date"/>
-                    <obs conceptId="$@SERUM_CREATININE@" labelText="SERUM CREATININE" showDate="true" dateLabel="Date"/>
-                    <br/><br/>
-                    <obs conceptId="$@SERUM_GLUCOSE@" labelText="SERUM GLUCOSE" showDate="true" dateLabel="Date"/>
-                    <obs conceptId="$@HEMOGLOBIN@" labelText="HEMOGLOBIN" showDate="true" dateLabel="Date"/>
-                    <br/><br/>
-                    <obs conceptId="$@SERUM_CHLORIDE@" labelText="SERUM CHLORIDE" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@HEMOGLOBIN@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    MEAN CELL HEMOGLOBIN CONCENTRATION
+                </td>
+                <td>
+                    <obs conceptId="$@MEAN_CELL_HEMOGLOBIN_CONCENTRATION@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    MEAN CORPUSCULAR HEMOGLOBIN
+                </td>
+                <td>
+                    <obs conceptId="$@MEAN_CORPUSCULAR_HEMOGLOBIN@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    MEAN CORPUSCULAR VOLUME
+                </td>
+                <td>
+                    <obs conceptId="$@MEAN_CORPUSCULAR_VOLUME@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    PLATELETS
+                </td>
+                <td>
+                    <obs conceptId="$@PLATELETS@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    RED BLOOD CELLS
+                </td>
+                <td>
+                    <obs conceptId="$@RED_BLOOD_CELLS@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    RED CELL DISTRIBUTION WIDTH
+                </td>
+                <td>
+                    <obs conceptId="$@RED_CELL_DISTRIBUTION_WIDTH@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    WHITE BLOOD CELLS
+                </td>
+                <td>
+                    <obs conceptId="$@WHITE_BLOOD_CELLS@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    NEUTROPHILS
+                </td>
+                <td>
+                    <obs conceptId="$@NEUTROPHILS@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    EOSINOPHILS
+                </td>
+                <td>
+                    <obs conceptId="$@EOSINOPHILS@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    BASOPHILS
+                </td>
+                <td>
+                    <obs conceptId="$@BASOPHILS@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    LYMPHOCYTES
+                </td>
+                <td>
+                    <obs conceptId="$@LYMPHOCYTES@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    MONOCYTES
+                </td>
+                <td>
+                    <obs conceptId="$@MONOCYTES@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="5"></td>
 
+                <td rowspan="5">
+                    <lookup expression="fn.message('Liver_Function_Test')"/>
                 </td>
+                <td>ASAT</td>
+                <td> <obs conceptId="$@ASAT_RESULT@"/> </td>
             </tr>
-            <tr>
-                <td></td>
-                <td>
-                    EEG/<strong>Ikizamini gisuzuma Igicuri</strong>
-                </td>
-                <td>
-                    <obs conceptId="$@Electroencephalogram@" showDate="true" dateLabel="Date"/>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    Head Imaging - CT/MRI/<strong>Guca mu cyuma-Igice cy'umutwe</strong>
-                </td>
-                <td>
 
+            <tr>
+                <td>ALAT</td>
+                <td> <obs conceptId="$@SERUM_GLUTAMIC_PYRUVIC_TRANSAMINASE@"/> </td>
+            </tr>
+            <tr>
+                <td>ALP</td>
+                <td> <obs conceptId="$@ALKALINE_PHOSPHATASE@"/> </td>
+            </tr>
+            <tr>
+                <td>albumin</td>
+                <td> <obs conceptId="$@SERUM_ALBUMIN@"/> </td>
+            </tr>
+            <tr>
+                <td>Bilirubin</td>
+                <td> <obs conceptId="$@TOTAL_BILIRUBIN@"/> </td>
+            </tr>
+            <tr>
+                <td rowspan="9"></td>
+                <td rowspan="9">
+                    <lookup expression="fn.message('Electrolytes')"/>
+                </td>
+                <td>
+                    SERUM SODIUM
+                </td>
+                <td>
+                    <obs conceptId="$@SERUM_SODIUM@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SERUM POTASSIUM
+                </td>
+                <td>
+                    <obs conceptId="$@SERUM_POTASSIUM@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SERUM CALCIUM
+                </td>
+                <td>
+                    <obs conceptId="$@SERUM_CALCIUM@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SERUM CARBON DIOXIDE
+                </td>
+                <td>
+                    <obs conceptId="$@SERUM_CARBON_DIOXIDE@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    BLOOD UREA NITROGEN
+                </td>
+                <td>
+                    <obs conceptId="$@BLOOD_UREA_NITROGEN@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SERUM CREATININE
+                </td>
+                <td>
+                    <obs conceptId="$@SERUM_CREATININE@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SERUM GLUCOSE
+                </td>
+                <td>
+                    <obs conceptId="$@SERUM_GLUCOSE@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    HEMOGLOBIN
+                </td>
+                <td>
+                    <obs conceptId="$@HEMOGLOBIN@" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    SERUM CHLORIDE
+                </td>
+                <td>
+                    <obs conceptId="$@SERUM_CHLORIDE@" showDate="true" dateLabel="Date"/>
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    Other: <strong>Ibindi:</strong>
+                    <lookup expression="fn.message('EEG')"/>
                 </td>
-                <td>
-
+                <td colspan="2">
+                    <obs conceptId="$@Electroencephalogram@" cols="85" showDate="true" dateLabel="Date"/>
                 </td>
             </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <lookup expression="fn.message('Head_Imaging')"/>
+                </td>
+                <td colspan="2">
+                    <obs conceptId="$@Head_CT_MRI_non_coded@" cols="85" showDate="true" dateLabel="Date"/>
+                </td>
+            </tr>
+
+            <obsgroup groupingConceptId="$@Other_tests_or_procedures_and_their_results@">
+                <tr>
+                    <td></td>
+                    <td>
+                        <!--<lookup expression="fn.message('Other')"/>-->
+                        <obs conceptId="$@Other_tests_or_procedures@" labelCode="Other"/>
+                    </td>
+                    <td colspan="2">
+                        <obs conceptId="$@Other_tests_or_procedures_Results@" cols="85" showDate="true" dateLabel="Date"/>
+                    </td>
+                </tr>
+            </obsgroup>
+            <obsgroup groupingConceptId="$@Other_tests_or_procedures_and_their_results@">
+                <tr>
+                    <td></td>
+                    <td>
+                        <!--<lookup expression="fn.message('Other')"/>-->
+                        <obs conceptId="$@Other_tests_or_procedures@" labelCode="Other"/>
+                    </td>
+                    <td colspan="2">
+                        <obs conceptId="$@Other_tests_or_procedures_Results@" cols="85" showDate="true" dateLabel="Date"/>
+                    </td>
+                </tr>
+            </obsgroup>
+            <obsgroup groupingConceptId="$@Other_tests_or_procedures_and_their_results@">
+                <tr>
+                    <td></td>
+                    <td>
+                        <!--<lookup expression="fn.message('Other')"/>-->
+                        <obs conceptId="$@Other_tests_or_procedures@" labelCode="Other"/>
+                    </td>
+                    <td colspan="2">
+                        <obs conceptId="$@Other_tests_or_procedures_Results@" cols="85" showDate="true" dateLabel="Date"/>
+                    </td>
+                </tr>
+            </obsgroup>
         </table>
 
     </section>

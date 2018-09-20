@@ -658,10 +658,29 @@ getField('reactionNonCoded3.value')[0].disabled = true;
     <section>
         <table border="1" cellspacing="0" cellpadding="6" width="100%">
             <tr>
-                <td><b> IMB ID: <lookup class="value"
-                                        expression="patientIdentifiers.get(&quot;IMB ID&quot;)" /> <lookup
-                        class="value"
-                        expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" /></b>
+                <td>
+                    <b>
+                        IMB ID: <lookup class="value"
+                                        expression="patientIdentifiers.get(&quot;IMB ID&quot;)" />
+                        <br/>
+                        IMB Primary Care Registration ID:
+                        <lookup
+                            class="value"
+                            expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" />
+                        <br/>
+                        OpenClinic ID:
+                        <lookup class="value"
+                                expression="patientIdentifiers.get(&quot;OpenClinic ID&quot;)" />
+                        <br/>
+                        ARCHIVING ID:
+                        <lookup class="value"
+                                expression="patientIdentifiers.get(&quot;ARCHIVING ID&quot;)" />
+                        <br/>
+                        Rwanda National ID:
+                        <lookup class="value"
+                                expression="patientIdentifiers.get(&quot;Rwanda National ID&quot;)" />
+                    </b>
+                    
                 </td>
                 <td>Date: <encounterDate id="encounterDate" default="today" />
                 </td>
