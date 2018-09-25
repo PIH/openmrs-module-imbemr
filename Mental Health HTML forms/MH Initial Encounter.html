@@ -291,6 +291,18 @@
         @How_many_family_members_have_died_young@ = 640e233b-758a-4960-b180-a0a660d1c8d0
         @who_when_and_how_did_it_start@ = f989a756-8ad4-4c50-a1e6-b0dd6b9ac948
         @Additional_Observations@ = 1eb6df33-e80c-496b-a133-519302e90b59
+        @Other_Personality_Disorders@ = 021e2d4d-892a-4387-9ad9-f874a9ada122
+        @Aggression@ = 0b9c25d6-b91e-45f2-8b36-2b61f6d70f84
+        @Violence_toward_others@ = ee2ea07c-a696-43fe-a001-c521d922d4d7
+        @Violence_toward_self@ = e6789e7c-4227-4c7e-90bd-829d9d1ea250
+        @violence_to_property@ = f4d5a77e-3820-4a44-bdb0-ffa3559ff295
+        @other_Aggression_signs@ = aadd26c9-97a7-44d0-a48d-f86883b79f20
+        @Duration_of_Aggression_sign@ = bfa5c0d3-f696-43fb-9957-e5f1d14a7e93
+        @a_patient_has_a_suicidal_plan@ = 84d68044-0a0a-48ce-883f-3d075fefd69f
+        @Other_Alcohol_withdrawal_symptoms@ = c29f1eef-ef54-41b8-8397-90b9f6b6c291
+        @PHQ-9_score_numeric@ = 89706812-269f-457d-901f-c5ce19add245
+
+
 
     </macros>
 
@@ -445,7 +457,7 @@
             <variant locale="rw" value="Afite isuku "/>
         </code>
         <code name="Poor_hygiene">
-            <variant locale="en" value="Poor hygienee "/>
+            <variant locale="en" value="Poor hygiene "/>
             <variant locale="rw" value="Isuku nke "/>
         </code>
         <code name="Other">
@@ -489,7 +501,7 @@
             <variant locale="rw" value="Kumenya igihe "/>
         </code>
         <code name="Reason_for_hospitalization">
-            <variant locale="en" value="Reason for hospitalization "/>
+            <variant locale="en" value="Reason for hospitalization/visit "/>
             <variant locale="rw" value="impamvu yo gushyirwa mu bitaro,kwivuza "/>
         </code>
         <code name="Mood">
@@ -525,7 +537,7 @@
             <variant locale="rw" value="Ababaye"/>
         </code>
         <code name="Affect_Flat">
-            <variant locale="en" value="Flat "/>
+            <variant locale="en" value="Flat/no emotion "/>
             <variant locale="rw" value="nta marangamutima agaragaza"/>
         </code>
         <code name="Thought_Process">
@@ -536,6 +548,826 @@
             <variant locale="en" value="Affect "/>
             <variant locale="rw" value="Amarangamutima"/>
         </code>
+        <code name="Normal_thought_process">
+            <variant locale="en" value="Normal/Linear "/>
+            <variant locale="rw" value="Bisanzwe"/>
+        </code>
+        <code name="Tangential">
+            <variant locale="en" value="Tangential(No focus on topic) "/>
+            <variant locale="rw" value="bitari ku murongo"/>
+        </code>
+        <code name="Disorganized">
+            <variant locale="en" value="Disorganized"/>
+            <variant locale="rw" value="Bivangavanze"/>
+        </code>
+        <code name="Disorganized">
+            <variant locale="en" value="Disorganized"/>
+            <variant locale="rw" value="Bivangavanze"/>
+        </code>
+        <code name="Thought_Content_or_Perceptions">
+            <variant locale="en" value="Thought Content / Perceptions"/>
+            <variant locale="rw" value="Ibyiyumviro"/>
+        </code>
+        <code name="Delusions">
+            <variant locale="en" value="Delusions"/>
+            <variant locale="rw" value="Kwizera ibitari ukuri"/>
+        </code>
+        <code name="Paranoia">
+            <variant locale="en" value="Delusions"/>
+            <variant locale="rw" value="Kerura"/>
+        </code>
+        <code name="Auditory_Thought_Content">
+            <variant locale="en" value="Auditory"/>
+            <variant locale="rw" value="Kumva amajwi y’ibidahari"/>
+        </code>
+        <code name="Visual_Thought_Content">
+            <variant locale="en" value="Visual"/>
+            <variant locale="rw" value="Kubona ibidahari(amashusho)"/>
+        </code>
+        <code name="Olfactory_Thought_Content">
+            <variant locale="en" value="Olfactory"/>
+            <variant locale="rw" value="Kumva impumuro idahari"/>
+        </code>
+        <code name="Tactile_Thought_Content">
+            <variant locale="en" value="Tactile"/>
+            <variant locale="rw" value="Kumva ibidahari bigukoraho"/>
+        </code>
+        <code name="Gustatory_Thought_Content">
+            <variant locale="en" value="Gustatory"/>
+            <variant locale="rw" value="Kumva uburyohe bw’ibidahari"/>
+        </code>
+        <code name="None">
+            <variant locale="en" value="None"/>
+            <variant locale="rw" value="ntabyo"/>
+        </code>
+        <code name="Insight">
+            <variant locale="en" value="Insight"/>
+            <variant locale="rw" value="Gushyira mu gaciro"/>
+        </code>
+        <code name="Poor_Insight">
+            <variant locale="en" value="Poor"/>
+            <variant locale="rw" value="Bidakwiye"/>
+        </code>
+        <code name="Fair_Insight">
+            <variant locale="en" value="Fair"/>
+            <variant locale="rw" value="Bigereranije"/>
+        </code>
+        <code name="Good_Insight">
+            <variant locale="en" value="Good"/>
+            <variant locale="rw" value="Bimeze neza(Bikwiye)"/>
+        </code>
+        <code name="Additional_Observations">
+            <variant locale="en" value="Additional Observations"/>
+            <variant locale="rw" value="Ibindi bimenyetso by’uburwayi bigaragara"/>
+        </code>
+        <code name="Presenting_Problem">
+            <variant locale="en" value="Presenting Problem:"/>
+            <variant locale="rw" value="Uburwayi yaje afite:"/>
+        </code>
+        <code name="Presenting_Problem_explaination">
+            <variant locale="en" value="(What is the primary reason for current visit?"/>
+            <variant locale="rw" value="(Impamvu nyamukuru yamuzanye kwivuza?)"/>
+        </code>
+        <code name="Depression">
+            <variant locale="en" value="Depression"/>
+            <variant locale="rw" value="Agahinda gakabije"/>
+        </code>
+        <code name="Anhedonia">
+            <variant locale="en" value="Anhedonia"/>
+            <variant locale="rw" value="Kutagira ikimushishikaza"/>
+        </code>
+        <code name="Insomnia">
+            <variant locale="en" value="Insomnia"/>
+            <variant locale="rw" value="Insomnie/Kubura ibitotsi"/>
+        </code>
+        <code name="Eating_disturbances">
+            <variant locale="en" value="Eating disturbances"/>
+            <variant locale="rw" value="Kutabasha kurya neza"/>
+        </code>
+        <code name="Low_motivation">
+            <variant locale="en" value="Low motivation"/>
+            <variant locale="rw" value="Gucika intege"/>
+        </code>
+        <code name="Suicidal_thoughts">
+            <variant locale="en" value="Suicidal thoughts"/>
+            <variant locale="rw" value="Ibitekerezo byo kwiyahura"/>
+        </code>
+        <code name="Duration">
+            <variant locale="en" value="Duration: "/>
+            <variant locale="rw" value="igihe ibimenyetso bimaze: "/>
+        </code>
+        <code name="less_than_1_month">
+            <variant locale="en" value="&lt; 1 month "/>
+            <variant locale="rw" value="Munsi y’ukwezi "/>
+        </code>
+        <code name="1-6_months">
+            <variant locale="en" value="1-6 months "/>
+            <variant locale="rw" value="Hagati y’ukwezi n’amezi atandatu"/>
+        </code>
+        <code name="greater_than_6_months">
+            <variant locale="en" value="&gt; 6 months "/>
+            <variant locale="rw" value="Hejuru y’amezi atandatu"/>
+        </code>
+        <code name="Worrying_all_the_time">
+            <variant locale="en" value="Worrying all the time "/>
+            <variant locale="rw" value="guhangayikira ibintu ku buryo  budasanzwe"/>
+        </code>
+        <code name="Panic_attacks">
+            <variant locale="en" value="Panic attacks "/>
+            <variant locale="rw" value="Umuhangayiko uhutiyeho"/>
+        </code>
+        <code name="Mania">
+            <variant locale="en" value="Mania "/>
+            <variant locale="rw" value="Uburwayi bw’Imbamutima iri hejuru cyane(Ibyishimo birenze by’uburwayi)"/>
+        </code>
+        <code name="Logorrhea">
+            <variant locale="en" value="Logorrhea "/>
+            <variant locale="rw" value="Amagambo menshi "/>
+        </code>
+        <code name="psychomotor_agitation">
+            <variant locale="en" value="psychomotor agitation "/>
+            <variant locale="rw" value="Amagambo menshi "/>
+        </code>
+        <code name="Euphoric_mood">
+            <variant locale="en" value="Euphoric mood "/>
+            <variant locale="rw" value="Ibyishimo birenze cyane "/>
+        </code>
+        <code name="Impulsive_behavior">
+            <variant locale="en" value="Impulsive behavior "/>
+            <variant locale="rw" value="Kutagira rutangira mu myitwarire "/>
+        </code>
+        <code name="Personality_Disorder">
+            <variant locale="en" value="Personality Disorder "/>
+            <variant locale="rw" value="Uburwayi bwa Kamere mbi "/>
+        </code>
+        <code name="Distrust_or_suspicion_of_others">
+            <variant locale="en" value="Distrust/suspicion of others "/>
+            <variant locale="rw" value="Kutizera abandi "/>
+        </code>
+        <code name="Eccentric_behavior">
+            <variant locale="en" value="Eccentric behavior "/>
+            <variant locale="rw" value="Imico mibi "/>
+        </code>
+        <code name="avoidant_of_social_relationships">
+            <variant locale="en" value="avoidant of social relationships "/>
+            <variant locale="rw" value="Kutabana,kudasabana n’abandi "/>
+        </code>
+        <code name="Lying_or_stealing_or_neglectful">
+            <variant locale="en" value="Lying/stealing/neglectful "/>
+            <variant locale="rw" value="Kubeshya,kwiba,kutita ku bintu/abandi "/>
+        </code>
+        <code name="Instability_of_interpersonal_relationships">
+            <variant locale="en" value="Instability of interpersonal relationships "/>
+            <variant locale="rw" value="Kutabana n’abandi ngo bimare akanya "/>
+        </code>
+        <code name="Lack_of_empathy">
+            <variant locale="en" value="Lack of empathy "/>
+            <variant locale="rw" value="Kutita ku bandi/Kutagira ubumuntu. "/>
+        </code>
+        <code name="Excessively_emotional_or_seeking_attention">
+            <variant locale="en" value="Excessively emotional/seeking attention "/>
+            <variant locale="rw" value="Kumva ko yakwitabwaho cyane "/>
+        </code>
+        <code name="Preoccupation_with_perfectionism">
+            <variant locale="en" value="Preoccupation with perfectionism "/>
+            <variant locale="rw" value="Kumva ko ibintu byagenda uko ashaka "/>
+        </code>
+        <code name="Other_signs">
+            <variant locale="en" value="Other: "/>
+            <variant locale="rw" value="Ibindi bimenyetso "/>
+        </code>
+        <code name="PTSD">
+            <variant locale="en" value="PTSD "/>
+            <variant locale="rw" value="Ihungabana n’ihahamuka "/>
+        </code>
+        <code name="Intrusive_thoughts">
+            <variant locale="en" value="Intrusive thoughts "/>
+            <variant locale="rw" value="Guheranwa n’ishavu "/>
+        </code>
+        <code name="Nightmares">
+            <variant locale="en" value="Nightmares "/>
+            <variant locale="rw" value="Gushikagurika "/>
+        </code>
+        <code name="Flashbacks">
+            <variant locale="en" value="Flashbacks "/>
+            <variant locale="rw" value="Kuba,guhora mu byamubayeho "/>
+        </code>
+        <code name="persistant_Anxiety">
+            <variant locale="en" value="Anxiety "/>
+            <variant locale="rw" value="Umuhangayiko uhoraho "/>
+        </code>
+        <code name="Hypervigilance">
+            <variant locale="en" value="Hypervigilance "/>
+            <variant locale="rw" value="Amakenga ahoraho "/>
+        </code>
+        <code name="Psychosis">
+            <variant locale="en" value="Psychosis "/>
+            <variant locale="rw" value="Uburwayi bwo mu mutwe bweruye "/>
+        </code>
+        <code name="Hallucinations">
+            <variant locale="en" value="Hallucinations "/>
+            <variant locale="rw" value="Kubona,Kumva ibidahari "/>
+        </code>
+        <code name="Delusions">
+            <variant locale="en" value="Delusions "/>
+            <variant locale="rw" value="Kwizera ibitari ukuri "/>
+        </code>
+        <code name="Paranoia">
+            <variant locale="en" value="Paranoia "/>
+            <variant locale="rw" value="kwerura "/>
+        </code>
+        <code name="Disorganized_speech">
+            <variant locale="en" value="Disorganized speech "/>
+            <variant locale="rw" value="Amagambo aterekeranye "/>
+        </code>
+        <code name="Somatic_complaints">
+            <variant locale="en" value="Somatic complaints "/>
+            <variant locale="rw" value="Uburwayi bwo mu mutwe bugaragarira ku bimenyetso by’umubiri "/>
+        </code>
+        <code name="Headache">
+            <variant locale="en" value="Headache "/>
+            <variant locale="rw" value="Imisonga mu mutwe "/>
+        </code>
+        <code name="Weakness">
+            <variant locale="en" value="Weakness "/>
+            <variant locale="rw" value="Gucika intege "/>
+        </code>
+        <code name="GI_issues">
+            <variant locale="en" value="GI issues "/>
+            <variant locale="rw" value="Kuribwa mu nda "/>
+        </code>
+        <code name="Numbness">
+            <variant locale="en" value="Numbness/tingling/neurological symptoms "/>
+            <variant locale="rw" value="Ibinya,Ibimenyetso bihindagurika n’ibindi bisa n’iby’ingingo "/>
+        </code>
+        <code name="Seizures">
+            <variant locale="en" value="Seizures "/>
+            <variant locale="rw" value="kugagara kw’Igicuri "/>
+        </code>
+        <code name="Movement_of_all_extremities">
+            <variant locale="en" value="Movement of all extremities "/>
+            <variant locale="rw" value="Kugagara no gutitira ingongo zose "/>
+        </code>
+        <code name="Movement_of_one_side_of_body">
+            <variant locale="en" value="Movement of one side of body "/>
+            <variant locale="rw" value="Kugagara no gutitira igice kimwe cy’umubiri "/>
+        </code>
+        <code name="Loss_of_consciousness">
+            <variant locale="en" value="Loss of consciousness "/>
+            <variant locale="rw" value="Guhwera "/>
+        </code>
+        <code name="Incontinence">
+            <variant locale="en" value="Incontinence "/>
+            <variant locale="rw" value="Kwisobaho,Kwiyitumaho "/>
+        </code>
+        <code name="Biting_the_tongue">
+            <variant locale="en" value="Tongue biting "/>
+            <variant locale="rw" value="Kwiruma ururimi "/>
+        </code>
+        <code name="Confusion">
+            <variant locale="en" value="Confusion "/>
+            <variant locale="rw" value="Kutamenya aho uri "/>
+        </code>
+        <code name="Aggression">
+            <variant locale="en" value="Aggression "/>
+            <variant locale="rw" value="Kugira amahane no kugira nabi "/>
+        </code>
+        <code name="Violence_toward_others">
+            <variant locale="en" value="Violence toward others "/>
+            <variant locale="rw" value="Kugirira nabi abandi  "/>
+        </code>
+        <code name="Violence_toward_self">
+            <variant locale="en" value="Violence toward self "/>
+            <variant locale="rw" value="Kwigirira nabi  "/>
+        </code>
+        <code name="violence_to_property">
+            <variant locale="en" value="violence to property "/>
+            <variant locale="rw" value="Kwangiza ibintu  "/>
+        </code>
+        <code name="Cognitive_disability">
+            <variant locale="en" value="Cognitive disability "/>
+            <variant locale="rw" value="Ubumuga bwo mu mutwe  "/>
+        </code>
+        <code name="Memory">
+            <variant locale="en" value="Memory "/>
+            <variant locale="rw" value="Kwibagirwa  "/>
+        </code>
+        <code name="Attention">
+            <variant locale="en" value="Attention "/>
+            <variant locale="rw" value="Amakenga  "/>
+        </code>
+        <code name="Cognitive_Orientation">
+            <variant locale="en" value="Orientation "/>
+            <variant locale="rw" value="Kutamenya aho ari  "/>
+        </code>
+        <code name="Fall">
+            <variant locale="en" value="Fall "/>
+            <variant locale="rw" value="Kugwa,Kwitura hasi  "/>
+        </code>
+        <code name="Precipitating_events">
+            <variant locale="en" value="Precipitating events "/>
+            <variant locale="rw" value="Imbarutso y’uburwayi  "/>
+        </code>
+        <code name="Trauma">
+            <variant locale="en" value="Trauma "/>
+            <variant locale="rw" value="Ibikomere by’ihungabana  "/>
+        </code>
+        <code name="Family_conflict">
+            <variant locale="en" value="Family conflict "/>
+            <variant locale="rw" value="Amakimbirane mu miryango  "/>
+        </code>
+        <code name="Financial_conflict">
+            <variant locale="en" value="Financial conflict "/>
+            <variant locale="rw" value="Ubukene  "/>
+        </code>
+        <code name="Medical_condition">
+            <variant locale="en" value="Medical condition "/>
+            <variant locale="rw" value="Uburwayi bukomeye  "/>
+        </code>
+        <code name="None_of_these">
+            <variant locale="en" value="None "/>
+            <variant locale="rw" value="Ntanakimwe  "/>
+        </code>]
+        <code name="Precipitating_events">
+            <variant locale="en" value="Precipitating events "/>
+            <variant locale="rw" value="Imbarutso y’uburwayi  "/>
+        </code>
+        <code name="Psychiatric_History">
+            <variant locale="en" value="Psychiatric History "/>
+            <variant locale="rw" value="Amakuru ku buzima bwo mu mutwe  "/>
+        </code>
+        <code name="Psychiatric_History_Description">
+            <variant locale="en" value="(History of previous mental health diagnoses, medications, psychiatric hospitalizations (dates and location)) "/>
+            <variant locale="rw" value="(Uburwayi bwo mu mutwe yaba yararwaye mbere,Imiti yafashe,Igihe naho
+    ashobora kuba yararwariye  mu bitaro)  "/>
+        </code>
+        <code name="Prior_Psychiatric_Hospitalizations">
+            <variant locale="en" value="Prior Psychiatric Hospitalizations "/>
+            <variant locale="rw" value="Niba ashobora kuba yararwariye  mu bitaro  "/>
+        </code>
+        <code name="Yes">
+            <variant locale="en" value="Yes "/>
+            <variant locale="rw" value="Yego  "/>
+        </code>
+        <code name="No">
+            <variant locale="en" value="No "/>
+            <variant locale="rw" value="Hoya  "/>
+        </code>
+        <code name="illness_Frequency">
+            <variant locale="en" value="Frequency "/>
+            <variant locale="rw" value="Inshuro yarwariye mu bitaro  "/>
+        </code>
+        <code name="Once">
+            <variant locale="en" value="Once "/>
+            <variant locale="rw" value="Rimwe  "/>
+        </code>
+        <code name="Twice">
+            <variant locale="en" value="Twice "/>
+            <variant locale="rw" value="Kabiri  "/>
+        </code>
+        <code name="Three_times">
+            <variant locale="en" value="Three times "/>
+            <variant locale="rw" value="Gatatu  "/>
+        </code>
+        <code name="four_plus_times">
+            <variant locale="en" value="4 + times "/>
+            <variant locale="rw" value="Inshuro zirenze enye  "/>
+        </code>
+        <code name="Rendez_vous">
+            <variant locale="en" value="Date(s) "/>
+            <variant locale="rw" value="Itariki,Igihe azabonanira na muganga  "/>
+        </code>
+        <code name="treatment_Location">
+            <variant locale="en" value="Location "/>
+            <variant locale="rw" value="Aho azivuriza  "/>
+        </code>
+        <code name="Health_Center">
+            <variant locale="en" value="Health Center "/>
+            <variant locale="rw" value="Ikigo Nderabuzima  "/>
+        </code>
+        <code name="other_place">
+            <variant locale="en" value="Other "/>
+            <variant locale="rw" value="Ahandi  "/>
+        </code>
+        <code name="Social_History">
+            <variant locale="en" value="Social History "/>
+            <variant locale="rw" value="Amakuru ku mibereho  "/>
+        </code>
+        <code name="Social_History_description">
+            <variant locale="en" value="(Living situation, financial situation, employment, etc.) "/>
+            <variant locale="rw" value="(Uko abayeho,ubushobozi,Akazi,nibindi..)  "/>
+        </code>
+        <code name="Living_situation">
+            <variant locale="en" value="Living situation "/>
+            <variant locale="rw" value="Uko abayeho  "/>
+        </code>
+        <code name="Lives_with_family">
+            <variant locale="en" value="Lives with family "/>
+            <variant locale="rw" value="Aba mu muryango  "/>
+        </code>
+        <code name="Lives_alone">
+            <variant locale="en" value="Lives alone "/>
+            <variant locale="rw" value="Aba wenyine  "/>
+        </code>
+        <code name="Homeless">
+            <variant locale="en" value="Homeless "/>
+            <variant locale="rw" value="Ntagira aho aba  "/>
+        </code>
+        <code name="Occupation">
+            <variant locale="en" value="Occupation "/>
+            <variant locale="rw" value="Akazi,Icyo akora  "/>
+        </code>
+        <code name="Unemployed">
+            <variant locale="en" value="Unemployed, Reason: "/>
+            <variant locale="rw" value="Nta kazi afite,Impamvu: "/>
+        </code>
+        <code name="Farmer_or_cultivating">
+            <variant locale="en" value="Cultivating "/>
+            <variant locale="rw" value="Umuhinzi "/>
+        </code>
+        <code name="Housework">
+            <variant locale="en" value="Housework "/>
+            <variant locale="rw" value="Akora akazi ko mu rugo "/>
+        </code>
+        <code name="Student">
+            <variant locale="en" value="Student "/>
+            <variant locale="rw" value="Ni umunyeshuri "/>
+        </code>
+        <code name="Other_Jobs">
+            <variant locale="en" value="Other: "/>
+            <variant locale="rw" value="Ibindi akora: "/>
+        </code>
+        <code name="Family_History">
+            <variant locale="en" value="Family History: "/>
+            <variant locale="rw" value="Amakuru ku muryango: "/>
+        </code>
+        <code name="Family_History_description">
+            <variant locale="en" value="(Family members with a history of mental illness, suicide, "/>
+            <variant locale="rw" value="(Abashobora kuba bararwaye mu mutwe
+    bo mu muryango,abiyahuye,cg abakoresheshe imiti iyayura umutwe) "/>
+        </code>
+        <code name="Family_History_of_Prior_suicide_attempts">
+            <variant locale="en" value="Family History of Prior suicide attempts"/>
+            <variant locale="rw" value="Niba hari abigeze kwiyahura mu muryango "/>
+        </code>
+        <code name="If_YES_specify">
+            <variant locale="en" value="If YES, specify:"/>
+            <variant locale="rw" value="Niba ari yego,Garagaza uwo ariwe: "/>
+        </code>
+        <code name="Family_History_of_Mental_Illness">
+            <variant locale="en" value="Family History of Mental Illness"/>
+            <variant locale="rw" value="Niba hari uburwayi bwo mu mutwe mu muryango "/>
+        </code>
+        <code name="If_YES_specify_which_family_member_and_diagnosis">
+            <variant locale="en" value="If YES, specify which family member and diagnosis"/>
+            <variant locale="rw" value="Niba ari yego,Vug sano bafitanye? "/>
+        </code>
+        <code name="Family_history_of_Medications">
+            <variant locale="en" value="Family history of Medications"/>
+            <variant locale="rw" value="Imiti yakoreshejwe mu muryango: "/>
+        </code>
+        <code name="Has_a_family_member_ever_been_on_psychotropic_medication">
+            <variant locale="en" value="Has a family member ever been on psychotropic medication?"/>
+            <variant locale="rw" value="Niba hari umuntu wo mu muryango wafashe imiti ivura mu mutwe? "/>
+        </code>
+        <code name="If_YES_which_family_member">
+            <variant locale="en" value="If YES, which family relationship do they have? "/>
+            <variant locale="rw" value="Niba ari yego,Ni iyihe sano bafitanye? "/>
+        </code>
+        <code name="If_YES_please_list_medications_if_known">
+            <variant locale="en" value="If YES, please list medications if known"/>
+            <variant locale="rw" value="Andika urutonde rw’imiti yakoreshejwe: "/>
+        </code>
+        <code name="How_many_people_live_in_your_house">
+            <variant locale="en" value="How many people live in your house"/>
+            <variant locale="rw" value="Babana ari bangahe mu rugo? "/>
+        </code>
+        <code name="How_many_parents_do_you_have_living">
+            <variant locale="en" value="How many parents do you have living"/>
+            <variant locale="rw" value="Ababyeyi bakiriho ni bangahe? "/>
+        </code>
+        <code name="How_many_family_members_have_died_young">
+            <variant locale="en" value="How many family members have died young"/>
+            <variant locale="rw" value="Ni abavandimwe bangahe bashobora kuba barapfuye bakiri bato? "/>
+        </code>
+        <code name="Any_family_members_who_have_a_history_of_mental_illness">
+            <variant locale="en" value="Any family members who have a history of mental illness?"/>
+            <variant locale="rw" value="Ese nta muntu wundi mu muryango ushobora kuba afite uburwayi bwo mu mutwe? "/>
+        </code>
+        <code name="If_so_who_when_and_how_did_it_start?">
+            <variant locale="en" value="If so, who, when, and how did it start"/>
+            <variant locale="rw" value="Niba ahari,bwatangiye ryari kandi gute? "/>
+        </code>
+        <code name="Substance_Use_History">
+            <variant locale="en" value="Substance Use History"/>
+            <variant locale="rw" value="Amakuru ku ikoreshwa ry’ibiyobyabwenge "/>
+        </code>
+        <code name="History_of_alcohol_of_drug_abuse">
+            <variant locale="en" value="(History of alcohol of drug abuse)"/>
+            <variant locale="rw" value="Amakuru ku ikoreshwa ry’inzoga n’ibiyobyabwenge) "/>
+        </code>
+        <code name="Alcohol">
+            <variant locale="en" value="Alcohol "/>
+            <variant locale="rw" value="Inzoga "/>
+        </code>
+        <code name="Illicit_drugs_please_name">
+            <variant locale="en" value="Illicit drugs (please name) "/>
+            <variant locale="rw" value="Ibiyobyabwenge,bivuge: "/>
+        </code>
+        <code name="Frequency_of_use">
+            <variant locale="en" value="Frequency of use "/>
+            <variant locale="rw" value="Inshuro yabikoresheje "/>
+        </code>
+        <code name="Daily">
+            <variant locale="en" value="Daily "/>
+            <variant locale="rw" value="Buri munsi "/>
+        </code>
+        <code name="Weekly">
+            <variant locale="en" value="Weekly "/>
+            <variant locale="rw" value="Buri kwezi "/>
+        </code>
+        <code name="Biweekly">
+            <variant locale="en" value="Biweekly "/>
+            <variant locale="rw" value="Mu byumweru bibiri "/>
+        </code>
+        <code name="Monthly">
+            <variant locale="en" value="Monthly "/>
+            <variant locale="rw" value="Buri kezi "/>
+        </code>
+        <code name="Once_a_year">
+            <variant locale="en" value="Once a year "/>
+            <variant locale="rw" value="Rimwe mu mwaka "/>
+        </code>
+        <code name="Once_every_few_months">
+            <variant locale="en" value="Once every few months "/>
+            <variant locale="rw" value="Rimwe mu mezi "/>
+        </code>
+        <code name="Once_a_year">
+            <variant locale="en" value="Once a year "/>
+            <variant locale="rw" value="Rimwe mu mwaka "/>
+        </code>
+        <code name="When_substance_was_last_taken">
+            <variant locale="en" value="When substance was last taken "/>
+            <variant locale="rw" value="Ni ryari aheruka gufata ku biyobyabwenge "/>
+        </code>
+        <code name="One_day_ago">
+            <variant locale="en" value="One day ago "/>
+            <variant locale="rw" value="Ejo hashize "/>
+        </code>
+        <code name="One_week_ago">
+            <variant locale="en" value="One week ago "/>
+            <variant locale="rw" value="Icyumeru kirashize "/>
+        </code>
+        <code name="One_month_ago">
+            <variant locale="en" value="One month ago "/>
+            <variant locale="rw" value="Hashize ukwezi "/>
+        </code>
+        <code name="One_year_ago">
+            <variant locale="en" value="One year ago "/>
+            <variant locale="rw" value="Hashize umwaka "/>
+        </code>
+        <code name="Other">
+            <variant locale="en" value="Other "/>
+            <variant locale="rw" value="Ikindi "/>
+        </code>
+        <code name="When_they_started_using_substance">
+            <variant locale="en" value="When they started using substance "/>
+            <variant locale="rw" value="Yatangiye gufata ibiyobyabwenge ryari "/>
+        </code>
+        <code name="Before_age_10">
+            <variant locale="en" value="Before age 10 "/>
+            <variant locale="rw" value="Mbere yuko yuzuza imyaka 10 "/>
+        </code>
+        <code name="Age_10_15">
+            <variant locale="en" value="Age 10-15 "/>
+            <variant locale="rw" value="Afite hagati 10-15 "/>
+        </code>
+        <code name="Age_15_20">
+            <variant locale="en" value="Age 15-20 "/>
+            <variant locale="rw" value="Afite hagati 15-20 "/>
+        </code>
+        <code name="Age_21-30">
+            <variant locale="en" value="Age 21-30 "/>
+            <variant locale="rw" value="Afite hagati 21-30 "/>
+        </code>
+        <code name="Age_31-40">
+            <variant locale="en" value="Age 31-40 "/>
+            <variant locale="rw" value="Afite hagati 31-40 "/>
+        </code>
+        <code name="After_age_40">
+            <variant locale="en" value="After age 40 "/>
+            <variant locale="rw" value="Hejuru ya 40 "/>
+        </code>
+        <code name="Longest_sober_period_period_without_substance">
+            <variant locale="en" value="Longest sober period (period without substance) "/>
+            <variant locale="rw" value="Igihe kinini yamaze atafashe ibiyobyabwenge "/>
+        </code>
+        <code name="Days">
+            <variant locale="en" value="Days "/>
+            <variant locale="rw" value="Iminsi "/>
+        </code>
+        <code name="Weeks">
+            <variant locale="en" value="Weeks "/>
+            <variant locale="rw" value="Ibyumweru "/>
+        </code>
+        <code name="Months">
+            <variant locale="en" value="Months "/>
+            <variant locale="rw" value="Ukwezi "/>
+        </code>
+        <code name="Years">
+            <variant locale="en" value="Years "/>
+            <variant locale="rw" value="umwaka "/>
+        </code>
+        <code name="N_A">
+            <variant locale="en" value="N/A "/>
+            <variant locale="rw" value="ntibyabayeho "/>
+        </code>
+        <code name="If_Alcohol_use_any_symptoms_of_alcohol_withdrawal_including_seizures">
+            <variant locale="en" value="If Alcohol use, any symptoms of alcohol withdrawal (including seizures) "/>
+            <variant locale="rw" value="Mu gihe yakoresheje inzoga cyane,Ibimenyetso by’ingaruka zo kuzihagarika bitunguranye "/>
+        </code>
+        <code name="Tremors">
+            <variant locale="en" value="Tremors "/>
+            <variant locale="rw" value="Gutitira ingingo ari hamwe "/>
+        </code>
+        <code name="Diaphoresis_sweating">
+            <variant locale="en" value="Diaphoresis/sweating "/>
+            <variant locale="rw" value="Kuzana ibyunzwe "/>
+        </code>
+        <code name="Hallucinations">
+            <variant locale="en" value="Hallucinations "/>
+            <variant locale="rw" value="Kubona no kumva ibidahari "/>
+        </code>
+        <!--<code name="Seizures">-->
+            <!--<variant locale="en" value="Seizures "/>-->
+            <!--<variant locale="rw" value="Kugagara by’igicuri "/>-->
+        <!--</code>-->
+        <code name="Patient_Medical_History">
+            <variant locale="en" value="Patient Medical History "/>
+            <variant locale="rw" value="MAKURU KU BUZIMA/UBURWAYI BUSANZWE "/>
+        </code>
+        <code name="History_of_current_medical_diagnoses_prior_surgeries_etc">
+            <variant locale="en" value="(History of current medical diagnoses, prior surgeries, etc.) "/>
+            <variant locale="rw" value=" "/>
+        </code>
+        <code name="Current_Medical_Diagnose">
+            <variant locale="en" value="Current Medical Diagnose "/>
+            <variant locale="rw" value="Uburwayi bw’umubiri busanzwe "/>
+        </code>
+        <code name="none_of_Medical_Diagnose">
+            <variant locale="en" value="None "/>
+            <variant locale="rw" value="Ntabwo AFITE "/>
+        </code>
+        <code name="HIV">
+            <variant locale="en" value="HIV "/>
+            <variant locale="rw" value="Virusi itera sida "/>
+        </code>
+        <code name="TB">
+            <variant locale="en" value="TB "/>
+            <variant locale="rw" value="Igituntu "/>
+        </code>
+        <code name="Heart_disease">
+            <variant locale="en" value="Heart disease "/>
+            <variant locale="rw" value="Indwara z’UMUTIMA "/>
+        </code>
+        <code name="Diabetes">
+            <variant locale="en" value="Diabetes "/>
+            <variant locale="rw" value="iGISUKARI "/>
+        </code>
+        <code name="Cancer">
+            <variant locale="en" value="Cancer "/>
+            <variant locale="rw" value="kANSERI "/>
+        </code>
+        <code name="Other_medical_diagnosis">
+            <variant locale="en" value="Other "/>
+            <variant locale="rw" value="Ubundi burwayi: "/>
+        </code>
+        <code name="History_of_traumatic_brain_injury">
+            <variant locale="en" value="History of traumatic brain injury "/>
+            <variant locale="rw" value="Amakuru ku bikomere by’ubwonko? "/>
+        </code>
+        <code name="Known_Allergies_please_lists">
+            <variant locale="en" value="Known Allergies (please list) "/>
+            <variant locale="rw" value="Amakuru ku miti ishobora kuba yaramunaniye cg idakorana n’umubiri we "/>
+        </code>
+        <code name="None">
+            <variant locale="en" value="None "/>
+            <variant locale="rw" value="Ntayo "/>
+        </code>
+        <code name="Functional_Impairments">
+            <variant locale="en" value="Functional Impairments "/>
+            <variant locale="rw" value="Amakuru ku bushobozi bwo gukora "/>
+        </code>
+        <code name="Employment_social_food_shelter_ADLs">
+            <variant locale="en" value="(Employment, social, food/shelter, ADLs) "/>
+            <variant locale="rw" value="(Akazi,Imibanire,Gushaka ibyo kurya,Imirimo y’ubuzima bwa buri munsi) "/>
+        </code>
+        <code name="Unable_to_work">
+            <variant locale="en" value="(Unable to work "/>
+            <variant locale="rw" value="Ntashoboye gukora "/>
+        </code>
+        <code name="Unable_to_eat">
+            <variant locale="en" value="Unable to eat "/>
+            <variant locale="rw" value="Ntashoboye kurya "/>
+        </code>
+        <code name="Unable_to_bathe_self">
+            <variant locale="en" value="Unable to bathe self "/>
+            <variant locale="rw" value="Ntashoboye kwikarabya "/>
+        </code>
+        <code name="Unable_to_walk">
+            <variant locale="en" value="Unable to walk "/>
+            <variant locale="rw" value="Ntashoboye kugenda "/>
+        </code>
+        <code name="Unable_to_walk">
+            <variant locale="en" value="Unable to walk "/>
+            <variant locale="rw" value="Ntashoboye kugenda "/>
+        </code>
+        <code name="Risk_Assessment">
+            <variant locale="en" value="Risk Assessment "/>
+            <variant locale="rw" value="Isuzuma ku byago byo Kwiyahura "/>
+        </code>
+        <code name="History_of_Suicide_Attempts">
+            <variant locale="en" value="History of Suicide Attempts "/>
+            <variant locale="rw" value="Amakuru ku kuba yaragerageje kwiyahura "/>
+        </code>
+        <code name="If_YES_action_performed">
+            <variant locale="en" value="If YES, action performed?"/>
+            <variant locale="rw" value="Niba ari yego yafashijwe ate? "/>
+        </code>
+        <code name="Is_the_patient_currently_suicidal">
+            <variant locale="en" value="Is the patient currently suicidal?"/>
+            <variant locale="rw" value="Ese umurwayi ashaka kwiyahura? "/>
+        </code>
+        <code name="If_YES_complete_suicide_assessment_form">
+            <variant locale="en" value="If YES, complete suicide assessment form"/>
+            <variant locale="rw" value="Niba ari Yego,Uzuza ifishi isuzuma ibyago byo kwiyahura "/>
+        </code>
+        <code name="PLEASE_USE_SUPPLEMENTARY_FORM_TO_INDICATE_PRIMARY_AND_SECONDARY_DIAGNOSES">
+            <variant locale="en" value="PLEASE USE SUPPLEMENTARY FORM TO INDICATE PRIMARY AND SECONDARY DIAGNOSES"/>
+            <variant locale="rw" value="HANO MURASABWA GUKORESHA INDI FISHI YEREKANA UBURWAYI BW’IBANZE NDETSE N’UBUNDI BURWAYI ASHOBORA KUBA YABA AFITE "/>
+        </code>
+        <code name="Treatment_Plan">
+            <variant locale="en" value="Treatment Plan"/>
+            <variant locale="rw" value="Gahunda y’ubuvuzi "/>
+        </code>
+        <code name="Medications_therapy_referral_etc">
+            <variant locale="en" value="(Medications, therapy, referral, etc.)"/>
+            <variant locale="rw" value="(Imiti,Ibiganiro,Koherezwa ahandi,n’ibindi..) "/>
+        </code>
+        <code name="PLEASE_LIST_Medications_Prescribed_with_Dosages_on_supplementary_MEDICATION_LIST">
+            <variant locale="en" value="MEDICATIONS: PLEASE LIST Medications Prescribed with Dosages on supplementary MEDICATION LIST "/>
+            <variant locale="rw" value="Hano Musabwa gukora urutonde rw’imiti umurwayi yandikiwe n’uko itangwa ku yindi fishi y’Imiti "/>
+        </code>
+        <code name="PM+_Therapy">
+            <variant locale="en" value="PM+ Therapy "/>
+            <variant locale="rw" value="Ubuvuzi hakoreshejwe Ibiganiro ku guhangana n’ibibazo "/>
+        </code>
+        <code name="If_yes_PHQ-9_score">
+            <variant locale="en" value="If yes, PHQ-9 score "/>
+            <variant locale="rw" value="Niba ari Yego,Garagaza amanota y’ibisubizo by’isuzuma ry’Ibibazo 9 ku buzima bw’umurwayi "/>
+        </code>
+        <code name="Referrals">
+            <variant locale="en" value="Referrals "/>
+            <variant locale="rw" value="Koherezwa kwivuriza ahandi "/>
+        </code>
+        <code name="Referrals_None">
+            <variant locale="en" value="None "/>
+            <variant locale="rw" value="Ntaho "/>
+        </code>
+        <code name="Follow_up">
+            <variant locale="en" value="Follow up "/>
+            <variant locale="rw" value="Gukurikiranwa na Muganga Bihoraho "/>
+        </code>
+        <code name="Appointment_Date_and_Time">
+            <variant locale="en" value="Appointment Date and Time "/>
+            <variant locale="rw" value="Itariki n’igihe umurwayi azagarukiraho "/>
+        </code>
+        <code name="At_Location">
+            <variant locale="en" value="At (Location): "/>
+            <variant locale="rw" value="Aho umurwayi azavurirwa: "/>
+        </code>
+        <code name="Is_the_patient_being_discharged_from_MH_clinic">
+            <variant locale="en" value="Is the patient being discharged from MH clinic? "/>
+            <variant locale="rw" value="Ese umurwayi arasezerewe? "/>
+        </code>
+        <code name="If_YES_please_indicate_why">
+            <variant locale="en" value="If YES, please indicate why "/>
+            <variant locale="rw" value="Niba ari yego Vuga Impamvu? "/>
+        </code>
+        <code name="Presenting_Problem">
+            <variant locale="en" value="Presenting Problem: "/>
+            <variant locale="rw" value="Uburayi yaje afite: "/>
+        </code>
+        <code name="What_is_the_primary_reason_for_current_visit">
+            <variant locale="en" value="(What is the primary reason for current visit?) "/>
+            <variant locale="rw" value="(Impamvu nyamukuru yamuzanye kwivuza?) "/>
+        </code>
+        <code name="Suicidal_plan">
+            <variant locale="en" value="Suicidal plan "/>
+            <variant locale="rw" value="Umugambi wo kwiyahura "/>
+        </code>
+
+
 
 
     </translations>
@@ -624,6 +1456,7 @@
                 <td>
                     <strong><lookup expression="fn.message('Insurance_information')"/></strong>
                     <strong><lookup expression="fn.message('Mutuelle_Category')"/></strong>
+                    <br/>
                     <obs conceptId="$@Mutuelle_level@"
                          answerConceptIds="$@Mutuelle_level_I@,$@Mutuelle_level_II@,$@Mutuelle_level_III@,$@Mutuelle_level_IV@"
                          answerLabels="1,2,3,4" style="radio"/>
@@ -745,8 +1578,10 @@
                     <strong><lookup expression="fn.message('Mood')"/></strong>
                 </td>
                 <td>
+                    <strong>
                     <obs conceptId="$@Mood@" answerConceptIds="$@Sad@,$@Angry@,$@IRRITABILITY@,$@euphoric_mood@,$@Neutral@,$@OTHER_NON-CODED@"
                          answerCodes="Sad,Angry,Irritable,Euphoric,Neutral,Other" style="radio"/>
+                    </strong>
                     <obs conceptId="$@other_Mood@"/>
 
                 </td>
@@ -758,587 +1593,647 @@
                 <td>
                     <strong><lookup expression="fn.message('Affect')"/></strong>
                 </td>
-                <td>
+                <td><strong>
                     <obs conceptId="$@Affect@" answerConceptIds="$@Happy@,$@Sad@,$@Flat/No_emotion@,$@Neutral@,$@OTHER_NON-CODED@"
-                         answerCodes="Bright/happy,Affect_sad,Flat,Neutral,Other"
+                         answerCodes="Bright/happy,Affect_sad,Affect_Flat,Neutral,Other"
                          style="radio"/>
+                    </strong>
                     <obs conceptId="$@other_affect@"/>
 
                 </td>
             </tr>
+
             <tr>
                 <td>
                     <strong><lookup expression="fn.message('Thought_Process')"/></strong>
                 </td>
-                ..........................................................................................................................................................................
                 <td>
+                    <strong>
                     <obs conceptId="$@thought_process@" answerConceptIds="$@NORMAL@,$@Tangential@,$@Disorganized@,$@OTHER_NON-CODED@"
-                         answerLabels="Normal/Linear / normal/Bisanzwe,Tangential / tangential/bitari ku murongo(No focus on topic),
-                         Disorganized / désorganisé /Bivangavanze,Other / autre(Ibindi):" style="radio"/>
+                         answerCodes="Normal_thought_process,Tangential,
+                         Disorganized,Other" style="radio"/>
+                    </strong>
                     <obs conceptId="$@other_thought_process@"/>
 
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <strong>Thought Content / Perceptions / Contenu de la pensée / perceptions/</strong> Ibyiyumviro
+                    <strong><lookup expression="fn.message('Thought_Content_or_Perceptions')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@Thought_Content@" answerConceptId="$@Delusions@"
-                         answerLabel="Delusions / délires/Kwizera ibitari ukuri" style="style"/>
+                         answerCode="Delusions" style="style"/>
                     <obs conceptId="$@Thought_Content@" answerConceptId="$@Paranoia@"
-                         answerLabel="Paranoia / paranoïa/Kerura" style="style"/>
-                    <strong>Hallucinations(</strong>
+                         answerCode="Paranoia" style="style"/>
+                    Hallucinations(
                     <obs conceptId="$@Thought_Content@" answerConceptId="$@auditory@"
-                         answerLabel="Auditory / auditif/Kumva amajwi y’ibidahari" style="style"/>
+                         answerCode="Auditory_Thought_Content" style="style"/>
                     <obs conceptId="$@Thought_Content@" answerConceptId="$@Visual@"
-                         answerLabel="Visual / visual/Kubona ibidahari(amashusho)" style="style"/>
+                         answerCode="Visual_Thought_Content" style="style"/>
                     <obs conceptId="$@Thought_Content@" answerConceptId="$@Olfactory@"
-                         answerLabel="Olfactory / olfactif/Kumva impumuro idahari" style="style"/>
+                         answerCode="Olfactory_Thought_Content" style="style"/>
+                    <br/>
                     <obs conceptId="$@Thought_Content@" answerConceptId="$@Tactile@"
-                         answerLabel="Tactile / tactile/Kumva ibidahari bigukoraho " style="style"/>
+                         answerCode="Tactile_Thought_Content" style="style"/>
                     <obs conceptId="$@Thought_Content@" answerConceptId="$@Gustatory@"
-                         answerLabel="Gustatory / gustative/Kumva uburyohe bw’ibidahari" style="style"/>
+                         answerCode="Gustatory_Thought_Content" style="style"/>
+                    )
                     <obs conceptId="$@Thought_Content@" answerConceptId="$@NONE@"
-                         answerLabel="None / Aucun /ntabyo" style="style"/>
+                         answerCode="None" style="style"/>
+
                     <obs conceptId="$@Thought_Content@" answerConceptId="$@OTHER_NON-CODED@"
-                         answerLabel="Other(ibindi):" style="style"/>
+                         answerCode="Other" style="style"/>
                     <obs conceptId="$@other_thought_content@"/>
 
 
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <strong>Insight/Judgment/</strong> Gushyira mu gaciro
+                    <strong><lookup expression="fn.message('Insight')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@Insight@" answerConceptIds="$@POOR@,$@FAIR@,$@GOOD@"
-                         answerLabels="Poor / pauvre /Bidakwiye,Fair / passable/Bigereranije,Good / bien/Bimeze neza(Bikwiye)"
+                         answerCodes="Poor_Insight,Fair_Insight,Good_Insight"
                          style="radio"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>Additional Observations/Ibindi bimenyetso by’uburwayi bigaragara:</strong>
+                    <strong><lookup expression="fn.message('Additional_Observations')"/></strong>
                 </td>
                 <td>
-                    <obs conceptId="$@Additional_Observations@" cols="100"/>
+                    <obs conceptId="$@Additional_Observations@" cols="125"/>
                 </td>
             </tr>
         </table>
     </section>
-    <strong>Presenting Problem: </strong>
-    (What is the primary reason for current visit?<br/>
-    Describe current precipitating event, timeline of events,
-    primary stressors, primary symptoms and functional impairment) /<br/>
-    <strong>Problème de présentation:</strong>
-    (Quelle est la principale raison de la visite actuelle? Décrivez<br/>
-    l'événement précipitant actuel, la chronologie des événements,
-    les facteurs de stress primaires, les symptômes primaires et la déficience fonctionnelle)/<br/>
-    <strong>Uburwayi yaje afite:</strong>
-    (Impamvu nyamukuru yamuzanye kwivuza,igihe uburwayi bumaze,icyabuteye,imbarutso,Ibyagize<br/>
-    uruhare ku burwayi,ibimenyetso by’ibanze no kuba atagishoboye gukora imirimo itandukanye)
-    <section headerLabel="Chief Complaint / Primary Symptoms: (Tick all that apply) /
-    Plainte en chef / Symptômes primaires: (Cochez toutes les réponses qui s'appliquent)/
+
+    <strong><lookup expression="fn.message('Presenting_Problem')"/></strong>
+    <lookup expression="fn.message('What_is_the_primary_reason_for_current_visit')"/>
+
+    <section headerLabel="Chief Complaint / Primary Symptoms /
     Impamvu nyamukuru yazanye umurwayi kwivuza,Ibimenyetso by’ibanze(Hitamo ibiri byo muri uru rutonde)">
         <table border="1">
             <tr>
                 <td>
-                    <strong>Depression/Dépression/ <br/>Agahinda gakabije</strong>
+                    <strong><lookup expression="fn.message('Depression')"/></strong>
                 </td>
                 <td>
-                    <br/>
-                    <obs conceptId="$@DEPRESSION@" answerConceptId="$@Anhedonia@"
-                         answerLabel="Anhedonia / anhédonie/Kutagira ikimushishikaza" style="checkbox"/>
-                    <obs conceptId="$@DEPRESSION@" answerConceptId="$@INSOMNIA@"
-                         answerLabel="Insomnia / Insomnie/Kubura ibitotsi " style="checkbox"/>
-                    <obs conceptId="$@DEPRESSION@" answerConceptId="$@Eating_disturbances@"
-                         answerLabel="Eating disturbances / Troubles de l'alimentation/Kutabasha kurya neza " style="checkbox"/>
-                    <obs conceptId="$@DEPRESSION@" answerConceptId="$@Low_motivation_or_energy@"
-                         answerLabel="Low motivation/energy / Faible motivation / énergie/Gucika intege" style="checkbox"/>
-                    <obs conceptId="$@DEPRESSION@" answerConceptId="$@THOUGHT_OF_ENDING_YOUR_LIFE@"
-                         answerLabel="Suicidal thoughts / Pensées suicidaires /Ibitekerezo byo kwiyahura " style="checkbox"/>
-                    <br/>
-                    <obs conceptId="$@DEPRESSION@" answerConceptId="$@OTHER_NON-CODED@"
-                         answerLabel="Other / autre(Ibindi bimenyetso): " style="checkbox"/>
-                    <obs conceptId="$@Other_depression_symptoms@"/>
-                    <br/><br/>
-                    <strong>Duration/Durée</strong> /igihe ibimenyetso bimaze:
                     <strong>
-                        <obs conceptId="$@Depression_symptoms_duration@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
-                             answerLabels=" &lt; 1 month / mois /Munsi y’ukwezi ,1-6 months/mois/Hagati y’ukwezi n’amezi atandatu, &gt; 6 months / mois/Hejuru y’amezi atandatu"
-                             style="radio"/>
+                        <obs conceptId="$@DEPRESSION@" answerConceptId="$@Anhedonia@"
+                             answerCode="Anhedonia" style="checkbox"/>
+                    </strong>
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@DEPRESSION@" answerConceptId="$@INSOMNIA@"
+                             answerCode="Insomnia" style="checkbox"/>
+                    </strong>
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@DEPRESSION@" answerConceptId="$@Eating_disturbances@"
+                             answerCode="Eating_disturbances" style="checkbox"/>
+                    </strong>
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@DEPRESSION@" answerConceptId="$@Low_motivation_or_energy@"
+                             answerCode="Low_motivation" style="checkbox"/>
                     </strong>
 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>Anxiety /Anxiété/</strong> Umuhangayiko ukabije
-                </td>
-                <td>
-                    <obs conceptId="$@ANXIETY_DISORDER@" answerConceptId="$@Worrying_all_the_time@"
-                         answerLabel="Worrying all the time / Inquiétant tout le temps/guhangayikira ibintu ku buryo  budasanzwe"
-                         style="checkbox"/>
-                    <obs conceptId="$@ANXIETY_DISORDER@" answerConceptId="$@Panic_attack@"
-                         answerLabel="Panic attacks / Crises de panique/Umuhangayiko uhutiyeho" style="checkbox"/>
-                    <obs conceptId="$@ANXIETY_DISORDER@" answerConceptId="
-                        $@OTHER_NON-CODED@" answerLabel="Other / autre/Ibindi bimenyetso:" style="checkbox"/>
-                    <obs conceptId="$@other_anxiety_symptom@"/>
-                    <br/><br/>
-                    <strong>Duration / Durée/</strong>igihe ibimenyetso bimaze:
-                    <strong>
-                        <obs conceptId="$@Anxiety_Symptom_Duration@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
-                             answerLabels=" &lt; 1 month / mois /Munsi y’ukwezi ,1-6 months/mois/Hagati y’ukwezi n’amezi atandatu, &gt; 6 months / mois/Hejuru y’amezi atandatu"
-                             style="radio"/>
-                    </strong>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>Mania / La manie/</strong> Uburwayi bw’Imbamutima iri hejuru cyane(Ibyishimo birenze by’uburwayi)
-                </td>
-                <td>
-                    <obs conceptId="$@Mania@" answerConceptId="$@Logorrhea@"
-                         answerLabel="Logorrhea / Logorrhée/Amagambo menshi " style="checkbox"/>
-                    <obs conceptId="$@Mania@" answerConceptId="$@psychomotor_agitation@"
-                         answerLabel="Psychomotor agitation / Agitation psychomotrice/Kudatuza " style="radio"/> <br/>
-                    <obs conceptId="$@Mania@" answerConceptId="$@euphoric_mood@"
-                         answerLabel="Euphoric mood / Humeur euphorique/Ibyishimo birenze cyane " style="radio"/> <br/>
-                    <obs conceptId="$@Mania@" answerConceptIds="$@Impulsive_behavior@"
-                         answerLabels="Impulsive behavior / Comportement impulsive/Kutagira rutangira mu myitwarire,
-                          " style="radio"/>
                     <br/>
-                    <obs conceptId="$@Mania@" answerConceptIds="$@OTHER_NON-CODED@"
-                         answerLabels="Other / autre/Ibindi bimenyetso: " style="radio"/>
-                    <obs conceptId="$@Other_Mania_symptoms@"/>
+                    <strong>
+                        <obs conceptId="$@DEPRESSION@" answerConceptId="$@a_patient_has_a_suicidal_plan@"
+                             answerCode="Suicidal_plan" style="checkbox"/>
+                    </strong>
+
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@DEPRESSION@" answerConceptId="$@THOUGHT_OF_ENDING_YOUR_LIFE@"
+                             answerCode="Suicidal_thoughts" style="checkbox"/>
+                    </strong>
+
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@DEPRESSION@" answerConceptId="$@OTHER_NON-CODED@"
+                             answerCode="Other_signs" style="checkbox"/>
+                        <obs conceptId="$@Other_depression_symptoms@" cols="100"/>
+                    </strong>
                     <br/><br/>
-                    <strong>Duration / Durée</strong> /igihe ibimenyetso bimaze: <br/>
-                    <obs conceptId="$@Mania_symptom_duration@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
-                         answerLabels=" &lt; 1 month / mois /Munsi y’ukwezi ,1-6 months/mois/Hagati y’ukwezi n’amezi atandatu, &gt; 6 months / mois/Hejuru y’amezi atandatu"
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
+
+                    <obs conceptId="$@Depression_symptoms_duration@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months"
                          style="radio"/>
+
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <strong>Personality Disorder / <br/> Trouble de la personnalité</strong> / <br/> Uburwayi bwa Kamere mbi
+                    <strong><lookup expression="fn.message('Anxiety')"/></strong>
                 </td>
                 <td>
+                    <strong>
+                        <obs conceptId="$@ANXIETY_DISORDER@" answerConceptId="$@Worrying_all_the_time@"
+                             answerCode="Worrying_all_the_time" style="checkbox"/>
+                    </strong>
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@ANXIETY_DISORDER@" answerConceptId="$@Panic_attack@"
+                             answerCode="Panic_attacks" style="checkbox"/>
+                    </strong>
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@ANXIETY_DISORDER@" answerConceptId="
+                            $@OTHER_NON-CODED@" answerCode="Other_signs" style="checkbox"/>
+                        <obs conceptId="$@other_anxiety_symptom@" cols="100"/>
+                    </strong>
+                    <br/><br/>
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
+                    <obs conceptId="$@Anxiety_Symptom_Duration@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months" style="radio"/>
+                </td>
+            </tr>
 
+            <tr>
+                <td>
+                    <strong><lookup expression="fn.message('Mania')"/></strong>
+                </td>
+                <td>
+                    <strong>
+                        <obs conceptId="$@Mania@" answerConceptId="$@Logorrhea@"
+                             answerCode="Logorrhea" style="checkbox"/>
+                    </strong>
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@Mania@" answerConceptId="$@psychomotor_agitation@"
+                             answerCode="psychomotor_agitation" style="radio"/>
+                    </strong>
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@Mania@" answerConceptId="$@euphoric_mood@"
+                             answerCode="Euphoric_mood" style="radio"/>
+                    </strong>
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@Mania@" answerConceptIds="$@Impulsive_behavior@"
+                             answerCode="Impulsive_behavior" style="radio"/>
+                    </strong>
+                    <br/>
+                    <strong>
+                        <obs conceptId="$@Mania@" answerConceptId="$@OTHER_NON-CODED@"
+                             answerCode="Other_signs" style="radio"/>
+                        <obs conceptId="$@Other_Mania_symptoms@" cols="100"/>
+                    </strong>
+                    <br/><br/>
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
+                    <obs conceptId="$@Mania_symptom_duration@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months" style="radio"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong><lookup expression="fn.message('Personality_Disorder')"/></strong>
+                </td>
+                <td>
                     <strong> <obs conceptId="$@Personality_Disorder@" answerConceptId="$@Distrust/suspicion_of_others@"
-                                  answerLabel="Distrust/suspicion of others / Méfiance / suspicion des autres /" style="checkbox"/>
-                    </strong> Kutizera abandi
-
+                                  answerCode="Distrust_or_suspicion_of_others" style="checkbox"/>
+                    </strong>
+                    <br/>
                     <strong> <obs conceptId="$@Personality_Disorder@" answerConceptId="$@Eccentric_behavior@"
-                                  answerLabel="Eccentric behavior / Comportement excentrique /" style="checkbox"/>
-                    </strong> Imico mibi
+                                  answerCode="Eccentric_behavior" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Personality_Disorder@" answerConceptId="$@Avoidant_of_social_relationships@"
-                                  answerLabel="Avoidant of social relationships / Éviter les relations sociales/" style="checkbox"/>
-                    </strong> Kutabana,kudasabana n’abandi
+                                  answerCode="avoidant_of_social_relationships" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Personality_Disorder@" answerConceptId="$@Lying/stealing/neglectful@"
-                                  answerLabel="Lying/stealing/neglectful  / Mentir / voler / négliger/" style="checkbox"/>
-                    </strong> Kubeshya,kutita ku bandi
+                                  answerCode="Lying_or_stealing_or_neglectful" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Personality_Disorder@" answerConceptId="$@Instability_of_interpersonal_relationships@"
-                                  answerLabel="Instability of interpersonal relationships / Instabilité des relations interpersonnelles /" style="checkbox"/>
-                    </strong> Kutabana n’abandi ngo bimare akanya
+                                  answerCode="Instability_of_interpersonal_relationships" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Personality_Disorder@" answerConceptId="$@Lack_of_empathy@"
-                                  answerLabel="Lack of empathy / Manque d'empathie/" style="checkbox"/>
-                    </strong> Kutita ku bandi
+                                  answerCode="Lack_of_empathy" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Personality_Disorder@" answerConceptId="$@Excessively_emotional/seeking_attention@"
-                                  answerLabel="Excessively emotional/seeking attention / Excessivement émotionnel / recherche d'attention/" style="checkbox"/>
-                    </strong> Kumva ko yakwitabwaho cyane
+                                  answerCode="Excessively_emotional_or_seeking_attention" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Personality_Disorder@" answerConceptId="$@Preoccupation_with_perfectionism@"
-                                  answerLabel="Preoccupation with perfectionism / Préoccupation du perfectionnisme/" style="checkbox"/>
-                    </strong> Kumva ko ibintu byagenda uko ashaka
+                                  answerCode="Preoccupation_with_perfectionism" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Personality_Disorder@" answerConceptId="$@OTHER_NON-CODED@"
-                                  answerLabel="Other / autre/" style="checkbox"/>
-                    </strong> Ibindi bimenyetso:
+                                  answerCode="Other_signs" style="checkbox"/>
+                        <obs conceptId="$@Other_Personality_Disorders@" cols="100"/>
+                    </strong>
                     <br/><br/>
-                    <strong>Duration / Durée</strong> /igihe ibimenyetso bimaze: <br/>
+
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
                     <obs conceptId="$@Personality_disorder_symptom_duration@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
-                         answerLabels=" &lt; 1 month / mois /Munsi y’ukwezi ,1-6 months/mois/Hagati y’ukwezi n’amezi atandatu, &gt; 6 months / mois/Hejuru y’amezi atandatu"
-                         style="radio"/>
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months" style="radio"/>
+
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>PTSD / Trouble de stress post-traumatique /</strong> Ihungabana n’ihahamuka
+                    <strong><lookup expression="fn.message('PTSD')"/></strong>
                 </td>
                 <td>
                     <strong> <obs conceptId="$@PTSD@" answerConceptId="$@intrusive_thoughts@"
-                                  answerLabel="Intrusive thoughts / Pensées intrusives/" style="checkbox"/>
-                    </strong> Guheranwa n’ishavu
+                                  answerCode="Intrusive_thoughts" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@PTSD@" answerConceptId="$@NIGHTMARES@"
-                                  answerLabel="Nightmares / Cauchemars/" style="checkbox"/>
-                    </strong> Gushikagurika
+                                  answerCode="Nightmares" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@PTSD@" answerConceptId="$@Flashbacks@"
-                                  answerLabel="Flashbacks / retour en arrière/" style="checkbox"/>
-                    </strong> Kuba,guhora mu byamubayeho
+                                  answerCode="Flashbacks" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@PTSD@" answerConceptId="$@Stress_or_anxiety@"
-                                  answerLabel="Anxiety / Anxiété/" style="checkbox"/>
+                                  answerCode="persistant_Anxiety" style="checkbox"/>
                     </strong>
                     <br/>
                     <strong> <obs conceptId="$@PTSD@" answerConceptId="$@Hypervigilance@"
-                                  answerLabel="Hypervigilance /" style="checkbox"/>
-                    </strong> Amakenga ahoraho
+                                  answerCode="Hypervigilance" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@PTSD@" answerConceptId="$@OTHER_NON-CODED@"
-                                  answerLabel="Other / autre/" style="checkbox"/>
-                    </strong> Ibindi bimenyetso:
-                    <obs conceptId="$@other_PTSD_symptom@"/>
+                                  answerCode="Other_signs" style="checkbox"/>
+                    </strong>
+                    <obs conceptId="$@other_PTSD_symptom@" cols="100"/>
                     <br/><br/>
-                    <strong>Duration / Durée</strong> /igihe ibimenyetso bimaze: <br/>
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
                     <obs conceptId="$@PTSD_symptom_duration@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
-                         answerLabels=" &lt; 1 month / mois /Munsi y’ukwezi ,1-6 months/mois/Hagati y’ukwezi n’amezi atandatu, &gt; 6 months / mois/Hejuru y’amezi atandatu"
-                         style="radio"/>
-
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months" style="radio"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>Psychosis / Psychose/</strong> Uburwayi bwo mu mutwe bweruye
+                    <strong><lookup expression="fn.message('Psychosis')"/></strong>
                 </td>
                 <td>
                     <strong> <obs conceptId="$@PSYCHOSIS@" answerConceptId="$@Hallucinations@"
-                                  answerLabel="Hallucinations/" style="checkbox"/>
-                    </strong> Kubona,Kumva ibidahari
+                                  answerCode="Hallucinations" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@PSYCHOSIS@" answerConceptId="$@Delusions@"
-                                  answerLabel="Delusions / Délires/" style="checkbox"/>
-                    </strong> Kwizera ibitari ukuri
+                                  answerCode="Delusions" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@PSYCHOSIS@" answerConceptId="$@Paranoia@"
-                                  answerLabel="Paranoia / Paranoïa /" style="checkbox"/>
-                    </strong> kwerura
+                                  answerCode="Paranoia" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@PSYCHOSIS@" answerConceptId="$@Disorganized_speech@"
-                                  answerLabel="Disorganized Speech / Discours désorganisé/" style="checkbox"/>
-                    </strong> Amagambo aterekeranye
+                                  answerCode="Disorganized Speech" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@PSYCHOSIS@" answerConceptId="$@OTHER_NON-CODED@"
-                                  answerLabel="Other / autre/" style="checkbox"/>
-                    </strong> Ibindi bimenyetso:
-                    <obs conceptId="$@other_psychosis_symptoms@"/>
+                                  answerCode="Other_signs" style="checkbox"/>
+                    </strong>
+                    <obs conceptId="$@other_psychosis_symptoms@" cols="100"/>
                     <br/><br/>
-                    <strong>Duration / Durée</strong> /igihe ibimenyetso bimaze: <br/>
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
                     <obs conceptId="$@Duration_of_psychosis_symptoms@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
-                         answerLabels=" &lt; 1 month / mois /Munsi y’ukwezi ,1-6 months/mois/Hagati y’ukwezi n’amezi atandatu, &gt; 6 months / mois/Hejuru y’amezi atandatu"
-                         style="radio"/>
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months" style="radio"/>
+
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <strong>Somatic complaints / Plaintes somatiques/</strong>
-                    Uburwayi bwo mu mutwe bugaragarira ku bimenyetso by’umubiri
+                    <strong><lookup expression="fn.message('Somatic_complaints')"/></strong>
                 </td>
                 <td>
                     <strong> <obs conceptId="$@Somatic_complaints@" answerConceptId="$@HEADACHE@"
-                                  answerLabel="Headache / Mal de tête/" style="checkbox"/>
-                    </strong> Imisonga mu mutwe
+                                  answerCode="Headache" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Somatic_complaints@" answerConceptId="$@WEAKNESS@"
-                                  answerLabel="Weakness / La faiblesse/" style="checkbox"/>
-                    </strong> Gucika intege
+                                  answerCode="Weakness" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Somatic_complaints@" answerConceptId="$@GI_issues@"
-                                  answerLabel="GI issues / problèmes gastro-intestinaux/" style="checkbox"/>
-                    </strong> Kuribwa mu nda
+                                  answerCode="GI_issues" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Somatic_complaints@" answerConceptId="$@Numbness@"
-                                  answerLabel="Numbness/tingling/neurological symptoms / Engourdissement
-                                  / picotement / symptômes neurologiques/" style="checkbox"/>
-                    </strong> Ibinya,Ibimenyetso bihindagurika n’ibindi bisa n’iby’ingingo
+                                  answerCode="Numbness" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Somatic_complaints@" answerConceptId="$@OTHER_NON-CODED@"
-                                  answerLabel="Other / autre/" style="checkbox"/>
-                    </strong> Ibindi bimenyetso:
-                    <obs conceptId="$@other_somatic_complaints_symptoms@"/>
+                                  answerCode="Other_signs" style="checkbox"/>
+                    </strong>
+                    <obs conceptId="$@other_somatic_complaints_symptoms@" cols="100"/>
                     <br/><br/>
-                    <strong>Duration / Durée</strong> /igihe ibimenyetso bimaze: <br/>
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
                     <obs conceptId="$@duration_of_somatic_complaints_symptoms@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
-                         answerLabels=" &lt; 1 month / mois /Munsi y’ukwezi ,1-6 months/mois/Hagati y’ukwezi n’amezi atandatu, &gt; 6 months / mois/Hejuru y’amezi atandatu"
-                         style="radio"/>
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months" style="radio"/>
 
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <strong>Seizures / Convulsions/</strong>kugagara kw’Igicuri
+                    <strong><lookup expression="fn.message('Seizures')"/></strong>
+
                 </td>
                 <td>
                     <strong> <obs conceptId="$@SEIZURE@" answerConceptId="$@Movement_of_all_extremities@"
-                                  answerLabel="Movement of all extremities / Mouvement de toutes les extrémités/" style="checkbox"/>
-                    </strong> Kugagara no gutitira ingongo zose
+                                  answerCode="Movement_of_all_extremities" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@SEIZURE@" answerConceptId="$@Movement_of_one_side_of_body@"
-                                  answerLabel="Movement of one side of body / Mouvement d'un côté du corps/" style="checkbox"/>
-                    </strong> Kugagara no gutitira igice kimwe cy’umubiri
+                                  answerCode="Movement_of_one_side_of_body" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@SEIZURE@" answerConceptId="$@Loss_of_consciousness@"
-                                  answerLabel="Loss of consciousness / Perte de conscience/" style="checkbox"/>
-                    </strong> Guhwera
+                                  answerCode="Loss_of_consciousness" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@SEIZURE@" answerConceptId="$@Incontinence@"
-                                  answerLabel="Loss of consciousness / Perte de conscience/" style="checkbox"/>
-                    </strong> Guhwera
-                    <br/>
-                    <strong> <obs conceptId="$@SEIZURE@" answerConceptId="$@Incontinence@"
-                                  answerLabel="Incontinence/" style="checkbox"/>
-                    </strong> Kwisobaho,Kwiyitumaho
+                                  answerCode="Incontinence" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@SEIZURE@" answerConceptId="$@Biting_the_tongue@"
-                                  answerLabel="Tongue biting / Langue qui mord/" style="checkbox"/>
-                    </strong> Kwiruma ururimi
+                                  answerCode="Biting_the_tongue" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@SEIZURE@" answerConceptId="$@CONFUSION@"
-                                  answerLabel="Confusion/" style="checkbox"/>
-                    </strong> Kutamenya aho uri
+                                  answerCode="Confusion" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@SEIZURE@" answerConceptId="$@Patient_falls@"
-                                  answerLabel="Fall / tomber/" style="checkbox"/>
-                    </strong> Kugwa,Kwitura hasi
+                                  answerCode="Fall" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@SEIZURE@" answerConceptId="$@OTHER_NON-CODED@"
-                                  answerLabel="Other / autre/" style="checkbox"/>
-                    </strong> Ibindi bimenyetso:
-                    <obs conceptId="$@other_seizure_symptoms@"/>
+                                  answerCode="Other_signs" style="checkbox"/>
+                    </strong>
+                    <obs conceptId="$@other_seizure_symptoms@" cols="100"/>
                     <br/><br/>
-                    <strong>Duration / Durée</strong> /igihe ibimenyetso bimaze: <br/>
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
                     <obs conceptId="$@Duration_of_seizure_symptoms@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
-                         answerLabels=" &lt; 1 month / mois /Munsi y’ukwezi ,1-6 months/mois/Hagati y’ukwezi n’amezi atandatu, &gt; 6 months / mois/Hejuru y’amezi atandatu"
-                         style="radio"/>
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months" style="radio"/>
+
 
                 </td>
             </tr>
+
+
             <tr>
                 <td>
-                    <strong>Cognitive disability / Handicap cognitive/</strong>Gutakaza ubwenge
+                    <strong><lookup expression="fn.message('Aggression')"/></strong>
+                </td>
+                <td>
+
+                    <strong> <obs conceptId="$@Aggression@" answerConceptId="$@Violence_toward_others@"
+                                  answerCode="Violence_toward_others" style="checkbox"/>
+                    </strong>
+                    <br/>
+                    <strong> <obs conceptId="$@Aggression@" answerConceptId="$@Violence_toward_self@"
+                                  answerCode="Violence_toward_self" style="checkbox"/>
+                    </strong>
+                    <br/>
+                    <strong> <obs conceptId="$@Aggression@" answerConceptId="$@violence_to_property@"
+                                  answerCode="violence_to_property" style="checkbox"/>
+                    </strong>
+                    <br/>
+                    <strong> <obs conceptId="$@Aggression@" answerConceptId="$@OTHER_NON-CODED@"
+                                  answerCode="Other_signs" style="checkbox"/>
+                    </strong>
+                    <obs conceptId="$@other_Aggression_signs@" cols="100"/>
+                    <br/><br/>
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
+                    <obs conceptId="$@Duration_of_Aggression_sign@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months" style="radio"/>
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <strong><lookup expression="fn.message('Cognitive_disability')"/></strong>
+
                 </td>
                 <td>
                     <strong> <obs conceptId="$@Cognitive_disability@" answerConceptId="$@MEMORY_PROBLEMS@"
-                                  answerLabel="Memory / Mémoire /" style="checkbox"/>
-                    </strong> Kwibagirwa
+                                  answerCode="Memory" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Cognitive_disability@" answerConceptId="$@Attention@"
-                                  answerLabel="Attention/" style="checkbox"/>
-                    </strong> Amakenga
+                                  answerCode="Attention" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Cognitive_disability@" answerConceptId="$@Orientation@"
-                                  answerLabel="Orientation" style="checkbox"/>
-                    </strong> Kutamenya aho ari
+                                  answerCode="Cognitive_Orientation" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Cognitive_disability@" answerConceptId="$@OTHER_NON-CODED@"
-                                  answerLabel="Other / autre/" style="checkbox"/>
-                    </strong> Ibindi bimenyetso:
-                    <obs conceptId="$@other_Cognitive_disability_symptoms@"/>
+                                  answerCode="Other_signs" style="checkbox"/>
+                    </strong>
+                    <obs conceptId="$@other_Cognitive_disability_symptoms@" cols="100"/>
                     <br/><br/>
-                    <strong>Duration / Durée</strong> /igihe ibimenyetso bimaze: <br/>
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
                     <obs conceptId="$@Duration_of_Cognitive_disability_symptoms@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
-                         answerLabels=" &lt; 1 month / mois /Munsi y’ukwezi ,1-6 months/mois/Hagati y’ukwezi n’amezi atandatu, &gt; 6 months / mois/Hejuru y’amezi atandatu"
-                         style="radio"/>
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months" style="radio"/>
+
                 </td>
             </tr>
+
+
             <tr>
                 <td>
-                    <strong>Precipitating events / Événements precipitants/</strong> Imbarutso y’uburwayi:
+                    <strong><lookup expression="fn.message('Precipitating_events')"/></strong>
                 </td>
                 <td>
                     <strong> <obs conceptId="$@Precipitating_events@" answerConceptId="$@Traumatic_Injury@"
-                                  answerLabel="Trauma / Traumatisme /" style="checkbox"/>
-                    </strong> Ibikomere by’ihungabana
+                                  answerCode="Trauma" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Precipitating_events@" answerConceptId="$@family_conflict@"
-                                  answerLabel="Family conflict / Conflit familial /" style="checkbox"/>
-                    </strong> Amakimbirane mu miryango
+                                  answerCode="Family_conflict" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Precipitating_events@" answerConceptId="$@Financial_conflict@"
-                                  answerLabel="Financial conflict / Conflit financier/" style="checkbox"/>
-                    </strong> Ubukene
+                                  answerCode="Financial_conflict" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Precipitating_events@" answerConceptId="$@Medical_condition@"
-                                  answerLabel="Medical condition / Problème médical /" style="checkbox"/>
-                    </strong> Uburwayi bukomeye
+                                  answerCode="Medical_condition" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Precipitating_events@" answerConceptId="$@NONE@"
-                                  answerLabel="None / Aucun/None / Aucun/" style="checkbox"/>
-                    </strong> Ntanakimwe
+                                  answerCode="None_of_these" style="checkbox"/>
+                    </strong>
                     <br/>
                     <strong> <obs conceptId="$@Precipitating_events@" answerConceptId="$@OTHER_NON-CODED@"
-                                  answerLabel="Other / autre/" style="checkbox"/>
-                    </strong> Ibindi bimenyetso:
-                    <obs conceptId="$@Other_Precipitating_events_symptom@"/>
+                                  answerCode="Other_signs" style="checkbox"/>
+                    </strong>
+                    <obs conceptId="$@Other_Precipitating_events_symptom@" cols="100"/>
                     <br/><br/>
-                    <strong>Duration / Durée</strong> /igihe ibimenyetso bimaze: <br/>
+                    <strong><lookup expression="fn.message('Duration')"/></strong> <br/>
                     <obs conceptId="$@Duration_of_Precipitating_events_symptom@" answerConceptIds="$@below_1_month@,$@one_to_six_months@,$@above_6@"
-                         answerLabels=" &lt; 1 month / mois /Munsi y’ukwezi ,1-6 months/mois/Hagati y’ukwezi n’amezi atandatu, &gt; 6 months / mois/Hejuru y’amezi atandatu"
-                         style="radio"/>
+                         answerCodes="less_than_1_month,1-6_months,greater_than_6_months" style="radio"/>
+
 
                 </td>
             </tr>
         </table>
 
+
+
     </section>
-    <strong>Psychiatric History:</strong>
-    (History of previous mental health diagnoses, medications, psychiatric hospitalizations (dates and location))
-    <br/>
-    <strong>Histoire psychiatrique:</strong>
-    (Antécédents de diagnostics de santé mentale antérieurs, médicaments, hospitalisations psychiatriques (dates et lieu))
-    <br/>
-    <strong>Amakuru ku buzima bwo mu mutwe:</strong>(Uburwayi bwo mu mutwe yaba yararwaye mbere,Imiti yafashe,Igihe naho
-    ashobora kuba yararwariye  mu bitaro)
-    <section headerLabel="Psychiatric History/Histoire psychiatrique/Amakuru ku buzima bwo mu mutwe">
+
+    <strong><lookup expression="fn.message('Psychiatric_History')"/></strong>
+
+    <lookup expression="fn.message('Psychiatric_History_Description')"/>
+
+
+    <section headerLabel="Psychiatric History/Amakuru ku buzima bwo mu mutwe">
         <table border="1">
             <tr>
                 <td>
-                    <strong>Prior Psychiatric Hospitalizations / <br/>
-                        Hospitalisations psychiatriques antérieures/</strong> <br/>
-                    Niba ashobora kuba yararwariye  mu bitaro
+                    <strong><lookup expression="fn.message('Prior_Psychiatric_Hospitalizations')"/></strong>
+
                 </td>
                 <td>
                     <obs conceptId="$@Prior_Psychiatric_Hospitalizations@" answerConceptIds="$@YES@,$@NO@"
-                         answerLabels="Yes / oui /Yego,No / Non/Hoya" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <hr/>
-                    <strong>Frequency / La fréquence/</strong> Inshuro yarwariye mu bitaro:
+                    <strong><lookup expression="fn.message('illness_Frequency')"/></strong>
+
                     <obs conceptId="$@Frequency@" answerConceptIds="$@Once@,$@Twice@,$@Three_times@,$@four_and_above_times@"
-                         answerLabels="Once / Une fois/Rimwe,Twice / Deux fois/Kabiri,Three times / Trois fois/Gatatu,
-                         4 + times/fois/Inshuro zirenze enye" style="radio"/>
+                         answerCodes="Once,Twice,Three_times,four_plus_times" style="radio"/>
                     <hr/>
-                    <strong>Date(s) /Rendez-vous/</strong> Itariki,Igihe azabonanira na muganga:
+                    <strong><lookup expression="fn.message('Rendez_vous')"/></strong>
                     <obs conceptId="$@RETURN_VISIT_DATE@"/>
                     <br/>
-                    <strong>Location/</strong> Aho azivuriza:
+                    <strong><lookup expression="fn.message('treatment_Location')"/></strong> : <br/>
                     <obs conceptId="$@Return_Visit_Location@" answerConceptIds="$@Caraes_Ndera_Hospital@,$@Butaro_Hospital@,
                     $@Rwinkwavu_Hospital@,$@Kirehe_hospital@,$@HEALTH_CENTER@,$@OTHER_NON-CODED@"
-                         answerLabels="Ndera Hospital,Butaro Hospital,Rwinkwavu Hospital,Kirehe Hospital,Health Center / Centre de santé /Ikigo Nderabuzima,Other / autre(Ahandi):" style="radio"/>
+                         answerCodes="Ndera Hospital,Butaro Hospital,Rwinkwavu Hospital,Kirehe Hospital,Health_Center,other_place" style="radio"/>
                     <obs conceptId="$@Other_return_visit_location@"/>
                 </td>
             </tr>
         </table>
     </section>
 
-    <strong>Social History:</strong> (Living situation, financial situation, employment, etc.) /<br/>
-    <strong>Histoire sociale:</strong> (Situation de vie, situation financière, emploi, etc.)<br/>
-    <strong>Amakuru ku mibereho:</strong> (Uko abayeho,ubushobozi,Akazi,nibindi..)
+    <strong><lookup expression="fn.message('Social_History')"/></strong>
+    <lookup expression="fn.message('Social_History_description')"/>
 
-    <section headerLabel="Social History/Histoire sociale/Amakuru ku mibereho">
+    <section headerLabel="Social History/Amakuru ku mibereho">
         <table border="1">
             <tr>
                 <td>
-                    <strong>Living situation / Situation de vie/ </strong>  Uko abayeho:
+                    <strong><lookup expression="fn.message('Living_situation')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@Living_situation@" answerConceptIds="$@Lives_with_family@,$@Lives_alone@,
-                    $@HOMELESS@,$@OTHER_NON-CODED@" answerLabels="Lives with family  / Vit avec sa famille/Aba mu muryango,
-                    Lives alone  / Vit seul/Aba wenyine,Homeless / Sans abri/Ntagira aho aba,Other / autre(Andi makuru):"
+                    $@HOMELESS@,$@OTHER_NON-CODED@" answerCodes="Lives_with_family,Lives_alone,Homeless,Other_info"
                          style="radio"/>
-                    <obs conceptId="$@other_living_situation@"/>
+                    <obs conceptId="$@other_living_situation@" cols="100"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>Occupation / profession/</strong> Akazi,Icyo akora:
+                    <strong><lookup expression="fn.message('Occupation')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@OCCUPATION@" answerConceptId="$@UNEMPLOYED@"
-                         answerLabel="Unemployed, Reason / Chômeur, Raison/Nta kazi afite:"
+                         answerCode="Unemployed"
                          style="checkbox"/>
-                    <obs conceptId="$@reason_of_unemployment@"/>
+                    <obs conceptId="$@reason_of_unemployment@" cols="100"/>
                     <br/>
                     <obs conceptId="$@OCCUPATION@" answerConceptId="$@cultivating@"
-                         answerLabel="Cultivating / Cultiver/Umuhinzi"
+                         answerCode="Farmer_or_cultivating"
                          style="checkbox"/>
+                    <br/>
                     <obs conceptId="$@OCCUPATION@" answerConceptId="$@HOUSEWORK@"
-                         answerLabel="Housework / Travaux ménagers/Akora akazi ko mu rugo"
-                         style="checkbox"/>
+                         answerCode="Housework" style="checkbox"/>
+                    <br/>
                     <obs conceptId="$@OCCUPATION@" answerConceptId="$@STUDENT@"
-                         answerLabel="Student / Étudiant/Ni umunyeshuri"
+                         answerCode="Student"
                          style="checkbox"/>
                     <br/>
                     <obs conceptId="$@OCCUPATION@" answerConceptId="$@OTHER_NON-CODED@"
-                         answerLabel="Other / autre/Ibindi akora:"
+                         answerCode="Other_Jobs"
                          style="checkbox"/>
-                    <obs conceptId="$@MAIN_ACTIVITY_NON-CODED@"/>
+                    <obs conceptId="$@MAIN_ACTIVITY_NON-CODED@" cols="100"/>
 
                 </td>
             </tr>
         </table>
     </section>
 
-    <strong>Family History:</strong> (Family members with a history of mental illness, suicide,
-    or psychotropic medication use)/<br/>
-    <strong>Antécédents familiaux:</strong> (Membres de la famille ayant des antécédents
-    de maladie mentale, de suicide ou d'utilisation de médicaments psychotropes)<br/>
-    <strong>Amakuru ku muryango:</strong> (Abashobora kuba bararwaye mu mutwe
-    bo mu muryango,abiyahuye,cg abakoresheshe imiti iyayura umutwe)
+    <strong><lookup expression="fn.message('Family_History')"/></strong>
+    <lookup expression="fn.message('Family_History_description')"/>
 
-    <section headerLabel="Family History/Antécédents familiaux/Amakuru ku muryango">
+    <section headerLabel="Family History/Amakuru ku muryango">
         <table border="1">
             <tr>
                 <td>
-                    <strong>Family History of Prior suicide attempts / <br/>
-                        Antécédents familiaux de tentatives antérieures de suicide/</strong><br/>
-                    Niba hari abigeze kwiyahura mu muryango:
+                    <strong><lookup expression="fn.message('Family_History_of_Prior_suicide_attempts')"/></strong>
                 </td>
+
                 <td>
+
                     <obs conceptId="$@Family_History_of_Prior_suicide_attempts@" answerConceptIds="$@YES@,$@NO@"
-                         answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <br/>
-                    <strong>If YES, specify / Si OUI, précisez/</strong> Niba ari yego,Garagaza uwo ariwe:
+                    <strong><lookup expression="fn.message('If_YES_specify')"/></strong>
                     <obs conceptId="$@explain_the_family_member_suicide_attempts@"/>
                     <br/>
                     <hr/>
-                    <strong>Family History of Mental Illness / Antécédents familiaux de maladie mentale/</strong>
-                    <br/>
-                    Niba hari uburwayi bwo mu mutwe mu muryango:
+                    <strong><lookup expression="fn.message('Family_History_of_Mental_Illness')"/></strong>
+
                     <obs conceptId="$@Family_History_of_Mental_Illness@" answerConceptIds="$@YES@,$@NO@"
-                         answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <br/><br/>
-                    <strong>If YES, specify which family member and diagnosis / Si OUI, indiquez le membre
-                        de la famille et le diagnostic.</strong> Niba ari yego,Vug sano bafitanye?
+                    <strong><lookup expression="fn.message('If_YES_specify_which_family_member_and_diagnosis')"/></strong>
                     <obs conceptId="$@Who_is_the_Family_member_with_mental_illness_history@"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong> Family history of Medications / <br/>
-                        Antécédents familiaux de medicaments</strong> <br/>
-                    Imiti yakoreshejwe mu muryango:
+                    <strong><lookup expression="fn.message('Family_history_of_Medications')"/></strong>
                 </td>
                 <td>
-                    <strong>Has a family member ever been on psychotropic medication / Un membre de la famille a-t-il déjà pris des médicaments psychotropes/
-                    </strong> Niba hari umuntu wo mu muryango wafashe imiti ivura mu mutwe?
+                    <strong><lookup expression="fn.message('Has_a_family_member_ever_been_on_psychotropic_medication')"/></strong>
                     <br/>
                     <obs conceptId="$@family_member_with_psychotropic_medication_history@" answerConceptIds="$@YES@,$@NO@"
-                         answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <br/><br/>
-                    <strong>If YES, which family member / Si OUI, quel membre de la famille/</strong>
-                    Niba ari Yego,Ni iyihe sano bafitanye:
+                    <strong><lookup expression="fn.message('If_YES_which_family_member')"/></strong>
                     <obs conceptId="$@RELATIONSHIP_OF_RELATIVE_TO_PATIENT_NON_CODED@"/>
                     <br/><br/>
-                    <strong>If YES, please list medications if known / Si OUI, veuillez énumérer les médicaments si vous les connaissez/</strong>
-                    Niba ari Yego,Andika urutonde rw’imiti yakoreshejwe:<br/>
-                    <obs conceptId="$@List_of_Psychotrophic_medication_used_by_family_member@" cols="100"/>
+                    <strong><lookup expression="fn.message('If_YES_please_list_medications_if_known')"/></strong>
+                    <br/>
+                    <obs conceptId="$@List_of_Psychotrophic_medication_used_by_family_member@" cols="110"/>
                     <br/>
                     <!--<strong>Family Genogram / Génogramme de la famille/</strong>Abagize Umuryango mugari:-->
                     <!--<obs conceptId="$@Family_Genogram@" cols="100"/>-->
                 </td>
             </tr>
         </table>
+
         <table border="1">
             <tr>
                 <td>
-                    <strong>How many people live in your house</strong>Babana ari bangahe mu rugo?
+                    <strong><lookup expression="fn.message('How_many_people_live_in_your_house')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@NUMBER_OF_PEOPLE_WHO_LIVE_IN_HOUSE_INCLUDING_PATIENT@"/>
@@ -1346,7 +2241,7 @@
             </tr>
             <tr>
                 <td>
-                    <strong>How many parents do you have living</strong>Ababyeyi bakiriho ni bangahe?
+                    <strong><lookup expression="fn.message('How_many_parents_do_you_have_living')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@How_many_parents_do_you_have_living@"/>
@@ -1354,7 +2249,7 @@
             </tr>
             <tr>
                 <td>
-                    <strong>How many family members have died young</strong>Ni abavandimwe bangahe bashobora kuba barapfuye bakiri bato?
+                    <strong><lookup expression="fn.message('How_many_family_members_have_died_young')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@How_many_family_members_have_died_young@"/>
@@ -1362,15 +2257,15 @@
             </tr>
             <tr>
                 <td>
-                    <strong>Any family members who have a history of mental illness?</strong>Ese nta muntu wundi mu muryango ushobora kuba afite uburwayi bwo mu mutwe?
+                    <strong><lookup expression="fn.message('Any_family_members_who_have_a_history_of_mental_illness')"/></strong>
                 </td>
                 <td>
-                    <obs conceptId="$@Family_History_of_Mental_Illness@" answerConceptIds="$@YES@,$@NO@" answerlabels="YES/Yego,NO/Hoya" style="radio"/>
+                    <obs conceptId="$@Family_History_of_Mental_Illness@" answerConceptIds="$@YES@,$@NO@" answerCodes="Yes,No" style="radio"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>If so, who, when, and how did it start</strong>Niba ahari,bwatangiye ryari kandi gute?
+                    <strong><lookup expression="fn.message('If_so_who_when_and_how_did_it_start?')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@who_when_and_how_did_it_start@" cols="100"/>
@@ -1378,12 +2273,12 @@
             </tr>
         </table>
     </section>
-    <br/>
-    <strong>Substance Use History: </strong> (History of alcohol of drug abuse) /<br/>
-    <strong>Historique d'utilisation de la substance: </strong> (Historique de l'alcoolisme et de la toxicomanie)/<br/>
-    <strong>Amakuru ku ikoreshwa ry’ibiyobyabwenge</strong> (Amakuru ku ikoreshwa ry’inzoga n’ibiyobyabwenge)
 
-    <section headerLabel="Substance Use History/Historique d'utilisation de la substance/Amakuru ku ikoreshwa ry’ibiyobyabwenge">
+    <br/>
+    <strong><lookup expression="fn.message('Substance_Use_History')"/></strong>
+    <lookup expression="fn.message('History_of_alcohol_of_drug_abuse')"/>
+
+    <section headerLabel="Substance Use History/Amakuru ku ikoreshwa ry’ibiyobyabwenge">
         <table border="1">
             <tr>
                 <td>
@@ -1392,169 +2287,161 @@
 
                 <td>
                     <obs conceptId="$@substances_used@" answerConceptId="$@ALCOHOL@"
-                         answerLabel="Alcohol / De l'alcool/Inzoga,"/>
+                         answerCode="Alcohol"/>
                     <obs conceptId="$@substances_used@" answerConceptId="$@Illicit_drugs@"
-                         answerLabel="Illicit drugs (please name) / Drogues illicites
-                         (veuillez nommer/Ibiyobyabwenge,bivuge:"/>
+                         answerCode="Illicit_drugs_please_name"/>
                     <obs conceptId="$@illicit_drugs_used@"/>
                     <obs conceptId="$@substances_used@" answerConceptId="$@NONE@"
-                         answerLabel="None / aucun/Ntanakimwe"/>
+                         answerCode="None_of_these"/>
                 </td>
             </tr>
             <tr>
                 <td>
 
-                    <strong>Frequency of use / Fréquence d'utilisation/</strong> Inshuro yabikoresheje:<br/>
+                    <strong><lookup expression="fn.message('Frequency_of_use')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@Frequency_of_illicit_drugs_use@"
                          answerConceptIds="$@EVERY_DAY@,$@WEEKLY@,$@Biweekly@,$@MONTHLY@,$@Once_every_few_months@,$@Once_a_year@"
-                         answerLabels="Daily / du quotidian/Buri munsi,Weekly / de la semaine /Buri cyumweru,
-                         Biweekly / Bihebdomadaire/Mu byumweru bibiri,Monthly / Mensuel/Buri kezi,
-                         Once every few months / Une fois tous les quelques mois/Rimwe mu kwezi,Once a year / Une fois par an/Rimwe mu mwaka"
+                         answerCodes="Daily,Weekly,Biweekly,Monthly,Once_every_few_months,Once_a_year"
                          style="radio"/>
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <strong>When substance was last taken / Quand la substance a été prise pour la dernière fois/ </strong>
-                    Ni ryari aheruka gufata ku biyobyabwenge :
+                    <strong><lookup expression="fn.message('When_substance_was_last_taken')"/></strong>
+
                 </td>
                 <td>
                     <obs conceptId="$@last_time_taken@" answerConceptIds="$@One_day_ago@,$@One_week_ago@,$@One_month_ago@,$@One_year_ago@,$@OTHER_NON-CODED@"
-                         answerLabels="One day ago / Il y a un jour/Ejo hashize,One week ago / Il y a une semaine/Icyumeru kirashize
-                         One month ago / Il ya un mois/Hashize ukwezi,One year ago / Il y a un an/Hashize umwaka,Other / autre/Ikindi: " style="radio"/>
+                         answerCodes="One_day_ago,One_week_ago,One_month_ago,One_year_ago,Other" style="radio"/>
                     <obs conceptId="$@last_time_taken_non-coded@"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>When they started using substance / Quand ils ont commencé à utiliser la substance
-                    </strong> Yatangiye gufata ibiyobyabwenge ryari:
+                    <strong><lookup expression="fn.message('When_they_started_using_substance')"/></strong>
+
                 </td>
                 <td>
                     <obs conceptId="$@when_they_started_using_substance@" answerConceptIds="$@before_age_ten@,
                     $@Age_ten_to_fifteen@,$@Age_fifteen_to_tweenty@,$@Age_twenty-one_to_thirty@,$@Age_thirty-one_to_forty@,
-                    $@After_Age_forty@" answerLabels="Before age 10 / Avant 10 ans /Mbere yuko yuzuza imyaka 10,
-                    Age 10-15,Age 15-20 /Afite hagati 15-20,Age 21-30/Afite hagati 21-30,Age 31-40 /Afite hagati 31-40,
-                    After age 40 /Hejuru ya 40" style="radio"/>
+                    $@After_Age_forty@" answerCodes="Before_age_10,Age_10_15,Age_15_20,Age_21-30,Age_31-40,After_age_40" style="radio"/>
 
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <strong>Longest sober period (period without substance) / La plus longue période sobre (période sans substance)/</strong>
-                    Igihe kinini yamaze atafashe ibiyobyabwenge
+                    <strong><lookup expression="fn.message('Longest_sober_period_period_without_substance')"/></strong>
+
                 </td>
                 <td>
                     <obs conceptId="$@Longest_sober_period@" answerConceptIds="$@DAYS@,$@WEEKS@,$@MONTHS@,$@YEARS@,$@NOT_APPLICABLE@"
-                         answerLabels="Days / Journées /Umunsi umwe,Weeks / Semaines /icyumweru,Months / Mois/ Ukwezi,Years / Années/umwaka,
-                         N/A (ntibyabayeho)" style="radio"/>
+                         answerCodes="Days,Weeks,Months,Years,N_A" style="radio"/>
 
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>If Alcohol use, any symptoms of alcohol withdrawal (including seizures) / En cas d'utilisation d'alcool,<br/>
-                        tout symptôme de sevrage de l'alcool (y compris les convulsions)/</strong>
-                    Mu gihe yakoresheje inzoga cyane,Ibimenyetso by’ingaruka zo kuzihagarika bitunguranye:
+                    <strong><lookup expression="fn.message('If_Alcohol_use_any_symptoms_of_alcohol_withdrawal_including_seizures')"/></strong>
+
                 </td>
                 <td>
                     <obs conceptId="$@Alcohol_withdrawal_symptoms@" answerConceptIds="$@Tremors@,$@Diaphoresis/sweating@,
-                    $@Hallucinations@,$@SEIZURE@,$@OTHER_NON-CODED@" answerLabels="Tremors / Tremblements/Gutitira ingingo ari hamwe,
-                    Diaphoresis/sweating / Diaphorèse/Kuzana ibyunzwe,Hallucinations /Kubona no kumva ibidahari ,Seizures / Convulsion/Kugagara by’igicuri,
-                    Other / autre(Ibindi bimenyetso):" style="radio"/>
-
+                    $@Hallucinations@,$@SEIZURE@,$@OTHER_NON-CODED@" answerCodes="Tremors,Diaphoresis_sweating,Hallucinations,Seizures,Other_signs" style="radio"/>
+                    <obs conceptId="$@Other_Alcohol_withdrawal_symptoms@"/>
                 </td>
             </tr>
+
         </table>
     </section>
-    <strong>Patient Medical History:</strong>  (History of current medical diagnoses, prior surgeries, etc.) / <br/>
-    <strong>Histoire médicale: </strong> (Historique des diagnostics médicaux actuels, chirurgies antérieures, etc.)<br/>
-    <strong>MAKURU KU BUZIMA/UBURWAYI BUSANZWE</strong>
-    <section headerLabel="Patient Medical History/Histoire médicale/MAKURU KU BUZIMA/UBURWAYI BUSANZWE">
+
+    <strong><lookup expression="fn.message('Patient_Medical_History')"/></strong>
+    <lookup expression="fn.message('History_of_current_medical_diagnoses_prior_surgeries_etc')"/>
+
+
+    <section headerLabel="Patient Medical History/MAKURU KU BUZIMA/UBURWAYI BUSANZWE">
         <table border="1">
             <tr>
                 <td>
-                    <strong>Current Medical Diagnose / Diagnostics médicaux actuels/</strong> Uburwayi bw’umubiri busanzwe:
+                    <strong><lookup expression="fn.message('Current_Medical_Diagnose')"/></strong>
                 </td>
                 <td>
                     <strong>
-                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@NONE@" answerLabel="None / aucun/" style="checkbox"/>
-                    </strong> Ntabwo AFITE
+                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@NONE@" answerCode="none_of_Medical_Diagnose" style="checkbox"/>
+                    </strong>
                     <strong>
-                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@HUMAN_IMMUNODEFICIENCY_VIRUS@" answerLabel="HIV /" style="checkbox"/>
-                    </strong>Virusi itera sida
+                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@HUMAN_IMMUNODEFICIENCY_VIRUS@" answerCode="HIV" style="checkbox"/>
+                    </strong>
                     <strong>
-                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@TUBERCULOSIS@" answerLabel="TB /" style="checkbox"/>
-                    </strong> Igituntu
+                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@TUBERCULOSIS@" answerCode="TB" style="checkbox"/>
+                    </strong>
                     <strong>
-                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@HEART_DISEASE@" answerLabel="Heart disease / Maladie cardiaque/" style="checkbox"/>
-                    </strong> Indwara z’UMUTIMA
+                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@HEART_DISEASE@" answerCode="Heart_disease" style="checkbox"/>
+                    </strong>
                     <strong>
-                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@DIABETES@" answerLabel="Diabetes / Diabète/" style="checkbox"/>
-                    </strong> iGISUKARI
+                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@DIABETES@" answerCode="Diabetes" style="checkbox"/>
+                    </strong>
                     <strong>
-                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@Cancer@" answerLabel="Cancer /" style="checkbox"/>
-                    </strong> kANSERI
+                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@Cancer@" answerCode="Cancer" style="checkbox"/>
+                    </strong>
+                    <br/>
                     <strong>
-                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other / autre/" style="checkbox"/>
-                    </strong> Ubundi burwayi:
+                        <obs conceptId="$@Current_medical_diagnose@" answerConceptId="$@OTHER_NON-CODED@" answerCode="Other_medical_diagnosis" style="checkbox"/>
+                    </strong>
                     <obs conceptId="$@Other_medical_diagnose@"/>
 
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>History of traumatic brain injury / Histoire d'une lésion cérébrale traumatique/</strong> Amakuru ku bikomere by’ubwonko?
+                    <strong><lookup expression="fn.message('History_of_traumatic_brain_injury')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@History_of_traumatic_brain_injury@" answerConceptIds="$@YES@,$@NO@"
-                         answerLabels="Yes / oui/Yego,No / Non /Hoya" showDate="true" dateLabel="If Yes,
-                         please indicate when and how / Si oui, veuillez indiquer quand et comment/Niba
-                         byarabayeho,Byabaye ryari kandi gute?:" style="radio"/>
+                         answerCodes="Yes,No" showDate="true" dateLabel=" .  If Yes, please indicate when and how / Niba byarabayeho,Byabaye ryari kandi gute?" style="radio"/> :
 
                     <obs conceptId="$@Details_of_the_traumatic_braiin_injury_history@" cols="100"/>
-
-
                 </td>
             </tr>
+
             <tr>
                 <td>
-                    <strong>Known Allergies (please list) / Allergies connues (veuillez énumérer)/</strong> Amakuru ku miti ishobora kuba yaramunaniye cg idakorana n’umubiri we:
+                    <strong><lookup expression="fn.message('Known_Allergies_please_lists')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@Allergic_reaction_non-coded@" cols="100"/>
                     <br/>
-                    <obs conceptId="$@NO_ALLERGIES@" answerConceptId="$@NO@" answerLabel="None/Ntayo" style="checkbox"/>
+                    <obs conceptId="$@NO_ALLERGIES@" answerConceptId="$@NO@" answerCode="None" style="checkbox"/>
 
                 </td>
             </tr>
         </table>
     </section>
-    <strong>Functional Impairments: </strong> (Employment, social, food/shelter, ADLs) /<br/>
-    <strong>Déficiences fonctionnelles: </strong> (Emploi, social, alimentation / logement, ADL)/<br/>
-    <strong>Amakuru ku bushobozi bwo gukora:</strong> (Akazi,Imibanire,Gushaka ibyo kurya,Imirimo
-    y’ubuzima bwa buri munsi)
-    <section headerLabel="Functional Impairments/Déficiences fonctionnelles/Amakuru ku bushobozi bwo gukora">
+    <strong><lookup expression="fn.message('Functional_Impairments')"/></strong>
+    <lookup expression="fn.message('Employment_social_food_shelter_ADLs')"/>
+
+    <section headerLabel="Functional Impairments/Amakuru ku bushobozi bwo gukora">
         <table>
             <tr>
                 <td>
                     <strong> <obs conceptId="$@Functional_Impairments@" answerConceptId="$@Unable_to_work@"
-                                  answerLabel="Unable to work / Incapable de travailler/" style="checkbox"/>
-                    </strong> Ntashoboye gukora <br/>
+                                  answerCode="Unable_to_work" style="checkbox"/>
+                    </strong>  <br/>
                     <strong> <obs conceptId="$@Functional_Impairments@" answerConceptId="$@unable_to_eat@"
-                                  answerLabel="Unable to eat / Incapable de manger/" style="checkbox"/>
-                    </strong> Ntashoboye kurya <br/>
+                                  answerCode="Unable_to_eat" style="checkbox"/>
+                    </strong>  <br/>
                     <strong> <obs conceptId="$@Functional_Impairments@" answerConceptId="$@Unable_to_self_bathe@"
-                                  answerLabel="Unable to bathe self / Incapable de se baigner/" style="checkbox"/>
-                    </strong> Ntashoboye kwikarabya <br/>
+                                  answerCode="Unable_to_bathe_self" style="checkbox"/>
+                    </strong> <br/>
                     <strong> <obs conceptId="$@Functional_Impairments@" answerConceptId="$@Unable_to_walk@"
-                                  answerLabel="Unable to walk / Incapable de marcher/" style="checkbox"/>
-                    </strong> Ntashoboye kugenda <br/>
+                                  answerCode="Unable_to_walk" style="checkbox"/>
+                    </strong> <br/>
                     <strong> <obs conceptId="$@Functional_Impairments@" answerConceptId="$@OTHER_NON-CODED@"
-                                  answerLabel="Other(s) / autre/" style="checkbox"/>
-                    </strong> andi makuru:
+                                  answerCode="Other_info" style="checkbox"/>
+                    </strong> :
                     <obs conceptId="$@Other_functional_Impairments@"/>
 
                 </td>
@@ -1663,80 +2550,79 @@
             <!--</tr>-->
         <!--</table>-->
     <!--</section>-->
-    <strong>Risk Assessment / L'évaluation des risques/</strong> GUSUZUMA IBYAGO BYO KWIYAHURA
+
+
+
+    <strong><lookup expression="fn.message('Risk_Assessment')"/></strong>
     <section headerLabel="Risk Assessment / L'évaluation des risques/GUSUZUMA IBYAGO BYO KWIYAHURA" >
         <table border="1">
             <tr>
                 <td>
-                    <strong>History of Suicide Attempts / Histoire des tentatives de suicide/</strong> <br/> Amakuru ku kuba yaragerageje kwiyahura:
+                    <strong><lookup expression="fn.message('History_of_Suicide_Attempts')"/></strong>
                 </td>
                 <td>
                     <obs conceptId="$@History_of_Suicide_Attempts@" answerConceptIds="$@YES@,$@NO@"
-                         answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <br/>
-                    <strong> If YES, action performed/Niba ari yego yafashijwe ate?:</strong> <br/>
+                    <strong><lookup expression="fn.message('If_YES_action_performed')"/></strong>
                     <obs conceptId="$@action_performed@" cols="100" />
 
                 </td>
             </tr>
             <tr>
                 <td>
-                    Is the patient currently suicidal / Le patient est-il actuellement suicidaire/ <br/>
-                    Ese umurwayi ashaka kwiyahura?
+                    <strong><lookup expression="fn.message('Is_the_patient_currently_suicidal')"/></strong>
+
                 </td>
                 <td>
                     <obs conceptId="$@Is_the_patient_currently_suicidal@" answerConceptIds="$@YES@,$@NO@"
-                         answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
 
                     <br/><br/>
-                    <strong> -If YES, complete suicide assessment form</strong> <br/> Niba ari Yego,Uzuza ifishi isuzuma ibyago byo kwiyahura:
+                    <strong><lookup expression="fn.message('If_YES_complete_suicide_assessment_form')"/></strong>
 
                 </td>
             </tr>
         </table>
     </section>
 
-    <section headerLabel="Diagnosis / Diagnostic/UBURWAYI:">
+    <section headerLabel="Diagnosis / Diagnostic/UBURWAYI">
         <table>
             <tr>
                 <td>
-                    <strong> PLEASE USE SUPPLEMENTARY FORM TO INDICATE PRIMARY AND SECONDARY DIAGNOSES /
-                        VEUILLEZ UTILISER LA FORMULE SUPPLÉMENTAIRE POUR INDIQUER LES DIAGNOSTICS PRIMAIRES ET SECONDAIRES/</strong>
-                    HANO MURASABWA GUKORESHA INDI FISHI YEREKANA UBURWAYI BW’IBANZE NDETSE N’UBUNDI BURWAYI ASHOBORA KUBA YABA AFITE.
+                    <strong><lookup expression="fn.message('PLEASE_USE_SUPPLEMENTARY_FORM_TO_INDICATE_PRIMARY_AND_SECONDARY_DIAGNOSES')"/></strong>
                 </td>
             </tr>
         </table>
     </section>
 
-    <strong> Treatment Plan: </strong> (Medications, therapy, referral, etc.) /
-    <strong> Plan de traitement:</strong> (médicaments, thérapie, orientation, etc.)
-    <strong> Gahunda y’ubuvuzi: </strong>(Imiti,Ibiganiro,Koherezwa ahandi,n’ibindi..)
+    <strong><lookup expression="fn.message('Treatment_Plan')"/></strong>:
+    <lookup expression="fn.message('Medications_therapy_referral_etc')"/>
 
-    <section headerLabels="Treatment Plan,Plan de traitement,Gahunda y’ubuvuzi">
-        <table border="1">
+    <section headerLabel="Treatment Plan,Plan de traitement,Gahunda y’ubuvuzi">
+        <table >
             <tr>
                 <td>
-                    <strong> MEDICATIONS:  PLEASE LIST Medications Prescribed with Dosages on supplementary MEDICATION LIST
-                        Hano Musabwa gukora urutonde rw’imiti umurwayi yandikiwe n’uko itangwa ku yindi fishi y’Imiti.</strong>
+                    <strong><lookup expression="fn.message('PLEASE_LIST_Medications_Prescribed_with_Dosages_on_supplementary_MEDICATION_LIST')"/></strong>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>PM+ Therapy / Ubuvuzi hakoreshejwe Ibiganiro ku guhangana n’ibibazo:</strong>
+                    <strong><lookup expression="fn.message('PM+_Therapy')"/></strong>:
+
+                    <obs conceptId="$@PM+_Therapy@" answerConceptIds="$@YES@,$@NO@" answerCodes="Yes,No" style="radio" />
                     <br/>
-                    <obs conceptId="$@PM+_Therapy@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio" />
-                    <br/>
-                    If yes, PHQ-9 score /Niba ari Yego,Garagaza amanota y’ibisubizo by’isuzuma ry’Ibibazo 9 ku buzima bw’umurwayi
-                    ....................................................
+                    <strong><lookup expression="fn.message('If_yes_PHQ-9_score')"/></strong>:
+                    <obs conceptId="$@PHQ-9_score_numeric@"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>Referrals / Références/</strong> Koherezwa kwivuriza ahandi
+                    <strong><lookup expression="fn.message('Referrals')"/></strong>:
                     <br/>
 
                     <obs conceptId="$@plan_to_referral@" answerConceptIds="$@GBV@,$@NONE@,$@Caraes_Ndera_Hospital@,$@Butaro_Hospital@,$@OTHER_NON-CODED@"
-                         answerLabels="None / aucun /Ntaho,Ndera Hospital,Butaro Hospital,GBV,Other / autre/Ahandi:" style="radio"/>
+                         answerCodes="Referrals_None,Ndera Hospital,Butaro Hospital,GBV,other_place" style="radio"/>
 
                     <obs conceptId="$@other_referrals_planned@"/>
 
@@ -1745,28 +2631,28 @@
 
         </table>
     </section>
-    <strong>Follow up / visite de suivi/</strong> Gukurikiranwa na Muganga Bihoraho
+
+    <strong><lookup expression="fn.message('Follow_up')"/></strong>:
     <section headerLabel="Follow up / visite de suivi/Gukurikiranwa na Muganga Bihoraho" >
         <table>
             <tr>
                 <td>
-                    <strong>Appointment Date and Time / Date et heure de rendez-vous/</strong> Itariki n’igihe umurwayi azagarukiraho
+                    <strong><lookup expression="fn.message('Appointment_Date_and_Time')"/></strong>:
                     <obs conceptId="$@RETURN_VISIT_DATE@"/>
                     <br/>
-                    <strong>At (Location) / Chez (Lieu)/</strong> Aho umurwayi azavurirwa:
+                    <strong><lookup expression="fn.message('At_Location')"/></strong>:
 
                     <obs conceptId="$@Next_visit_location_non-coded@"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <strong>Is the patient being discharged from MH clinic /
-                        Le patient est-il renvoyé de la clinique de MH?/</strong>
-                    Ese umurwayi arasezerewe?
+                    <strong><lookup expression="fn.message('Is_the_patient_being_discharged_from_MH_clinic')"/></strong>:
+
+
+                    <obs conceptId="$@Is_the_patient_being_discharged_from_Mental_Health_clinic@" answerConceptIds="$@YES@,$@NO@" answerCodes="Yes,No" style="radio" />
                     <br/>
-                    <obs conceptId="$@Is_the_patient_being_discharged_from_Mental_Health_clinic@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio" />
-                    <br/>
-                    <strong>If YES, please indicate why / Si OUI, veuillez indiquer pourquoi/</strong> Niba ari yego Vuga Impamvu?
+                    <strong><lookup expression="fn.message('If_YES_please_indicate_why')"/></strong>:
 
                     <obs conceptId="$@Reason_for_discharge_(text)@"/>
 
