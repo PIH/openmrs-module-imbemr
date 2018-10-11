@@ -66,7 +66,11 @@
         @Late_attendance@ = dc7e4413-ecb3-4b34-8d12-10556338e09b
         @Missed_but_retained_in_care@ = c78d58b1-92b3-44a9-a4c9-3b58769b9dd1
         @Patient_attended_the_clinic_early@ = 72c41180-fa7d-46f0-8af0-4eccedf6730f
-
+        @RWANDA_INSURANCE_TYPE@ = 8da67e73-776c-43f6-9758-79d1f6786db3
+        @MUTUELLE@ = 465d1588-a6f6-41ac-9b9c-cc4fdf140e78
+        @NONE@ = 3cd743f8-26fe-102b-80cb-0017a47871b2
+        @OTHER_NON-CODED@ =3cee7fb4-26fe-102b-80cb-0017a47871b2
+        @OTHER_INSURANCE_TYPE_NON-CODED@ = bab86ae4-080a-4e83-8808-faa9863d9a61
 
 
 
@@ -222,7 +226,10 @@
                     Treatment/medications .............................
                 </td>
                 <td>
-                    Insurance .....................
+                    Insurance
+                    <obs conceptId="$@RWANDA_INSURANCE_TYPE@" answerConceptIds="$@MUTUELLE@,$@NONE@,$@OTHER_NON-CODED@"
+                         answerLabels="Mutuelle,Aucune/None, Autre/Other" style="radio"/>
+                    <obs conceptId="$@OTHER_INSURANCE_TYPE_NON-CODED@"/>
                 </td>
             </tr>
             <tr>
