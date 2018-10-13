@@ -327,6 +327,17 @@
         @Problem_changed_since_last_visit@ = 6d0675b2-aaae-4549-a785-fbcbddbf10eb
         @Other_PM+_skills_challenges@ = c109d147-6a21-4fd5-aa5e-dcdf149f4a25
         @PM+_Session_set@ = 4a8d1b38-59d6-46dc-8567-04ae94edf8e2
+        @number_of_session@ = 4ea6ca5b-90c7-412c-81a8-498ce4d3394b
+        @sesson_1@ = 51a6d965-c960-4f13-b707-065f9aa50ee7
+        @session_2@ = 4de3e422-1dc0-4bef-ae3b-e318bbffadcf
+        @session_3@ = 75cb0f75-eed5-4960-892f-e749cdd4965b
+        @session_4@ = 42432167-c5cf-4cb2-81fc-570efd260d69
+        @session_5@ = a7628e45-ca8f-42f4-a820-6b903de8db6a
+        @Other_number_of_session@ = 79cbb137-2700-4fee-83c5-ed55c89da374
+
+        <!--forms-->
+        @MH_PHQ-9_Score@ = 442beac2-c6da-43e4-95a8-eca907610ccc
+
 
 
     </macros>
@@ -1000,6 +1011,26 @@
             <variant locale="en" value="Appointment Date and Time "/>
             <variant locale="rw" value="Gahunda yo kuzagaruka:itariki N’igihe "/>
         </code>
+        <code name="sesson_1">
+            <variant locale="en" value="Session 1 "/>
+            <variant locale="rw" value="kiganiro cya 1 "/>
+        </code>
+        <code name="session_2">
+            <variant locale="en" value="Session 2 "/>
+            <variant locale="rw" value="kiganiro cya 2 "/>
+        </code>
+        <code name="session_3">
+            <variant locale="en" value="Session 3 "/>
+            <variant locale="rw" value="kiganiro cya 3 "/>
+        </code>
+        <code name="session_4">
+            <variant locale="en" value="Session 4 "/>
+            <variant locale="rw" value="kiganiro cya 4 "/>
+        </code>
+        <code name="session_5">
+            <variant locale="en" value="Session 5 "/>
+            <variant locale="rw" value="kiganiro cya 5 "/>
+        </code>
 
 
     </translations>
@@ -1053,7 +1084,17 @@
         </table>
     </section>
 
+<section>
+    <tr>
+        <td>
 
+            <obs conceptId="$@number_of_session@" answerConceptIds="$@sesson_1@,$@session_2@,$@session_3@,$@session_4@,$@session_5@,$@OTHER_NON-CODED@"
+                 answerCodes="sesson_1,session_2,session_3,session_4,session_5,Other" style="radio"/>
+            <obs conceptId="$@Other_number_of_session@"/>
+
+        </td>
+    </tr>
+</section>
 
     <section headerLabel="Mental Status Exam / Ikizamini ku buzima bwo mu mutwe">
         <table border="1" width="100%">
@@ -1222,31 +1263,8 @@
 
     <section headerLabel="PHQ-9 Score/Amanota -Ibibazo 9 ku buzima bw’umurwayi">
 
-        <table>
-            <tr>
-                <td>
-                    <strong> <obs conceptId="$@PHQ_9@" answerConceptId="$@zero_to_four@"
-                    answerCode="PHQ_9_none" style="checkbox"/>
-                    </strong>
-                    <br/>
-                    <strong> <obs conceptId="$@PHQ_9@" answerConceptId="$@Five_to_nine@"
-                    answerCode="PHQ_9_Mild" style="checkbox"/>
-                    </strong>
-                    <br/>
-                    <strong> <obs conceptId="$@PHQ_9@" answerConceptId="$@ten_to_fourteen@"
-                    answerCode="PHQ_9_Moderate" style="checkbox"/>
-                    </strong>
-                    <br/>
-                    <strong> <obs conceptId="$@PHQ_9@" answerConceptId="$@fifteen_to_nineteen@"
-                    answerCode="PHQ_9_Moderate_Severe" style="checkbox"/>
-                    </strong>
-                    <br/>
-                    <strong> <obs conceptId="$@PHQ_9@" answerConceptId="$@twenty_to_twenty-seven@"
-                    answerCode="PHQ_9_Severe" style="checkbox"/>
-                    </strong>
-                </td>
-            </tr>
-        </table>
+        <htmlformflowsheet formId="$@MH_PHQ-9_Score@" windowHeight="600" sharedEncounter="true"/>
+
     </section>
 
     <section headerLabel="PM+ Psychotherapy / PM + Psychothérapie/IBIGANIRO: GUHANGANA N’IBIBAZO HASHINGIWE KU MITEKEREREZE N’IMYITWARIRE">

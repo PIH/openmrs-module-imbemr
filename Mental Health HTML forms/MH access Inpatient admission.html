@@ -60,8 +60,16 @@
         @Rwerere@ = 22655365-cc57-4813-a977-afdd8c31c943
         @Unspecified@ = 80b5da4c-59ae-4a48-a822-f29712ed4bd5
         @Clinican_notes@ = 6602a73b-b8d3-40bc-bae8-f00ff3b9cceb
-
-
+        @Data_entry_Complete@ = 0747e74e-07f4-4234-9d4d-7add80d6dd2a
+        @YES@ = 3cd6f600-26fe-102b-80cb-0017a47871b2
+        @Reason_for_departure@ = 6fa5c2b5-76ff-4286-8150-6a638986f03f
+        @Referred_to_outpatient_mental_health_care@ = 7f6ac893-a682-4198-95be-59bbaaea8a56
+        @Referred_to_Ndera_for_inpatient_care@ = ff28cd97-94f6-40c1-8e08-0151e8614c67
+        @PATIENT_REFERRED_TO_ANOTHER_SITE@ = 3cde31b8-26fe-102b-80cb-0017a47871b2
+        @Discharge_from_all_MH_services@ = 8665d1b7-c522-4e46-9a00-0bb3be59faab
+        @Patient_left_against_doctor's_advice@ = 8e8f9572-7191-4d9d-9b69-dfc7db7a244a
+        @PATIENT_DIED@ = 3cdd446a-26fe-102b-80cb-0017a47871b2
+        @UNKNOWN@ = 3cd6fac4-26fe-102b-80cb-0017a47871b2
 
 
         <!-- program -->
@@ -170,8 +178,12 @@
                     Date of admission to hospital
                     <obs conceptId="$@Admission_Date@"/>
                 </td>
-                <td>
-                    Registration status .....................
+                <td >
+                    <strong>Data entry complete? </strong>
+                    <obs conceptId="$@Data_entry_Complete@" answerConceptId="$@YES@" answerLabel="" style="checkbox"/>
+                    <br/><br/>
+                    <span class="disabled">Registration status ..................... </span>
+
                 </td>
             </tr>
             <tr>
@@ -187,7 +199,11 @@
             <tr>
                 <td colspan="2">
                     Reason for departure
-                    <exitFromCare/>
+                    <obs conceptId="$@Reason_for_departure@" answerConceptIds="$@Referred_to_outpatient_mental_health_care@,$@Referred_to_Ndera_for_inpatient_care@,$@PATIENT_REFERRED_TO_ANOTHER_SITE@,
+                        $@Discharge_from_all_MH_services@,$@Patient_left_against_doctor's_advice@,$@PATIENT_DIED@,$@UNKNOWN@,$@OTHER_NON_CODED@" answerLabels="Renvoi aux services ambulatoires de santé mentale/Referral to outpatient mental health care,Envoyé à Ndera pour les services hospitaliers/Referral to Ndera for inpatient care,
+                        Envoyé au autre hôpital pour les services hospitaliers/Referral to another hospital for inpatient care,Renvoi de tous les services de santé mentale/Discharge from all MH services,Patient a quitté contre l'avis du médecin/Patient left against doctor's advice,Patient est décédé/Patient died,
+                        Inconnu/Unknown,Autre/Other" />
+
                 </td>
             </tr>
             <tr>

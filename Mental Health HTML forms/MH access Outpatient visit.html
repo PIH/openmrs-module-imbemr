@@ -71,7 +71,8 @@
         @NONE@ = 3cd743f8-26fe-102b-80cb-0017a47871b2
         @OTHER_NON-CODED@ =3cee7fb4-26fe-102b-80cb-0017a47871b2
         @OTHER_INSURANCE_TYPE_NON-CODED@ = bab86ae4-080a-4e83-8808-faa9863d9a61
-
+        @Data_entry_Complete@ = 0747e74e-07f4-4234-9d4d-7add80d6dd2a
+        @YES@ = 3cd6f600-26fe-102b-80cb-0017a47871b2
 
 
         <!-- program -->
@@ -177,10 +178,13 @@
 
         <table width="100%">
             <tr>
-                <td>
+                <td class="disabled">
                      Registration status.............................
                 </td>
                 <td>
+                    <strong>Data entry complete? </strong>
+                    <obs conceptId="$@Data_entry_Complete@" answerConceptId="$@YES@" answerLabel="" style="checkbox"/>
+                    <br/><br/>
                     Patient status
                     <obs conceptId="$@PATIENT_STATUS@" answerConceptIds="$@Chronic_patient@,$@Patient_Never_seen_before@,$@Contrareferee@"/>
                 </td>

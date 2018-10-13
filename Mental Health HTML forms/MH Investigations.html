@@ -71,6 +71,9 @@
         @ALKALINE_PHOSPHATASE@ = 3cd42f4c-26fe-102b-80cb-0017a47871b2
         @TOTAL_BILIRUBIN@ = 3cd278fa-26fe-102b-80cb-0017a47871b2
         @SERUM_ALBUMIN@ = 3cd49bf8-26fe-102b-80cb-0017a47871b2
+        @Date_of_group_of_tests@ = 73790f56-74de-4a81-8eaf-cd3af55f0c51
+        @Laboratory_tests_other_construct@ = 4cc65e50-8e32-4b1b-b07f-c8e34c0e5521
+
     </macros>
 
     <style>
@@ -91,7 +94,61 @@
         vertical-align: baseline;
         }
     </style>
+    <script type="text/javascript">
+        $j(document).ready(function() {
 
+
+            getField('cbcdate.value').change(function() {
+                if(cbcdate!=""){
+
+                    setValue('HEMATOCRIT.date',getValue("cbcdate.value"));
+                    setValue('HEMOGLOBIN.date',getValue("cbcdate.value"));
+                    setValue('MEAN_CELL_HEMOGLOBIN_CONCENTRATION.date',getValue("cbcdate.value"));
+                    setValue('MEAN_CORPUSCULAR_HEMOGLOBIN.date',getValue("cbcdate.value"));
+                    setValue('MEAN_CORPUSCULAR_VOLUME.date',getValue("cbcdate.value"));
+                    setValue('PLATELETS.date',getValue("cbcdate.value"));
+                    setValue('RED_BLOOD_CELLS.date',getValue("cbcdate.value"));
+                    setValue('RED_CELL_DISTRIBUTION_WIDTH.date',getValue("cbcdate.value"));
+                    setValue('WHITE_BLOOD_CELLS.date',getValue("cbcdate.value"));
+                    setValue('NEUTROPHILS.date',getValue("cbcdate.value"));
+                    setValue('EOSINOPHILS.date',getValue("cbcdate.value"));
+                    setValue('BASOPHILS.date',getValue("cbcdate.value"));
+                    setValue('LYMPHOCYTES.date',getValue("cbcdate.value"));
+                    setValue('MONOCYTES.date',getValue("cbcdate.value"));
+
+                }
+            });
+            getField('liverFunctionTestDate.value').change(function() {
+                if(liverFunctionTestDate!=""){
+
+                    setValue('ASAT_RESULT.date',getValue("liverFunctionTestDate.value"));
+                    setValue('SERUM_GLUTAMIC_PYRUVIC_TRANSAMINASE.date',getValue("liverFunctionTestDate.value"));
+                    setValue('ALKALINE_PHOSPHATASE.date',getValue("liverFunctionTestDate.value"));
+                    setValue('SERUM_ALBUMIN.date',getValue("liverFunctionTestDate.value"));
+                    setValue('TOTAL_BILIRUBIN.date',getValue("liverFunctionTestDate.value"));
+
+                }
+            });
+            getField('electrolyteDate.value').change(function() {
+                if(electrolyteDate!=""){
+
+                    setValue('SERUM_SODIUM.date',getValue("electrolyteDate.value"));
+                    setValue('SERUM_POTASSIUM.date',getValue("electrolyteDate.value"));
+                    setValue('SERUM_CALCIUM.date',getValue("electrolyteDate.value"));
+                    setValue('SERUM_CARBON_DIOXIDE.date',getValue("electrolyteDate.value"));
+                    setValue('BLOOD_UREA_NITROGEN.date',getValue("electrolyteDate.value"));
+                    setValue('SERUM_CREATININE.date',getValue("electrolyteDate.value"));
+                    setValue('SERUM_GLUCOSE.date',getValue("electrolyteDate.value"));
+                    setValue('electrolyteHEMOGLOBIN.date',getValue("electrolyteDate.value"));
+                    setValue('SERUM_CHLORIDE.date',getValue("electrolyteDate.value"));
+
+                }
+            });
+
+
+
+        });
+    </script>
 
     <translations defaultLocale="en">
         <!--header-->
@@ -250,12 +307,17 @@
 
                 <td rowspan="14">
                     <lookup expression="fn.message('CBC')"/>
+                    <br/>
+                    <obsgroup groupingConceptId="$@Laboratory_tests_other_construct@">
+
+                        <obs conceptId="$@Date_of_group_of_tests@" id="cbcdate"/>
+                    </obsgroup>
                 </td>
                 <td>
                     HEMATOCRIT
                 </td>
                 <td>
-                    <obs conceptId="$@HEMATOCRIT@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@HEMATOCRIT@" showDate="true" dateLabel="Date" id="HEMATOCRIT"/>
                 </td>
             </tr>
             <tr>
@@ -263,7 +325,7 @@
                     HEMOGLOBIN
                 </td>
                 <td>
-                    <obs conceptId="$@HEMOGLOBIN@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@HEMOGLOBIN@" showDate="true" dateLabel="Date" id="HEMOGLOBIN"/>
                 </td>
             </tr>
             <tr>
@@ -271,7 +333,7 @@
                     MEAN CELL HEMOGLOBIN CONCENTRATION
                 </td>
                 <td>
-                    <obs conceptId="$@MEAN_CELL_HEMOGLOBIN_CONCENTRATION@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@MEAN_CELL_HEMOGLOBIN_CONCENTRATION@" showDate="true" dateLabel="Date" id="MEAN_CELL_HEMOGLOBIN_CONCENTRATION"/>
                 </td>
             </tr>
             <tr>
@@ -279,7 +341,7 @@
                     MEAN CORPUSCULAR HEMOGLOBIN
                 </td>
                 <td>
-                    <obs conceptId="$@MEAN_CORPUSCULAR_HEMOGLOBIN@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@MEAN_CORPUSCULAR_HEMOGLOBIN@" showDate="true" dateLabel="Date" id="MEAN_CORPUSCULAR_HEMOGLOBIN"/>
                 </td>
             </tr>
             <tr>
@@ -287,7 +349,7 @@
                     MEAN CORPUSCULAR VOLUME
                 </td>
                 <td>
-                    <obs conceptId="$@MEAN_CORPUSCULAR_VOLUME@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@MEAN_CORPUSCULAR_VOLUME@" showDate="true" dateLabel="Date" id="MEAN_CORPUSCULAR_VOLUME"/>
                 </td>
             </tr>
             <tr>
@@ -295,7 +357,7 @@
                     PLATELETS
                 </td>
                 <td>
-                    <obs conceptId="$@PLATELETS@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@PLATELETS@" showDate="true" dateLabel="Date" id="PLATELETS"/>
                 </td>
             </tr>
             <tr>
@@ -303,7 +365,7 @@
                     RED BLOOD CELLS
                 </td>
                 <td>
-                    <obs conceptId="$@RED_BLOOD_CELLS@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@RED_BLOOD_CELLS@" showDate="true" dateLabel="Date" id="RED_BLOOD_CELLS"/>
                 </td>
             </tr>
             <tr>
@@ -311,7 +373,7 @@
                     RED CELL DISTRIBUTION WIDTH
                 </td>
                 <td>
-                    <obs conceptId="$@RED_CELL_DISTRIBUTION_WIDTH@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@RED_CELL_DISTRIBUTION_WIDTH@" showDate="true" dateLabel="Date" id="RED_CELL_DISTRIBUTION_WIDTH"/>
                 </td>
             </tr>
             <tr>
@@ -319,7 +381,7 @@
                     WHITE BLOOD CELLS
                 </td>
                 <td>
-                    <obs conceptId="$@WHITE_BLOOD_CELLS@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@WHITE_BLOOD_CELLS@" showDate="true" dateLabel="Date" id="WHITE_BLOOD_CELLS"/>
                 </td>
             </tr>
             <tr>
@@ -327,15 +389,16 @@
                     NEUTROPHILS
                 </td>
                 <td>
-                    <obs conceptId="$@NEUTROPHILS@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@NEUTROPHILS@" showDate="true" dateLabel="Date" id="NEUTROPHILS"/>
                 </td>
             </tr>
+
             <tr>
                 <td>
                     EOSINOPHILS
                 </td>
                 <td>
-                    <obs conceptId="$@EOSINOPHILS@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@EOSINOPHILS@" showDate="true" dateLabel="Date" id="EOSINOPHILS"/>
                 </td>
             </tr>
             <tr>
@@ -343,7 +406,7 @@
                     BASOPHILS
                 </td>
                 <td>
-                    <obs conceptId="$@BASOPHILS@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@BASOPHILS@" showDate="true" dateLabel="Date" id="BASOPHILS"/>
                 </td>
             </tr>
             <tr>
@@ -351,7 +414,7 @@
                     LYMPHOCYTES
                 </td>
                 <td>
-                    <obs conceptId="$@LYMPHOCYTES@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@LYMPHOCYTES@" showDate="true" dateLabel="Date" id="LYMPHOCYTES"/>
                 </td>
             </tr>
             <tr>
@@ -359,7 +422,7 @@
                     MONOCYTES
                 </td>
                 <td>
-                    <obs conceptId="$@MONOCYTES@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@MONOCYTES@" showDate="true" dateLabel="Date" id="MONOCYTES"/>
                 </td>
             </tr>
             <tr>
@@ -367,37 +430,47 @@
 
                 <td rowspan="5">
                     <lookup expression="fn.message('Liver_Function_Test')"/>
+                    <br/>
+                    <obsgroup groupingConceptId="$@Laboratory_tests_other_construct@">
+
+                        <obs conceptId="$@Date_of_group_of_tests@" id="liverFunctionTestDate"/>
+                    </obsgroup>
+
                 </td>
                 <td>ASAT</td>
-                <td> <obs conceptId="$@ASAT_RESULT@"/> </td>
+                <td> <obs conceptId="$@ASAT_RESULT@" showDate="true" dateLabel="Date" id="ASAT_RESULT"/> </td>
             </tr>
-
             <tr>
                 <td>ALAT</td>
-                <td> <obs conceptId="$@SERUM_GLUTAMIC_PYRUVIC_TRANSAMINASE@"/> </td>
+                <td> <obs conceptId="$@SERUM_GLUTAMIC_PYRUVIC_TRANSAMINASE@" showDate="true" dateLabel="Date" id="SERUM_GLUTAMIC_PYRUVIC_TRANSAMINASE"/> </td>
             </tr>
             <tr>
                 <td>ALP</td>
-                <td> <obs conceptId="$@ALKALINE_PHOSPHATASE@"/> </td>
+                <td> <obs conceptId="$@ALKALINE_PHOSPHATASE@" showDate="true" dateLabel="Date" id="ALKALINE_PHOSPHATASE"/> </td>
             </tr>
             <tr>
                 <td>albumin</td>
-                <td> <obs conceptId="$@SERUM_ALBUMIN@"/> </td>
+                <td> <obs conceptId="$@SERUM_ALBUMIN@" showDate="true" dateLabel="Date" id="SERUM_ALBUMIN"/> </td>
             </tr>
             <tr>
                 <td>Bilirubin</td>
-                <td> <obs conceptId="$@TOTAL_BILIRUBIN@"/> </td>
+                <td> <obs conceptId="$@TOTAL_BILIRUBIN@" showDate="true" dateLabel="Date" id="TOTAL_BILIRUBIN"/> </td>
             </tr>
             <tr>
                 <td rowspan="9"></td>
                 <td rowspan="9">
                     <lookup expression="fn.message('Electrolytes')"/>
+                    <br/>
+                    <obsgroup groupingConceptId="$@Laboratory_tests_other_construct@">
+                        <obs conceptId="$@Date_of_group_of_tests@" id="electrolyteDate"/>
+                    </obsgroup>
+
                 </td>
                 <td>
                     SERUM SODIUM
                 </td>
                 <td>
-                    <obs conceptId="$@SERUM_SODIUM@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@SERUM_SODIUM@" showDate="true" dateLabel="Date" id="SERUM_SODIUM"/>
                 </td>
             </tr>
             <tr>
@@ -405,7 +478,7 @@
                     SERUM POTASSIUM
                 </td>
                 <td>
-                    <obs conceptId="$@SERUM_POTASSIUM@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@SERUM_POTASSIUM@" showDate="true" dateLabel="Date" id="SERUM_POTASSIUM"/>
                 </td>
             </tr>
             <tr>
@@ -413,7 +486,7 @@
                     SERUM CALCIUM
                 </td>
                 <td>
-                    <obs conceptId="$@SERUM_CALCIUM@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@SERUM_CALCIUM@" showDate="true" dateLabel="Date" id="SERUM_CALCIUM"/>
                 </td>
             </tr>
             <tr>
@@ -421,7 +494,7 @@
                     SERUM CARBON DIOXIDE
                 </td>
                 <td>
-                    <obs conceptId="$@SERUM_CARBON_DIOXIDE@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@SERUM_CARBON_DIOXIDE@" showDate="true" dateLabel="Date" id="SERUM_CARBON_DIOXIDE"/>
                 </td>
             </tr>
             <tr>
@@ -429,7 +502,7 @@
                     BLOOD UREA NITROGEN
                 </td>
                 <td>
-                    <obs conceptId="$@BLOOD_UREA_NITROGEN@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@BLOOD_UREA_NITROGEN@" showDate="true" dateLabel="Date" id="BLOOD_UREA_NITROGEN"/>
                 </td>
             </tr>
             <tr>
@@ -437,7 +510,7 @@
                     SERUM CREATININE
                 </td>
                 <td>
-                    <obs conceptId="$@SERUM_CREATININE@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@SERUM_CREATININE@" showDate="true" dateLabel="Date" id="SERUM_CREATININE"/>
                 </td>
             </tr>
             <tr>
@@ -445,7 +518,7 @@
                     SERUM GLUCOSE
                 </td>
                 <td>
-                    <obs conceptId="$@SERUM_GLUCOSE@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@SERUM_GLUCOSE@" showDate="true" dateLabel="Date" id="SERUM_GLUCOSE"/>
                 </td>
             </tr>
             <tr>
@@ -453,7 +526,7 @@
                     HEMOGLOBIN
                 </td>
                 <td>
-                    <obs conceptId="$@HEMOGLOBIN@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@HEMOGLOBIN@" showDate="true" dateLabel="Date" id="electrolyteHEMOGLOBIN"/>
                 </td>
             </tr>
             <tr>
@@ -461,7 +534,7 @@
                     SERUM CHLORIDE
                 </td>
                 <td>
-                    <obs conceptId="$@SERUM_CHLORIDE@" showDate="true" dateLabel="Date"/>
+                    <obs conceptId="$@SERUM_CHLORIDE@" showDate="true" dateLabel="Date" id="SERUM_CHLORIDE"/>
                 </td>
             </tr>
             <tr>
