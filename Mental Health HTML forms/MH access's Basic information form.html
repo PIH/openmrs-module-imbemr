@@ -43,19 +43,7 @@
         text-align: left;
         }
     </style>
-    <script type="text/javascript">
-        jQuery(function() {
-             getField('diagnosis.value').change(function() {
 
-                 if(getValue('diagnosis.value')=='5622'){
-                    jQuery('#otherDiagnosis').show();
-                 }else{
-                    jQuery('#otherDiagnosis').hide();
-                 }
-             });
-             jQuery('#otherDiagnosis').hide();
-        });
-    </script>
 
     <span style="float:right">Paper Form ID: $paperFormId</span>
 
@@ -174,16 +162,11 @@
             </tr>
 
             <tr>
-                <td>
-                    <strong>No longer in care?</strong>
-                    <exitFromCare/>
+                <td colspan="2">
+                    <strong> Please Use the dashboard to complete the patient program</strong>
                 </td>
-                <td>
-                    <strong>Reason for departure from care</strong>
-                    <obs conceptId="$@Mental_Health_exit_reasons@"/>
-                </td>
+
             </tr>
-            <completeProgram programId="$@Mental_Health@"/>
 
             <tr>
                 <td colspan="2">

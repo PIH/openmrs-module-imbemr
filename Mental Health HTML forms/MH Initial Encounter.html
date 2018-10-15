@@ -1198,10 +1198,7 @@
             <variant locale="en" value="Hallucinations "/>
             <variant locale="rw" value="Kubona no kumva ibidahari "/>
         </code>
-        <!--<code name="Seizures">-->
-            <!--<variant locale="en" value="Seizures "/>-->
-            <!--<variant locale="rw" value="Kugagara by’igicuri "/>-->
-        <!--</code>-->
+
         <code name="Patient_Medical_History">
             <variant locale="en" value="Patient Medical History "/>
             <variant locale="rw" value="MAKURU KU BUZIMA/UBURWAYI BUSANZWE "/>
@@ -1675,8 +1672,7 @@
     <strong><lookup expression="fn.message('Presenting_Problem')"/></strong>
     <lookup expression="fn.message('What_is_the_primary_reason_for_current_visit')"/>
 
-    <section headerLabel="Chief Complaint / Primary Symptoms /
-    Impamvu nyamukuru yazanye umurwayi kwivuza,Ibimenyetso by’ibanze(Hitamo ibiri byo muri uru rutonde)">
+    <section headerLabel="Chief Complaint / Primary Symptoms / Impamvu nyamukuru yazanye umurwayi kwivuza,Ibimenyetso by’ibanze(Hitamo ibiri byo muri uru rutonde)">
         <table border="1" width="100%">
             <tr>
                 <td>
@@ -2183,7 +2179,7 @@
     <lookup expression="fn.message('Family_History_description')"/>
 
     <section headerLabel="Family History/Amakuru ku muryango">
-        <table border="1" width="100%"s>
+        <table border="1" width="100%">
             <tr>
                 <td>
                     <strong><lookup expression="fn.message('Family_History_of_Prior_suicide_attempts')"/></strong>
@@ -2448,110 +2444,6 @@
             </tr>
         </table>
     </section>
-    <!--<section headerLabel="PHQ 9  Score/Ibisubizo by’isuzuma ku buzima bw’umurwayi/AGAHINDA GAKABIJE:">-->
-        <!--<table>-->
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<strong> <obs conceptId="$@PHQ_9@" answerConceptId="$@zero_to_four@"-->
-                                  <!--answerLabel="0-4 (None / aucun)/" style="checkbox"/>-->
-                    <!--</strong> Ntakibazo-->
-                    <!--<strong> <obs conceptId="$@PHQ_9@" answerConceptId="$@Five_to_nine@"-->
-                                  <!--answerLabel="5-9 (Mild / Doux) /" style="checkbox"/>-->
-                    <!--</strong> Biroroheje-->
-                    <!--<strong> <obs conceptId="$@PHQ_9@" answerConceptId="$@ten_to_fourteen@"-->
-                                  <!--answerLabel="10 – 14 (Moderate / modérer)/" style="checkbox"/>-->
-                    <!--</strong> Umurwayi ari kugana habi-->
-                    <!--<strong> <obs conceptId="$@PHQ_9@" answerConceptId="$@fifteen_to_nineteen@"-->
-                                  <!--answerLabel="15 – 19 (Moderately Severe / Modérément sévère)/" style="checkbox"/>-->
-                    <!--</strong> Ararembye-->
-                    <!--<strong> <obs conceptId="$@PHQ_9@" answerConceptId="$@twenty_to_twenty-seven@"-->
-                                  <!--answerLabel="20 – 27 (Severe / Sévère)/" style="checkbox"/>-->
-                    <!--</strong> Ararembye cyane-->
-                <!--</td>-->
-            <!--</tr>-->
-        <!--</table>-->
-    <!--</section>-->
-    <!--<section headerLabel="PM+ Psychotherapy / PM + Psychothérapie/IBIGANIRO: GUHANGANA N’IBIBAZO HASHINGIWE KU MITEKEREREZE N’IMYITWARIRE">-->
-        <!--<table border="1">-->
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<strong>Does the patient meet criteria for PM+ Psychotherapy intervention / <br/>-->
-                        <!--Le patient répond-il aux critères d'intervention en PM + Psychothérapie/</strong> <br/>-->
-                    <!--Ese umurwayi yujuje ibisabwa kuba yahabwa ubufasha bw’ibiganiro?-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<obs conceptId="$@Does_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@" answerConceptIds="$@YES@,$@NO@"-->
-                         <!--answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>-->
-                    <!--<br/>-->
-                    <!--<strong>If YES, what is the reason / Si OUI, quelle est la raison/</strong> Niba abyujuje,Ni iyihe mpamvu?-->
-                    <!--<br/>-->
-                    <!--<strong> <obs conceptId="$@why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"-->
-                                  <!--answerConceptId="$@DEPRESSION@"-->
-                                  <!--answerLabel="Depression / Dépression/" style="checkbox"/>-->
-                    <!--</strong> Agahinda gakabije-->
-                    <!--<strong> <obs conceptId="$@why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"-->
-                                  <!--answerConceptId="$@Stress_or_anxiety@"-->
-                                  <!--answerLabel="Anxiety / Anxiété/ " style="checkbox"/>-->
-                    <!--</strong> Umuhangayiko ukabije-->
-                    <!--<strong> <obs conceptId="$@why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"-->
-                                  <!--answerConceptId="$@PTSD@"-->
-                                  <!--answerLabel="PTSD/ " style="checkbox"/>-->
-                    <!--</strong> Ihungabana n’ihahamuka-->
-                    <!--<strong> <obs conceptId="$@why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"-->
-                                  <!--answerConceptId="$@OTHER_NON-CODED@"-->
-                                  <!--answerLabel="Other / autre " style="checkbox"/>-->
-                    <!--</strong> (Izindi mpamvu):-->
-                    <!--<obs conceptId="$@other_reasons_why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"/>-->
-
-                <!--</td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td>-->
-                    <!--<strong>PM+ Session 1/</strong> IKIGANIRO CYA 1:-->
-                <!--</td>-->
-                <!--<td>-->
-                    <!--<strong>Was confidentiality and rapport established with patient / La confidentialité et le rapport étaient-ils établis-->
-                        <!--avec le patient/</strong> <br/>Ese ibanga n’icyizere byagezweho n’umurwayi? <br/>-->
-                    <!--<obs conceptId="$@Was_confidentiality_and_rapport_established_with_patient@" answerConceptIds="$@YES@,$@NO@"-->
-                         <!--answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>-->
-                    <!--<br/> <br/>-->
-                    <!--<strong>Does the patient understand structure and goals of PM+ / Le patient comprend-il la structure et les objectifs-->
-                        <!--De PM +/</strong> <br/> Ese umurwayi yasobanukiwe imiterere y’ibiganiro byose n’intego bifite?-->
-                    <!--<br/>-->
-                    <!--<obs conceptId="$@Was_confidentiality_and_rapport_established_with_patient@" answerConceptIds="$@YES@,$@NO@"-->
-                         <!--answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>-->
-                    <!--<br/><br/>-->
-                    <!--<strong>Is the patient able to commit to attending the remaining four sessions / Le patient est-il capable de-->
-                        <!--s'engager à assister aux quatre autres séances/</strong> <br/>-->
-                    <!--Ese umurwayi afite ubushake bwo kuzitabira ibiganiro bine byose bikurikira?-->
-                    <!--<br/>-->
-                    <!--<obs conceptId="$@Is_the_patient_able_to_commit_to_attending_the_remaining_four_sessions@" answerConceptIds="$@YES@,$@NO@"-->
-                         <!--answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>-->
-                    <!--<br/><br/>-->
-                    <!-- &#45;&#45;<strong>If NO, what is the plan for management / Si NON, quel est le plan de gestion</strong> Niba ari hoya,Ni iki wakoze?-->
-                    <!--<br/>-->
-                    <!--<obs conceptId="$@what_is_the_plan_for_management@" cols="100"/>-->
-                    <!--<br/><br/>-->
-                    <!--<strong>Did the patient understand benefits of deep breathing/relaxation exercise / Le patient a-t-il compris-->
-                        <!--les bienfaits de l'exercice de respiration profonde?</strong> <br/> Ese umurwayi yasobanukiwe akamaro k’umwitozo wo-->
-                    <!--guhumeka yinjiza umwuka munda?<br/>-->
-                    <!--<obs conceptId="$@Did_the_patient_understand_benefits_of_deep_breathing@" answerConceptIds="$@YES@,$@NO@"-->
-                         <!--answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>-->
-                    <!--<br/><br/>-->
-                    <!--<strong>Was the patient able to perform exercise appropriately / Le patient était-il capable de faire de l'exercice-->
-                        <!--de façon appropriée/</strong> <br/>Ese umurwayi yashoboye umwitozo wo guhumeka neza?-->
-                    <!--<br/>-->
-                    <!--<obs conceptId="$@Was_the_patient_able_to_perform_exercise_appropriately@" answerConceptIds="$@YES@,$@NO@"-->
-                         <!--answerLabels="Yes / oui/Yego,No / Non/Hoya" style="radio"/>-->
-                    <!--<br/><br/>-->
-                    <!--<obs conceptId="$@PM+_Session_additional_Notes@" cols="100"/>-->
-
-                <!--</td>-->
-            <!--</tr>-->
-        <!--</table>-->
-    <!--</section>-->
-
-
 
     <strong><lookup expression="fn.message('Risk_Assessment')"/></strong>
     <section headerLabel="Risk Assessment / L'évaluation des risques/GUSUZUMA IBYAGO BYO KWIYAHURA" >
@@ -2638,7 +2530,7 @@
             <tr>
                 <td>
                     <strong><lookup expression="fn.message('Appointment_Date_and_Time')"/></strong>:
-                    <obs conceptId="$@RETURN_VISIT_DATE@"/>
+                    <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
                     <br/>
                     <strong><lookup expression="fn.message('At_Location')"/></strong>:
 
