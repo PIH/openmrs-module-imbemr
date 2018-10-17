@@ -324,19 +324,6 @@
         vertical-align: baseline;
         }
     </style>
-    <script type="text/javascript">
-        jQuery(function() {
-             getField('diagnosis.value').change(function() {
-
-                 if(getValue('diagnosis.value')=='5622'){
-                    jQuery('#otherDiagnosis').show();
-                 }else{
-                    jQuery('#otherDiagnosis').hide();
-                 }
-             });
-             jQuery('#otherDiagnosis').hide();
-        });
-    </script>
 
     <span style="float:right">Paper Form ID: $paperFormId</span>
 
@@ -1436,24 +1423,17 @@
             <tr>
                 <td>
                     <strong><lookup expression="fn.message('Address')"/></strong>
-                    <obs conceptId="$@address@"/>
-                    <br/>
+                    <!--<obs conceptId="$@address@"/>-->
+                    <addressHierarchyRwanda />
+                    <br/><br/><br/>
                     <strong><lookup expression="fn.message('Phone_number')"/></strong>
                     <obs conceptId="$@TELEPHONE_NUMBER@"/>
-                </td>
-                <td>
-                    <strong><lookup expression="fn.message('Emergency_contact')"/></strong>
-                    <obs conceptId="$@Emergency_contact@"/>
-                    <br/>
-                    <strong><lookup expression="fn.message('Phone_number')"/></strong>
-                    <obs conceptId="$@Emergency_contact_phone_number@"/>
-                </td>
-            </tr>
-            <tr>
-                <td>
+                    <br/><br/>
+
                     <strong><lookup expression="fn.message('Insurance_information')"/></strong>
                     <strong><lookup expression="fn.message('Mutuelle_Category')"/></strong>
                     <br/>
+
                     <obs conceptId="$@Mutuelle_level@"
                          answerConceptIds="$@Mutuelle_level_I@,$@Mutuelle_level_II@,$@Mutuelle_level_III@,$@Mutuelle_level_IV@"
                          answerLabels="1,2,3,4" style="radio"/>
@@ -1462,10 +1442,28 @@
                     <obs conceptId="$@OTHER_INSURANCE_TYPE_NON-CODED@"/>
                 </td>
                 <td>
+                    <strong><lookup expression="fn.message('Emergency_contact')"/></strong>
+                    <obs conceptId="$@Emergency_contact@"/>
+                    <br/>
+                    <strong><lookup expression="fn.message('Phone_number')"/></strong>
+                    <obs conceptId="$@Emergency_contact_phone_number@"/>
+                    <br/><br/>
+                    <hr/>
                     <strong><lookup expression="fn.message('Caregiver_or_CHW_Involved_in_case')"/></strong>
 
                     <relationship type="d283d13a-2700-102b-80cb-0017a47871b2" whoAmI="B" required="false"
                                   changeExistingRelationship="false"  />
+                    <br/><br/>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+
                 </td>
             </tr>
 

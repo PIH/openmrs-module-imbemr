@@ -327,6 +327,7 @@
 
 
 
+
     </macros>
 
     <style>
@@ -371,9 +372,9 @@
 
     <translations defaultLocale="en">
         <!--header-->
-        <code name="Initial_Encounter_Form">
-            <variant locale="en" value="Initial Encounter Form"/>
-            <variant locale="rw" value="IFISHI Y'UMURWAYI WIVUJE BWA MBERE "/>
+        <code name="Routine_Encounter_Pharmacotherapy_Form">
+            <variant locale="en" value="Pharmacotherapy Encounter Form"/>
+            <variant locale="rw" value="Kwivuza hakoreshejwe  Imiti "/>
         </code>
         <code name="Last_name">
             <variant locale="en" value="Last name"/>
@@ -958,6 +959,10 @@
             <variant locale="en" value="No "/>
             <variant locale="rw" value="Hoya  "/>
         </code>
+        <code name="Appointment_Date_and_Time">
+            <variant locale="en" value="Appointment Date and Time "/>
+            <variant locale="rw" value="Gahunda yo kuzagaruka:itariki N’igihe "/>
+        </code>
 
 
 
@@ -978,7 +983,7 @@
                     </h2></td>
                 <td>
                     <strong>
-                        <lookup expression="fn.message('Initial_Encounter_Form')"/>
+                        <lookup expression="fn.message('Routine_Encounter_Psychotherapy_Form')"/>
                     </strong>
                     <br/>
                     <b> IMB ID: <lookup class="value"
@@ -1318,6 +1323,17 @@
                     <obs conceptId="$@Reasons_for_Referral_non_coded@" />
 
 
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section headerLabel="Follow up/Gahunda yo gukomeza Ibiganiro">
+        <table border="1" width="100%">
+            <tr>
+                <td>
+
+                    <strong><lookup expression="fn.message('Appointment_Date_and_Time')"/></strong>
+                    <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
                 </td>
             </tr>
         </table>

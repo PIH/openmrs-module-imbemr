@@ -384,9 +384,9 @@
 
     <translations defaultLocale="en">
         <!--header-->
-        <code name="Initial_Encounter_Form">
-            <variant locale="en" value="Initial Encounter Form"/>
-            <variant locale="rw" value="IFISHI Y'UMURWAYI WIVUJE BWA MBERE "/>
+        <code name="Routine_Encounter_Psychotherapy_approach_Form">
+            <variant locale="en" value=" Psychotherapy approach visit Form"/>
+            <variant locale="rw" value="GAHUNDA Y’IBIGANIRO NA MUGANGA "/>
         </code>
         <code name="Last_name">
             <variant locale="en" value="Last name"/>
@@ -1004,8 +1004,8 @@
             <variant locale="rw" value="Niba ari yego, Uzuza Ifishi isuzuma ibyago byo kwiyahura "/>
         </code>
         <code name="PLEASE_USE_SEPARATE_FORM_FOR_DIAGNOSES_MEDICATIONS_and_INVESTIGATIONS">
-            <variant locale="en" value="PLEASE USE SEPARATE FORM FOR DIAGNOSES, MEDICATIONS, and INVESTIGATIONS "/>
-            <variant locale="rw" value="KURIKIZAHO IFISHI YIHARIYE IJYANYE N’UBURWAYI-IMITI N’IBIZAMINI "/>
+            <variant locale="en" value="PLEASE USE SEPARATE FORM FOR DIAGNOSES, MEDICATIONS, and INVESTIGATIONS. Next visit Date "/>
+            <variant locale="rw" value="KURIKIZAHO IFISHI YIHARIYE IJYANYE N’UBURWAYI-IMITI N’IBIZAMINI. Italiki yo kugaruka"/>
         </code>
         <code name="Appointment_Date_and_Time">
             <variant locale="en" value="Appointment Date and Time "/>
@@ -1050,7 +1050,7 @@
                     </h2></td>
                 <td>
                     <strong>
-                        <lookup expression="fn.message('Initial_Encounter_Form')"/>
+                        <lookup expression="fn.message('Routine_Encounter_Psychotherapy_approach_Form')"/>
                     </strong>
                     <br/>
                     <b> IMB ID: <lookup class="value"
@@ -1455,7 +1455,7 @@
             <tr>
                 <td>
 
-                    <strong><lookup expression="fn.message('PLEASE_USE_SEPARATE_FORM_FOR_DIAGNOSES_MEDICATIONS_and_INVESTIGATIONS')"/></strong>
+                    <strong><lookup expression="fn.message('Appointment_Date_and_Time')"/></strong>
                     <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
                 </td>
             </tr>

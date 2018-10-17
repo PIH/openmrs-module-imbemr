@@ -70,6 +70,29 @@
         @Patient_left_against_doctor's_advice@ = 8e8f9572-7191-4d9d-9b69-dfc7db7a244a
         @PATIENT_DIED@ = 3cdd446a-26fe-102b-80cb-0017a47871b2
         @UNKNOWN@ = 3cd6fac4-26fe-102b-80cb-0017a47871b2
+        @REASON_ORDER_STOPPED@=3cde6070-26fe-102b-80cb-0017a47871b2
+
+
+        <!--drugs-->
+        @carbamazepine@ = e8ffe84f-25ef-49c4-882e-c47c454d44f0
+        @Phenobarbital@ = 7ce04b86-1379-4ab8-8bd8-f8dfc445e1ee
+        @Valproic_acid@ = 900d0911-5e8a-47c3-a683-4c9137cf1fa9
+        @phenytoin@ = 105a9382-8509-4a90-8546-29609aea71b1
+        @Diazepam@ =ab5b388b-ae30-4eac-a24f-502acdf12720
+        @Haldol_Decanoate@ = 05d7dfdc-91cb-4b32-9160-73713c88de37
+        @haloperidol@ = b1da9fe4-fb45-421b-ae6c-b7497417618b
+        @Amytryptiline@ = 641a0a82-0c81-427b-a2f1-074f6f39db78
+        @Biperiden@ = 65f66c21-2144-42d5-8a4e-34872f106f48
+        @Chlorpromazine@ = 8e982ddf-cdcf-45a8-b429-7eb164a3d676
+        @Keppra@ = 07d6662f-4496-4c26-a45d-2d6b14356651
+        @FLUPENTHIXOL@ = 7a1dc26b-7f52-49d6-97e3-60e9c8ddf3ce
+        @Cinnarizine@ = 46772c70-c14d-4a9a-a1d4-111e1378251e
+        @Risperidone@ = 1d443971-a4ed-4892-b2ab-bdcc264ba37f
+        @Levomepromazine@ = 9daec7b2-c159-4390-bcd6-e6c71c81d3c5
+        @FLUOXETINE@ = 7510a250-cd06-43df-93ab-0e4a2ec340a1
+        @Citalopram@ = 1358af2f-8f65-4864-879c-1663c443f91f
+        @Tegretol@ = be2ffece-c193-49e0-8697-7b13ed164dcf
+        @Depakote@ = 72e46e41-682d-4890-ace0-2b159c4df144
 
 
         <!-- program -->
@@ -134,7 +157,7 @@
                     </h2></td>
                 <td>
                     <strong>
-                        <lookup expression="fn.message('Outpatient visit')"/>
+                        <lookup expression="fn.message('Inpatient visit')"/>
                     </strong>
                     <br/>
                     <b> IMB ID: <lookup class="value"
@@ -175,7 +198,7 @@
         <table border="1" width="100%">
             <tr>
                 <td>
-                    Date of admission to hospital
+                    <strong>Date of admission to hospital</strong>
                     <obs conceptId="$@Admission_Date@"/>
                 </td>
                 <td >
@@ -188,17 +211,17 @@
             </tr>
             <tr>
                 <td>
-                    Patient status
+                    <strong>Patient status</strong>
                     <obs conceptId="$@PATIENT_STATUS@" answerConceptIds="$@Chronic_patient@,$@Patient_Never_seen_before@,$@Contrareferee@"/>
                 </td>
                 <td>
-                    Date of discharge
+                    <strong>Date of discharge</strong>
                     <encounterDate id="encounterDate" default="today" />
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    Reason for departure
+                    <strong>Reason for departure</strong>
                     <obs conceptId="$@Reason_for_departure@" answerConceptIds="$@Referred_to_outpatient_mental_health_care@,$@Referred_to_Ndera_for_inpatient_care@,$@PATIENT_REFERRED_TO_ANOTHER_SITE@,
                         $@Discharge_from_all_MH_services@,$@Patient_left_against_doctor's_advice@,$@PATIENT_DIED@,$@UNKNOWN@,$@OTHER_NON_CODED@" answerLabels="Renvoi aux services ambulatoires de santé mentale/Referral to outpatient mental health care,Envoyé à Ndera pour les services hospitaliers/Referral to Ndera for inpatient care,
                         Envoyé au autre hôpital pour les services hospitaliers/Referral to another hospital for inpatient care,Renvoi de tous les services de santé mentale/Discharge from all MH services,Patient a quitté contre l'avis du médecin/Patient left against doctor's advice,Patient est décédé/Patient died,
@@ -208,7 +231,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    Discharge primary diagnosis
+                    <strong>Discharge primary diagnosis</strong>
                     <obs conceptId="$@Primary_Diagnosis@" answerConceptIds="$@Disorders_due_to_alcohol_and_illicit_drug_use@,$@Bipolar_Disorder@,$@Depression_unspecified@,
                         $@Medical_diagnosis@,$@EPILEPSY@,$@PSYCHOSIS@,$@SCHIZOPHRENIA@,$@Schizophrenia_and_other_psychhoses@,$@Somatoform_Disorder_Trouble_Somatoform@,
                         $@Non-drug_or_alcohol-related_disorders_of_behavior@,$@PTSD@,$@Other_Psychological_problems@,$@Attempted_Suicide@,$@Completed_suicide@,$@OTHER_NON_CODED@,
@@ -221,7 +244,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    Discharge secondary diagnosis
+                    <strong>Discharge secondary diagnosis</strong>
                     <obs conceptId="$@Secondary_diagnosis@" answerConceptIds="$@Disorders_due_to_alcohol_and_illicit_drug_use@,$@Bipolar_Disorder@,$@Depression_unspecified@,
                         $@Medical_diagnosis@,$@EPILEPSY@,$@PSYCHOSIS@,$@SCHIZOPHRENIA@,$@Schizophrenia_and_other_psychhoses@,$@Somatoform_Disorder_Trouble_Somatoform@,
                         $@Non-drug_or_alcohol-related_disorders_of_behavior@,$@PTSD@,$@Other_Psychological_problems@,$@Attempted_Suicide@,$@Completed_suicide@,$@OTHER_NON_CODED@,
@@ -234,37 +257,44 @@
             </tr>
             <tr>
                 <td>
-                    Primary diag (other):
+                    <strong>Primary diag (other):</strong>
                     <obs conceptId="$@Other_primary_diagnosis@" cols="50"/>
                 </td>
                 <td>
-                    Secondary diag (other):
+                    <strong>Secondary diag (other):</strong>
                     <obs conceptId="$@Other_secondary_diagnosis@" cols="50"/>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    Discharge psychotropic meds .............................
+                    <strong>Discharge psychotropic meds</strong>
+                    <drugOrder drugNames="$@carbamazepine@,$@Phenobarbital@,$@Valproic_acid@,$@phenytoin@,$@Diazepam@,$@Haldol_Decanoate@,$@haloperidol@,
+                                $@Amytryptiline@,$@Biperiden@,$@Chlorpromazine@,$@Keppra@,$@FLUPENTHIXOL@,$@Cinnarizine@,$@Risperidone@,$@Levomepromazine@,
+                                $@FLUOXETINE@,$@Citalopram@,$@Tegretol@,$@Depakote@"
+                               drugLabels="Carbamazepine,Phenobarbital,Depakine,Phenytoine,
+                               Diazepam,Haldol Decanoate,Haloperidol,Amytryptiline,Biperdene,Chlorpromazine,Keppra,
+                               Flupentixol,Cinnarizine,Respiridone,Levomepromazine,Fluoxetine,Citalopram,Tegretol,Depakote"
+                               discontinuedReasonConceptId="$@REASON_ORDER_STOPPED@"  />
                 </td>
 
             </tr>
             <tr>
                 <td>
-                    Next appointment date
+                    <strong>Next appointment date</strong>
                     <obs conceptId="$@RETURN_VISIT_DATE@"/>
                 </td>
                 <td>
-                    Next appointment location
+                    <strong>Next appointment location</strong>
                     <obs conceptId="$@Return_Visit_Location@" answerConceptIds="$@BUNGWE@,$@Butaro_Hospital@,$@Cyanika@,$@District_Mental_Health_clinic@,$@Gahunga@,$@GITARE@,
                         $@Hospital_OPD@,$@KINONI@,$@Kinyababa@,$@KIRAMBO@,$@KIVUYE@,$@Mucaca@,$@Caraes_Ndera_Hospital@,$@Ndongozi@,$@Ntaruka@,$@NYAMUGALI@,$@Ruhombo@,$@RUHUNDE@,
-                        $@Rusasa@,$@Rwerere@,$@Unspecified@,$@OTHER_NON_CODED@" answerLabels="BUNGWE,Butaro,Cyanika,District Mental Health clinic,Gahunga,GITARE
+                        $@Rusasa@,$@Rwerere@,$@Unspecified@,$@OTHER_NON_CODED@" answerLabels="BUNGWE,Butaro,Cyanika,District Mental Health clinic,Gahunga,GITARE,
                         Hospital OPD,KINONI,Kinyababa,KIRAMBO,KIVUYE,Mucaca,Caraes Ndera Hospital,Ndongozi,Ntaruka,NYAMUGALI,Ruhombo,RUHUNDE,Rusasa,Rwerere,Unspecified,Autre/Other"/>
 
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    Comments
+                    <strong>Comments</strong>
                     <obs conceptId="$@Clinican_notes@" cols="150"/>
                 </td>
 
