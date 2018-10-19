@@ -263,7 +263,7 @@
             <variant locale="en" value="Patient missed visit"/>
             <variant locale="rw" value="Umurwayi ntakitabira gahunda zo kwivuza  "/>
         </code>
-        <code name="RDV_Changed">
+        <code name="RDV_Changed_due_to_holiday">
             <variant locale="en" value="RDV to be re-scheduled due to holiday, etc."/>
             <variant locale="rw" value="Gahunda ya muganga yarahinduwe bitewe n’ibiruhuko,..cg izindi mpamvu...  "/>
         </code>
@@ -353,7 +353,7 @@
                     <br/>
                     <obs conceptId="$@REASON_OF_CALLING_PATIENT@" answerConceptId="$@PATIENT_MISSED_VISIT@" answerCode="PATIENT_MISSED_VISIT" style="checkbox"/>
                     <br/>
-                    <obs conceptId="$@REASON_OF_CALLING_PATIENT@" answerConceptId="$@RDV_Changed@" answerCode="RDV_Changed" style="checkbox"/>
+                    <obs conceptId="$@REASON_OF_CALLING_PATIENT@" answerConceptId="$@RDV_Changed@" answerCode="RDV_Changed_due_to_holiday" style="checkbox"/>
                 </td>
             </tr>
         </table>
@@ -397,7 +397,7 @@
 
 
                     <obs conceptId="$@Result_of_Call@" answerConceptId="$@RDV_Changed@" answerCode="RDV_Changed" style="checkbox"/> :
-                    <obs conceptId="$@RETURN_VISIT_DATE@"/>
+                    <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
                     <br/>
                     <obs conceptId="$@Result_of_Call@" answerConceptId="$@Patient_Not_Reached@" answerCode="Patient_Not_Reached" style="checkbox"/> :
                     <br/>
