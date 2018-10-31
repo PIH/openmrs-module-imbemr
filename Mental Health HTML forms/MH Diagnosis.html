@@ -5,9 +5,41 @@
         headerColor =#009d8e
         fontOnHeaderColor = white
 
+        <!--workflow-->
+        <!--@Mental_Health_Diagnosis@ = e001dafe-1073-4a23-8664-f8e4d378599a-->
+        <!--@Primary_Diagnosis@ = e001dafe-1073-4a23-8664-f8e4d378599a-->
+
+
+        <!--&lt;!&ndash;states&ndash;&gt;-->
+        <!--@ANXIETY_DISORDER@ = 1eb6836a-5bc7-40c8-841c-3df1109a64aa-->
+        <!--@Attention_Deficit_Hyperactivity_Disorder@ = 568f0925-6b06-4c66-b38c-cc7b2679c49a-->
+        <!--@Bipolar_Disorder@ = a14dc218-1813-4784-9c21-f77d6befa08f-->
+        <!--@Conduct_Disorder_or_Childhood_Behavioral_Disorder@ = d4d7f326-6e87-4b53-b004-feee4ebbf45e-->
+        <!--@Depression_due_to_other_medical_condition@ = 0e6f94bd-2e8f-4e8a-847c-3e254d51f5ce-->
+        <!--@Depression_with_Psychotic_Features@ = 05bc5288-e7fc-4d58-a2b1-f237f9aed20f-->
+        <!--@Depression_unspecified@ = 080d3066-81bd-419f-9d00-0b29a8e81435-->
+        <!--@Mental_retardation@ = 1094c0d4-ec59-439e-9a98-3bdebba684fa-->
+        <!--@Disorders_due_to_alcohol_and_illicit_drug_use@ = 050f7c5b-baa3-452f-a810-038c852effea-->
+        <!--@Major_Depressive_Disorder@ = 34141cd7-ae4a-4236-abdf-d5d90af45e23-->
+        <!--@Mood_Disorder_unspecified@ = d39ee8f9-fafc-45e9-ae5b-8c5fa0cbfb73-->
+        <!--@Panic_disorder@ = 23d2fdf8-4133-4c69-82b9-b58d9641d2f8-->
+        <!--@PSYCHOSIS@ = b6d7aeb9-6627-4c68-9546-f65f7b1e04af-->
+        <!--@Psychosis_due_to_other_medical_condition@ = 77bc2c19-9b0f-4c18-843b-fc9528056dba-->
+        <!--@Personality_Disorder@ = 66d6e2f2-6e44-49ef-8b2c-99038b252009-->
+        <!--@PTSD@ = 657c9d36-eee8-40cf-9544-f4dcf842b6da-->
+        <!--@SCHIZOPHRENIA@ = 6a32e996-7d83-464b-8e7f-3cfb013c77de-->
+        <!--@Schizoaffective_Disorder@ = 7d7202e1-1aeb-49f2-96c2-2525a7f4faae-->
+        <!--@Somatoform_Disorder_Trouble_Somatoform@ = 2a21b803-3e6d-468b-b624-b243db43ce17-->
+        <!--@EPILEPSY@ = 86b55cea-8233-445f-873b-c8f7080c4d09-->
+        <!--@NEUROLOGICAL_SYNDROMES_OTHER@ = 7abdd4b8-30af-4e2c-9220-5f453b17dab3-->
+        <!--@Other_Medical_Disorder@ = b577b359-089d-4e92-a9b8-b79b9f716939-->
+        <!--@OTHER_NON-CODED@ = 66d7d6a8-6b96-4bc6-885e-c8010a9cdb74-->
+
+        <!--concepts-->
+        @Diagnosis_Grouping_Categories@ = f5ba47a8-c124-4fc9-9da7-598e7455efd6
         @Mental_Health_Diagnosis@ = 932199c7-a59e-491c-bb5a-cf82f2fdcd85
         @Primary_Diagnosis@ = 952b3fd4-b89e-4801-9b51-9b30bc83adce
-        @Mental_Health_Diagnosis_Stopping_Reason@ = f2d4789d-082c-447c-935d-6aa4ff211882
+
         @ANXIETY_DISORDER@ = 3ce6b1ee-26fe-102b-80cb-0017a47871b2
         @Attention_Deficit_Hyperactivity_Disorder@ = 568f0925-6b06-4c66-b38c-cc7b2679c49a
         @Bipolar_Disorder@ = acaeb953-eecd-4a42-8752-59ecf560366a
@@ -31,7 +63,10 @@
         @NEUROLOGICAL_SYNDROMES_OTHER@ = 3cd67b9e-26fe-102b-80cb-0017a47871b2
         @Other_Medical_Disorder@ = 5bebf6a5-c2be-4da0-9cd5-befe19106f3b
         @OTHER_NON-CODED@ = 3cee7fb4-26fe-102b-80cb-0017a47871b2
+        @Mental_Health_Diagnosis_Stopping_Reason@ = f2d4789d-082c-447c-935d-6aa4ff211882
         @Other_clinical_diagnosis@ = 135d1163-d50a-411c-9ea1-530ca2033e10
+
+
     </macros>
 
     <style>
@@ -269,57 +304,71 @@
 
 
             </tr>
-
-            <tr>
-                <td>
-                   <strong> <lookup expression="fn.message('Diagnosis_and_Start_Date')"/> </strong> <br/>
-
-
-                </td>
+            <!--<obsgroup groupingConceptId="$@Diagnosis_Grouping_Categories@">-->
+                <tr>
+                    <td>
+                       <strong> <lookup expression="fn.message('Diagnosis_and_Start_Date')"/> </strong> <br/>
 
 
-                <td><obs id="diagnosis" conceptId="$@Mental_Health_Diagnosis@"
-                         answerConceptIds="$@ANXIETY_DISORDER@,$@Attention_Deficit_Hyperactivity_Disorder@,$@Bipolar_Disorder@,$@Conduct_Disorder_or_Childhood_Behavioral_Disorder@,$@Depression_unspecified@,$@Depression_due_to_other_medical_condition@,
-                         $@Depression_with_Psychotic_Features@,$@Mental_retardation@,$@Disorders_due_to_alcohol_and_illicit_drug_use@,$@Major_Depressive_Disorder@,$@Mood_Disorder_unspecified@,$@Panic_disorder@,$@PSYCHOSIS@,
-                         $@Psychosis_due_to_other_medical_condition@,$@Personality_Disorder@,$@PTSD@,$@SCHIZOPHRENIA@,$@Schizoaffective_Disorder@,$@Somatoform_Disorder_Trouble_Somatoform@,$@EPILEPSY@,$@NEUROLOGICAL_SYNDROMES_OTHER@,$@Other_Medical_Disorder@,$@OTHER_NON-CODED@"
+                    </td>
 
-                         answerCodes="ANXIETY_DISORDER,Attention_Deficit_Hyperactivity_Disorder,Bipolar_Disorder,Conduct_Disorder_or_Childhood_Behavioral_Disorder,Depression_unspecified,Depression_due_to_other_medical_condition,
-                         Depression_with_Psychotic_Features,Mental_retardation,Disorders_due_to_alcohol_and_illicit_drug_use,Major_Depressive_Disorder,Mood_Disorder_unspecified,Panic_disorder,PSYCHOSIS,Psychosis_due_to_other_medical_condition,
-                         Personality_Disorder,PTSD,SCHIZOPHRENIA,Schizoaffective_Disorder,Somatoform_Disorder_Trouble_Somatoform,EPILEPSY,NEUROLOGICAL_SYNDROMES_OTHER,Other_Medical_Disorder,OTHER_NON-CODED"
-                         showDate="true" dateLabel="Start Date"/>
-                    <br/>
-                    <span id="otherDiagnosis">
-                             <obs  conceptId="$@Other_clinical_diagnosis@" labelCode="Other" cols="60"/>
-                    </span>
 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <strong>
-                        <lookup expression="fn.message('Reason_for_stopping_and_End_Date')"/>
-                    </strong>
-                </td>
-                <td> <obs conceptId="$@Mental_Health_Diagnosis_Stopping_Reason@" showDate="true" dateLabel="End Date" cols="90"/></td>
-            </tr>
 
-            <tr>
-                <td>
-                    <strong>
-                        <lookup expression="fn.message('Primary_Diagnosis')"/>
-                    </strong>
-                </td>
-                <td>
-                    <obs conceptId="$@Primary_Diagnosis@"
-                         answerConceptIds="$@ANXIETY_DISORDER@,$@Attention_Deficit_Hyperactivity_Disorder@,$@Bipolar_Disorder@,$@Conduct_Disorder_or_Childhood_Behavioral_Disorder@,$@Depression_unspecified@,$@Depression_due_to_other_medical_condition@,
-                         $@Depression_with_Psychotic_Features@,$@Mental_retardation@,$@Disorders_due_to_alcohol_and_illicit_drug_use@,$@Major_Depressive_Disorder@,$@Mood_Disorder_unspecified@,$@Panic_disorder@,$@PSYCHOSIS@,
-                         $@Psychosis_due_to_other_medical_condition@,$@Personality_Disorder@,$@PTSD@,$@SCHIZOPHRENIA@,$@Schizoaffective_Disorder@,$@Somatoform_Disorder_Trouble_Somatoform@,$@EPILEPSY@,$@NEUROLOGICAL_SYNDROMES_OTHER@,$@Other_Medical_Disorder@,$@OTHER_NON-CODED@"
+                    <td>
+                        <obs id="diagnosis" conceptId="$@Mental_Health_Diagnosis@"
+                             answerConceptIds="$@ANXIETY_DISORDER@,$@Attention_Deficit_Hyperactivity_Disorder@,$@Bipolar_Disorder@,$@Conduct_Disorder_or_Childhood_Behavioral_Disorder@,$@Depression_unspecified@,$@Depression_due_to_other_medical_condition@,
+                             $@Depression_with_Psychotic_Features@,$@Mental_retardation@,$@Disorders_due_to_alcohol_and_illicit_drug_use@,$@Major_Depressive_Disorder@,$@Mood_Disorder_unspecified@,$@Panic_disorder@,$@PSYCHOSIS@,
+                             $@Psychosis_due_to_other_medical_condition@,$@Personality_Disorder@,$@PTSD@,$@SCHIZOPHRENIA@,$@Schizoaffective_Disorder@,$@Somatoform_Disorder_Trouble_Somatoform@,$@EPILEPSY@,$@NEUROLOGICAL_SYNDROMES_OTHER@,$@Other_Medical_Disorder@,$@OTHER_NON-CODED@"
 
-                         answerCodes="ANXIETY_DISORDER,Attention_Deficit_Hyperactivity_Disorder,Bipolar_Disorder,Conduct_Disorder_or_Childhood_Behavioral_Disorder,Depression_unspecified,Depression_due_to_other_medical_condition,
-                         Depression_with_Psychotic_Features,Mental_retardation,Disorders_due_to_alcohol_and_illicit_drug_use,Major_Depressive_Disorder,Mood_Disorder_unspecified,Panic_disorder,PSYCHOSIS,Psychosis_due_to_other_medical_condition,
-                         Personality_Disorder,PTSD,SCHIZOPHRENIA,Schizoaffective_Disorder,Somatoform_Disorder_Trouble_Somatoform,EPILEPSY,NEUROLOGICAL_SYNDROMES_OTHER,Other_Medical_Disorder,OTHER_NON-CODED"/>
-                </td>
-            </tr>
+                             answerCodes="ANXIETY_DISORDER,Attention_Deficit_Hyperactivity_Disorder,Bipolar_Disorder,Conduct_Disorder_or_Childhood_Behavioral_Disorder,Depression_unspecified,Depression_due_to_other_medical_condition,
+                             Depression_with_Psychotic_Features,Mental_retardation,Disorders_due_to_alcohol_and_illicit_drug_use,Major_Depressive_Disorder,Mood_Disorder_unspecified,Panic_disorder,PSYCHOSIS,Psychosis_due_to_other_medical_condition,
+                             Personality_Disorder,PTSD,SCHIZOPHRENIA,Schizoaffective_Disorder,Somatoform_Disorder_Trouble_Somatoform,EPILEPSY,NEUROLOGICAL_SYNDROMES_OTHER,Other_Medical_Disorder,OTHER_NON-CODED"
+                             showDate="true" dateLabel="Start Date"/>
+                        <br/>
+                        <span id="otherDiagnosis">
+                                 <obs  conceptId="$@Other_clinical_diagnosis@" labelCode="Other" cols="60"/>
+                        </span>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>
+                            <lookup expression="fn.message('Reason_for_stopping_and_End_Date')"/>
+                        </strong>
+                    </td>
+                    <td> <obs conceptId="$@Mental_Health_Diagnosis_Stopping_Reason@" showDate="true" dateLabel="End Date" cols="90"/></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <strong>
+                            <lookup expression="fn.message('Primary_Diagnosis')"/>
+                        </strong>
+                    </td>
+                    <td>
+
+                        <obs id="diagnosis" conceptId="$@Primary_Diagnosis@"
+                             answerConceptIds="$@ANXIETY_DISORDER@,$@Attention_Deficit_Hyperactivity_Disorder@,$@Bipolar_Disorder@,$@Conduct_Disorder_or_Childhood_Behavioral_Disorder@,$@Depression_unspecified@,$@Depression_due_to_other_medical_condition@,
+                             $@Depression_with_Psychotic_Features@,$@Mental_retardation@,$@Disorders_due_to_alcohol_and_illicit_drug_use@,$@Major_Depressive_Disorder@,$@Mood_Disorder_unspecified@,$@Panic_disorder@,$@PSYCHOSIS@,
+                             $@Psychosis_due_to_other_medical_condition@,$@Personality_Disorder@,$@PTSD@,$@SCHIZOPHRENIA@,$@Schizoaffective_Disorder@,$@Somatoform_Disorder_Trouble_Somatoform@,$@EPILEPSY@,$@NEUROLOGICAL_SYNDROMES_OTHER@,$@Other_Medical_Disorder@,$@OTHER_NON-CODED@"
+
+                             answerCodes="ANXIETY_DISORDER,Attention_Deficit_Hyperactivity_Disorder,Bipolar_Disorder,Conduct_Disorder_or_Childhood_Behavioral_Disorder,Depression_unspecified,Depression_due_to_other_medical_condition,
+                             Depression_with_Psychotic_Features,Mental_retardation,Disorders_due_to_alcohol_and_illicit_drug_use,Major_Depressive_Disorder,Mood_Disorder_unspecified,Panic_disorder,PSYCHOSIS,Psychosis_due_to_other_medical_condition,
+                             Personality_Disorder,PTSD,SCHIZOPHRENIA,Schizoaffective_Disorder,Somatoform_Disorder_Trouble_Somatoform,EPILEPSY,NEUROLOGICAL_SYNDROMES_OTHER,Other_Medical_Disorder,OTHER_NON-CODED"
+                             showDate="true" dateLabel="Start Date"/>
+
+                        <!--<workflowState workflowId="$@Primary_Diagnosis@"/>-->
+                        <!--stateIds="$@ANXIETY_DISORDER@,$@Attention_Deficit_Hyperactivity_Disorder@,$@Bipolar_Disorder@,$@Conduct_Disorder_or_Childhood_Behavioral_Disorder@,$@Depression_unspecified@,$@Depression_due_to_other_medical_condition@,-->
+                        <!--$@Depression_with_Psychotic_Features@,$@Mental_retardation@,$@Disorders_due_to_alcohol_and_illicit_drug_use@,$@Major_Depressive_Disorder@,$@Mood_Disorder_unspecified@,$@Panic_disorder@,$@PSYCHOSIS@,-->
+                        <!--$@Psychosis_due_to_other_medical_condition@,$@Personality_Disorder@,$@PTSD@,$@SCHIZOPHRENIA@,$@Schizoaffective_Disorder@,$@Somatoform_Disorder_Trouble_Somatoform@,$@EPILEPSY@,$@NEUROLOGICAL_SYNDROMES_OTHER@,$@Other_Medical_Disorder@,$@OTHER_NON-CODED@"-->
+                        <!--answerCodes="ANXIETY_DISORDER,Attention_Deficit_Hyperactivity_Disorder,Bipolar_Disorder,Conduct_Disorder_or_Childhood_Behavioral_Disorder,Depression_unspecified,Depression_due_to_other_medical_condition,-->
+                        <!--Depression_with_Psychotic_Features,Mental_retardation,Disorders_due_to_alcohol_and_illicit_drug_use,Major_Depressive_Disorder,Mood_Disorder_unspecified,Panic_disorder,PSYCHOSIS,Psychosis_due_to_other_medical_condition,-->
+                        <!--Personality_Disorder,PTSD,SCHIZOPHRENIA,Schizoaffective_Disorder,Somatoform_Disorder_Trouble_Somatoform,EPILEPSY,NEUROLOGICAL_SYNDROMES_OTHER,Other_Medical_Disorder,OTHER_NON-CODED"-->
+
+                    </td>
+                </tr>
+            <!--</obsgroup>-->
 
         </table>
     </section>

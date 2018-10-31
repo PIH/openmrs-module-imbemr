@@ -301,6 +301,10 @@
         @a_patient_has_a_suicidal_plan@ = 84d68044-0a0a-48ce-883f-3d075fefd69f
         @Other_Alcohol_withdrawal_symptoms@ = c29f1eef-ef54-41b8-8397-90b9f6b6c291
         @PHQ-9_score_numeric@ = 89706812-269f-457d-901f-c5ce19add245
+        @ACCOMPAGNATEUR_PHONE_NUMBER@ = 5c9cb4a0-7b67-4c00-a926-ff7eaa8f0089
+
+        <!-- program -->
+        @Mental_Health@= 51304c8c-ecc2-4bed-818b-a5c785ad58a6
 
 
 
@@ -1350,6 +1354,10 @@
             <variant locale="en" value="Suicidal plan "/>
             <variant locale="rw" value="Umugambi wo kwiyahura "/>
         </code>
+        <code name="Caregiver_Phone_Number">
+            <variant locale="en" value="Phone number "/>
+            <variant locale="rw" value="Nimero ya Telefone "/>
+        </code>
 
 
 
@@ -1454,6 +1462,8 @@
                     <relationship type="d283d13a-2700-102b-80cb-0017a47871b2" whoAmI="B" required="false"
                                   changeExistingRelationship="false"  />
                     <br/><br/>
+                    <strong><lookup expression="fn.message('Caregiver_Phone_Number')"/></strong>
+                    <obs conceptId="$@ACCOMPAGNATEUR_PHONE_NUMBER@"/>
 
 
                 </td>
@@ -2550,6 +2560,9 @@
             </tr>
         </table>
     </section>
+
+    <enrollInProgram programId="$@Mental_Health@"/>
+
     <submit/>
     <encounterVoided/>
 
