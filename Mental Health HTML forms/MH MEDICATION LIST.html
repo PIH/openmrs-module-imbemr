@@ -337,7 +337,7 @@
         @INSULIN_Regular@ = 7614d49a-57d8-4b55-9fac-9be4fdd06c84
         @INSULIN_LENTE@ = 80b647a7-73ae-4aa2-af5c-8a1f34ce0e44
         @Insulin_70_30@ = d18fc471-51b7-4469-83b5-03f0716a1af6
-        @AMITRIPTYLINE@ = 39490513-14ec-4f45-b5b6-b59487d02843
+        @AMITRIPTYLINE@ = 682ca4be-42ed-45ba-a406-6e29275f649c
         @PHENOBARBITAL@ = 7ce04b86-1379-4ab8-8bd8-f8dfc445e1ee
         @PHENYTOIN@ = 105a9382-8509-4a90-8546-29609aea71b1
         @CARBAMAZEPINE@ = e8ffe84f-25ef-49c4-882e-c47c454d44f0
@@ -523,6 +523,14 @@
             <variant locale="en" value="Primary Diagnosis"/>
             <variant locale="rw" value="Uburwayi bw’ibanze"/>
         </code>
+        <code name="Mental_Health_Specific">
+            <variant locale="en" value="Mental Health Specific"/>
+            <variant locale="rw" value="Imiti y'uburwayi bwo mumutwe y'ihariye"/>
+        </code>
+        <code name="General">
+            <variant locale="en" value="General"/>
+            <variant locale="rw" value="Imiti muri rusange"/>
+        </code>
 
     </translations>
 
@@ -530,7 +538,7 @@
 
     <span style="float:right">Paper Form ID: $paperFormId</span>
 
-    <section headerLabel="1. Encounter Details">
+    <section headerLabel="Encounter Details">
         <table cellspacing="0" cellpadding="6" width="100%">
             <tr>
                 <td><img
@@ -574,15 +582,15 @@
             </tr>
         </table>
     </section>
-    <section headerLabel="2.Diagnosis">
+    <section headerLabel="Medication">
         <table border="1">
             <tr>
                 <td>
-                    <strong>Mental Health Specific</strong>
+                    <strong><lookup expression="fn.message('Mental_Health_Specific')"/></strong>
                 </td>
                 <td>
                     <drugOrder drugNames="$@carbamazepine@,$@Phenobarbital@,$@Valproic_acid@,$@phenytoin@,$@Diazepam@,$@Haldol_Decanoate@,$@haloperidol@,
-                                $@Amytryptiline@,$@Biperiden@,$@Chlorpromazine@,$@Keppra@,$@FLUPENTHIXOL@,$@Cinnarizine@,$@Risperidone@,$@Levomepromazine@,$@FLUOXETINE@,$@Citalopram@"
+                                $@AMITRIPTYLINE@,$@Biperiden@,$@Chlorpromazine@,$@Keppra@,$@FLUPENTHIXOL@,$@Cinnarizine@,$@Risperidone@,$@Levomepromazine@,$@FLUOXETINE@,$@Citalopram@"
                                drugLabels="Carbamazepine/Tegretol,Phenobarbital/ Luminal,Depakine/Depakote/Valproic acid,Diphantoine/Phenytoine,
                                Diazepam/ Valium,Haldol Decanoate,Haldol/ Haloperidol,Amytryptiline/ Triptizol,Akineton/ Biperdene,Largatil/Chlorpromazine,Keppra,
                                Fluanxol/ Flupentixol,Stugeron/ Cinnarizine,Respiridone/ Risperdol,Nozinan/ Levomepromazine,Fluoxetine/Prozac,Citalopram/Calexa"
@@ -590,7 +598,9 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>General</strong></td>
+                <td>
+                    <strong><lookup expression="fn.message('General')"/></strong>
+                </td>
                 <td>
                     <drugOrder drugNames="$@PHENOBARBITAL@,$@phenytoin@,$@carbamazepine@,$@VALPROIC_ACID@,$@HALOPERIDOL@,
 $@Triomune-30_(Stavudine_30_mg/Lamivudine_150_mg/Nevirapine_200_mg)@,

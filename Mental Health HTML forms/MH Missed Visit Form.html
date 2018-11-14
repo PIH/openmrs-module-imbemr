@@ -267,6 +267,14 @@
             <variant locale="en" value="RDV to be re-scheduled due to holiday, etc."/>
             <variant locale="rw" value="Gahunda ya muganga yarahinduwe bitewe n’ibiruhuko,..cg izindi mpamvu...  "/>
         </code>
+        <code name="The_attempt">
+            <variant locale="en" value="The attempt"/>
+            <variant locale="rw" value="Inshuro  "/>
+        </code>
+        <code name="Type_of_The_attempt">
+            <variant locale="en" value="Type of The attempt: "/>
+            <variant locale="rw" value="ubwoko bw'Inshuro:  "/>
+        </code>
 
     </translations>
 
@@ -323,10 +331,12 @@
         <table  border="1" width="100%">
             <tr>
                 <td colspan="2">
-                    <strong> The attempt :</strong>
+                    <strong><lookup expression="fn.message('The_attempt')"/></strong>
+
                     <obs conceptId="$@Attempts@" answerConceptIds="$@Attempt_1@,$@Attempt_2@,$@Attempt_3@" answerCodes="Attempt_1,Attempt_2,Attempt_3" style="radio"/>
                     <hr/>
-                    <strong> Type of The attempt :</strong>
+
+                    <strong><lookup expression="fn.message('Type_of_The_attempt')"/></strong>
 
                     <obs conceptId="$@Type_of_Attempt@" answerConceptIds="$@Phone_call@,$@CLINICIAN_HOME_VISITS@" answerCodes="Phone_call,CLINICIAN_HOME_VISITS" style="radio"/>
                 </td>

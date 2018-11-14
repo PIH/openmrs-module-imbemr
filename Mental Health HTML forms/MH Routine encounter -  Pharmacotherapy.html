@@ -963,6 +963,10 @@
             <variant locale="en" value="Appointment Date and Time "/>
             <variant locale="rw" value="Gahunda yo kuzagaruka:itariki N’igihe "/>
         </code>
+        <code name="Routine_Encounter_Psychotherapy_Form">
+            <variant locale="en" value="Routine Encounter Psychotherapy Form "/>
+            <variant locale="rw" value="Kwivuza hakoreshejwe  Imiti "/>
+        </code>
 
 
 
@@ -1221,9 +1225,17 @@
                     <br/><br/>
                     <strong><lookup expression="fn.message('If_YES_please_specify')"/></strong>
                     <br/>
-                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptIds="$@DEPRESSION@,$@ANXIETY@,$@PANIC_ATTACK@,$@Hallucinations@,$@PARANOIA@,$@DELUSIONS@,$@MANIA@,$@SOMATIC_COMPLAINTS@,$@SEIZURE@,$@OTHER_NON-CODED@"
-                         answerCodes="depressed_mood,anxiety,panic_attack,hallucinations,paranoia,delusions,mania,somatic_complaints,seizures,Other"
-                         style="radio"/> :
+
+                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptId="$@DEPRESSION@" answerCode="depressed_mood" style="checkbox"/>
+                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptId="$@ANXIETY@" answerCode="anxiety" style="checkbox"/>
+                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptId="$@PANIC_ATTACK@" answerCode="panic_attack" style="checkbox"/>
+                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptId="$@Hallucinations@" answerCode="hallucinations" style="checkbox"/>
+                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptId="$@PARANOIA@" answerCode="paranoia" style="checkbox"/>
+                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptId="$@DELUSIONS@" answerCode="delusions" style="checkbox"/>
+                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptId="$@MANIA@" answerCode="mania" style="checkbox"/>
+                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptId="$@SOMATIC_COMPLAINTS@" answerCode="somatic_complaints" style="checkbox"/>
+                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptId="$@SEIZURE@" answerCode="seizures" style="checkbox"/>
+                    <obs conceptId="$@NEW_SYMPTOM@" answerConceptId="$@OTHER_NON-CODED@" answerCode="Other" style="checkbox"/>:
                     <obs conceptId="$@Other_new_Symptoms@"/>
                 </td>
             </tr>
@@ -1240,9 +1252,16 @@
                     <br/><br/>
                     <strong><lookup expression="fn.message('Any_NEW_signs/symptoms_of_their_mental_illness_in_the_past_month')"/></strong>
                     <br/>
-                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptIds="$@DEPRESSION@,$@ANXIETY@,$@PANIC_ATTACK@,$@Hallucinations@,$@PARANOIA@,$@DELUSIONS@,$@MANIA@,$@SOMATIC_COMPLAINTS@,$@SEIZURE@,$@OTHER_NON-CODED@"
-                         answerCodes="depressed_mood,anxiety,panic_attack,hallucinations,paranoia,delusions,mania,somatic_complaints,seizures,Other"
-                         style="radio"/>:
+                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptId="$@DEPRESSION@" answerCode="depressed_mood" style="checkbox"/>
+                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptId="$@ANXIETY@" answerCode="anxiety" style="checkbox"/>
+                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptId="$@PANIC_ATTACK@" answerCode="panic_attack" style="checkbox"/>
+                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptId="$@Hallucinations@" answerCode="hallucinations" style="checkbox"/>
+                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptId="$@PARANOIA@" answerCode="paranoia" style="checkbox"/>
+                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptId="$@DELUSIONS@" answerCode="delusions" style="checkbox"/>
+                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptId="$@MANIA@" answerCode="mania" style="checkbox"/>
+                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptId="$@SOMATIC_COMPLAINTS@" answerCode="somatic_complaints" style="checkbox"/>
+                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptId="$@SEIZURE@" answerCode="seizures" style="checkbox"/>
+                    <obs conceptId="$@OLD_SYMPTOM@" answerConceptId="$@OTHER_NON-CODED@" answerCode="Other" style="checkbox"/> :
                     <obs conceptId="$@Other_new_Symptoms@"/>
 
                 </td>

@@ -65,6 +65,9 @@
         @OTHER_NON-CODED@ = 3cee7fb4-26fe-102b-80cb-0017a47871b2
         @Mental_Health_Diagnosis_Stopping_Reason@ = f2d4789d-082c-447c-935d-6aa4ff211882
         @Other_clinical_diagnosis@ = 135d1163-d50a-411c-9ea1-530ca2033e10
+        @is_this_a_primary_diagnosis@ = a6c4a10e-0c00-43e8-bd60-c523d084de2a
+        @YES@ = 3cd6f600-26fe-102b-80cb-0017a47871b2
+
 
 
     </macros>
@@ -184,7 +187,7 @@
             <variant locale="rw" value="Umuhangayiko ukabije wako kanya"/>
         </code>
         <code name="PSYCHOSIS">
-            <variant locale="en" value="Phsychosis unspecified"/>
+            <variant locale="en" value="psychosis unspecified"/>
             <variant locale="rw" value="Uburwayi bwo mu mutwe bweruye"/>
         </code>
         <code name="Psychosis_due_to_other_medical_condition">
@@ -243,6 +246,10 @@
             <variant locale="en" value="Primary Diagnosis"/>
             <variant locale="rw" value="Uburwayi bw’ibanze"/>
         </code>
+        <code name="Yes">
+            <variant locale="en" value="Yes "/>
+            <variant locale="rw" value="Yego  "/>
+        </code>
 
     </translations>
 
@@ -250,7 +257,7 @@
 
     <span style="float:right">Paper Form ID: $paperFormId</span>
 
-    <section headerLabel="1. Encounter Details">
+    <section headerLabel="Encounter Details">
         <table cellspacing="0" cellpadding="6" width="100%">
             <tr>
                 <td><img
@@ -295,7 +302,7 @@
         </table>
     </section>
 
-    <section headerLabel="2.Diagnosis">
+    <section headerLabel="Diagnosis/Indwara">
         <table class="baseline-aligned" border="1">
 
             <tr>
@@ -320,10 +327,8 @@
                              $@Depression_with_Psychotic_Features@,$@Mental_retardation@,$@Disorders_due_to_alcohol_and_illicit_drug_use@,$@Major_Depressive_Disorder@,$@Mood_Disorder_unspecified@,$@Panic_disorder@,$@PSYCHOSIS@,
                              $@Psychosis_due_to_other_medical_condition@,$@Personality_Disorder@,$@PTSD@,$@SCHIZOPHRENIA@,$@Schizoaffective_Disorder@,$@Somatoform_Disorder_Trouble_Somatoform@,$@EPILEPSY@,$@NEUROLOGICAL_SYNDROMES_OTHER@,$@Other_Medical_Disorder@,$@OTHER_NON-CODED@"
 
-                             answerCodes="ANXIETY_DISORDER,Attention_Deficit_Hyperactivity_Disorder,Bipolar_Disorder,Conduct_Disorder_or_Childhood_Behavioral_Disorder,Depression_unspecified,Depression_due_to_other_medical_condition,
-                             Depression_with_Psychotic_Features,Mental_retardation,Disorders_due_to_alcohol_and_illicit_drug_use,Major_Depressive_Disorder,Mood_Disorder_unspecified,Panic_disorder,PSYCHOSIS,Psychosis_due_to_other_medical_condition,
-                             Personality_Disorder,PTSD,SCHIZOPHRENIA,Schizoaffective_Disorder,Somatoform_Disorder_Trouble_Somatoform,EPILEPSY,NEUROLOGICAL_SYNDROMES_OTHER,Other_Medical_Disorder,OTHER_NON-CODED"
-                             showDate="true" dateLabel="Start Date"/>
+                             answerCodes="ANXIETY_DISORDER,Attention_Deficit_Hyperactivity_Disorder,Bipolar_Disorder,Conduct_Disorder_or_Childhood_Behavioral_Disorder,Depression_unspecified,Depression_due_to_other_medical_condition,Depression_with_Psychotic_Features,Mental_retardation,Disorders_due_to_alcohol_and_illicit_drug_use,Major_Depressive_Disorder,Mood_Disorder_unspecified,Panic_disorder,PSYCHOSIS,Psychosis_due_to_other_medical_condition,Personality_Disorder,PTSD,SCHIZOPHRENIA,Schizoaffective_Disorder,Somatoform_Disorder_Trouble_Somatoform,EPILEPSY,NEUROLOGICAL_SYNDROMES_OTHER,Other_Medical_Disorder,OTHER_NON-CODED"
+                             showDate="true" dateLabel="Start Date/Italiki ibanza"/>
                         <br/>
                         <span id="otherDiagnosis">
                                  <obs  conceptId="$@Other_clinical_diagnosis@" labelCode="Other" cols="60"/>
@@ -337,7 +342,7 @@
                             <lookup expression="fn.message('Reason_for_stopping_and_End_Date')"/>
                         </strong>
                     </td>
-                    <td> <obs conceptId="$@Mental_Health_Diagnosis_Stopping_Reason@" showDate="true" dateLabel="End Date" cols="90"/></td>
+                    <td> <obs conceptId="$@Mental_Health_Diagnosis_Stopping_Reason@" showDate="true" dateLabel="End Date/Italiki yanyuma" cols="90"/></td>
                 </tr>
 
                 <tr>
@@ -348,15 +353,7 @@
                     </td>
                     <td>
 
-                        <obs id="diagnosis" conceptId="$@Primary_Diagnosis@"
-                             answerConceptIds="$@ANXIETY_DISORDER@,$@Attention_Deficit_Hyperactivity_Disorder@,$@Bipolar_Disorder@,$@Conduct_Disorder_or_Childhood_Behavioral_Disorder@,$@Depression_unspecified@,$@Depression_due_to_other_medical_condition@,
-                             $@Depression_with_Psychotic_Features@,$@Mental_retardation@,$@Disorders_due_to_alcohol_and_illicit_drug_use@,$@Major_Depressive_Disorder@,$@Mood_Disorder_unspecified@,$@Panic_disorder@,$@PSYCHOSIS@,
-                             $@Psychosis_due_to_other_medical_condition@,$@Personality_Disorder@,$@PTSD@,$@SCHIZOPHRENIA@,$@Schizoaffective_Disorder@,$@Somatoform_Disorder_Trouble_Somatoform@,$@EPILEPSY@,$@NEUROLOGICAL_SYNDROMES_OTHER@,$@Other_Medical_Disorder@,$@OTHER_NON-CODED@"
-
-                             answerCodes="ANXIETY_DISORDER,Attention_Deficit_Hyperactivity_Disorder,Bipolar_Disorder,Conduct_Disorder_or_Childhood_Behavioral_Disorder,Depression_unspecified,Depression_due_to_other_medical_condition,
-                             Depression_with_Psychotic_Features,Mental_retardation,Disorders_due_to_alcohol_and_illicit_drug_use,Major_Depressive_Disorder,Mood_Disorder_unspecified,Panic_disorder,PSYCHOSIS,Psychosis_due_to_other_medical_condition,
-                             Personality_Disorder,PTSD,SCHIZOPHRENIA,Schizoaffective_Disorder,Somatoform_Disorder_Trouble_Somatoform,EPILEPSY,NEUROLOGICAL_SYNDROMES_OTHER,Other_Medical_Disorder,OTHER_NON-CODED"
-                             showDate="true" dateLabel="Start Date"/>
+                        <obs conceptId="$@is_this_a_primary_diagnosis@" answerConceptId="$@YES@" answerCode="Yes" style="radio"/>
 
                         <!--<workflowState workflowId="$@Primary_Diagnosis@"/>-->
                         <!--stateIds="$@ANXIETY_DISORDER@,$@Attention_Deficit_Hyperactivity_Disorder@,$@Bipolar_Disorder@,$@Conduct_Disorder_or_Childhood_Behavioral_Disorder@,$@Depression_unspecified@,$@Depression_due_to_other_medical_condition@,-->

@@ -227,6 +227,10 @@
             <variant locale="en" value=" Who are some people I can contact during times of distress (friends, family, etc.)"/>
             <variant locale="rw" value=" Ninde nakwiyambaza/nahamagara mugihe mfite umuhangayiko ukabije (Inshuti, umuntu wo mumuryango, n’abandi)"/>
         </code>
+        <code name="some_practical_or_community_supports_I_can_contact">
+            <variant locale="en" value="Here are some practical and community support I can contact. (Please fill in their names and phone numbers): "/>
+            <variant locale="rw" value="Abantu bahafi umuntu yakwitabaza  (amazina and numero ya telefone): "/>
+        </code>
 
     </translations>
 
@@ -319,9 +323,10 @@
                 </td>
             </tr>
 
+
             <tr>
                 <td>
-                    <strong> 3. <lookup expression="fn.message('ways_I_can_cope_with_these_feelings')"/></strong> :
+                    <strong> 3. <lookup expression="fn.message('some_practical_or_community_supports_I_can_contact')"/></strong> :
                     <br/>
                     <obs conceptId="$@some_practical_or_community_supports_I_can_contact@" answerConceptId="$@CHW@" answerCode="CHW" style="checkbox"/>
                     <obs conceptId="$@CHW@"/>
