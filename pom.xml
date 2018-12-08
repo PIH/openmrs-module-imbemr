@@ -396,7 +396,17 @@
 					<artifactId>maven-dependency-plugin</artifactId>
 					<version>2.4</version>
 				</plugin>
-			</plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.17</version>
+                    <configuration>
+                        <!-- https://talk.openmrs.org/t/error-could-not-find-or-load-main-class-org-apache-maven-surefire-booter-forkedbooter/20509 -->
+                        <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+                    </configuration>
+                </plugin>
+
+            </plugins>
 		</pluginManagement>
 	</build>
 
