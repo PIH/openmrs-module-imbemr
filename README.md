@@ -23,7 +23,13 @@ Using the OpenMRS SDK to create a Rwanda development enviroment
     9. Chose the JAVA HOME you want to use (should be Java 7)
 
 6. Run "mvn openmrs-sdk:run"
-
+7. If everything starts up, but when you try to go to the login page (or any other page) you get a big stack trace that looks like it is due to Groovy, you need to remove the groovy jar file from the lib file.  Use the desktop file UI to open the openmrs-1.9.x.war file and remove the groovy jar from the logic omod.
+   - Using the system file UI, double click the openmrs war file (ie. ~/openmrs/malawi/openmrs-1.9.11.war)
+   - navigate to the WEB-INF/bundledModules folder
+   - find the logic omod and double click on the logic omod
+   - find the lib/groovy jar file and delete the groovy jar file
+   - delete the ~/openmrs/malawi/tmp directory before running 'mvn openmrs-sdk:run'
+   - run "mvn openmrs-sdk:run" again
 
 Updating your Rwanda development environment when module versions change
 ------------------------------------------------------------------------
