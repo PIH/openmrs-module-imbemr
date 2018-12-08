@@ -15,10 +15,11 @@ Using the OpenMRS SDK to create a Rwanda development enviroment
     2. For "Distribution" or "Platform" chose "Distribution"
     3. For distribution version chose "Other...."
     4. For the distribution, use this module "org.openmrs.module:imbemr:1.0-SNAPSHOT" (or whatever the current version of this module is)
-    5. Choose port 1044 for debugging
-    6. Chose "1) Mysql" (assuming you have mysql installed--the mysql-via-docker option may also work, but I haven't tried it)
-    7. For the DB name, chose the existing Rwanda database you want to you: make sure to select the option to NOT overwrite the existing database
-    8. Enter mysql user/password for a uesr that has rights to create databases, etc
+    5. Choose the port to run tomcat on (usually 8080)
+    5. Choose port to debug on (usually 1044)
+    6. Chose how you want to use MySQL... via a local install of MySQL or docker
+    7. For the DB name, chose the existing Rwanda database you want to use: make sure to select the option to NOT overwrite the existing database
+    8. Enter mysql user/password for a user that has rights to create databases, etc
     9. Chose the JAVA HOME you want to use (should be Java 7)
 
 6. Run "mvn openmrs-sdk:run"   
