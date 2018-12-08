@@ -147,8 +147,8 @@
             <variant locale="rw" value="Nimba ari Yego ,Yaba afite umugambi ?(Niba ari yego,Sobanura"/>
         </code>
         <code name="Does_the_patient_have_the_MEANS_to_execute_this_plan">
-            <variant locale="en" value="If YES, do they have a PLAN? (If YES, please describe)"/>
-            <variant locale="rw" value="Nimba ari Yego ,Yaba afite umugambi ?(Niba ari yego,Sobanura"/>
+            <variant locale="en" value="Does the patient have the MEANS to execute this plan"/>
+            <variant locale="rw" value="Ese umurwayi afite uburyo cg ibyamufasha mu mugambi wo kwiyahura"/>
         </code>
         <code name="NOT_APPLICABLE">
             <variant locale="en" value="N/A "/>
@@ -293,6 +293,10 @@
         <code name="What_is_the_plan_of_action_for_safety_of_this_patient">
             <variant locale="en" value="What is the plan of action for safety of this patient (i.e. referral to psychologist, family, CHW, medication adjustment, etc) "/>
             <variant locale="rw" value="Ni ubuhe buryo bwo kwita ku mutekano w’uyu murwayi( Ni ukuvuga Kumwoherereza abaganga bamuganiriza,Umuryango,Umujyanama w’Ubuzima,Guhindurirwa Imiti,n’ibindi…) "/>
+        </code>
+        <code name="Is_the_CHW_notified_about_this_patient">
+            <variant locale="en" value="Is the Caregiver or CHW notified about this patient "/>
+            <variant locale="rw" value="Umukurikirana cyangwa umujyanama w’ubuzima yaba yaramenyeshejwe uyu murwayi "/>
         </code>
 
     </translations>
@@ -544,12 +548,11 @@
         </table>
     </section>
 
-
     <section>
         <table>
             <tr>
                 <td>
-                    <strong><lookup expression="fn.message('Risk_for_self-harm_or_harm_others_is_thought_to_be')"/></strong> :
+                    <strong><lookup expression="fn.message('Is_the_CHW_notified_about_this_patient')"/></strong> :
                     <br/> <br/>
                     <obs conceptId="$@Is_the_CHW_notified_about_this_patient@" answerConceptIds="$@YES@,$@NO@" answerCodes="Yes,No" style="radio"/>
                     <br/><br/>
