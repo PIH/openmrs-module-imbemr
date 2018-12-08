@@ -22,8 +22,7 @@ Using the OpenMRS SDK to create a Rwanda development enviroment
     8. Enter mysql user/password for a user that has rights to create databases, etc
     9. Chose the JAVA HOME you want to use (should be Java 7)
 
-6. Run "mvn openmrs-sdk:run"   
-7. Note that this currently (as of Nov 23th 2016) does *not* include the MOH billing module
+6. Run "mvn openmrs-sdk:run"
 
 
 Updating your Rwanda development environment when module versions change
