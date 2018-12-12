@@ -35,40 +35,40 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <openMRSVersion>1.9.11</openMRSVersion>
-        <addresshierarchyrwandaVersion>1.2.8</addresshierarchyrwandaVersion>
-        <appframeworkVersion>2.10.0</appframeworkVersion>
-        <appuiVersion>1.8.0</appuiVersion>
-        <calculationVersion>1.2</calculationVersion>
+        <addresshierarchyrwandaVersion>1.2.9-SNAPSHOT</addresshierarchyrwandaVersion>
+        <appframeworkVersion>2.4-SNAPSHOT</appframeworkVersion>
+        <appuiVersion>1.3-SNAPSHOT</appuiVersion>
+        <calculationVersion>1.1</calculationVersion>
         <emrmonitorVersion>1.0.2</emrmonitorVersion>
         <formfilterVersion>1.2</formfilterVersion>
         <groovyVersion>2.2.4</groovyVersion>
-        <heightweighttrackerVersion>1.0.3</heightweighttrackerVersion>
-        <htmlformentryVersion>3.3.0</htmlformentryVersion>
+        <heightweighttrackerVersion>1.0.4-SNAPSHOT</heightweighttrackerVersion>
+        <htmlformentryVersion>3.6.0</htmlformentryVersion>
         <htmlformentry19extVersion>1.7</htmlformentry19extVersion>
         <htmlformflowsheetVersion>1.4.1</htmlformflowsheetVersion>
         <htmlwidgetsVersion>1.7.2</htmlwidgetsVersion>
-        <idgenVersion>4.4.0</idgenVersion>
+        <idgenVersion>4.0</idgenVersion>
         <!--<logicVersion>0.5.2</logicVersion>-->
-        <metadatamappingVersion>1.2.1</metadatamappingVersion>
-        <metadatasharingVersion>1.2.2</metadatasharingVersion>
-        <mohbillingVersion>1.0-SNAPSHOT</mohbillingVersion>
+        <!--<metadatamappingVersion>1.2.1</metadatamappingVersion>-->
+        <metadatamappingVersion>1.0.2</metadatamappingVersion>
+        <metadatasharingVersion>1.1.9</metadatasharingVersion>
+        <mohbillingVersion>0.0.4.3-SNAPSHOT</mohbillingVersion>
         <namephoneticsVersion>1.5</namephoneticsVersion>
         <orderextensionVersion>2.0-SNAPSHOT</orderextensionVersion>
         <patientsummaryVersion>2.1</patientsummaryVersion>
-        <reportingVersion>0.10.4</reportingVersion>
-        <reportingcompatibilityVersion>1.5.8</reportingcompatibilityVersion>
+        <reportingVersion>0.10.7-SNAPSHOT</reportingVersion>
+        <reportingcompatibilityVersion>1.5.9-SNAPSHOT</reportingcompatibilityVersion>
         <reportingobjectgroupVersion>1.1</reportingobjectgroupVersion>
         <rowperpatientreportsVersion>1.5.6-SNAPSHOT</rowperpatientreportsVersion>
         <rwandahivflowsheetVersion>0.5.5</rwandahivflowsheetVersion>
-        <rwandaprimarycareVersion>2.0.7</rwandaprimarycareVersion>
-        <rwandareportsVersion>2.5.8-SNAPSHOT</rwandareportsVersion>
+        <rwandaprimarycareVersion>2.0.8-SNAPSHOT</rwandaprimarycareVersion>
+        <rwandareportsVersion>2.6.0-SNAPSHOT</rwandareportsVersion>
         <serializationVersion>0.2.12</serializationVersion>
         <simplelabentryVersion>1.8</simplelabentryVersion>
         <syncVersion>1.3</syncVersion>
-        <uicommonsVersion>2.4.0</uicommonsVersion>
-        <uiframeworkVersion>3.11.0</uiframeworkVersion>
+        <uicommonsVersion>1.8</uicommonsVersion>
+        <uiframeworkVersion>3.4-SNAPSHOT</uiframeworkVersion>
         <usagestatisticsVersion>1.4.2</usagestatisticsVersion>
-        <webservicesRestVersion>2.14</webservicesRestVersion>
         <omodExportVersion>1.0</omodExportVersion>
         <validationVersion>1.0.1</validationVersion>
         <patientFlagsVersion>1.3.4</patientFlagsVersion>
@@ -76,6 +76,8 @@
         <metadatadeployVersion>1.9.0</metadatadeployVersion>
         <uilibraryVersion>2.0.6</uilibraryVersion>
         <providermanagementVersion>2.9.0</providermanagementVersion>
+        <webservicesRestVersion>2.14</webservicesRestVersion>
+
         <!--<htmlwidgetsVersion>1.8.0</htmlwidgetsVersion>-->
 
         <eventVersion>2.6.0</eventVersion>
@@ -86,7 +88,13 @@
         <htmlformentryuiVersion>1.6.4</htmlformentryuiVersion>
         <formentryappVersion>1.4.2</formentryappVersion>
 
-	</properties>
+        <formconceptsVersion>1.0-SNAPSHOT</formconceptsVersion>
+        <laboratorymanagementVersion>0.1.0.11-SNAPSHOT</laboratorymanagementVersion>
+        <pharmacymanagementVersion>1.3.5-SNAPSHOT</pharmacymanagementVersion>
+
+
+
+    </properties>
 
     <dependencies>
 
@@ -351,6 +359,30 @@
             <groupId>org.openmrs.module</groupId>
             <artifactId>registrationcore-api</artifactId>
             <version>${registrationcoreVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+
+
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>formconcepts-api</artifactId>
+            <version>${formconceptsVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>laboratorymanagement-api</artifactId>
+            <version>${laboratorymanagementVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>pharmacymanagement-api</artifactId>
+            <version>${pharmacymanagementVersion}</version>
             <scope>provided</scope>
         </dependency>
 
