@@ -32,11 +32,13 @@
         @OTHER_VALVULAR_DISEASE@ = b61c9df7-8a4f-41cd-af56-059c264fba24
         @NON-CARDIAC@ = 4315bc04-2e33-46e5-b3dc-2d844bd5bef7
         @OTHER_CARDIAC_DIAGNOSIS@ = 32ca97b5-c1ee-476f-86bf-1a6e7aa3bef1
+        @other_HEART_FAILURE_DIAGNOSIS@ = 45ae9fa6-989a-46b4-b4cd-5484dc4deb2b
         @Preceptor@ = 9131a1ce-1807-4e37-a619-62f7dcbd443e
         @NONE@ = 3cd743f8-26fe-102b-80cb-0017a47871b2
         @Dr_Rusingiza@ = 9cae00de-2abd-46c4-956c-feb834022990
         @other_Preceptor@ = cd68fb72-ded7-44c4-8b7a-43950e851407
         @Indication_for_exam@ = e7cbc8b7-acbc-4dd3-81c0-e795ec53a8f4
+        @HEART_FAILURE_DIAGNOSIS@ = e6bb1491-43b5-46b8-ba55-bd1ad188123c
         @OEDEMA@ = 3cd12a04-26fe-102b-80cb-0017a47871b2
         @Dyspnea_on_exertion@ = 181ee577-2baf-4523-8664-4514d7b6a150
         @Dyspnea_at_rest@ = 4c14d1df-61aa-4c32-93e3-f33ad0c7eeaa
@@ -54,6 +56,7 @@
         @OUTPATIENT_Department@ = 9e5e7ffc-6eb8-4d0f-a1a8-319eed6399fb
         @HOSPITAL_PEDIATRICS@ = 3ce6ae60-26fe-102b-80cb-0017a47871b2
         @OTHER_PROGRAM_THAT_ORDERED_TEST@ = 3ce1e876-26fe-102b-80cb-0017a47871b2
+
 
     </macros>
 
@@ -234,7 +237,7 @@
         <table class="baseline-aligned">
             <tr>
                 <th colspan="5" class="tableHeader">
-                   <CENTER>  CARDIOLOGY NURSE ECHO </CENTER>
+                    <CENTER>  CARDIOLOGY NURSE ECHO </CENTER>
                 </th>
 
             </tr>
@@ -313,20 +316,20 @@
                     <obs conceptId="$@Other_Echo_Findings@" />
                 </td>
                 <td>
-                    <obs conceptId="$@CARDIAC_DIAGNOSIS_AT_BEGINNING_OF_ENCOUNTER@" answerConceptId="$@CARDIOMYOPATHY@" answerLabel="Cardiomyopathy" style="checkbox"/> <br/>
-                    <obs conceptId="$@CARDIAC_DIAGNOSIS_AT_BEGINNING_OF_ENCOUNTER@" answerConceptId="$@MITRAL_STENOSIS@" answerLabel="Mitral Stenosis" style="checkbox"/> <br/>
-                    <obs conceptId="$@CARDIAC_DIAGNOSIS_AT_BEGINNING_OF_ENCOUNTER@" answerConceptId="$@HYPERTENSIVE_HEART_DISEASE@" answerLabel="Hypertensive heart disease" style="checkbox"/>  <br/>
-                    <obs conceptId="$@CARDIAC_DIAGNOSIS_AT_BEGINNING_OF_ENCOUNTER@" answerConceptId="$@Right_ventricular_failure@" answerLabel="Right ventricular failure" style="checkbox"/> <br/>
-                    <obs conceptId="$@CARDIAC_DIAGNOSIS_AT_BEGINNING_OF_ENCOUNTER@" answerConceptId="$@PERICARDIAL_DISEASE@" answerLabel="Pericardial disease" style="checkbox"/> <br/>
-                    <obs conceptId="$@CARDIAC_DIAGNOSIS_AT_BEGINNING_OF_ENCOUNTER@" answerConceptId="$@CONGENITAL_HEART_DISEASE@" answerLabel="Congenital heart disease" style="checkbox"/> <br/>
-                    <obs conceptId="$@CARDIAC_DIAGNOSIS_AT_BEGINNING_OF_ENCOUNTER@" answerConceptId="$@OTHER_VALVULAR_DISEASE@" answerLabel="Other valvular disease" style="checkbox"/> <br/>
-                    <obs conceptId="$@CARDIAC_DIAGNOSIS_AT_BEGINNING_OF_ENCOUNTER@" answerConceptId="$@NON-CARDIAC@" answerLabel="Non-cardiac" style="checkbox"/> <br/>
-                    <obs conceptId="$@CARDIAC_DIAGNOSIS_AT_BEGINNING_OF_ENCOUNTER@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="OTHER" style="checkbox"/>: <br/>
-                    <obs conceptId="$@OTHER_CARDIAC_DIAGNOSIS@" />
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@CARDIOMYOPATHY@" answerLabel="Cardiomyopathy" style="checkbox"/> <br/>
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@MITRAL_STENOSIS@" answerLabel="Mitral Stenosis" style="checkbox"/> <br/>
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@HYPERTENSIVE_HEART_DISEASE@" answerLabel="Hypertensive heart disease" style="checkbox"/>  <br/>
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@Right_ventricular_failure@" answerLabel="Right ventricular failure" style="checkbox"/> <br/>
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@PERICARDIAL_DISEASE@" answerLabel="Pericardial disease" style="checkbox"/> <br/>
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@CONGENITAL_HEART_DISEASE@" answerLabel="Congenital heart disease" style="checkbox"/> <br/>
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@OTHER_VALVULAR_DISEASE@" answerLabel="Other valvular disease" style="checkbox"/> <br/>
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@NON-CARDIAC@" answerLabel="Non-cardiac" style="checkbox"/> <br/>
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="OTHER" style="checkbox"/>: <br/>
+                    <obs conceptId="$@other_HEART_FAILURE_DIAGNOSIS@" />
                 </td>
                 <td>
                     <obs conceptId="$@Preceptor@" answerConceptId="$@NONE@" answerLabel="None" style="checkbox"/> <br/>
-                    <obs conceptId="$@Preceptor@" answerConceptId="$@Dr_Rusingiza@" answerLabel="Dr Rusingiza" style="checkbox"/> <br/>
+                    <obs conceptId="$@Preceptor@" answerConceptId="$@Dr_Rusingiza@" answerLabel="Dr Rusingiza" style="checkbox"/> <br/>
                     <obs conceptId="$@Preceptor@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>: <br/>
                     <obs conceptId="$@other_Preceptor@" />
                 </td>
