@@ -46,7 +46,7 @@
         @PALPITATIONS@ = 228dce63-f3c5-4e8d-a14d-7ec284ded971
         @CHEST_PAIN@ = 3ccd2364-26fe-102b-80cb-0017a47871b2
         @Prior_cardiac_surgery@ = efeed85a-9773-4f2c-b9c4-dfd35766b032
-        @Known_heart@ = 20ebfd7d-5fd3-431c-bdac-f25097b17c94
+        @heart_failure_follow_up@ = 20ebfd7d-5fd3-431c-bdac-f25097b17c94
         @LOUDNESS_OF_MURMUR@ = e4500062-29e4-4734-abbc-32ff749a394a
         @ASCITES@ = 3cd1fce0-26fe-102b-80cb-0017a47871b2
         @PROGRAM_THAT_ORDERED_TEST@ = 3ce1e0e2-26fe-102b-80cb-0017a47871b2
@@ -56,6 +56,8 @@
         @OUTPATIENT_Department@ = 9e5e7ffc-6eb8-4d0f-a1a8-319eed6399fb
         @HOSPITAL_PEDIATRICS@ = 3ce6ae60-26fe-102b-80cb-0017a47871b2
         @OTHER_PROGRAM_THAT_ORDERED_TEST@ = 3ce1e876-26fe-102b-80cb-0017a47871b2
+        @post_cardiac_surgery@ = 5b04415b-3454-45e0-b080-c65e7399e93d
+        @resolved_cardiomyopathy@ = f59fcf93-2d22-4812-b768-9f1eab2eafc6
 
 
     </macros>
@@ -272,13 +274,13 @@
                 <td>
                     <obs conceptId="$@Indication_for_exam@" answerConceptId="$@OEDEMA@" answerLabel="Oedema" style="checkbox"/> <br/>
                     <obs conceptId="$@Indication_for_exam@" answerConceptId="$@Dyspnea_on_exertion@" answerLabel="Dyspnea on exertion" style="checkbox"/> <br/>
-                    <obs conceptId="$@Indication_for_exam@" answerConceptId="$@Dyspnea_at_rest@" answerLabel="Dyspnea at rest" style="checkbox"/> Dyspnea at rest <br/>
+                    <obs conceptId="$@Indication_for_exam@" answerConceptId="$@Dyspnea_at_rest@" answerLabel="Dyspnea at rest" style="checkbox"/> <br/>
                     <obs conceptId="$@Indication_for_exam@" answerConceptId="$@ORTHOPNEA@" answerLabel="Orthopnea" style="checkbox"/> <br/>
                     <obs conceptId="$@Indication_for_exam@" answerConceptId="$@PALPITATIONS@" answerLabel="Palpitations" style="checkbox"/>  <br/>
                     <obs conceptId="$@Indication_for_exam@" answerConceptId="$@CHEST_PAIN@" answerLabel="Chest pain" style="checkbox"/> <br/>
-                    <obs conceptId="$@Indication_for_exam@" answerConceptId="$@Prior_cardiac_surgery@" answerLabel="Prior cardiac surgery" style="checkbox"/> <br/>
-                    <obs conceptId="$@Indication_for_exam@" answerConceptId="$@Known_heart@" answerLabel="Known heart" style="checkbox"/> <br/>
-                    failure: <br/>
+                    <obs conceptId="$@Indication_for_exam@" answerConceptId="$@post_cardiac_surgery@" answerLabel="Post cardiac surgery" style="checkbox"/> <br/>
+                    <obs conceptId="$@Indication_for_exam@" answerConceptId="$@heart_failure_follow_up@" answerLabel="heart failure follow up" style="checkbox"/> : <br/>
+                    <br/>
                     &#160;&#160;&#160;&#160;<obs conceptId="$@NYHA_CLASS@" answerConceptId="$@NYHA_CLASS_1@" answerLabel="NYHA 1" style="checkbox"/> <br/>
                     &#160;&#160;&#160;&#160;<obs conceptId="$@NYHA_CLASS@" answerConceptId="$@NYHA_CLASS_2@" answerLabel="NYHA 2" style="checkbox"/> <br/>
                     &#160;&#160;&#160;&#160;<obs conceptId="$@NYHA_CLASS@" answerConceptId="$@NYHA_CLASS_3@" answerLabel="NYHA 3" style="checkbox"/> <br/>
@@ -309,14 +311,17 @@
                     <obs conceptId="$@IVC_dilated_collapses_50%@" answerConceptIds="$@YES@,$@NO@,$@unseen@" answerLabels="YES,NO,unseen" style="radio"/>
                     <br/> <br/>
 
-                    <obs conceptId="$@Echo_Findings@" answerConceptId="$@NORMAL@" answerLabel="NORMAL" style="checkbox"/>
-                    <br/>
+                    <!--<obs conceptId="$@Echo_Findings@" answerConceptId="$@NORMAL@" answerLabel="NORMAL" style="checkbox"/>-->
+                    <!--<br/>-->
 
                     <obs conceptId="$@Echo_Findings@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="OTHER" style="checkbox"/>: <br/> <br/>
                     <obs conceptId="$@Other_Echo_Findings@" />
                 </td>
                 <td>
+
                     <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@CARDIOMYOPATHY@" answerLabel="Cardiomyopathy" style="checkbox"/> <br/>
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@resolved_cardiomyopathy@" answerLabel="Resolved Cardiomyopathy" style="checkbox"/> <br/>
+                    <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@post_cardiac_surgery@" answerLabel="post cardiac surgery" style="checkbox"/> <br/>
                     <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@MITRAL_STENOSIS@" answerLabel="Mitral Stenosis" style="checkbox"/> <br/>
                     <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@HYPERTENSIVE_HEART_DISEASE@" answerLabel="Hypertensive heart disease" style="checkbox"/>  <br/>
                     <obs conceptId="$@HEART_FAILURE_DIAGNOSIS@" answerConceptId="$@Right_ventricular_failure@" answerLabel="Right ventricular failure" style="checkbox"/> <br/>
