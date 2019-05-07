@@ -22,7 +22,6 @@
         @ANTICONVULSANTS_RECEIVED@=ef2db345-dec3-4d99-9cb5-2dacb72a5dc1
         @CONVULSIONS_DURATION@=42edb825-41d0-41e3-8f19-a6a1b114ef72
         @DISCHARGE_DATE@=201e11b1-13ff-4f5f-8e1a-04252fa315db
-        @WEIGHT_GAIN_WEEK_PRIOR_TO_DISCHARGE@=5a713c0c-834c-4beb-a86e-5b19980c6c3b
         @COMMENTS@=a7e9d337-1bdb-4e9c-945f-d4dfe06abbb8
         @IRON@=3cf0d6f6-26fe-102b-80cb-0017a47871b2
         @ANTICONVULSANTS_ON_DISCHARGE@=55f01482-3919-48da-bcd0-aaba6ef79dab
@@ -59,6 +58,26 @@
         @POSITIVE@ = 3cd3a7a2-26fe-102b-80cb-0017a47871b2
         @NEGATIVE@ = 3cd28732-26fe-102b-80cb-0017a47871b2
         @Antibiotic_therapy@ = fa4afeb7-a905-4653-b83b-ac387cf0cd5f
+        @WEIGHT_GAIN@ = 3cedf972-26fe-102b-80cb-0017a47871b2
+        @Discharge_Weight@ = 9b17edae-ae0d-40bc-9139-43cad40bccd0
+        @Reasons_for_Referral@ = 1aa373f4-4db5-4b01-bce0-c10a636bb931
+        @Low_Birth_Weight@ = 4f628144-0a53-4e06-b5d1-b2bc0beebfc7
+        @Premature_Birth@ = 113841AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        @Hypoxic_ischemic_encephalopathy@ = 8860c040-c0d1-4e3b-aa26-7e19b8186286
+        @Hydrocephalus_(HC_Z-score@ = f602d28d-0914-4468-baa7-43a230b994a7
+        @Trisomy_21_(suspected_or_confirmed)@ = 3719ec38-d852-45aa-90a6-1c82e560624e
+        @Cleft_Lip_or_Palate@ = 038e1355-d46d-47a3-903e-7c5b876fa89c
+        @Other_Developmental_Delay_Suspected_Neuromuscular_Disease_and_Suspected_Genetic_Syndromes@ = 1850960b-3695-4508-86e8-cfdd639a240a
+        @Reasons_for_Referral_non_coded@ = 9c140c92-44bb-4070-ad8f-ed22affc1d8d
+        @TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@ = c3e1d8d4-3040-49dd-ad66-c0928d912941
+        @HEALTH_CENTER@ = 7e327a1a-c1df-4712-ab5d-e05dc0dac35d
+        @DISTRICT_HOSPITAL@ = e3f356b2-a340-47df-8b87-b70224437833
+        @OTHER_TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL_NON-CODED@ = 5fe2af49-b9c0-4c23-8d30-335a84b3c991
+        @Prolonged_Rupture_Membrane@ = 0e5039cc-7dd6-4d9d-9d6a-b41ce4ad0f48
+        @Maternal_Fever@ = cad92465-303c-46d3-8a3b-de94a26b1b69
+        @Supplemental_Oxygen@ = c5bb2987-b75f-40a8-a300-f938cec9264f
+        @CPAP@ = 0839e66a-08ed-41d6-9964-6bb2e72e3215
+        @CONVULSIONS_DANGER_SIGNS_PRESENT@=ec7de7cf-055f-48ac-897a-f8c789a7467b
 
 
     </macros>
@@ -356,7 +375,7 @@
         </table>
     </section> <section headerLabel="Pediatric Development Clinic Referral Form">
         <table border="1" cellspacing="0" cellpadding="6" width="100%">
-            <tr class="disabled">
+            <tr >
                 <td width="20%"><b>Date of Admission</b></td>
                 <td> <obs conceptId="$@ADMISSION_DATE@" />   </td>
 
@@ -377,10 +396,10 @@
                 <td width="20%"><b>Birth Weight</b></td>
                 <td><obs conceptId="$@BIRTHWEIGHT_KG@" id="weight"/>(grams) entered but saved in Kg</td>
             </tr>
-            <tr class="disabled">
+            <tr >
                 <td><b>Birth History</b></td>
                 <td>
-                    <table width="100%" class="disdiv">
+                    <table width="100%" >
 
                         <tr>
                             <td colspan="9">
@@ -424,15 +443,15 @@
                                     </tr>
 
                                     <tr ><td class="checkboxGroup"><span id="checkboxRadio">Prolonged Rupture Membrane:
-			<obs conceptId="3ce0ce96-26fe-102b-80cb-0017a47871b2" answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2" answerLabel="Yes" />
+			<obs conceptId="$@Prolonged_Rupture_Membrane@" answerConceptId="$@YES@" answerLabel="Yes" />
 			 &#160;&#160;&#160;&#160;&#160;&#160; 
-			<obs conceptId="3ce0ce96-26fe-102b-80cb-0017a47871b2" answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2" answerLabel="No" />
+			<obs conceptId="$@Prolonged_Rupture_Membrane@" answerConceptId="$@NO@" answerLabel="No" />
 			</span></td>
                                     </tr>
                                     <tr ><td class="checkboxGroup"><span id="checkboxRadio">Maternal Fever:
-			<obs conceptId="3ce0ce96-26fe-102b-80cb-0017a47871b2" answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2" answerLabel="Yes" />
+			<obs conceptId="$@Maternal_Fever@" answerConceptId="$@YES@" answerLabel="Yes" />
 			 &#160;&#160;&#160;&#160;&#160;&#160; 
-			<obs conceptId="3ce0ce96-26fe-102b-80cb-0017a47871b2" answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2" answerLabel="No" />
+			<obs conceptId="$@Maternal_Fever@" answerConceptId="$@NO@" answerLabel="No" />
 			</span></td>
                                     </tr>
                                 </table>
@@ -441,7 +460,6 @@
                     </table>
                 </td>
             </tr>
-
 
             <tr>
                 <td><b>Neonatal Unit Stay:</b></td>
@@ -458,20 +476,20 @@
 			</span></td>
 
                                     </tr>
-                                    <tr class="disabled"><td class="checkboxGroup"><span id="checkboxRadio" class="disdiv">Supplemental Oxygen:
-			<obs conceptId="3cee8c3e-26fe-102b-80cb-0017a47871b2" answerConceptId="3cd7af5a-26fe-102b-80cb-0017a47871b2" answerLabel="Yes" />
-			<obs conceptId="3cee8c3e-26fe-102b-80cb-0017a47871b2" answerConceptId="3cd7b0ea-26fe-102b-80cb-0017a47871b2" answerLabel="No" />
+                                    <tr ><td class="checkboxGroup"><span id="checkboxRadio" >Supplemental Oxygen:
+			<obs conceptId="$@Supplemental_Oxygen@" answerConceptId="$@YES@" answerLabel="Yes" />
+			<obs conceptId="$@Supplemental_Oxygen@" answerConceptId="$@NO@" answerLabel="No" />
 			&#160;&#160;&#160;<b>If yes,</b> on oxygen for<obs conceptId="$@OXYGEN_DURATION@" style="radio"/>
 			</span></td>
                                     </tr>
-                                    <tr class="disabled"><td class="checkboxGroup"><span id="checkboxRadio" class="disdiv">If yes, did the infant require CPAP?
-			<obs conceptId="3ce0ce96-26fe-102b-80cb-0017a47871b2" answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2" answerLabel="Yes" />
-			<obs conceptId="3ce0ce96-26fe-102b-80cb-0017a47871b2" answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2" answerLabel="No" />
+                                    <tr ><td class="checkboxGroup"><span id="checkboxRadio" >If yes, did the infant require CPAP?
+			<obs conceptId="$@CPAP@" answerConceptId="$@YES@" answerLabel="Yes" />
+			<obs conceptId="$@CPAP@" answerConceptId="$@NO@" answerLabel="No" />
 			</span></td>
                                     </tr>
-                                    <tr class="disabled"><td ><span id="checkboxRadio" class="disdiv">Convulsions:
-			<obs conceptId="3ce0ce96-26fe-102b-80cb-0017a47871b2" answerConceptId="3cd6f600-26fe-102b-80cb-0017a47871b2" answerLabel="Yes" />
-			<obs conceptId="3ce0ce96-26fe-102b-80cb-0017a47871b2" answerConceptId="3cd6f86c-26fe-102b-80cb-0017a47871b2" answerLabel="No" />
+                                    <tr ><td ><span id="checkboxRadio" >Convulsions:
+			<obs conceptId="$@CONVULSIONS_DANGER_SIGNS_PRESENT@" answerConceptId="$@YES@" answerLabel="Yes" />
+			<obs conceptId="$@CONVULSIONS_DANGER_SIGNS_PRESENT@" answerConceptId="$@NO@" answerLabel="No" />
 			&#160;&#160;&#160;<b>IF yes,</b> did the child receive anticonvulsants 
 			<obs conceptId="$@ANTICONVULSANTS_RECEIVED@" answerConceptId="$@YES@" style="radio"/>
 			<obs conceptId="$@ANTICONVULSANTS_RECEIVED@" answerConceptId="$@NO@" style="radio"/>
@@ -490,11 +508,12 @@
                         <tr >
                             <td colspan="9">
                                 <table width="100%" >
-                                    <tr class="disabled"><td class="checkboxGroup" ><span id="checkboxRadio"  class="disdiv">Date of Discharge:<obs conceptId="$@DISCHARGE_DATE@"/></span></td>
+                                    <tr ><td class="checkboxGroup" ><span id="checkboxRadio"  >Date of Discharge:<obs conceptId="$@DISCHARGE_DATE@"/></span></td>
                                     </tr>
-                                    <tr class="disabled"><td ><span class="disdiv" id="checkboxRadio">Discharge Weight:
-			<obs conceptId="3ce93b62-26fe-102b-80cb-0017a47871b2" />(grams)
-			<div style ="color:#808080" >Weight gain in week prior to discharge __________ (grams/day)</div>
+                                    <tr ><td ><span id="checkboxRadio">Discharge Weight:
+			<obs conceptId="$@Discharge_Weight@" />(grams)
+			<div >Weight gain in week prior to discharge
+                                <obs conceptId="$@WEIGHT_GAIN@" /> (grams/day)</div>
 			</span></td>
                                     </tr>
                                     <!--
@@ -539,7 +558,7 @@
 
                                         </td>
                                     </tr>
-                                    <tr class="disabled"><td class="checkboxGroup"><span id="checkboxRadio">
+                                    <tr ><td class="checkboxGroup"><span id="checkboxRadio">
 
                                         Other Notes: <obs conceptId="$@COMMENTS@" rows="4" cols="90"/></span>
                                     </td>
@@ -554,17 +573,17 @@
                         <td>Reason for Referral:<br/>
 
 
-                            <obs conceptId="1aa373f4-4db5-4b01-bce0-c10a636bb931" answerConceptId="4f628144-0a53-4e06-b5d1-b2bc0beebfc7" answerLabel="Low Birth Weight (&#60; 2000g)" /> <br/>
-                            <obs conceptId="1aa373f4-4db5-4b01-bce0-c10a636bb931" answerConceptId="113841AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" answerLabel="Premature Birth (gestational age &#60; 37 weeks)" /><br/>
-                            <obs conceptId="1aa373f4-4db5-4b01-bce0-c10a636bb931" answerConceptId="8860c040-c0d1-4e3b-aa26-7e19b8186286" answerLabel="Hypoxic ischemic encephalopathy(history of perinatal convulsion, no cry at 5 minutes or Apgar score &#60; 5 at 5 minutes)" /><br/>
-                            <obs conceptId="1aa373f4-4db5-4b01-bce0-c10a636bb931" answerConceptId="$@CENTRAL_NERVOUS_SYSTEM_INFECTION@" answerLabel="Central Nervous System Infection" /><br/>
-                            <obs conceptId="1aa373f4-4db5-4b01-bce0-c10a636bb931" answerConceptId="f602d28d-0914-4468-baa7-43a230b994a7" answerLabel="Hydrocephalus(HC Z-score > +3, ICP, sunsetting eyes, new seizures with increasing HC, HC crossing &#62; 2 z-score lines) " /><br/>
-                            <obs conceptId="1aa373f4-4db5-4b01-bce0-c10a636bb931" answerConceptId="3719ec38-d852-45aa-90a6-1c82e560624e" answerLabel="Trisomy 21 (suspected or confirmed)" /> <br/>
-                            <obs conceptId="1aa373f4-4db5-4b01-bce0-c10a636bb931" answerConceptId="038e1355-d46d-47a3-903e-7c5b876fa89c" answerLabel="Cleft Lip or Palate " /><br/>
-                            <obs conceptId="1aa373f4-4db5-4b01-bce0-c10a636bb931" answerConceptId="1850960b-3695-4508-86e8-cfdd639a240a" answerLabel="Other Developmental Delay, Suspected Neuromuscular Disease, and Suspected Genetic Syndromes" /><br/>
-                            <obs conceptId="1aa373f4-4db5-4b01-bce0-c10a636bb931" answerConceptId="$@SEVERE_MALNUTRITION@" answerLabel="Severe malnutrition requiring hospitalization (infants &#60; 12 months of age)" /><br/>
-                            <obs conceptId="1aa373f4-4db5-4b01-bce0-c10a636bb931" answerConceptId="3cee7fb4-26fe-102b-80cb-0017a47871b2" answerLabel="Others:" />
-                            <obs conceptId="9c140c92-44bb-4070-ad8f-ed22affc1d8d" /><br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Low_Birth_Weight@" answerLabel="Low Birth Weight (&#60; 2000g)" /> <br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Premature_Birth@" answerLabel="Premature Birth (gestational age &#60; 37 weeks)" /><br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Hypoxic_ischemic_encephalopathy@" answerLabel="Hypoxic ischemic encephalopathy(history of perinatal convulsion, no cry at 5 minutes or Apgar score &#60; 5 at 5 minutes)" /><br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@CENTRAL_NERVOUS_SYSTEM_INFECTION@" answerLabel="Central Nervous System Infection" /><br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Hydrocephalus_(HC_Z-score@" answerLabel="Hydrocephalus(HC Z-score > +3, ICP, sunsetting eyes, new seizures with increasing HC, HC crossing &#62; 2 z-score lines) " /><br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Trisomy_21_(suspected_or_confirmed)@" answerLabel="Trisomy 21 (suspected or confirmed)" /> <br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Cleft_Lip_or_Palate@" answerLabel="Cleft Lip or Palate " /><br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Other_Developmental_Delay_Suspected_Neuromuscular_Disease_and_Suspected_Genetic_Syndromes@" answerLabel="Other Developmental Delay, Suspected Neuromuscular Disease, and Suspected Genetic Syndromes" /><br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@SEVERE_MALNUTRITION@" answerLabel="Severe malnutrition requiring hospitalization (infants &#60; 12 months of age)" /><br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Others:" />
+                            <obs conceptId="$@Reasons_for_Referral_non_coded@" /><br/>
 
                         </td>
                     </tr>
@@ -575,21 +594,24 @@
                 <td><b>Referred by:</b></td>
                 <td class="checkboxGroup"><span id="checkboxRadio">
 		     <table width="100%"><tr>
-                 <td><obs conceptId="c3e1d8d4-3040-49dd-ad66-c0928d912941"
-                          answerConceptId="3ce0d300-26fe-102b-80cb-0017a47871b2"
+                 <td><obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@"
+                          answerConceptId="$@HEALTH_CENTER@"
                           answerLabel="Health Center" /><br />
                  </td>
-                 <td><obs conceptId="c3e1d8d4-3040-49dd-ad66-c0928d912941"
-                          answerConceptId="e3f356b2-a340-47df-8b87-b70224437833"
+                 <td><obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@"
+                          answerConceptId="$@DISTRICT_HOSPITAL@"
                           answerLabel="District Hospital" />
                  </td>
                  <td>
-                     <obs conceptId="c3e1d8d4-3040-49dd-ad66-c0928d912941"
-                          answerConceptId="3cee7fb4-26fe-102b-80cb-0017a47871b2"
-                          answerLabel="Other:" /></td></tr>
+                     <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@"
+                          answerConceptId="$@OTHER_NON-CODED@"
+                          answerLabel="Other:" />
+                    <obs conceptId = "$@OTHER_TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL_NON-CODED@" />
+
+                 </td></tr>
              </table></span></td>
             </tr>
-            <tr class="disabled" >
+            <tr >
                 <td><b>Timeframe for Follow- up:</b></td>
                 <td>
                     <table width="100%">

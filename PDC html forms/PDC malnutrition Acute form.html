@@ -52,6 +52,19 @@
         @PATIENT_REFERRED_TO_DISTRICT_HOSPITAL@ = a01eda34-ba5d-48f1-8a40-7e05a850a31d
         @Continue_PDC_malnutrition_treatment@ = e7fd6e22-42ea-4aae-984e-655afc42531c
         @Cured_(malnutrition)@ = f0585282-a90d-4c20-88ee-2d1b6fb21b4b
+        @Breastfeeding_Concerns@ = 1670fd60-ebcf-41d5-ae4c-bcaab5757b4e
+        @Not_well_attached_for_breastfeeding@ = 2839c2bc-4784-4306-af23-dc91121ab79d
+        @Not_sucking_effectively@ = b4b4211a-2e15-4757-8856-1691068ae724
+        @Receives_other_liquids/foods@ = 13c73335-6d2c-49d3-966f-0d19a963cd32
+        @Non-Breastfeeding_Concerns@ = afae4439-48df-494c-934e-375f5e606bd4
+        @Innappropriate_BMS@ = ae83b4e7-ec90-4acf-a9e2-1bd31a976ead
+        @less_than_500ml_BMS/24_hours@ = fe5d99f4-cdc0-4db0-a420-3f5040cda0a4
+        @Poor_preparation_for_Breast_Feeding@ = a035d114-1522-461b-9cb6-154459a70afe
+        @Breastfed_and_non-breastfed_concerns@ = 205a2ed1-b711-4e77-b010-5b23dae2032b
+        @less_than_8_feeds_24_hours@ = 1c758c0d-d972-474b-a584-fa6ce97f1f86
+        @Refuses_to_feed@ = 5d118e7a-c8fc-45a8-b21a-0d8cd65f257c
+        @ORAL_THRUSH@ = 3cebb5fe-26fe-102b-80cb-0017a47871b2
+        @Severe_feeding_problem@ = b8a6a4f2-931f-40e3-af76-36d0d5400369
     </macros>
 
 
@@ -169,6 +182,40 @@
         }
         }
     </style>
+    <script type="text/javascript">
+        $j(document).ready(function() {
+
+
+        $j("#theWholeTable").hide();
+
+
+			$j("input#first").click(function(){
+			    $j("#theWholeTable").show();
+				$j(".firstVisit").show();
+                $j(".firstAndSecondVisits").show();
+                $j(".secondAndAbove").hide();
+                $j(".thirdAndabove").hide();
+
+			});
+			$j("input#second").click(function(){
+			    $j("#theWholeTable").show();
+				$j(".firstVisit").hide();
+                $j(".firstAndSecondVisits").show();
+                $j(".secondAndAbove").show();
+                $j(".thirdAndabove").hide();
+
+			});
+			$j("input#other").click(function(){
+			    $j("#theWholeTable").show();
+				$j(".firstVisit").hide();
+                $j(".firstAndSecondVisits").hide();
+                $j(".secondAndAbove").show();
+                $j(".thirdAndabove").show();
+
+			});
+
+		});
+    </script>
     <div id="container"  style="width:100%">
         <section>
 
@@ -207,27 +254,21 @@
                     </td>
                 </tr>
             </table>
-            <table BORDER="1">
+            <table>
                 <tr>
-                    <th class="tableHeader">
-                        <center>ASSESSMENT</center>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Maternal MUAC(mm)</strong>
-                        <obs conceptId="$@Material_MUAC_(MM)@" answerConceptIds="$@lessthan230@,$@greaterorequal230@,$@Not_available@" style="radio"/>
-                        <br/>
-                        <strong>Maternal Concerns </strong>
-                        <obs conceptId="$@Maternal_Concerns@" answerConceptIds="$@NONE@,$@Too_Little_Milk@,$@OTHER_NON-CODED@"
-                             answerLabels="None,Too Little,Other" style="radio"/>
-                        ,specify:
-                        <obs conceptId="$@Other_Maternal_Concerns@" />
+                    <td> Select visit:
+                        <input type="radio" name="visit" value="first" id="first"/> Visit 1
+                        <input type="radio" name="visit" value="second" id="second"/> Visit 2
+                        <input type="radio" name="visit" value="other" id="other"/> Other visit
+
                     </td>
                 </tr>
+            </table>
+
+            <table BORDER="1" id="theWholeTable">
                 <tr>
                     <th class="tableHeader">
-                        <center>PREVIOUS VISIT CLASSIFICATION</center>
+                        <center>PREVIOUS VISIT FINAL DECISION</center>
                     </th>
                 </tr>
                 <tr>
@@ -238,7 +279,58 @@
                 </tr>
                 <tr>
                     <th class="tableHeader">
-                        <center>CURRENT VISIT CLASSIFICATION</center>
+                        <center>ASSESSMENT</center>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+
+                        <strong>Breastfed Concerns</strong> <br/>
+
+                        <obs conceptId="$@Breastfeeding_Concerns@" answerConceptId="$@NONE@" answerLabel="None" style="checkbox"/> <br/>
+                        <obs conceptId="$@Breastfeeding_Concerns@" answerConceptId="$@Not_well_attached_for_breastfeeding@" answerLabel="Not well attached" style="checkbox"/><br/>
+                        <obs conceptId="$@Breastfeeding_Concerns@" answerConceptId="$@Not_sucking_effectively@" answerLabel="Not sucking effectively" style="checkbox"/> <br/>
+                        <obs conceptId="$@Breastfeeding_Concerns@" answerConceptId="$@Receives_other_liquids/foods@" answerLabel="Receives other liquids/food" style="checkbox"/>
+                        <br/>
+                        <strong>Non-Breastfed Concerns</strong> <br/>
+
+                        <obs conceptId="$@Non-Breastfeeding_Concerns@" answerConceptId="$@NONE@" answerLabel="None" style="checkbox"/> <br/>
+                        <obs conceptId="$@Non-Breastfeeding_Concerns@" answerConceptId="$@Innappropriate_BMS@" answerLabel="Inappropriate BMS" style="checkbox"/><br/>
+                        <obs conceptId="$@Non-Breastfeeding_Concerns@" answerConceptId="$@Poor_preparation_for_Breast_Feeding@" answerLabel="Poor preparation" style="checkbox"/> <br/>
+                        <obs conceptId="$@Non-Breastfeeding_Concerns@" answerConceptId="$@less_than_500ml_BMS/24_hours@" answerLabel="&#60;500ml BMS/24 hours" style="checkbox"/> <br/>
+                        <obs conceptId="$@Non-Breastfeeding_Concerns@" answerConceptId="$@Receives_other_liquids/foods@" answerLabel="Receives other liquids/food" style="checkbox"/>
+
+                        <br/>
+                        <strong>Breastfed &#38; Non-Breastfed Concerns</strong> <br/>
+
+                        <obs conceptId="$@Breastfed_and_non-breastfed_concerns@" answerConceptId="$@NONE@" answerLabel="None" style="checkbox"/> <br/>
+                        <obs conceptId="$@Breastfed_and_non-breastfed_concerns@" answerConceptId="$@less_than_8_feeds_24_hours@" answerLabel="&#60;8 in 24 hours" style="checkbox"/>
+                        <obs conceptId="$@Breastfed_and_non-breastfed_concerns@" answerConceptId="$@Refuses_to_feed@" answerLabel="Refuses to feed" style="checkbox"/> <br/>
+                        <obs conceptId="$@Breastfed_and_non-breastfed_concerns@" answerConceptId="$@ORAL_THRUSH@" answerLabel="Oral thrush" style="checkbox"/> <br/>
+                        <obs conceptId="$@Breastfed_and_non-breastfed_concerns@" answerConceptId="$@Severe_feeding_problem@" answerLabel="Severe feeding problem" style="checkbox"/>
+                        , specify:
+                        <obs conceptId="$@Severe_feeding_problem@"/>
+
+
+
+
+
+
+
+                        <hr/>
+                        <strong>Maternal MUAC(mm)</strong> <br/>
+                        <obs conceptId="$@Material_MUAC_(MM)@" answerConceptIds="$@lessthan230@,$@greaterorequal230@,$@Not_available@" style="radio"/>
+                        <strong>Maternal Concerns </strong>
+                        <obs conceptId="$@Maternal_Concerns@" answerConceptIds="$@NONE@,$@Too_Little_Milk@,$@OTHER_NON-CODED@"
+                             answerLabels="None,Too Little,Other" style="radio"/>
+                        ,specify:
+                        <obs conceptId="$@Other_Maternal_Concerns@" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <th class="tableHeader">
+                        <center>CURRENT VISIT FINAL DECISION</center>
                     </th>
                 </tr>
                 <tr>
@@ -247,39 +339,39 @@
                              answerLabels="Green,Yellow,Red(DH transfer)" style="radio"/>
                     </td>
                 </tr>
-                <tr>
-                    <th class="tableHeader">
-                        <center>PLAN</center>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>Assessment needed by: </strong>
-                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Social_Worker@"
-                             answerLabel="Social worker" style="checkbox"/>
-                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@INTEGRATED_MANAGEMENT_OF_CHILDHOOD_ILLNESS@"
-                             answerLabel="Doctor" style="checkbox"/>
-                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Doctor@"
-                             answerLabel="IMCI" style="checkbox"/>
-                        <br/>
-                        <strong>Counseling on:</strong>
-                        <br/>
-                        <obs conceptId="$@counseling_on@" answerConceptId="$@Breastfeeding_frequency@" answerLabel="Breastfeeding frequency" style="checkbox"/> <br/>
-                        <obs conceptId="$@counseling_on@" answerConceptId="$@Receives_other_liquids/foods@" answerLabel="Receives other liquids/foods" style="checkbox"/> <br/>
-                        <obs conceptId="$@counseling_on@" answerConceptId="$@Good_Attachment_or_suckling@" answerLabel="Good attachment or suckling" style="checkbox"/> <br/>
-                        <obs conceptId="$@counseling_on@" answerConceptId="$@Expressing_and_cup_feeding@" answerLabel="Expressing and cup feeding" style="checkbox"/> <br/>
-                        <obs conceptId="$@counseling_on@" answerConceptId="$@nutrition_for_breastfeeding_women@" answerLabel="Nutrition for breastfeeding women" style="checkbox"/> <br/>
-                        <obs conceptId="$@counseling_on@" answerConceptId="$@Breast_problems@" answerLabel="Breast problems" style="checkbox"/> <br/>
-                        <obs conceptId="$@counseling_on@" answerConceptId="$@Not_enough_breastmilk@" answerLabel="Not enough breastmilk" style="checkbox"/> <br/>
-                        <obs conceptId="$@counseling_on@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>
-                        ,Specify:<obs conceptId="$@Other_counselled_on@" />
-                        <br/>
-                        Completed by
-                        <obs conceptId="$@Completed_by@" answerConceptId="$@Nurse@" answerLabel="Nurse" style="checkbox"/>
-                        <obs conceptId="$@Completed_by@" answerConceptId="$@Social_Worker@" answerLabel="Social worker" style="checkbox"/>
+<!--                <tr>-->
+<!--                    <th class="tableHeader">-->
+<!--                        <center>PLAN</center>-->
+<!--                    </th>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <strong>Assessment needed by: </strong>-->
+<!--                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Social_Worker@"-->
+<!--                             answerLabel="Social worker" style="checkbox"/>-->
+<!--                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@INTEGRATED_MANAGEMENT_OF_CHILDHOOD_ILLNESS@"-->
+<!--                             answerLabel="Doctor" style="checkbox"/>-->
+<!--                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Doctor@"-->
+<!--                             answerLabel="IMCI" style="checkbox"/>-->
+<!--                        <br/>-->
+<!--                        <strong>Counseling on:</strong>-->
+<!--                        <br/>-->
+<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Breastfeeding_frequency@" answerLabel="Breastfeeding frequency" style="checkbox"/> <br/>-->
+<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Receives_other_liquids/foods@" answerLabel="Receives other liquids/foods" style="checkbox"/> <br/>-->
+<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Good_Attachment_or_suckling@" answerLabel="Good attachment or suckling" style="checkbox"/> <br/>-->
+<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Expressing_and_cup_feeding@" answerLabel="Expressing and cup feeding" style="checkbox"/> <br/>-->
+<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@nutrition_for_breastfeeding_women@" answerLabel="Nutrition for breastfeeding women" style="checkbox"/> <br/>-->
+<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Breast_problems@" answerLabel="Breast problems" style="checkbox"/> <br/>-->
+<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Not_enough_breastmilk@" answerLabel="Not enough breastmilk" style="checkbox"/> <br/>-->
+<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>-->
+<!--                        ,Specify:<obs conceptId="$@Other_counselled_on@" />-->
+<!--                        <br/>-->
+<!--                        Completed by-->
+<!--                        <obs conceptId="$@Completed_by@" answerConceptId="$@Nurse@" answerLabel="Nurse" style="checkbox"/>-->
+<!--                        <obs conceptId="$@Completed_by@" answerConceptId="$@Social_Worker@" answerLabel="Social worker" style="checkbox"/>-->
 
-                    </td>
-                </tr>
+<!--                    </td>-->
+<!--                </tr>-->
                 <tr>
                     <th>
                         MATERNAL FOOD PACKAGE
@@ -287,10 +379,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <obs conceptId="$@Maternal_Food_Package@" answerConceptIds="$@NO@,$@2-week@,$@1-month@" answerLabels="No Yes:,2-week,1-month" style="radio"/>
-                        <br/>
-                        if green,end on:
-                        <obs conceptId="$@Maternal_Food_Package_End_Time@"/>
+                        <span class="secondAndAbove">
+                            <obs conceptId="$@Maternal_Food_Package@" answerConceptIds="$@NO@,$@2-week@,$@1-month@" answerLabels="No Yes:,2-week,1-month" style="radio"/>
+                            <br/>
+                            if green,end on:
+                            <obs conceptId="$@Maternal_Food_Package_End_Time@"/>
+                        </span>
+                        <span class="firstVisit"> Not applicable on 1st visit </span>
                     </td>
                 </tr>
                 <tr>
@@ -300,16 +395,26 @@
                 </tr>
                 <tr>
                     <td>
-                        <obs conceptId="$@PDC_Infant_Formula@" answerConceptId="$@Yes_enhanced_calories_with_EBM@" answerLabel="Yes,enhanced calories with EBM" style="checkbox"/>
-                        <br/>
-                        <obs conceptId="$@PDC_Infant_Formula@" answerConceptId="$@Yes_only_formula@" answerLabel="Yes,only formula" style="checkbox"/>
-                        <br/>
-                        # of cans provided:
-                        <obs conceptId="$@Number_of_Cans_Provided@"/>
-                        <br/>
-                        On formula:
-                        <obs conceptId="$@PDC_Infant_Formula@" answerConceptId="$@Maternal_Death@" answerLabel="Maternal Death" style="checkbox"/>
+                        <span class="thirdAndabove">
+                            <obs conceptId="$@PDC_Infant_Formula@" answerConceptId="$@Yes_enhanced_calories_with_EBM@" answerLabel="Yes,enhanced calories with EBM" style="checkbox"/>
+                            <br/>
+                            <obs conceptId="$@PDC_Infant_Formula@" answerConceptId="$@Yes_only_formula@" answerLabel="Yes,only formula" style="checkbox"/>
+                            <br/>
+                            # of cans provided:
+                            <obs conceptId="$@Number_of_Cans_Provided@"/>
+                            <br/>
+                            Reason for formula:
+                            <obs conceptId="$@PDC_Infant_Formula@" answerConceptId="$@Maternal_Death@" answerLabel="Maternal Death" style="checkbox"/>
                         <obs conceptId="$@PDC_Infant_Formula@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>
+                        </span>
+                        <span class="firstAndSecondVisits">
+                            Not Applicable on 1<sup>st</sup> visit,unless pre-existing reason that formula was started.
+                            <strong>Child taking formula already because:</strong>
+                            <obs conceptId="$@PDC_Infant_Formula@" answerConceptId="$@Maternal_Death@" answerLabel="Maternal Death" style="checkbox"/>
+                        <obs conceptId="$@PDC_Infant_Formula@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>
+
+                        </span>
+
                     </td>
                 </tr>
                 <tr>
@@ -330,8 +435,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Give follow-up appointment based on results of malnutrition algorithm.  <br/>
-                        Document RDV date on the visit form.
+                        Follow-up in one week
                     </td>
                 </tr>
             </table>
