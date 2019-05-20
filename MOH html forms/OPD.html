@@ -367,6 +367,15 @@
         @Reparation_de_fisture_vesico@ = d9a5a33d-e339-45d4-a595-8a5573bfc540
         @Test_de_vision_de_loin@ = 98f2afd3-ab5a-4f3a-9954-712c1e072c79
         @Rachis_anesthesie_loco-Regionale_peridurale_generale@ = 1e203128-0b5e-4843-98a3-f870e7f6d244
+        @Rwandese_by_Nationality@ = a50d36a5-3142-42f2-a051-cf7b3480063f
+        @SYMPTOM_COMMENT@ = 3cdd258e-26fe-102b-80cb-0017a47871b2
+        @Examen_Bio-Microscopique_AV_OD@ = 6d58c700-9482-4d57-a7c7-f9eaaca7b3a0
+        @Examen_Bio-Microscopique_AV_OG@ = 16d2cc60-9b46-4ba4-94d8-01df5ce4fa5b
+        @PRIMARY_CARE_SERVICE_REQUESTED@ = 2cda28df-2fe7-42e0-bb2f-376c9f803537
+        @Consultation@ = d6dafc4b-9ad8-4467-94a9-0eca78648254
+        @Presumptive_diagnosis_or_Hypothesis@ =08dd5ecf-b381-47ea-a0f1-cd91a65505f7
+        @Secondary_ICD_diagnosis@ = afb8006f-e7c4-45bd-82bd-16f6e4b4b51d
+        @Primary_ICD_diagnosis@ = 2dce81f9-3874-4247-b441-6369ca0725c2
 
 
 
@@ -1454,7 +1463,7 @@ input[type="submit"] {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Location <encounterLocation default="289"/></td>
+                                <td>Location <encounterLocation id="location" default="GlobalProperty:registration.defaultLocationCode"/></td>
                             </tr>
                             <tr>
                                 <td>Provider <encounterProvider default="currentUser"/></td>
@@ -1467,6 +1476,11 @@ input[type="submit"] {
                     <div class="sectionheader">Demographic Information</div>
                     <div class="sectionbody">
                         <table class="baseline-aligned">
+                            <tr>
+                                <td>Rwandese by nationaliyt?
+                                    <obs conceptId="$@Rwandese_by_Nationality@" required="true" style="no_yes" noLabel="Non" yesLabel="Oui" />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>Cellule/Cell:<b><lookup
                                         expression="patient.personAddress.neighborhoodCell" /></b>
@@ -1488,8 +1502,6 @@ input[type="submit"] {
                 </section>
 
                 <div class="section">
-                    <div class="sectionheader">Anamneses and other findings and
-                        exams</div>
                     <div class="sectionbody">
 
                         <table class="baseline-aligned">
@@ -1504,7 +1516,9 @@ input[type="submit"] {
                         </table>
                         <hr />
                         <table class="baseline-aligned">
-
+                            <div
+                                    class="sectionheader">Anamneses and other findings and exams
+                            </div>
                             <tr>
                                 <td>Motif de Consultation / Presenting  Complaints</td>
                                 <td>
@@ -1529,6 +1543,12 @@ input[type="submit"] {
                                                     <render n="7" concept="Diagnosis" /> <render n="8"
                                                                                                  concept="Diagnosis" /> <render n="9" concept="Diagnosis" />
                                                     <render n="10" concept="Diagnosis" /> </repeat></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Other Motive de Consultation
+                                                    <obs conceptId="$@SYMPTOM_COMMENT@" style="textarea" rows="3" cols="40"/>
+                                                </td>
                                             </tr>
                                         </obsgroup>
                                     </table>
@@ -1663,18 +1683,19 @@ input[type="submit"] {
                                 <td><obs conceptId="$@Syndromic_summary@" id="syndromic_summary"
                                          style="textarea" rows="5" cols="50" /></td>
                             </tr>
+
                             <tr>
                                 <td>Presumptive diagnosis / Hypoth&#232;se diagnostique</td>
                                 <td>
                                     <table>
-                                        <obsgroup id="motive" groupingConceptId="$@OUTPATIENT_DIAGNOSIS@">
+                                        <obsgroup id="motive" groupingConceptId="$@Presumptive_diagnosis_or_Hypothesis@">
                                             <tr>
                                                 <td><repeat> <template>
                                                     <div id="{n}-toggleContainer" style="display: none;">
                                                         <table>
                                                             <tr>
-                                                                <td><obs id="presumptive" conceptId="$@OUTPATIENT_DIAGNOSIS@"
-                                                                         answerClasses="Diagnosis" style="autocomplete" size="80" /></td>
+                                                                <td><obs id="presumptive" conceptId="$@Presumptive_diagnosis_or_Hypothesis@"
+                                                                         answerClasses="ICD" style="autocomplete" size="80" /></td>
                                                                 <td><button id="{n}-addEntry" class="addEntry">Add</button>
                                                                     <button id="{n}-removeEntry" class="removeEntry">Remove</button></td>
                                                             </tr>
@@ -2291,39 +2312,48 @@ input[type="submit"] {
                                 <div class="sectionheader">Examen Bio-Microscopique</div>
                                 <div class="sectionbody">
                                     <table class="baseline-aligned">
-                                        <tr>
-                                            <td>Paupi&#232;re</td>
-                                            <td><obs conceptId="$@Paupiere@" size="10" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Conjoctive</td>
-                                            <td><obs conceptId="$@Conjoctive@" size="10" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Corn&#233;e</td>
-                                            <td><obs conceptId="$@Cornee@" size="10" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Chambre ant&#232;rieure</td>
-                                            <td><obs conceptId="$@Chambre_anterieure@" size="10" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Iris</td>
-                                            <td><obs conceptId="$@Iris@" size="10" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pupille</td>
-                                            <td><obs conceptId="$@Pupille@" size="10" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cristallin</td>
-                                            <td><obs conceptId="$@Cristallin@" size="10" /></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fond d'oeil</td>
-                                            <td><obs conceptId="$@Fond_d_oeil@" size="10" /></td>
-                                        </tr>
-
+                                        <obsgroup groupingConceptId="$@Examen_Bio-Microscopique_AV_OG@">
+                                            <tr>
+                                                <th>AV OD</th>
+                                                <td>Paupi&#232;re</td>
+                                                <td><obs conceptId="$@Paupiere@" size="10" /></td>
+                                                <td>Conjoctive</td>
+                                                <td><obs conceptId="$@Conjoctive@" size="10" /></td>
+                                                <td>Corn&#233;e</td>
+                                                <td><obs conceptId="$@Cornee@" size="10" /></td>
+                                                <td>Chambre ant&#232;rieure</td>
+                                                <td><obs conceptId="$@Chambre_anterieure@" size="10" /></td>
+                                                <td>Iris</td>
+                                                <td><obs conceptId="$@Iris@" size="10" /></td>
+                                                <td>Pupille</td>
+                                                <td><obs conceptId="$@Pupille@" size="10" /></td>
+                                                <td>Cristallin</td>
+                                                <td><obs conceptId="$@Cristallin@" size="10" /></td>
+                                                <td>Fond d'oeil</td>
+                                                <td><obs conceptId="$@Fond_d_oeil@" size="10" /></td>
+                                            </tr>
+                                        </obsgroup>
+                                        <obsgroup groupingConceptId="$@Examen_Bio-Microscopique_AV_OG@">
+                                            <tr>
+                                                <th>AV OG</th>
+                                                <td>Paupi&#232;re</td>
+                                                <td><obs conceptId="$@Paupiere@" size="10" /></td>
+                                                <td>Conjoctive</td>
+                                                <td><obs conceptId="$@Conjoctive@" size="10" /></td>
+                                                <td>Corn&#233;e</td>
+                                                <td><obs conceptId="$@Cornee@" size="10" /></td>
+                                                <td>Chambre ant&#232;rieure</td>
+                                                <td><obs conceptId="$@Chambre_anterieure@" size="10" /></td>
+                                                <td>Iris</td>
+                                                <td><obs conceptId="$@Iris@" size="10" /></td>
+                                                <td>Pupille</td>
+                                                <td><obs conceptId="$@Pupille@" size="10" /></td>
+                                                <td>Cristallin</td>
+                                                <td><obs conceptId="$@Cristallin@" size="10" /></td>
+                                                <td>Fond d'oeil</td>
+                                                <td><obs conceptId="$@Fond_d_oeil@" size="10" /></td>
+                                            </tr>
+                                        </obsgroup>
                                     </table>
                                 </div>
                             </div>
@@ -3071,8 +3101,8 @@ input[type="submit"] {
                                         <table class="baseline-aligned">
                                             <tr>
                                                 <td>- Main Diagnostic</td>
-                                                <td><obs id="primary_digno" conceptId="$@OUTPATIENT_DIAGNOSIS@"
-                                                         answerClasses="Diagnosis" style="autocomplete" size="80" />
+                                                <td><obs id="primary_digno" conceptId="$@Primary_ICD_diagnosis@"
+                                                         answerClasses="ICD" style="autocomplete" size="80" />
                                                     <span style="color: blue"><b><i>Type 3 first
 																letters of a diagnosis!</i></b></span></td>
                                                 <td><div id="other_primDiag">
@@ -3088,8 +3118,8 @@ input[type="submit"] {
                                             </tr>
                                             <tr>
                                                 <td>- Secondary Diagnostic</td>
-                                                <td><obs id="second_digno" conceptId="$@OUTPATIENT_DIAGNOSIS@"
-                                                         answerClasses="Diagnosis" style="autocomplete" size="80" />
+                                                <td><obs id="second_digno" conceptId="$@Secondary_ICD_diagnosis@"
+                                                         answerClasses="ICD" style="autocomplete" size="80" />
                                                     <span style="color: blue"><b><i>Type 3 first
 																letters of a diagnosis!</i></b></span></td>
                                                 <td><div id="other_secDiag">
@@ -3100,6 +3130,18 @@ input[type="submit"] {
                                                 <td>- <b>Case status / Etat de cas: </b></td>
                                                 <td><obs conceptId="$@Case_status@" answerConceptIds="$@NEW_v2@,$@Old@"
                                                          answerLabels="New Case, Old Case" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Department</b></td>
+                                                <td>
+                                                    <obs conceptId="$@PRIMARY_CARE_SERVICE_REQUESTED@" required="true"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Consultation Type</b></td>
+                                                <td>
+                                                    <obs conceptId="$@Consultation@" required="true"/>
+                                                </td>
                                             </tr>
                                         </table>
                                     </fieldset>

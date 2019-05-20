@@ -221,6 +221,24 @@
         }
         }
     </style>
+    <script type="text/javascript">
+        $j(document).ready(function() {
+
+			if(getValue("encounterDate.value") &#60;&#61;'2019-05-20'){
+                $j(".before20190520changes").show();
+            }else{
+                 $j(".before20190520changes").hide();
+            }
+            getField('encounterDate.value').change(function() {
+                if(getValue("encounterDate.value") &#60;&#61; '2019-05-20'){
+                    $j(".before20190520changes").show();
+                }else{
+                    $j(".before20190520changes").hide();
+                }
+            });
+
+		});
+    </script>
     <div id="container"  style="width:100%">
         <section>
 
@@ -354,39 +372,39 @@
                         ,$@Currently_in_HC_Malnutrition_program@" answerLabels="Green,Yellow,Red(HC),Red(DH transfer),Referred to HC malnutrition program" style="radio"/>
                     </td>
                 </tr>
-<!--                <tr>-->
-<!--                    <th class="tableHeader">-->
-<!--                        <center>PLAN</center>-->
-<!--                    </th>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>-->
-<!--                        <strong>Assessment needed by: </strong>-->
-<!--                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Social_Worker@"-->
-<!--                             answerLabel="Social worker" style="checkbox"/>-->
-<!--                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@INTEGRATED_MANAGEMENT_OF_CHILDHOOD_ILLNESS@"-->
-<!--                             answerLabel="Doctor" style="checkbox"/>-->
-<!--                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Doctor@"-->
-<!--                             answerLabel="IMCI" style="checkbox"/>-->
-<!--                        <br/>-->
-<!--                        <strong>Counseling on:</strong>-->
-<!--                        <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@complementary_feeding@" answerLabel="Complementary feeding" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Variety_of_foods@" answerLabel="Variety of foods" style="checkbox"/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@POOR_APPETITE@" answerLabel="Poor appetite" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Feeding_non-breastfed_child@" answerLabel="Feeding non-breastfed child" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Hygiene_and_sanitation@" answerLabel="Hygiene and sanitation" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Difficulty_chewing@" answerLabel="Difficulty chewing" style="checkbox"/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@SWALLOWING_DIFFICULTIES@" answerLabel="Difficulty Swallowing" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@High_energy_foods@" answerLabel="High energy foods" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>-->
-<!--                        ,Specify:<obs conceptId="$@Other_counselled_on@" />-->
-<!--                        <br/>-->
-<!--                        Completed by-->
-<!--                        <obs conceptId="$@Completed_by@" answerConceptId="$@Nurse@" answerLabel="Nurse" style="checkbox"/>-->
-<!--                        <obs conceptId="$@Completed_by@" answerConceptId="$@Social_Worker@" answerLabel="Social worker" style="checkbox"/>-->
-<!--                    </td>-->
-<!--                </tr>-->
+                <tr class="before20190520changes">
+                    <th class="tableHeader">
+                        <center>PLAN</center>
+                    </th>
+                </tr>
+                <tr class="before20190520changes">
+                    <td>
+                        <strong>Assessment needed by: </strong>
+                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Social_Worker@"
+                             answerLabel="Social worker" style="checkbox"/>
+                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@INTEGRATED_MANAGEMENT_OF_CHILDHOOD_ILLNESS@"
+                             answerLabel="Doctor" style="checkbox"/>
+                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Doctor@"
+                             answerLabel="IMCI" style="checkbox"/>
+                        <br/>
+                        <strong>Counseling on:</strong>
+                        <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@complementary_feeding@" answerLabel="Complementary feeding" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@Variety_of_foods@" answerLabel="Variety of foods" style="checkbox"/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@POOR_APPETITE@" answerLabel="Poor appetite" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@Feeding_non-breastfed_child@" answerLabel="Feeding non-breastfed child" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@Hygiene_and_sanitation@" answerLabel="Hygiene and sanitation" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@Difficulty_chewing@" answerLabel="Difficulty chewing" style="checkbox"/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@SWALLOWING_DIFFICULTIES@" answerLabel="Difficulty Swallowing" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@High_energy_foods@" answerLabel="High energy foods" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>
+                        ,Specify:<obs conceptId="$@Other_counselled_on@" />
+                        <br/>
+                        Completed by
+                        <obs conceptId="$@Completed_by@" answerConceptId="$@Nurse@" answerLabel="Nurse" style="checkbox"/>
+                        <obs conceptId="$@Completed_by@" answerConceptId="$@Social_Worker@" answerLabel="Social worker" style="checkbox"/>
+                    </td>
+                </tr>
                 <tr>
                     <th>
                         CHILD FOOD PACKAGE
@@ -400,33 +418,33 @@
                         <obs conceptId="$@Maternal_Food_Package_End_Time@" allowFutureDates="true"/>
                     </td>
                 </tr>
-<!--                <tr>-->
-<!--                    <th>-->
-<!--                        FEEDING INTERVENTION-->
-<!--                    </th>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>-->
-<!--                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@complementary_feeding@" answerLabel="Complementary feeding" style="checkbox"/>-->
-<!--                        <br/>-->
-<!--                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@BREASTFEEDING@" answerLabel="Breastfeeding" style="checkbox"/>-->
-<!--                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@Start_cows_milk@" answerLabel="Start cow's milk" style="checkbox"/>-->
-<!--                        <br/>-->
-<!--                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@Variety_of_foods@" answerLabel="Improve food variety" style="checkbox"/>-->
-<!--                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@food_frequency@" answerLabel="Food frequency" style="checkbox"/>-->
-<!--                        <br/>-->
-<!--                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@Change_food/drink_consistency@" answerLabel="Change food/drink consistency" style="checkbox"/>-->
-<!--                        <br/>-->
-<!--                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@Hygiene_and_sanitation@" answerLabel="Improve hygiene/sanitation" style="checkbox"/>-->
-<!--                        <br/>-->
-<!--                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@Feeding_child_with_poor_appetite@" answerLabel="Feeding child with poor appetit" style="checkbox"/>-->
-<!--                        <br/>-->
-<!--                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@High_energy_foods@" answerLabel="Add high energy foods" style="checkbox"/>-->
-<!--                        <br/>-->
-<!--                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>-->
-<!--                        ,specify:<obs conceptId="$@Other_Feeding_Intervetion@"/>-->
-<!--                    </td>-->
-<!--                </tr>-->
+                <tr class="before20190520changes">
+                    <th>
+                        FEEDING INTERVENTION
+                    </th>
+                </tr>
+                <tr class="before20190520changes">
+                    <td>
+                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@complementary_feeding@" answerLabel="Complementary feeding" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@BREASTFEEDING@" answerLabel="Breastfeeding" style="checkbox"/>
+                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@Start_cows_milk@" answerLabel="Start cow's milk" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@Variety_of_foods@" answerLabel="Improve food variety" style="checkbox"/>
+                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@food_frequency@" answerLabel="Food frequency" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@Change_food/drink_consistency@" answerLabel="Change food/drink consistency" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@Hygiene_and_sanitation@" answerLabel="Improve hygiene/sanitation" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@Feeding_child_with_poor_appetite@" answerLabel="Feeding child with poor appetit" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@High_energy_foods@" answerLabel="Add high energy foods" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>
+                        ,specify:<obs conceptId="$@Other_Feeding_Intervetion@"/>
+                    </td>
+                </tr>
                 <tr>
                     <th>
                         STATUS

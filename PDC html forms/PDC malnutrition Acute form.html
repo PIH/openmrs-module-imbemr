@@ -213,6 +213,18 @@
                 $j(".thirdAndabove").show();
 
 			});
+			if(getValue("encounterDate.value") &#60;&#61;'2019-05-20'){
+                $j(".before20190520changes").show();
+            }else{
+                 $j(".before20190520changes").hide();
+            }
+            getField('encounterDate.value').change(function() {
+                if(getValue("encounterDate.value") &#60;&#61; '2019-05-20'){
+                    $j(".before20190520changes").show();
+                }else{
+                    $j(".before20190520changes").hide();
+                }
+            });
 
 		});
     </script>
@@ -226,7 +238,7 @@
                                                                                                                expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" /></b>
                     </td>
                     <td>Date and Time: <encounterDate id="encounterDate" default="today" showTime="true"/>
-                    </td>
+                    </td>before20190520changes
                 </tr>
                 <tr>
                     <td>Nom / Last name: <lookup class="value"
@@ -339,39 +351,39 @@
                              answerLabels="Green,Yellow,Red(DH transfer)" style="radio"/>
                     </td>
                 </tr>
-<!--                <tr>-->
-<!--                    <th class="tableHeader">-->
-<!--                        <center>PLAN</center>-->
-<!--                    </th>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>-->
-<!--                        <strong>Assessment needed by: </strong>-->
-<!--                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Social_Worker@"-->
-<!--                             answerLabel="Social worker" style="checkbox"/>-->
-<!--                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@INTEGRATED_MANAGEMENT_OF_CHILDHOOD_ILLNESS@"-->
-<!--                             answerLabel="Doctor" style="checkbox"/>-->
-<!--                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Doctor@"-->
-<!--                             answerLabel="IMCI" style="checkbox"/>-->
-<!--                        <br/>-->
-<!--                        <strong>Counseling on:</strong>-->
-<!--                        <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Breastfeeding_frequency@" answerLabel="Breastfeeding frequency" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Receives_other_liquids/foods@" answerLabel="Receives other liquids/foods" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Good_Attachment_or_suckling@" answerLabel="Good attachment or suckling" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Expressing_and_cup_feeding@" answerLabel="Expressing and cup feeding" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@nutrition_for_breastfeeding_women@" answerLabel="Nutrition for breastfeeding women" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Breast_problems@" answerLabel="Breast problems" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@Not_enough_breastmilk@" answerLabel="Not enough breastmilk" style="checkbox"/> <br/>-->
-<!--                        <obs conceptId="$@counseling_on@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>-->
-<!--                        ,Specify:<obs conceptId="$@Other_counselled_on@" />-->
-<!--                        <br/>-->
-<!--                        Completed by-->
-<!--                        <obs conceptId="$@Completed_by@" answerConceptId="$@Nurse@" answerLabel="Nurse" style="checkbox"/>-->
-<!--                        <obs conceptId="$@Completed_by@" answerConceptId="$@Social_Worker@" answerLabel="Social worker" style="checkbox"/>-->
+                <tr class="before20190520changes">
+                    <th class="tableHeader">
+                        <center>PLAN</center>
+                    </th>
+                </tr>
+                <tr class="before20190520changes">
+                    <td>
+                        <strong>Assessment needed by: </strong>
+                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Social_Worker@"
+                             answerLabel="Social worker" style="checkbox"/>
+                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@INTEGRATED_MANAGEMENT_OF_CHILDHOOD_ILLNESS@"
+                             answerLabel="Doctor" style="checkbox"/>
+                        <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Doctor@"
+                             answerLabel="IMCI" style="checkbox"/>
+                        <br/>
+                        <strong>Counseling on:</strong>
+                        <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@Breastfeeding_frequency@" answerLabel="Breastfeeding frequency" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@Receives_other_liquids/foods@" answerLabel="Receives other liquids/foods" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@Good_Attachment_or_suckling@" answerLabel="Good attachment or suckling" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@Expressing_and_cup_feeding@" answerLabel="Expressing and cup feeding" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@nutrition_for_breastfeeding_women@" answerLabel="Nutrition for breastfeeding women" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@Breast_problems@" answerLabel="Breast problems" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@Not_enough_breastmilk@" answerLabel="Not enough breastmilk" style="checkbox"/> <br/>
+                        <obs conceptId="$@counseling_on@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other" style="checkbox"/>
+                        ,Specify:<obs conceptId="$@Other_counselled_on@" />
+                        <br/>
+                        Completed by
+                        <obs conceptId="$@Completed_by@" answerConceptId="$@Nurse@" answerLabel="Nurse" style="checkbox"/>
+                        <obs conceptId="$@Completed_by@" answerConceptId="$@Social_Worker@" answerLabel="Social worker" style="checkbox"/>
 
-<!--                    </td>-->
-<!--                </tr>-->
+                    </td>
+                </tr>
                 <tr>
                     <th>
                         MATERNAL FOOD PACKAGE
