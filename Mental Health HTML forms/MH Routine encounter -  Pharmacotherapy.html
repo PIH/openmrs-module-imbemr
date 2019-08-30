@@ -326,6 +326,12 @@
         @dischargment/permanent_exit_from_program_clinic@ = ad4723da-029d-49af-a146-b50a0cba6f87
 
 
+        <!-- forms -->
+        @MH_Diagnosis@ = 79cae8d0-c799-4cbb-b0f3-36c04731b4cf
+        @MH_Investigations@ = 37b06e9d-7341-4a69-860e-278aaff902d9
+        @MH_Medication_List@ = 0e0eefce-8bf6-48ee-9d40-59f2c2c409eb
+
+
 
 
     </macros>
@@ -1015,7 +1021,7 @@
                 </td>
                 <td>
                     <lookup expression="fn.message('Provider')"/>:<encounterProvider id="encounterProvider"
-                                                                                     role="Provider" default="currentUser"/>
+                                                                                     role="Provider" />
                 </td>
             </tr>
         </table>
@@ -1359,5 +1365,16 @@
     </section>
     <submit/>
     <encounterVoided/>
+    <br/><br/> <br/>
+
+    <section headerLabel="DIAGNOSIS LIST/URUTONDE RW’INDWARA">
+        <htmlformflowsheet formId="$@MH_Diagnosis@" sharedEncounter="true" windowHeight="400"/>
+    </section>
+    <section headerLabel="MEDICATION LIST / URUTONDE RW’IMITI">
+        <htmlformflowsheet formId="$@MH_Medication_List@" sharedEncounter="true" windowHeight="400"/>
+    </section>
+    <section headerLabel="INVESTIGATIONS/IBIZAMINI">
+        <htmlformflowsheet formId="$@MH_Investigations@" sharedEncounter="true" windowHeight="400"/>
+    </section>
 
 </htmlform>

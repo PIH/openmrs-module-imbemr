@@ -64,8 +64,8 @@
         @Low_Birth_Weight@ = 4f628144-0a53-4e06-b5d1-b2bc0beebfc7
         @Premature_Birth@ = 113841AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         @Hypoxic_ischemic_encephalopathy@ = 8860c040-c0d1-4e3b-aa26-7e19b8186286
-        @Hydrocephalus_(HC_Z-score@ = f602d28d-0914-4468-baa7-43a230b994a7
-        @Trisomy_21_(suspected_or_confirmed)@ = 3719ec38-d852-45aa-90a6-1c82e560624e
+        @Hydrocephalus_HC_Z-score@ = f602d28d-0914-4468-baa7-43a230b994a7
+        @Trisomy_21_suspected_or_confirmed@ = 3719ec38-d852-45aa-90a6-1c82e560624e
         @Cleft_Lip_or_Palate@ = 038e1355-d46d-47a3-903e-7c5b876fa89c
         @Other_Developmental_Delay_Suspected_Neuromuscular_Disease_and_Suspected_Genetic_Syndromes@ = 1850960b-3695-4508-86e8-cfdd639a240a
         @Reasons_for_Referral_non_coded@ = 9c140c92-44bb-4070-ad8f-ed22affc1d8d
@@ -292,7 +292,7 @@
 											});
 						                });
 	}
-	
+
 	/* $j(document).ready(function() {
 		getField('weight.value').change(function() {
 			var birthWeight = getValue("weight.value");
@@ -313,22 +313,22 @@
 			else if(birthWeight != null &amp;&amp; birthWeight &lt; 10){
 				var bweight = birthWeight;
 				setValue('weight.value', bweight);
-				alert("BirthWeight is already in Kg and will not be converted"); 
+				alert("BirthWeight is already in Kg and will not be converted");
 			}
-			
+
 			else if ( (birthWeight != null &amp;&amp; birthWeight > 10 &amp;&amp; birthWeight &lt; 500) || birthWeight > 10000 ) {
-				alert("please enter a valid birthweight between 500 and 10000"); 
+				alert("please enter a valid birthweight between 500 and 10000");
 		    }
-			
-		 
+
+
 			});
 		});
-		
+
 		function calculateBirthWeight(birthWeight) {
 		    var bsa;
-		    
+
 		    bsa = (birthWeight*0.001)
-		    
+
 		    return bsa;
 		}
 
@@ -348,7 +348,7 @@
                 <td><b>ID #: <lookup class="value"
                                      expression="patientIdentifiers.get(&quot;IMB ID&quot;)" /> </b></td>
                 <td>Referral Date: <encounterDate default="today" /></td>
-                <td>Location: <encounterLocation default="SessionAttribute:emrContext.sessionLocationId"/></td>
+                <td>Location: <encounterLocation /></td>
                 <td>Date of PDC Appointment:<obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true" /></td>
 
             </tr>
@@ -404,29 +404,30 @@
                         <tr>
                             <td colspan="9">
                                 <table width="100%" >
-                                    <tr ><td class="checkboxGroup"><span
-                                            id="checkboxRadio">Site of Birth:&#160;&#160;
-	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HOSPITAL@" answerLabel="Hospital" />
-	&#160;&#160;&#160;&#160;&#160;&#160; 
-	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HEALTH_CENTER@" answerLabel="Health Center" />
-	&#160;&#160;&#160;&#160;&#160;&#160; 
-	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HOUSE@" answerLabel="Home" />
-	&#160;&#160;&#160;&#160;&#160;&#160; 
-	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@ROAD@" answerLabel="En route" />
-	&#160;&#160;&#160;&#160;&#160;&#160; 
-	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other:" />
-	&#160;&#160;&#160;&#160;&#160;&#160; 
-	<obs conceptId="$@BIRTH_LOCATION_TYPE_NON_CODED@" /></span><br/><br/></td>
+                                    <tr ><td class="checkboxGroup">
+                                        <span id="checkboxRadio">Site of Birth:&#160;&#160;
+                                            <obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HOSPITAL@" answerLabel="Hospital" />
+                                            &#160;&#160;&#160;&#160;&#160;&#160;
+                                            <obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HEALTH_CENTER@" answerLabel="Health Center" />
+                                            &#160;&#160;&#160;&#160;&#160;&#160;
+                                            <obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HOUSE@" answerLabel="Home" />
+                                            &#160;&#160;&#160;&#160;&#160;&#160;
+                                            <obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@ROAD@" answerLabel="En route" />
+                                            &#160;&#160;&#160;&#160;&#160;&#160;
+                                            <obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other:" />
+                                            &#160;&#160;&#160;&#160;&#160;&#160;
+                                            <obs conceptId="$@BIRTH_LOCATION_TYPE_NON_CODED@" />
+                                        </span><br/><br/></td>
                                     </tr>
                                     <tr ><td class="checkboxGroup"><span id="checkboxRadio">Delivery:&#160;&#160;&#160;&#160;&#160;&#160;&#160;
 			<obs conceptId="$@METHOD_OF_DELIVERY@" answerConceptId="$@SPONTANEOUS_VAGINAL_DELIVERY@" answerLabel="Vaginal" />
-			 &#160;&#160;&#160;&#160;&#160;&#160; 
+			 &#160;&#160;&#160;&#160;&#160;&#160;
 			<obs conceptId="$@METHOD_OF_DELIVERY@" answerConceptId="$@CESAREAN_SECTION@" answerLabel="C-Section" />
 			</span></td>
                                     </tr>
                                     <tr ><td class="checkboxGroup"><span id="checkboxRadio">Presence Of Meconium:
 			<obs conceptId="$@Presence_Of_Meconium@" answerConceptId="$@YES@" answerLabel="Yes" />
-			 &#160;&#160;&#160;&#160;&#160;&#160; 
+			 &#160;&#160;&#160;&#160;&#160;&#160;
 			<obs conceptId="$@Presence_Of_Meconium@" answerConceptId="$@NO@" answerLabel="No" />
 			</span></td>
                                     </tr>
@@ -444,13 +445,13 @@
 
                                     <tr ><td class="checkboxGroup"><span id="checkboxRadio">Prolonged Rupture Membrane:
 			<obs conceptId="$@Prolonged_Rupture_Membrane@" answerConceptId="$@YES@" answerLabel="Yes" />
-			 &#160;&#160;&#160;&#160;&#160;&#160; 
+			 &#160;&#160;&#160;&#160;&#160;&#160;
 			<obs conceptId="$@Prolonged_Rupture_Membrane@" answerConceptId="$@NO@" answerLabel="No" />
 			</span></td>
                                     </tr>
                                     <tr ><td class="checkboxGroup"><span id="checkboxRadio">Maternal Fever:
 			<obs conceptId="$@Maternal_Fever@" answerConceptId="$@YES@" answerLabel="Yes" />
-			 &#160;&#160;&#160;&#160;&#160;&#160; 
+			 &#160;&#160;&#160;&#160;&#160;&#160;
 			<obs conceptId="$@Maternal_Fever@" answerConceptId="$@NO@" answerLabel="No" />
 			</span></td>
                                     </tr>
@@ -490,7 +491,7 @@
                                     <tr ><td ><span id="checkboxRadio" >Convulsions:
 			<obs conceptId="$@CONVULSIONS_DANGER_SIGNS_PRESENT@" answerConceptId="$@YES@" answerLabel="Yes" />
 			<obs conceptId="$@CONVULSIONS_DANGER_SIGNS_PRESENT@" answerConceptId="$@NO@" answerLabel="No" />
-			&#160;&#160;&#160;<b>IF yes,</b> did the child receive anticonvulsants 
+			&#160;&#160;&#160;<b>IF yes,</b> did the child receive anticonvulsants
 			<obs conceptId="$@ANTICONVULSANTS_RECEIVED@" answerConceptId="$@YES@" style="radio"/>
 			<obs conceptId="$@ANTICONVULSANTS_RECEIVED@" answerConceptId="$@NO@" style="radio"/>
 			<br/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
@@ -577,8 +578,8 @@
                             <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Premature_Birth@" answerLabel="Premature Birth (gestational age &#60; 37 weeks)" /><br/>
                             <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Hypoxic_ischemic_encephalopathy@" answerLabel="Hypoxic ischemic encephalopathy(history of perinatal convulsion, no cry at 5 minutes or Apgar score &#60; 5 at 5 minutes)" /><br/>
                             <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@CENTRAL_NERVOUS_SYSTEM_INFECTION@" answerLabel="Central Nervous System Infection" /><br/>
-                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Hydrocephalus_(HC_Z-score@" answerLabel="Hydrocephalus(HC Z-score > +3, ICP, sunsetting eyes, new seizures with increasing HC, HC crossing &#62; 2 z-score lines) " /><br/>
-                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Trisomy_21_(suspected_or_confirmed)@" answerLabel="Trisomy 21 (suspected or confirmed)" /> <br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Hydrocephalus_HC_Z-score@" answerLabel="Hydrocephalus(HC Z-score > +3, ICP, sunsetting eyes, new seizures with increasing HC, HC crossing &#62; 2 z-score lines) " /><br/>
+                            <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Trisomy_21_suspected_or_confirmed@" answerLabel="Trisomy 21 (suspected or confirmed)" /> <br/>
                             <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Cleft_Lip_or_Palate@" answerLabel="Cleft Lip or Palate " /><br/>
                             <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Other_Developmental_Delay_Suspected_Neuromuscular_Disease_and_Suspected_Genetic_Syndromes@" answerLabel="Other Developmental Delay, Suspected Neuromuscular Disease, and Suspected Genetic Syndromes" /><br/>
                             <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@SEVERE_MALNUTRITION@" answerLabel="Severe malnutrition requiring hospitalization (infants &#60; 12 months of age)" /><br/>
@@ -628,7 +629,7 @@
                                         <td><span id="checkboxRadio">
 		Moderate/Mild HIE within 1 month<br/>
 
-		General Developmental Delay within 1 month<br/> 
+		General Developmental Delay within 1 month<br/>
 		Trisomy 21 within 1 month<br/>
 
 		</span></td>
@@ -645,11 +646,13 @@
             </tr>
 
         </table>
-    </section><br/>
+    </section>
+    <br/>
     <table>
         <tr>
             <td>Signature: <encounterProvider role="Oncology Provider" default="currentUser"/></td></tr>
-    </table><br/>
+    </table>
+    <br/>
     <encounterVoided/>
     <br/>
     <submit />

@@ -337,6 +337,9 @@
 
         <!--forms-->
         @MH_PHQ-9_Score@ = 442beac2-c6da-43e4-95a8-eca907610ccc
+        @MH_Diagnosis@ = 79cae8d0-c799-4cbb-b0f3-36c04731b4cf
+        @MH_Investigations@ = 37b06e9d-7341-4a69-860e-278aaff902d9
+        @MH_Medication_List@ = 0e0eefce-8bf6-48ee-9d40-59f2c2c409eb
 
 
 
@@ -1053,9 +1056,7 @@
                         <lookup expression="fn.message('Routine_Encounter_Psychotherapy_approach_Form')"/>
                     </strong>
                     <br/>
-                    <b> IMB ID: <lookup class="value"
-                                        expression="patientIdentifiers.get(&quot;IMB ID&quot;)" /> <lookup class="value"
-                                                                                                           expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" /></b>
+
                     <br/>
                     <lookup expression="fn.message('Last_name')"/> : <lookup class="value" expression="patient.personName.familyName" />
 
@@ -1078,23 +1079,23 @@
                 </td>
                 <td>
                     <lookup expression="fn.message('Provider')"/>:<encounterProvider id="encounterProvider"
-                                                                                     role="Provider" default="currentUser"/>
+                                                                                     role="Provider" />
                 </td>
             </tr>
         </table>
     </section>
 
-<section>
-    <tr>
-        <td>
+    <section>
+        <tr>
+            <td>
 
-            <obs conceptId="$@number_of_session@" answerConceptIds="$@sesson_1@,$@session_2@,$@session_3@,$@session_4@,$@session_5@,$@OTHER_NON-CODED@"
-                 answerCodes="sesson_1,session_2,session_3,session_4,session_5,Other" style="radio"/>
-            <obs conceptId="$@Other_number_of_session@"/>
+                <obs conceptId="$@number_of_session@" answerConceptIds="$@sesson_1@,$@session_2@,$@session_3@,$@session_4@,$@session_5@,$@OTHER_NON-CODED@"
+                     answerCodes="sesson_1,session_2,session_3,session_4,session_5,Other" style="radio"/>
+                <obs conceptId="$@Other_number_of_session@"/>
 
-        </td>
-    </tr>
-</section>
+            </td>
+        </tr>
+    </section>
 
     <section headerLabel="Mental Status Exam / Ikizamini ku buzima bwo mu mutwe">
         <table border="1" width="100%">
@@ -1283,24 +1284,24 @@
 
                     <br/>
                     <obs conceptId="$@Does_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@" answerConceptIds="$@YES@,$@NO@"
-                    answerCodes="Yes,No" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <br/>
                     <strong><lookup expression="fn.message('If_YES_what_is_the_reason')"/></strong>?
                     <br/>
                     <obs conceptId="$@why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"
-                    answerConceptId="$@DEPRESSION@"
-                    answerCode="Depression" style="checkbox"/>
-
-                     <obs conceptId="$@why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"
-                    answerConceptId="$@Stress_or_anxiety@"
-                    answerCode="Anxiety " style="checkbox"/>
-
-                     <obs conceptId="$@why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"
-                    answerConceptId="$@PTSD@" answerCode="PTSD " style="checkbox"/>
+                         answerConceptId="$@DEPRESSION@"
+                         answerCode="Depression" style="checkbox"/>
 
                     <obs conceptId="$@why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"
-                    answerConceptId="$@OTHER_NON-CODED@"
-                    answerCode="Other_reasons" style="checkbox"/> :
+                         answerConceptId="$@Stress_or_anxiety@"
+                         answerCode="Anxiety " style="checkbox"/>
+
+                    <obs conceptId="$@why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"
+                         answerConceptId="$@PTSD@" answerCode="PTSD " style="checkbox"/>
+
+                    <obs conceptId="$@why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"
+                         answerConceptId="$@OTHER_NON-CODED@"
+                         answerCode="Other_reasons" style="checkbox"/> :
                     <obs conceptId="$@other_reasons_why_the_patient_meet_criteria_for_PM+_Psychotherapy_intervention@"/>
 
                 </td>
@@ -1314,19 +1315,19 @@
                     <strong><lookup expression="fn.message('Was_confidentiality_and_rapport_established_with_patient')"/></strong>?
                     <br/>
                     <obs conceptId="$@Was_confidentiality_and_rapport_established_with_patient@" answerConceptIds="$@YES@,$@NO@"
-                    answerCodes="Yes,No" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <br/> <br/>
                     <strong><lookup expression="fn.message('Does_the_patient_understand_structure_and_goals_of_PM+')"/></strong>?
                     <br/>
                     <obs conceptId="$@Does_the_patient_understand_structure_and_goals_of_PM+@" answerConceptIds="$@YES@,$@NO@"
-                    answerCodes="Yes,No" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <br/><br/>
                     <strong><lookup expression="fn.message('Is_the_patient_able_to_commit_to_attending_the_remaining_four_sessions')"/></strong>?
                     <br/>
                     <obs conceptId="$@Is_the_patient_able_to_commit_to_attending_the_remaining_four_sessions@" answerConceptIds="$@YES@,$@NO@"
-                    answerCodes="Yes,No" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <br/><br/>
-                     --<strong><lookup expression="fn.message('what_is_the_plan_for_management')"/></strong>?
+                    --<strong><lookup expression="fn.message('what_is_the_plan_for_management')"/></strong>?
 
                     <br/>
                     <obs conceptId="$@what_is_the_plan_for_management@" cols="100"/>
@@ -1334,12 +1335,12 @@
                     <strong><lookup expression="fn.message('Did_the_patient_understand_benefits_of_deep_breathing/relaxation_exercise')"/></strong>?
                     <br/>
                     <obs conceptId="$@Did_the_patient_understand_benefits_of_deep_breathing@" answerConceptIds="$@YES@,$@NO@"
-                    answerCodes="Yes,No" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <br/><br/>
                     <strong><lookup expression="fn.message('Was_the_patient_able_to_perform_exercise_appropriately')"/></strong>?
                     <br/>
                     <obs conceptId="$@Was_the_patient_able_to_perform_exercise_appropriately@" answerConceptIds="$@YES@,$@NO@"
-                    answerCodes="Yes,No" style="radio"/>
+                         answerCodes="Yes,No" style="radio"/>
                     <br/><br/>
                     <obsgroup groupingConceptId="$@PM+_Session_set@">
                         <strong><lookup expression="fn.message('PM+_Session_additional_Notes')"/></strong>
@@ -1472,5 +1473,16 @@
 
     <submit/>
     <encounterVoided/>
+    <br/><br/> <br/>
+
+    <section headerLabel="DIAGNOSIS LIST/URUTONDE RW’INDWARA">
+        <htmlformflowsheet formId="$@MH_Diagnosis@" sharedEncounter="true" windowHeight="400"/>
+    </section>
+    <section headerLabel="MEDICATION LIST / URUTONDE RW’IMITI">
+        <htmlformflowsheet formId="$@MH_Medication_List@" sharedEncounter="true" windowHeight="400"/>
+    </section>
+    <section headerLabel="INVESTIGATIONS/IBIZAMINI">
+        <htmlformflowsheet formId="$@MH_Investigations@" sharedEncounter="true" windowHeight="400"/>
+    </section>
 
 </htmlform>
