@@ -44,31 +44,53 @@
     </translations>
 
     <!-- Form header -->
-    Centre de santé :
-
     <table border="2" cellspacing="0" cellpadding="6" width="100%">
 
     </table>
 
-    <table border="1" width="100%">
-        <tr>
-            <td>
-                Nom/
-                <span class="english">Name</span>
-                :
-                <lookup class="value" expression="patient.personName.familyName" />
-                <lookup class="value" expression="patient.personName.givenName" />
-                ID:
-                <lookup class="value" expression="patientIdentifiers.get(&quot;Primary Care ID Type&quot;)" /> <lookup class="value" expression="patientIdentifiers.get(&quot;TRACnet ID&quot;)" />
-            </td>
-            <td>
-                Location / Clinic:<encounterLocation id="location" />
-            </td>
-            <td>
-                Date:<encounterDate/>
-            </td>
-        </tr>
-    </table>
+    <section>
+
+        <table border="2" cellspacing="0" cellpadding="6" width="100%">
+            <tr>
+                <td><b>IMB ID #: <lookup
+                        class="value"
+                        expression="patientIdentifiers.get(&quot;IMB ID&quot;)" />
+                </b></td>
+                <td>Age:
+                    <lookup class="value"
+                            expression="patient.age" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Last name/<span
+                        class="disabled">Nom: </span> <lookup class="value"
+                                                              expression="patient.personName.familyName" /></td>
+                <td>First name/<span
+                        class="disabled">Prenom: </span> <lookup class="value"
+                                                                 expression="patient.personName.givenName" /></td>
+                <td>Gender: <lookup
+                        class="value" expression="patient.Gender" /></td>
+            </tr>
+            <tr>
+                <td><img
+                        src="/openmrs/moduleResources/rwandareports/images/pihHands.png"
+                        align="left" height="65"></img>
+                    <h2>
+                        &#160;&#160;Inshuti Mu Buzima <br /> &#160;&#160;PIH Rwanda
+                    </h2></td>
+                <td><strong> Chronic Disease Clinic Visit Form –
+                    Pediatric Developmental Clinic</strong></td>
+                <td></td>
+            </tr>
+<!--            <tr>-->
+<!--                <td>Clinic or Hospital:</td>-->
+<!--                <td><encounterLocation id="encounterLocation" order="Rwinkwavu Hospital,Ndego Health Center,Kabarondo Health Center,Kirehe Hospital,-->
+<!--                Cyarubare Health Center,Ruramira Health Center,Mahama Health Center,Gahara Health Center,Mushikiri Health Center,Musaza Health Center,Unknown location" /></td>-->
+<!--                <td>Author:<encounterProvider id="encounterProvider" default="currentUser"/></td>-->
+<!--            </tr>-->
+        </table>
+    </section>
 
     <br />
     <table>
