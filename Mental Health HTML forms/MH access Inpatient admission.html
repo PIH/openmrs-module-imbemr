@@ -66,7 +66,7 @@
 
         @Referred_to_outpatient_mental_health_care@ = 7f6ac893-a682-4198-95be-59bbaaea8a56
         @Referred_to_Ndera_for_inpatient_care@ = ff28cd97-94f6-40c1-8e08-0151e8614c67
-        @PATIENT_REFERRED_TO_ANOTHER_SITE@ = 3cde31b8-26fe-102b-80cb-0017a47871b2
+        @PATIENT_REFERRED_TO_ANOTHER_HOSPITAL_FOR_INPATIENT_CARE@ = 8c3b29f6-14d3-4df9-aed4-201c731c0590
         @Discharge_from_all_MH_services@ = 8665d1b7-c522-4e46-9a00-0bb3be59faab
         @Patient_left_against_doctor's_advice@ = 8e8f9572-7191-4d9d-9b69-dfc7db7a244a
         @PATIENT_DIED@ = 3cdd446a-26fe-102b-80cb-0017a47871b2
@@ -94,6 +94,8 @@
         @Citalopram@ = 1358af2f-8f65-4864-879c-1663c443f91f
         @Tegretol@ = be2ffece-c193-49e0-8697-7b13ed164dcf
         @Depakote@ = 72e46e41-682d-4890-ace0-2b159c4df144
+        @AMITRIPTYLINE@ = 682ca4be-42ed-45ba-a406-6e29275f649c
+
 
 
         <!-- program -->
@@ -223,7 +225,7 @@
             <tr>
                 <td colspan="2">
                     <strong>Reason for departure</strong>
-                    <obs conceptId="$@Mental_Health_inpatient_departure_Reason@" answerConceptIds="$@Referred_to_outpatient_mental_health_care@,$@Referred_to_Ndera_for_inpatient_care@,$@PATIENT_REFERRED_TO_ANOTHER_SITE@,
+                    <obs conceptId="$@Mental_Health_inpatient_departure_Reason@" answerConceptIds="$@Referred_to_outpatient_mental_health_care@,$@Referred_to_Ndera_for_inpatient_care@,$@PATIENT_REFERRED_TO_ANOTHER_HOSPITAL_FOR_INPATIENT_CARE@,
                         $@Discharge_from_all_MH_services@,$@Patient_left_against_doctor's_advice@,$@PATIENT_DIED@,$@UNKNOWN@,$@OTHER_NON_CODED@" answerLabels="Renvoi aux services ambulatoires de santé mentale/Referral to outpatient mental health care,Envoyé à Ndera pour les services hospitaliers/Referral to Ndera for inpatient care,
                         Envoyé au autre hôpital pour les services hospitaliers/Referral to another hospital for inpatient care,Renvoi de tous les services de santé mentale/Discharge from all MH services,Patient a quitté contre l'avis du médecin/Patient left against doctor's advice,Patient est décédé/Patient died,
                         Inconnu/Unknown,Autre/Other" />
@@ -270,7 +272,7 @@
                 <td colspan="2">
                     <strong>Discharge psychotropic meds</strong>
                     <drugOrder drugNames="$@carbamazepine@,$@Phenobarbital@,$@Valproic_acid@,$@phenytoin@,$@Diazepam@,$@Haldol_Decanoate@,$@haloperidol@,
-                                $@Amytryptiline@,$@Biperiden@,$@Chlorpromazine@,$@Keppra@,$@FLUPENTHIXOL@,$@Cinnarizine@,$@Risperidone@,$@Levomepromazine@,
+                                $@AMITRIPTYLINE@,$@Biperiden@,$@Chlorpromazine@,$@Keppra@,$@FLUPENTHIXOL@,$@Cinnarizine@,$@Risperidone@,$@Levomepromazine@,
                                 $@FLUOXETINE@,$@Citalopram@,$@Tegretol@,$@Depakote@"
                                drugLabels="Carbamazepine,Phenobarbital,Depakine,Phenytoine,
                                Diazepam,Haldol Decanoate,Haloperidol,Amytryptiline,Biperdene,Chlorpromazine,Keppra,

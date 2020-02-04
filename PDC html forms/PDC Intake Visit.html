@@ -33,6 +33,18 @@
         @HOSPITAL@ = 3ce0d472-26fe-102b-80cb-0017a47871b2
         @HEALTH_CENTER@ = 7e327a1a-c1df-4712-ab5d-e05dc0dac35d
         @Community_Health_Worker@ = 6920480c-c1b2-4d2e-b5d1-c0ab9dd6bf63
+        @BIRTH_LOCATION_TYPE@ = 78f156b9-12f6-431a-bd74-d3ad3b146a4e
+        @HOUSE@ = 4d7f36bb-84d3-4915-95cc-951811c3cd4a
+        @HOSPITAL@ = 3ce0d472-26fe-102b-80cb-0017a47871b2
+        @HEALTH_CENTER@ = 7e327a1a-c1df-4712-ab5d-e05dc0dac35d
+        @ROAD@ = 4246a4e4-a54d-43b3-9ac1-306911a832c4
+        @OTHER_NON-CODED@ = 3cee7fb4-26fe-102b-80cb-0017a47871b2
+        @BIRTH_LOCATION_TYPE_NON_CODED@ = 97bfa34a-28cd-459f-8b1e-c2e5d71ea7f5
+        @Infant_born_to_seropositive_mother@ = be3f7524-e744-43e4-a76e-bc78fbb76acd
+        @Infant_born_to_seronegative_mother(discordant_couple)@ = d8e151b3-7355-43af-a1f2-703fe8573f60
+        @UNKNOWN@ = 3cd6fac4-26fe-102b-80cb-0017a47871b2
+        @Test_ordered_on_infant@ = 38dc86ff-b151-4fe8-98e4-46e88b8fb4de
+        @Parent_Seropositive_Status@ = c0d26fc9-a892-40e5-b33b-752de77b7f81
     </macros>
     <style>
         .formName {
@@ -420,19 +432,19 @@
 
                                         <tr >
                                             <td colspan="9">
-                                                <table width="100%" > <tr class="disabled" > <td class="checkboxGroup"><span class="disdiv"
+                                                <table width="100%" > <tr > <td class="checkboxGroup"><span
                                                         id="checkboxRadio">Site of Birth:&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="3ce0d472-26fe-102b-80cb-0017a47871b2" answerLabel="Hospital" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HOSPITAL@" answerLabel="Hospital" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="7e327a1a-c1df-4712-ab5d-e05dc0dac35d" answerLabel="Health Center" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HEALTH_CENTER@" answerLabel="Health Center" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="4d7f36bb-84d3-4915-95cc-951811c3cd4a" answerLabel="Home" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HOUSE@" answerLabel="Home" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="4246a4e4-a54d-43b3-9ac1-306911a832c4" answerLabel="En route" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@ROAD@" answerLabel="En route" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="4d7f36bb-84d3-4915-95cc-951811c3cd4a" answerLabel="Other:" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other:" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="97bfa34a-28cd-459f-8b1e-c2e5d71ea7f5" /></span><br/><br/></td>
+	<obs conceptId="$@BIRTH_LOCATION_TYPE_NON_CODED@" /></span><br/><br/></td>
                                                 </tr>
 
                                                     <tr><td class="checkboxGroup"><span
@@ -444,16 +456,15 @@
 	<obs conceptId="74aeb141-b257-44ef-bdf2-0531f6126d97" answerConceptId="3cd6fac4-26fe-102b-80cb-0017a47871b2" answerLabel="Unknown" />
 	</span><br/><br/></td>
                                                     </tr>
-
-                                                    <tr class="disabled"><td class="checkboxGroup" ><span class="disdiv"
+                                                    <tr ><td class="checkboxGroup" ><span
                                                             id="checkboxRadio">HIV status of mother:&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="be3f7524-e744-43e4-a76e-bc78fbb76acd" answerLabel="Positive" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@Infant_born_to_seropositive_mother@" answerLabel="Positive" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="d8e151b3-7355-43af-a1f2-703fe8573f60" answerLabel="Negative" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@Infant_born_to_seronegative_mother(discordant_couple)@" answerLabel="Negative" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="3cd6fac4-26fe-102b-80cb-0017a47871b2" answerLabel="Unknown" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@UNKNOWN@" answerLabel="Unknown" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="38dc86ff-b151-4fe8-98e4-46e88b8fb4de" answerLabel="Ordered for Infant" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@Test_ordered_on_infant@" answerLabel="Ordered for Infant" />
 	</span><br/><br/></td>
                                                     </tr></table></td></tr>
 
@@ -530,19 +541,19 @@
 
                                         <tr class="disabled">
                                             <td colspan="9">
-                                                <table width="100%" > <tr><td class="checkboxGroup"><span class="disdiv"
+                                                <table width="100%" > <tr><td class="checkboxGroup"><span
                                                         id="checkboxRadio">Site of Birth:&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="3ce0d472-26fe-102b-80cb-0017a47871b2" answerLabel="Hospital" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HOSPITAL@" answerLabel="Hospital" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="7e327a1a-c1df-4712-ab5d-e05dc0dac35d" answerLabel="Health Center" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HEALTH_CENTER@" answerLabel="Health Center" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="4d7f36bb-84d3-4915-95cc-951811c3cd4a" answerLabel="Home" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HOUSE@" answerLabel="Home" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="4246a4e4-a54d-43b3-9ac1-306911a832c4" answerLabel="En route" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@ROAD@" answerLabel="En route" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="4d7f36bb-84d3-4915-95cc-951811c3cd4a" answerLabel="Other:" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other:" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="97bfa34a-28cd-459f-8b1e-c2e5d71ea7f5" /></span><br/><br/></td>
+	<obs conceptId="$@BIRTH_LOCATION_TYPE_NON_CODED@" /></span><br/><br/></td>
                                                 </tr>
 
                                                     <tr><td class="checkboxGroup"><span
@@ -555,15 +566,15 @@
 	</span><br/><br/></td>
                                                     </tr>
 
-                                                    <tr><td class="checkboxGroup"><span class="disdiv"
+                                                    <tr><td class="checkboxGroup"><span
                                                             id="checkboxRadio">HIV status of mother:&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="be3f7524-e744-43e4-a76e-bc78fbb76acd" answerLabel="Positive" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@Infant_born_to_seropositive_mother@" answerLabel="Positive" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="d8e151b3-7355-43af-a1f2-703fe8573f60" answerLabel="Negative" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@Infant_born_to_seronegative_mother(discordant_couple)@" answerLabel="Negative" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="3cd6fac4-26fe-102b-80cb-0017a47871b2" answerLabel="Unknown" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@UNKNOWN@" answerLabel="Unknown" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="38dc86ff-b151-4fe8-98e4-46e88b8fb4de" answerLabel="Ordered for Infant" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@Test_ordered_on_infant@" answerLabel="Ordered for Infant" />
 	</span><br/><br/></td>
                                                     </tr></table></td></tr>
 
@@ -621,19 +632,19 @@
 
                             <tr >
                                 <td colspan="9">
-                                    <table width="100%" > <tr class="disabled"><td class="checkboxGroup"><span class="disdiv"
+                                    <table width="100%" > <tr ><td class="checkboxGroup"><span
                                             id="checkboxRadio">Site of Birth:&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="3ce0d472-26fe-102b-80cb-0017a47871b2" answerLabel="Hospital" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HOSPITAL@" answerLabel="Hospital" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="7e327a1a-c1df-4712-ab5d-e05dc0dac35d" answerLabel="Health Center" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HEALTH_CENTER@" answerLabel="Health Center" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="4d7f36bb-84d3-4915-95cc-951811c3cd4a" answerLabel="Home" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@HOUSE@" answerLabel="Home" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="4246a4e4-a54d-43b3-9ac1-306911a832c4" answerLabel="En route" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@ROAD@" answerLabel="En route" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="78f156b9-12f6-431a-bd74-d3ad3b146a4e" answerConceptId="4d7f36bb-84d3-4915-95cc-951811c3cd4a" answerLabel="Other:" />
+	<obs conceptId="$@BIRTH_LOCATION_TYPE@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other:" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="97bfa34a-28cd-459f-8b1e-c2e5d71ea7f5" /></span><br/><br/></td>
+	<obs conceptId="$@BIRTH_LOCATION_TYPE_NON_CODED@" /></span><br/><br/></td>
                                     </tr>
 
                                         <tr><td class="checkboxGroup"><span
@@ -646,15 +657,15 @@
 	</span><br/><br/></td>
                                         </tr>
 
-                                        <tr class="disabled"><td class="checkboxGroup"><span class="disdiv"
+                                        <tr ><td class="checkboxGroup"><span
                                                 id="checkboxRadio">HIV status of mother:&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="be3f7524-e744-43e4-a76e-bc78fbb76acd" answerLabel="Positive" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@Infant_born_to_seropositive_mother@" answerLabel="Positive" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="d8e151b3-7355-43af-a1f2-703fe8573f60" answerLabel="Negative" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@Infant_born_to_seronegative_mother(discordant_couple)@" answerLabel="Negative" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="3cd6fac4-26fe-102b-80cb-0017a47871b2" answerLabel="Unknown" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@UNKNOWN@" answerLabel="Unknown" />
 	&#160;&#160;&#160;&#160;&#160;&#160;
-	<obs conceptId="c0d26fc9-a892-40e5-b33b-752de77b7f81" answerConceptId="38dc86ff-b151-4fe8-98e4-46e88b8fb4de" answerLabel="Ordered for Infant" />
+	<obs conceptId="$@Parent_Seropositive_Status@" answerConceptId="$@Test_ordered_on_infant@" answerLabel="Ordered for Infant" />
 	</span><br/><br/></td>
                                         </tr></table></td></tr>
 

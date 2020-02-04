@@ -9,7 +9,7 @@
         "extensionPointId": "imbemr.homepageLink",
         "type": "link",
         "label": "coreapps.findPatient.app.label",
-        "url": "coreapps/findpatient/findPatient.page",
+        "url": "coreapps/findpatient/findPatient.page?app=coreapps.findPatient",
         "icon": "icon-search",
         "requiredPrivilege": "App: coreapps.findPatient"
       }

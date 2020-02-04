@@ -13,7 +13,9 @@
         @Phenobarbital@ = 7ce04b86-1379-4ab8-8bd8-f8dfc445e1ee
         @Valproic_acid@ = 900d0911-5e8a-47c3-a683-4c9137cf1fa9
         @phenytoin@ = 105a9382-8509-4a90-8546-29609aea71b1
-        @Diazepam@ =ab5b388b-ae30-4eac-a24f-502acdf12720
+        <!--
+                @Diazepam@ =ab5b388b-ae30-4eac-a24f-502acdf12720
+        -->
         @Haldol_Decanoate@ = 05d7dfdc-91cb-4b32-9160-73713c88de37
         @haloperidol@ = b1da9fe4-fb45-421b-ae6c-b7497417618b
         @Amytryptiline@ = 641a0a82-0c81-427b-a2f1-074f6f39db78
@@ -217,10 +219,10 @@
         @Captopril_(12.5mg_tablet)@=30e1f05d-4d61-463d-84e6-38ed7599ff62
         @INDINAVIR@=24034d42-7fe4-4995-8057-b5fa1dc7a3d2
         @Amitriptyline_25mg@=39490513-14ec-4f45-b5b6-b59487d02843
-        @DDI_(250_mg)@=22e43bd8-ad6b-4d3b-8631-1a462954dddc
-        @DDI_(400_mg)@=d8570744-f7d3-4fc0-a117-db2ab9bfccdd
-        @Kaletra_(Lopinavir_200mg/Ritonavir_50mg)@=bceaee9c-ef6e-41fe-91f7-18e38b4357a9
-        @Stavudine-Lamivudine_(30mg/150mg)@=694ff5d8-7d7e-4fdf-ac08-37fad10d80d2
+        @DDI_(250_mg)@=3330aa6c-95da-4de9-9cdf-afaa1f40e7aa
+        @DDI_(400_mg)@=b7ef1ff6-a2b0-4d76-915d-f5ba3f3887b0
+        @Kaletra_(Lopinavir_200mg/Ritonavir_50mg)@=e389fc40-7f3c-4b5b-8315-6bf8d8afcaa0
+        @Stavudine-Lamivudine_(30mg/150mg)@=dbeda32a-b3fd-4275-9816-564ada43aaef
         @Tenofovir-Lamivudine_(300mg/300mg)@=4627ebb6-f772-4363-ae16-0311a3210123
         @Losartan_(50_mg)@=8183c4cc-4c00-4932-aa4f-a84ff284f09f
         @Propranolol_(40_mg)@=202b7463-2a33-446f-a3eb-4436889012c0
@@ -337,7 +339,7 @@
         @INSULIN_Regular@ = 7614d49a-57d8-4b55-9fac-9be4fdd06c84
         @INSULIN_LENTE@ = 80b647a7-73ae-4aa2-af5c-8a1f34ce0e44
         @Insulin_70_30@ = d18fc471-51b7-4469-83b5-03f0716a1af6
-        @AMITRIPTYLINE@ = 39490513-14ec-4f45-b5b6-b59487d02843
+        @AMITRIPTYLINE@ = 682ca4be-42ed-45ba-a406-6e29275f649c
         @PHENOBARBITAL@ = 7ce04b86-1379-4ab8-8bd8-f8dfc445e1ee
         @PHENYTOIN@ = 105a9382-8509-4a90-8546-29609aea71b1
         @CARBAMAZEPINE@ = e8ffe84f-25ef-49c4-882e-c47c454d44f0
@@ -523,6 +525,14 @@
             <variant locale="en" value="Primary Diagnosis"/>
             <variant locale="rw" value="Uburwayi bw’ibanze"/>
         </code>
+        <code name="Mental_Health_Specific">
+            <variant locale="en" value="Mental Health Specific"/>
+            <variant locale="rw" value="Imiti y'uburwayi bwo mumutwe y'ihariye"/>
+        </code>
+        <code name="General">
+            <variant locale="en" value="General"/>
+            <variant locale="rw" value="Imiti muri rusange"/>
+        </code>
 
     </translations>
 
@@ -530,7 +540,7 @@
 
     <span style="float:right">Paper Form ID: $paperFormId</span>
 
-    <section headerLabel="1. Encounter Details">
+    <section headerLabel="Encounter Details">
         <table cellspacing="0" cellpadding="6" width="100%">
             <tr>
                 <td><img
@@ -569,28 +579,30 @@
                 </td>
                 <td>
                     <lookup expression="fn.message('Provider')"/>:<encounterProvider id="encounterProvider"
-                                                                                     role="Provider" default="currentUser"/>
+                                                                                     role="Provider" />
                 </td>
             </tr>
         </table>
     </section>
-    <section headerLabel="2.Diagnosis">
+    <section headerLabel="Medication">
         <table border="1">
             <tr>
                 <td>
-                    <strong>Mental Health Specific</strong>
+                    <strong><lookup expression="fn.message('Mental_Health_Specific')"/></strong>
                 </td>
                 <td>
                     <drugOrder drugNames="$@carbamazepine@,$@Phenobarbital@,$@Valproic_acid@,$@phenytoin@,$@Diazepam@,$@Haldol_Decanoate@,$@haloperidol@,
-                                $@Amytryptiline@,$@Biperiden@,$@Chlorpromazine@,$@Keppra@,$@FLUPENTHIXOL@,$@Cinnarizine@,$@Risperidone@,$@Levomepromazine@,$@FLUOXETINE@,$@Citalopram@"
-                               drugLabels="Carbamazepine/Tegretol,Phenobarbital/ Luminal,Depakine/Depakote/Valproic acid,Diphantoine/Phenytoine,
-                               Diazepam/ Valium,Haldol Decanoate,Haldol/ Haloperidol,Amytryptiline/ Triptizol,Akineton/ Biperdene,Largatil/Chlorpromazine,Keppra,
-                               Fluanxol/ Flupentixol,Stugeron/ Cinnarizine,Respiridone/ Risperdol,Nozinan/ Levomepromazine,Fluoxetine/Prozac,Citalopram/Calexa"
+                                $@AMITRIPTYLINE@,$@Biperiden@,$@Chlorpromazine@,$@Keppra@,$@FLUPENTHIXOL@,$@Cinnarizine@,$@Risperidone@,$@Levomepromazine@,$@FLUOXETINE@,$@Citalopram@"
+                               drugLabels="Carbamazepine/Tegretol,Phenobarbital/ Luminal,Depakene/Depakote/Valproic acid,Diphantoine/Phenytoine,
+                               Diazepam/ Valium,Haldol Decanoate,Haldol/ Haloperidol,Amytryptiline/ Triptizol,Akineton/ Biperiden,Largatil/Chlorpromazine,Keppra/Levetiracetam,
+                               Fluanxol/ Flupentixol,Stugeron/ Cinnarizine,Risperidone/ Risperdal,Nozinan/ Levomepromazine,Fluoxetine/Prozac,Citalopram/Celexa"
                                discontinuedReasonConceptId="$@REASON_ORDER_STOPPED@"  />
                 </td>
             </tr>
             <tr>
-                <td><strong>General</strong></td>
+                <td>
+                    <strong><lookup expression="fn.message('General')"/></strong>
+                </td>
                 <td>
                     <drugOrder drugNames="$@PHENOBARBITAL@,$@phenytoin@,$@carbamazepine@,$@VALPROIC_ACID@,$@HALOPERIDOL@,
 $@Triomune-30_(Stavudine_30_mg/Lamivudine_150_mg/Nevirapine_200_mg)@,

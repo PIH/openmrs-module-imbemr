@@ -46,6 +46,11 @@
         @Referred_to_HC@ = eccaa677-0aaa-4d3c-b4a0-42b2005a704e
         @Other_Feeding_Intervetion@ = ffc14cc3-cdda-467f-8b39-71fb1e41d210
         @Feeding_child_with_poor_appetite@ = 05ea6cda-4dd8-47e5-893d-1da1dac3b9c0
+        @Breastfeeding_status@ = fb50b428-ee3c-4e78-b2b5-6645c353697e
+        @Only/mostly_breastfeeding@ = 955db562-ed04-412b-9a28-638411b80ed9
+        @Not_started_complementary_foods@ = 91db4582-3927-429f-9591-3429a779a902
+        @Breastfeeds_first_then_eats_meals@ = cdb9f9d6-fdc8-4e1f-b277-f93ee4e74bcb
+        @Eats_meals_first_then_breastfeeds@ = 2873e077-64cc-480f-a4ca-ae1c9a40339f
 
 
 
@@ -84,6 +89,21 @@
         @PATIENT_REFERRED_TO_DISTRICT_HOSPITAL@ = a01eda34-ba5d-48f1-8a40-7e05a850a31d
         @Continue_PDC_malnutrition_treatment@ = e7fd6e22-42ea-4aae-984e-655afc42531c
         @Cured_(malnutrition)@ = f0585282-a90d-4c20-88ee-2d1b6fb21b4b
+        @Food_Variety_Concerns@ = 0733fc90-58cb-4f51-8905-d7135be07593
+        @Eats_food_from_less_than_four_food_groups_per_day@ = d52b2005-0709-4e7c-8001-be7390d8f2ba
+        @Food_frequency/quantity_concerns@ = 84644755-bedd-4ae6-b4ef-84229f70d10c
+        @Not_appropriate_for_age@ = 1da769a3-0d9b-4428-b8f5-8a29f174e187
+        @Food_texture_concerns@ = 1bb04bad-683c-4e96-a04d-f8e861f6d6f5
+        @Responsive_Feeding@ = 1cdfccf5-4ef3-49fa-9c9d-34574ea7b8dc
+        @Concern@ = ac7f1a9a-6bb2-4310-9455-55eedabdaefa
+        @No_concern@ = 7b798689-3aab-4224-b4e3-6e7f8fb33b4f
+        @Non-nutritious_foods@ = 5d78fcf5-ebe1-48b9-ac0c-6553e2f25843
+        @Feeding_Difficulties@ = 0a91130b-66e1-42fc-994a-abe9180a5ecf
+        @Coughs_chokes_or_gags_while_eating@ = 12620906-43e6-4d1e-9144-813a0b2df946
+        @Liquids/foods_falling_out_of_mouth@ = 82144400-394c-40c5-8923-5a7e32751e65
+        @Difficulty_chewing@ = 84eae142-bc64-4da2-a008-ecb56dfe95cb
+        @Keep_food_in_their_mouth_without_swallowing@ = eefb8f1c-4c9f-4d60-ae53-f3e399e61b4e
+        @Other_feeding_difficulties@ = 99129bcf-0ec2-419a-aefa-e7167f5ff2f5
     </macros>
 
 
@@ -201,6 +221,24 @@
         }
         }
     </style>
+    <script type="text/javascript">
+        $j(document).ready(function() {
+
+			if(getValue("encounterDate.value") &#60;&#61;'2019-05-20'){
+                $j(".before20190520changes").show();
+            }else{
+                 $j(".before20190520changes").hide();
+            }
+            getField('encounterDate.value').change(function() {
+                if(getValue("encounterDate.value") &#60;&#61; '2019-05-20'){
+                    $j(".before20190520changes").show();
+                }else{
+                    $j(".before20190520changes").hide();
+                }
+            });
+
+		});
+    </script>
     <div id="container"  style="width:100%">
         <section>
 
@@ -242,11 +280,78 @@
             <table BORDER="1">
                 <tr>
                     <th class="tableHeader">
-                        <center>ASSESSMENT</center>
+                        <center>PREVIOUS VISIT FINAL DECISION</center>
                     </th>
                 </tr>
                 <tr>
                     <td>
+                        <obs conceptId="$@Previous_visit_Classification@" answerConceptIds="$@Green_visit_class@,$@Yellow_visit_class@,$@Red(HC)@,$@Red(DH_transit)_visit_class@"
+                             answerLabels="Green,Yellow,Red(HC),Red(DH transfer)" style="radio"/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <center>ASSESSMENT FOR CONCERNS</center>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+
+                        <strong>Breastfeeding status</strong>
+                        <br/>
+                        <obs conceptId="$@Breastfeeding_status@" answerConceptId="$@NO@" answerLabels="No" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Breastfeeding_status@" answerConceptId="$@Only/mostly_breastfeeding@" answerLabels="Only/mostly breastfeeding" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Breastfeeding_status@" answerConceptId="$@Not_started_complementary_foods@" answerLabels="Not started complementary foods" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Breastfeeding_status@" answerConceptId="$@Breastfeeds_first_then_eats_meals@" answerLabels="Breastfeeds first then eats meals" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Breastfeeding_status@" answerConceptId="$@Eats_meals_first_then_breastfeeds@" answerLabels="Eats meals first then breastfeeds" style="checkbox"/> <br/>
+                        <br/>
+
+
+                        <strong>Food variety</strong>
+                        <br/>
+                        <obs conceptId="$@Food_Variety_Concerns@" answerConceptId="$@NONE@" answerLabels="No" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Food_Variety_Concerns@" answerConceptId="$@Eats_food_from_less_than_four_food_groups_per_day@" answerLabels="&#60;4 food groups per day" style="checkbox"/> <br/>
+                        <br/>
+
+                        <strong>Food texture</strong>
+                        <br/>
+                        <obs conceptId="$@Food_texture_concerns@" answerConceptId="$@NONE@" answerLabels="No" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Food_texture_concerns@" answerConceptId="$@Not_appropriate_for_age@" answerLabels="Not changing over time/not appropriate for age" style="checkbox"/> <br/>
+                        <br/>
+
+                        <strong>Food frequency/quantity</strong>
+                        <br/>
+                        <obs conceptId="$@Food_frequency/quantity_concerns@" answerConceptId="$@NONE@" answerLabels="No" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Food_frequency/quantity_concerns@" answerConceptId="$@Not_appropriate_for_age@" answerLabels="Not appropriate for age" style="checkbox"/> <br/>
+                        <br/>
+
+                        <strong>Responsive feeding</strong>
+                        <br/>
+                        <obs conceptId="$@Responsive_Feeding@" answerConceptId="$@No_concern@" answerLabels="No" style="checkbox"/>
+                        <obs conceptId="$@Responsive_Feeding@" answerConceptId="$@Concern@" answerLabels="Yes" style="checkbox"/> <br/>
+                        <br/>
+
+                        <strong>Non-nutritious foods</strong>
+                        <br/>
+                        <obs conceptId="$@Non-nutritious_foods@" answerConceptId="$@No_concern@" answerLabels="No" style="checkbox"/>
+                        <obs conceptId="$@Non-nutritious_foods@" answerConceptId="$@Concern@" answerLabels="Yes" style="checkbox"/> <br/>
+                        <br/>
+
+                        <strong>Feeding difficulties</strong>
+                        <br/>
+                        <obs conceptId="$@Feeding_Difficulties@" answerConceptId="$@No_concern@" answerLabels="No" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Feeding_Difficulties@" answerConceptId="$@Coughs_chokes_or_gags_while_eating@" answerLabels="Coughs, chokes or gags while eating" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Feeding_Difficulties@" answerConceptId="$@Liquids/foods_falling_out_of_mouth@" answerLabels="Liquids/foods falling out of mouth" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Feeding_Difficulties@" answerConceptId="$@Difficulty_chewing@" answerLabels="Difficulty chewing" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Feeding_Difficulties@" answerConceptId="$@Keep_food_in_their_mouth_without_swallowing@" answerLabels="Keep food in their mouth without swallowing" style="checkbox"/> <br/>
+                        Yes: <obs conceptId="$@Feeding_Difficulties@" answerConceptId="$@OTHER_NON-CODED@" answerLabels="Other" style="checkbox"/> :
+                        <obs conceptId="$@Other_feeding_difficulties@" />
+
+                        <br/>
+
+                        <br/>
+
+                        <hr/>
                         <strong>Growth Curve</strong>
                         <obs conceptId="$@Growth_Curve@" answerConceptIds="$@Up@,$@Flat_or_down@" answerLabels="Up,Flat or down" style="radio"/>
                         <br/>
@@ -258,18 +363,7 @@
                 </tr>
                 <tr>
                     <th class="tableHeader">
-                        <center>PREVIOUS VISIT CLASSIFICATION</center>
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <obs conceptId="$@Previous_visit_Classification@" answerConceptIds="$@Green_visit_class@,$@Yellow_visit_class@,$@Red(HC)@,$@Red(DH_transit)_visit_class@"
-                             answerLabels="Green,Yellow,Red(HC),Red(DH transfer)" style="radio"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="tableHeader">
-                        <center>CURRENT VISIT CLASSIFICATION</center>
+                        <center>CURRENT VISIT FINAL DECISION</center>
                     </th>
                 </tr>
                 <tr>
@@ -278,12 +372,12 @@
                         ,$@Currently_in_HC_Malnutrition_program@" answerLabels="Green,Yellow,Red(HC),Red(DH transfer),Referred to HC malnutrition program" style="radio"/>
                     </td>
                 </tr>
-                <tr>
+                <tr class="before20190520changes">
                     <th class="tableHeader">
                         <center>PLAN</center>
                     </th>
                 </tr>
-                <tr>
+                <tr class="before20190520changes">
                     <td>
                         <strong>Assessment needed by: </strong>
                         <obs conceptId="$@Assessment_Needed_By@" answerConceptId="$@Social_Worker@"
@@ -324,12 +418,12 @@
                         <obs conceptId="$@Maternal_Food_Package_End_Time@" allowFutureDates="true"/>
                     </td>
                 </tr>
-                <tr>
+                <tr class="before20190520changes">
                     <th>
                         FEEDING INTERVENTION
                     </th>
                 </tr>
-                <tr>
+                <tr class="before20190520changes">
                     <td>
                         <obs conceptId="$@Feeding_Intervention@" answerConceptId="$@complementary_feeding@" answerLabel="Complementary feeding" style="checkbox"/>
                         <br/>
@@ -363,14 +457,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>
+                    <th >
                         FOLLOW-UP
                     </th>
                 </tr>
                 <tr>
                     <td >
-                        Give follo-up appointment based on results of growth failure algorithm.<br/>
-                        Document RDV date on the visit form.
+                        Age 6-11 months: Follow-up in 1 week <br/>
+                        Age 12-59 months: Follow-up in 2 weeks
                     </td>
                 </tr>
             </table>

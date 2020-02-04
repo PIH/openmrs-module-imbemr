@@ -1,0 +1,172 @@
+<htmlform>
+    <!-- Pedi HIV top level form.
+         HIV-RW.V1.akb.July13.doc
+         Created by Neil Gupta 2014
+     -->
+    <macros>
+        paperFormId = (Fill this in)
+        headerColor =#009d8e
+        fontOnHeaderColor = white
+    </macros>
+
+    <style>
+		.section {
+			border: 1px solid $headerColor;
+			padding: 2px;
+			text-align: left;
+			margin-bottom: 1em;
+		}
+		.sectionHeader {
+			background-color: $headerColor;
+			color: $fontOnHeaderColor;
+			display: block;
+			padding: 2px;
+			font-weight: bold;
+		}
+		table.baseline-aligned td {
+			vertical-align: baseline;
+		}
+		th.subheader {
+		background-color: $headerColor;
+		color:white
+		}
+	</style>
+
+    <translations defaultLocale="fr">
+        <code name="gender_m">
+            <variant locale="fr" value="Homme" />
+            <variant locale="en" value="Male" />
+        </code>
+        <code name="gender_f">
+            <variant locale="fr" value="Femme" />
+            <variant locale="en" value="Female" />
+        </code>
+    </translations>
+
+    <!-- Form header -->
+    <table border="2" cellspacing="0" cellpadding="6" width="100%">
+
+    </table>
+
+    <section>
+
+        <table border="2" cellspacing="0" cellpadding="6" width="100%">
+            <tr>
+                <td><b>IMB ID #: <lookup
+                        class="value"
+                        expression="patientIdentifiers.get(&quot;IMB ID&quot;)" />
+                </b></td>
+                <td>Age:
+                    <lookup class="value"
+                            expression="patient.age" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Last name/<span
+                        class="disabled">Nom: </span> <lookup class="value"
+                                                              expression="patient.personName.familyName" /></td>
+                <td>First name/<span
+                        class="disabled">Prenom: </span> <lookup class="value"
+                                                                 expression="patient.personName.givenName" /></td>
+                <td>Gender: <lookup
+                        class="value" expression="patient.Gender" /></td>
+            </tr>
+            <tr>
+                <td><img
+                        src="/openmrs/moduleResources/rwandareports/images/pihHands.png"
+                        align="left" height="65"></img>
+                    <h2>
+                        &#160;&#160;Inshuti Mu Buzima <br /> &#160;&#160;PIH Rwanda
+                    </h2></td>
+                <td><strong> Chronic Disease Clinic Visit Form –
+                    Pediatric Developmental Clinic</strong></td>
+                <td></td>
+            </tr>
+<!--            <tr>-->
+<!--                <td>Clinic or Hospital:</td>-->
+<!--                <td><encounterLocation id="encounterLocation" order="Rwinkwavu Hospital,Ndego Health Center,Kabarondo Health Center,Kirehe Hospital,-->
+<!--                Cyarubare Health Center,Ruramira Health Center,Mahama Health Center,Gahara Health Center,Mushikiri Health Center,Musaza Health Center,Unknown location" /></td>-->
+<!--                <td>Author:<encounterProvider id="encounterProvider" default="currentUser"/></td>-->
+<!--            </tr>-->
+        </table>
+    </section>
+
+    <br />
+    <table>
+        <div>
+            <section headerLabel="1. Referral Form">
+                <htmlformflowsheet formId="c0107214-0064-4fc1-b948-0bd21fcd2c69" windowHeight="450" />
+            </section>
+        </div>
+        <div>
+            <section headerLabel="2. Intake Visit">
+                <htmlformflowsheet formId="510a0e66-b526-4dce-aeb6-9857d98f4bf3" windowHeight="450" />
+            </section>
+        </div>
+        <div>
+            <section headerLabel="3. Visit Form">
+                <htmlformflowsheet formId="47b339bb-0ae8-4a93-9064-740baa5d1a8f" windowHeight="450" />
+            </section>
+        </div>
+
+        <div>
+            <section headerLabel="4. ECD Intervention">
+                <htmlformflowsheet formId="89826b97-c8da-453d-a9bc-b1f529e9726a" windowHeight="450" />
+            </section>
+        </div>
+        <div>
+            <section headerLabel="5. ECD Strengths">
+                <htmlformflowsheet formId="26d44dfc-348a-4e03-b135-32bc9ebffe7b" windowHeight="450" />
+            </section>
+        </div>
+        <div>
+            <section headerLabel="6. Malnutrition Acute">
+                <htmlformflowsheet formId="e290d58d-b404-4e86-851b-e0bf79bc929e" windowHeight="450" />
+            </section>
+        </div>
+        <div>
+            <section headerLabel="7. Malnutrition Growth Failure">
+                <htmlformflowsheet formId="d7ebfec2-0266-4c2f-9c1f-346e5355e47f" />
+            </section>
+        </div>
+        <div>
+            <section headerLabel="8. PDC Condition specific (Trisomy 21)">
+                <htmlformflowsheet formId="025ce56f-fee8-4e8a-bc62-b552c797d3ad" />
+            </section>
+        </div>
+        <div>
+            <section headerLabel="9. PDC Conditional Specific (Cleft Lip)">
+                <htmlformflowsheet formId="4e269404-5bd2-4e67-aa09-b0b4b7e585ad" />
+            </section>
+        </div>
+        <div>
+            <section headerLabel="10. PDC Conditional Specific (Global Developmental Delay)">
+                <htmlformflowsheet formId="4e269404-5bd2-4e67-aa09-b0b4b7e585ad" />
+            </section>
+        </div>
+        <div>
+            <section headerLabel="11. PDC feeding difficulty history">
+                <htmlformflowsheet formId="77e374c2-0a82-4964-8256-5ca389fe5228" />
+            </section>
+        </div>
+        <div>
+            <section headerLabel="12. PDC Standard Visit Form">
+                <htmlformflowsheet formId="872c4766-74ac-42a1-a385-060bb29b18aa" />
+            </section>
+        </div>
+
+
+    </table>
+    <div>
+    </div>
+
+    <br />
+    <!--
+        <center>
+        <submit submitLabel="Close Flowsheet" />
+    </center>
+         -->
+    <br />
+    <br />
+</htmlform>

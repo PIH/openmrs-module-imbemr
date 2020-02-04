@@ -15,15 +15,21 @@ Using the OpenMRS SDK to create a Rwanda development enviroment
     2. For "Distribution" or "Platform" chose "Distribution"
     3. For distribution version chose "Other...."
     4. For the distribution, use this module "org.openmrs.module:imbemr:1.0-SNAPSHOT" (or whatever the current version of this module is)
-    5. Choose port 1044 for debugging
-    6. Chose "1) Mysql" (assuming you have mysql installed--the mysql-via-docker option may also work, but I haven't tried it)
-    7. For the DB name, chose the existing Rwanda database you want to you: make sure to select the option to NOT overwrite the existing database
-    8. Enter mysql user/password for a uesr that has rights to create databases, etc
+    5. Choose the port to run tomcat on (usually 8080)
+    5. Choose port to debug on (usually 1044)
+    6. Chose how you want to use MySQL... via a local install of MySQL or docker
+    7. For the DB name, chose the existing Rwanda database you want to use: make sure to select the option to NOT overwrite the existing database
+    8. Enter mysql user/password for a user that has rights to create databases, etc
     9. Chose the JAVA HOME you want to use (should be Java 7)
 
-6. Run "mvn openmrs-sdk:run"   
-7. Note that this currently (as of Nov 23th 2016) does *not* include the MOH billing module
-
+6. Run "mvn openmrs-sdk:run"
+7. If everything starts up, but when you try to go to the login page (or any other page) you get a big stack trace that looks like it is due to Groovy, you need to remove the groovy jar file from the lib file.  Use the desktop file UI to open the openmrs-1.9.x.war file and remove the groovy jar from the logic omod.
+   - Using the system file UI, double click the openmrs war file (ie. ~/openmrs/malawi/openmrs-1.9.11.war)
+   - navigate to the WEB-INF/bundledModules folder
+   - find the logic omod and double click on the logic omod
+   - find the lib/groovy jar file and delete the groovy jar file
+   - delete the ~/openmrs/malawi/tmp directory before running 'mvn openmrs-sdk:run'
+   - run "mvn openmrs-sdk:run" again
 
 Updating your Rwanda development environment when module versions change
 ------------------------------------------------------------------------
