@@ -350,7 +350,7 @@
                     <input id="obs.other" name="obs.breastSymptoms" type="radio"
                            data-concept="b761e2c9-3d07-4a03-b274-c38282cc723c^Breast symptoms^99DCT"
                            value="3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT">
-                    skin changes
+                    other
                 </label>
             </div>
             <div class="form-group">
@@ -424,7 +424,7 @@
                 </label>
             </div>
             <fieldset>
-                <div class="form-group">
+                <div class="form-group concept-set">
                     <label>Mass 1: </label>
                     <label class="font-normal">
                         <input id="obs.breastMassLeft1" name="obs.breastMassPosition1" type="radio"
@@ -446,7 +446,7 @@
                 </div>
             </fieldset>
             <fieldset>
-                <div class="form-group">
+                <div class="form-group concept-set">
                     <label>Mass 2: </label>
                     <label class="font-normal">
                         <input id="obs.breastMassLeft2" name="obs.breastMassPosition2" type="radio"
@@ -468,7 +468,7 @@
                 </div>
             </fieldset>
             <fieldset>
-                <div class="form-group">
+                <div class="form-group concept-set">
                     <label>Mass 3: </label>
                     <label class="font-normal">
                         <input id="obs.breastMassLeft3" name="obs.breastMassPosition3" type="radio"
@@ -649,7 +649,7 @@
                 <input id="obs.breastMassResultsProbableCyst" name="obs.breastMassResults" type="checkbox"
                        data-concept="f43869bd-4dbf-453d-bd05-7b693b316e69^breast mass ultrasound results^99DCT"
                        value="9c9c5c5e-e05e-4286-9561-601325919469^probalbe cyst suspicion of benign mass^99DCT">
-                Probalbe cyst suspicion of benign mass
+                Probable cyst suspicion of benign mass
             </label>
 
             <label class="font-normal">
@@ -846,9 +846,9 @@
                        data-concept="69b9671b-d8b1-461b-bb7d-adb151775a57^Next step^99DCT"
                        value="d0e94536-0b91-40a1-b994-04bb4f5cd15d^Follow-up at this health facility^99DCT">
                 Follow-up at this health facility;
-                 date
-                <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"
-                       data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>
+<!--                 date-->
+<!--                <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"-->
+<!--                       data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>-->
             </label>
             <label class="font-normal">
                 <input id="obs.BreastDispositionReferralTo" name="obs.BreastDisposition" type="radio"
@@ -907,7 +907,11 @@
                        data-concept="eea065ac-117b-4be9-976b-2948b29046b7^Other reason for referral^99DCT"/>
 
             </label>
-
+            <label>
+                Scheduled  Appointment date:
+                <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"
+                       data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>
+            </label>
         </div>
     </fieldset>
 
