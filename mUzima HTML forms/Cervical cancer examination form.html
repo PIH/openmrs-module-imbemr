@@ -654,7 +654,7 @@
 
             <label class="font-normal"> <strong> Date of next visit:  </strong> </label>
             <label class="font-normal">
-                <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"
+                <input class="form-control datepicker future-or-today-date" id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"
                        data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>
             </label>
 
@@ -696,6 +696,19 @@
                 if ($('#encounter\\.provider_id_select').val() === '') {
                     $('#encounter\\.provider_id').val('');
                        $('.show_provider_id_text').show();
+                }
+            });
+            $('.future-or-today-date').change(function () {
+                if ($(this).is(':visible') && $(this).val() != '') {
+                    var errors = {};
+                    var pattern = /(\d{2})-(\d{2})-(\d{4})/g;
+                    var matches = pattern.exec($(this).val());
+                    var enteredDate = new Date(matches[3], matches[2] - 1, matches[1]);
+                    var today = new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate());
+                    if (enteredDate < today) {
+                        errors[$(this).attr('name')] = "Please enter present or future date.";
+                    }
+                    toggleValidationMessages(errors);
                 }
             });
         });

@@ -41,8 +41,8 @@
             <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text">
         </div>
     </div>
-<!--    <div class="section">-->
-<!--        <h3>Attributes</h3>-->
+    <div class="section">
+        <h3>Attributes</h3>
 <!--        <div class="form-group group-set" data-group="patient.personattribute^1">-->
 <!--            <label for="patient.phone_number">Phone Number: </label>-->
 <!--            <input class="form-control phoneNumber" id="patient.phone_number" name="attribute_value" type="tel">-->
@@ -94,7 +94,8 @@
                     <input type="button" class='btn barcode_btn'>
                     <input class="barcode_text form-control" id="identifier_value"
                            name="identifier_value" type="text" required="required">
-                    <input type="hidden" id="identifier_type_uuid" name="identifier_type_uuid" value="c147b1de-2700-102b-80cb-0017a47871b2">
+                    <input type="hidden" id="attribute_type_name" name="attribute_type_name" value="IMB ID">
+                    <input type="hidden" id="identifier_type_uuid" name="identifier_type_uuid" value="4e458867-9a68-4e55-9fe0-fb49fac4e6b0">
                 </div>
             </div>
         </div>
@@ -231,40 +232,8 @@
             }
         });
         dobType.trigger('change');
-        $.validator.addMethod(
-            "validateConfirmIdentifierElement",
-            function(confirm_other_identifier_value, confirm_identifier_element){
-                var other_identifier_value = $(confirm_identifier_element).closest('.repeat').find('.check-other-identifier').val();
-                if (other_identifier_value == confirm_other_identifier_value) {
-                    return true;
-                } else {
-                    return false;
-                }
-            },
-            "Other Identifiers do not match."
-        );
-        jQuery.validator.addClassRules({
-            'check-confirm-identifier':{
-                validateConfirmIdentifierElement: true
-            }
-        });
-    $('.identifier_type_name').change(function(){
-        var selected_val = $(this).val();
-        console.log(selected_val);
-        if(selected_val == ""){
-            $(this).closest('.repeat').find('.identifier_value_section').hide();
-        }else{
-            if(selected_val == $('#amrs_medical_record_number').val() || selected_val == $('#hct_id').val() || selected_val == $('#pmtct_id')){
-                $('#other_identifier_value').addClass('checkDigit');
-                $('#confirm_other_identifier_value').addClass('checkDigit');
-            }else{
-                $('#other_identifier_value').removeClass('checkDigit');
-                $('#confirm_other_identifier_value').removeClass('checkDigit');
-            }
-            $(this).closest('.repeat').find('.identifier_value_section').show();
-        }
-    });
-    $('.identifier_type_name').trigger('change');
+
+
       document.setupAutoCompleteData('encounter\\.location_id');
 	document.setupAutoCompleteDataForProvider('encounter\\.provider_id_select');
 	$('#registration_form').validate({rules: {
