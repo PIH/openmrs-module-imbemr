@@ -105,6 +105,26 @@
         @Medical_Imaging@ = 7f779262-de04-425b-97f7-9e5cc834eb55
         @Other_reason_for_referral@ = eea065ac-117b-4be9-976b-2948b29046b7
         @RETURN_VISIT_DATE@ = 3ce94df0-26fe-102b-80cb-0017a47871b2
+        @Entry_mode@ = 5c1c525c-07f0-4a76-bcff-f64cf1f7108d
+        @Voluntary@ = 6c31b035-4a63-48e0-bfed-e8dd32c00475
+        @TRANSFER_IN_FROM@ = 3cda3efa-26fe-102b-80cb-0017a47871b2
+        @OTHER_METHOD_OF_ENROLLMENT@ = cd5fc859-79e6-4184-af6c-e493c95a4749
+        @breast_wound@ = 93c7f1e7-5c71-423d-803f-bc38fdbdaeca
+        @Infraclavicular@ = 0b9dacc5-16b9-49f9-a287-79e683fb0a6e
+        @mass_size_value1@ = 570ee3b3-ae80-4a87-9efb-0ed1719204f4
+        @mass_size_value2@ = 25bac2c2-6e54-447b-b6e9-9196df380892
+        @skin_change_types@ = aff3fee4-ec5a-4ab9-bc6a-9004e70baf41
+        @peau_d_orange@ = cd4b909c-809c-42e3-bff9-0f5d305cef6f
+        @redness@ = 3f04d623-58d8-45d5-bb7a-96c83936b866
+        @Types_of_nipples_discharge@ = ac704a9f-0bcf-4089-99de-b8094873ba22
+        @BLOOD@ = b6ddda59-8473-45c9-bfad-5e00b9e86320
+        @pus@ = ec4f3c17-db68-4780-be49-0c9cdd6186c3
+        @other_nipple_discharge@ = 359592d7-8625-4600-926a-fe546caed91e
+        @other_breast_changes@ = a8a5b37c-a94e-4c39-a3fc-c12ff2045bfa
+        @other_breast_change_(text)@ = 334efbef-93b0-4ea3-90db-2f64f8c3f402
+        @CLEAN_AND_DRESSING@ = 3cd10bf0-26fe-102b-80cb-0017a47871b2
+        @Health_Facility_Text@ = c4118ec7-e441-4947-b04a-dbe75b61a5a6
+
     </macros>
 
     <style>
@@ -559,23 +579,102 @@ getField('reactionNonCoded3.value')[0].disabled = true;
             </tr>
         </table>
     </section>
+    <section >
+        <table class="form-group">
+            <tr>
+                <td>
+                    <label>Entry mode:</label>
+                </td>
+                <td>
+<!--                <label class="font-normal">-->
+<!--                    <input id="obs.EntryModeVoluntary" name="obs.EntryMode" type="radio"-->
+<!--                           data-concept="5c1c525c-07f0-4a76-bcff-f64cf1f7108d^Entry mode^99DCT"-->
+<!--                           value="6c31b035-4a63-48e0-bfed-e8dd32c00475^Voluntary^99DCT">-->
+                    <obs conceptId="$@Entry_mode@" answerConceptIds="$@Voluntary@,$@TRANSFER_IN_FROM@" answerLabels="Voluntary check-up/screening,Referred from Health Facility" style="radio" />
+<!--                    Voluntary check-up/screening-->
+<!--                </label>-->
+<!--                <label class="font-normal">-->
+<!--                    <input id="obs.EntryModeTRANSFER" name="obs.EntryMode" type="radio"-->
+<!--                           data-concept="5c1c525c-07f0-4a76-bcff-f64cf1f7108d^Entry mode^99DCT"-->
+<!--                           value="3cda3efa-26fe-102b-80cb-0017a47871b2^TRANSFER IN FROM^99DCT">-->
+<!--                    Referred from Health Facility-->
+<!--                </label>-->
+<!--                <label class="font-normal">-->
+<!--                    <input id="obs.NameOfReferring" class="form-control" name="obs.NameOfReferring" type="text" data-concept="3cda3efa-26fe-102b-80cb-0017a47871b2^TRANSFER IN FROM^99DCT"/>-->
+                    <obs id="obs.NameOfReferring" conceptId="$@TRANSFER_IN_FROM@" />
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td> Service/unit: </td>
+                <td class="font-normal">
+                    <!--                <input id="obs.HIVCLINICEntryPoint" name="obs.EntryPoint" type="radio"-->
+                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+                    <!--                       value="398996ac-93bd-4a95-884f-3b58132d2367^HIV clinic^99DCT">-->
+                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@HIV_clinic@" answerLabel="HIV clinic" />
+
+
+                    <!--                <input id="obs.OPDEntryPoint" name="obs.EntryPoint" type="radio"-->
+                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+                    <!--                       value="9e5e7ffc-6eb8-4d0f-a1a8-319eed6399fb^OUTPATIENT Department^99DCT">-->
+                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@OUTPATIENT_Department@" answerLabel="OPD" />
+
+
+                    <!--                <input id="obs.familyPlanningEntryPoint" name="obs.EntryPoint" type="radio"-->
+                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+                    <!--                       value="3ce6a212-26fe-102b-80cb-0017a47871b2^FAMILY PLANNING CLINIC^99DCT">-->
+                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@FAMILY_PLANNING_CLINIC@" answerLabel="Family planning" />
+
+
+                    <!--                <input id="obs.vaccinationEntryPoint" name="obs.EntryPoint" type="radio"-->
+                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+                    <!--                       value="16edb286-a2c0-4b35-a3b6-101ea2bbb231^VACCINATION SERVICE^99DCT">-->
+                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@VACCINATION_SERVICE@" answerLabel="Vaccination" />
+
+
+                    <!--                <input id="obs.ANCEntryPoint" name="obs.EntryPoint" type="radio"-->
+                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+                    <!--                       value="29ce8244-5251-4c76-8e99-bbad280be2ef^Consultation ANC^99DCT">-->
+                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@Consultation_ANC@" answerLabel="ANC" />
+
+
+                    <!--                <input id="obs.WCEDEntryPoint" name="obs.EntryPoint" type="radio"-->
+                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+                    <!--                       value="e8e6a8fa-0aab-427d-9960-8501de238ad7^woman cancer early detection CLINIC^99DCT">-->
+                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@woman_cancer_early_detection_CLINIC@" answerLabel="WCED Clinic" />
+
+<!--                    <label class="font-normal">-->
+<!--                        <input id="obs.OtherEntryPoint" name="obs.EntryPoint" type="radio"-->
+<!--                               data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+<!--                               value="3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT">-->
+<!--                        Other-->
+<!--                    </label>-->
+                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="other" />
+                    <obs id="NameOfOtherEntryPoint" conceptId="$@OTHER_METHOD_OF_ENROLLMENT@" />
+<!--                    <label class="font-normal">-->
+
+
+<!--                    </label>-->
+                </td>
+            </tr>
+        </table>
+    </section>
 
     <section headerLabel="Client Information">
         <table class="section" style=" border: 1px solid;">
-            <tr class="form-group">
-                <td >Phone(1)</td>
-                <!--            <input id="obs.phoneOne" class="form-control" name="obs.phoneOne" type="tel" data-concept="3cda3d7e-26fe-102b-80cb-0017a47871b2^TELEPHONE NUMBER^99DCT"/>-->
-                <td>
-                    <obs id="obs.phoneOne" conceptId="$@TELEPHONE_NUMBER@"/>
-                </td>
-            </tr>
-            <tr class="form-group">
-                <td >Phone(2)</td>
-                <!--            <input id="obs.phoneTWO" class="form-control" name="obs.phoneTWO" type="tel" data-concept="bcddbe7e-04dc-4494-a330-d5b54c4a4dd0^Emergency contact phone number^99DCT"/>-->
-                <td>
-                    <obs id="obs.phoneTWO" conceptId="$@Emergency_contact_phone_number@"/>
-                </td>
-            </tr>
+<!--            <tr class="form-group">-->
+<!--                <td >Phone(1)</td>-->
+<!--                &lt;!&ndash;            <input id="obs.phoneOne" class="form-control" name="obs.phoneOne" type="tel" data-concept="3cda3d7e-26fe-102b-80cb-0017a47871b2^TELEPHONE NUMBER^99DCT"/>&ndash;&gt;-->
+<!--                <td>-->
+<!--                    <obs id="obs.phoneOne" conceptId="$@TELEPHONE_NUMBER@"/>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--            <tr class="form-group">-->
+<!--                <td >Phone(2)</td>-->
+<!--                &lt;!&ndash;            <input id="obs.phoneTWO" class="form-control" name="obs.phoneTWO" type="tel" data-concept="bcddbe7e-04dc-4494-a330-d5b54c4a4dd0^Emergency contact phone number^99DCT"/>&ndash;&gt;-->
+<!--                <td>-->
+<!--                    <obs id="obs.phoneTWO" conceptId="$@Emergency_contact_phone_number@"/>-->
+<!--                </td>-->
+<!--            </tr>-->
             <tr class="form-group">
                 <td for="obs.CHWNames">CHW Names</td>
                 <!--            <input id="obs.CHWNames" class="form-control" name="obs.CHWNames" type="text" data-concept="899c6350-b3b0-409f-9e13-34d23fc5f1bb^Community health worker Names^99DCT"/>-->
@@ -621,38 +720,38 @@ getField('reactionNonCoded3.value')[0].disabled = true;
 
 
 
-            <tr class="section" style=" border: 1px solid;">
+<!--            <tr class="section" style=" border: 1px solid;">-->
 
-                <td> <strong>Referred(name)</strong> </td>
-                <td class="font-normal">
-                    <!--                <input id="obs.referredByHC" name="obs.referredBy" type="radio"-->
-                    <!--                       data-concept="c3e1d8d4-3040-49dd-ad66-c0928d912941^TYPE OF REFERRING CLINIC OR HOSPITAL^99DCT"-->
-                    <!--                       value="7e327a1a-c1df-4712-ab5d-e05dc0dac35d^HEALTH CENTER^99DCT">-->
-                    <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@" answerConceptId="$@HEALTH_CENTER@" answerLabel="From HC" />
-
-
-                    <!--                <input id="obs.referredByDH" name="obs.referredBy" type="radio"-->
-                    <!--                       data-concept="c3e1d8d4-3040-49dd-ad66-c0928d912941^TYPE OF REFERRING CLINIC OR HOSPITAL^99DCT"-->
-                    <!--                       value="e3f356b2-a340-47df-8b87-b70224437833^DISTRICT HOSPITAL^99DCT">-->
-                    <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@" answerConceptId="$@DISTRICT_HOSPITAL@" answerLabel="From DH" />
+<!--                <td> <strong>Referred(name)</strong> </td>-->
+<!--                <td class="font-normal">-->
+<!--                    &lt;!&ndash;                <input id="obs.referredByHC" name="obs.referredBy" type="radio"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       data-concept="c3e1d8d4-3040-49dd-ad66-c0928d912941^TYPE OF REFERRING CLINIC OR HOSPITAL^99DCT"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       value="7e327a1a-c1df-4712-ab5d-e05dc0dac35d^HEALTH CENTER^99DCT">&ndash;&gt;-->
+<!--                    <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@" answerConceptId="$@HEALTH_CENTER@" answerLabel="From HC" />-->
 
 
-                    <!--                <input id="obs.referredByVoluntary" name="obs.referredBy" type="radio"-->
-                    <!--                       data-concept="c3e1d8d4-3040-49dd-ad66-c0928d912941^TYPE OF REFERRING CLINIC OR HOSPITAL^99DCT"-->
-                    <!--                       value="6c31b035-4a63-48e0-bfed-e8dd32c00475^Voluntary^99DCT">-->
-                    <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@" answerConceptId="$@Voluntary@" answerLabel="Voluntary check-up/screening" />
+<!--                    &lt;!&ndash;                <input id="obs.referredByDH" name="obs.referredBy" type="radio"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       data-concept="c3e1d8d4-3040-49dd-ad66-c0928d912941^TYPE OF REFERRING CLINIC OR HOSPITAL^99DCT"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       value="e3f356b2-a340-47df-8b87-b70224437833^DISTRICT HOSPITAL^99DCT">&ndash;&gt;-->
+<!--                    <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@" answerConceptId="$@DISTRICT_HOSPITAL@" answerLabel="From DH" />-->
 
-                 ,  Name of referring location
 
-                    <!--                <input id="obs.NameOfReferrring" class="form-control" name="obs.NameOfReferrring" type="text" data-concept="3cda3efa-26fe-102b-80cb-0017a47871b2^TRANSFER IN FROM^99DCT"/>-->
-                    <obs  conceptId="$@TRANSFER_IN_FROM@"/>
-                </td>
+<!--                    &lt;!&ndash;                <input id="obs.referredByVoluntary" name="obs.referredBy" type="radio"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       data-concept="c3e1d8d4-3040-49dd-ad66-c0928d912941^TYPE OF REFERRING CLINIC OR HOSPITAL^99DCT"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       value="6c31b035-4a63-48e0-bfed-e8dd32c00475^Voluntary^99DCT">&ndash;&gt;-->
+<!--                    <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@" answerConceptId="$@Voluntary@" answerLabel="Voluntary check-up/screening" />-->
 
-            </tr>
+<!--                 ,  Name of referring location-->
+
+<!--                    &lt;!&ndash;                <input id="obs.NameOfReferrring" class="form-control" name="obs.NameOfReferrring" type="text" data-concept="3cda3efa-26fe-102b-80cb-0017a47871b2^TRANSFER IN FROM^99DCT"/>&ndash;&gt;-->
+<!--                    <obs  conceptId="$@TRANSFER_IN_FROM@"/>-->
+<!--                </td>-->
+
+<!--            </tr>-->
         </table>
     </section>
 
-    <section headerLabel="Past History">
+    <section headerLabel="ServPast History">
         <table class="section" border="1">
             <tr class="form-group">
                 <td for="obs.familyBreastCancerHistory">History of breast cancer in the family: </td>
@@ -685,19 +784,19 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <!--                <input id="obs.positiveHIVStatusHistory" name="obs.HIVStatusHistory" type="radio"-->
                     <!--                       data-concept="aec6ad18-f4dd-4cfa-b68d-3d7bb6ea908e^HIV STATUS^99DCT"-->
                     <!--                       value="3cd3a7a2-26fe-102b-80cb-0017a47871b2^POSITIVE^99DCT">-->
-                    <obs conceptId="$@HIV_STATUS@" answerConceptId="$@POSITIVE@" answerLabel="Positive" />
+                    <obs conceptId="$@HIV_STATUS@" answerConceptIds="$@POSITIVE@,$@NEGATIVE@,$@UNKNOWN@" answerLabels="Positive,Negative,Unknown" style="radio" />
 
 
                     <!--                <input id="obs.negativeHIVStatusHistory" name="obs.HIVStatusHistory" type="radio"-->
                     <!--                       data-concept="aec6ad18-f4dd-4cfa-b68d-3d7bb6ea908e^HIV STATUS^99DCT"-->
                     <!--                       value="3cd28732-26fe-102b-80cb-0017a47871b2^NEGATIVE^99DCT">-->
-                    <obs conceptId="$@HIV_STATUS@" answerConceptId="$@NEGATIVE@" answerLabel="Negative" />
+<!--                    <obs conceptId="$@HIV_STATUS@" answerConceptId="$@NEGATIVE@" answerLabel="Negative" />-->
 
 
                     <!--                <input id="obs.unknownHIVStatusHistory" name="obs.HIVStatusHistory" type="radio"-->
                     <!--                       data-concept="aec6ad18-f4dd-4cfa-b68d-3d7bb6ea908e^HIV STATUS^99DCT"-->
                     <!--                       value="3cd6fac4-26fe-102b-80cb-0017a47871b2^UNKNOWN^99DCT">-->
-                    <obs conceptId="$@HIV_STATUS@" answerConceptId="$@UNKNOWN@" answerLabel="Unknown" />
+<!--                    <obs conceptId="$@HIV_STATUS@" answerConceptId="$@UNKNOWN@" answerLabel="Unknown" />-->
 
                 </td>
             </tr>
@@ -720,46 +819,46 @@ getField('reactionNonCoded3.value')[0].disabled = true;
 
 
 
-            <tr class="form-group">
-                <td> Entry point: </td>
-                <td class="font-normal">
-                    <!--                <input id="obs.HIVCLINICEntryPoint" name="obs.EntryPoint" type="radio"-->
-                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
-                    <!--                       value="398996ac-93bd-4a95-884f-3b58132d2367^HIV clinic^99DCT">-->
-                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@HIV_clinic@" answerLabel="HIV clinic" />
+<!--            <tr class="form-group">-->
+<!--                <td> Entry point: </td>-->
+<!--                <td class="font-normal">-->
+<!--                    &lt;!&ndash;                <input id="obs.HIVCLINICEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       value="398996ac-93bd-4a95-884f-3b58132d2367^HIV clinic^99DCT">&ndash;&gt;-->
+<!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@HIV_clinic@" answerLabel="HIV clinic" />-->
 
 
-                    <!--                <input id="obs.OPDEntryPoint" name="obs.EntryPoint" type="radio"-->
-                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
-                    <!--                       value="9e5e7ffc-6eb8-4d0f-a1a8-319eed6399fb^OUTPATIENT Department^99DCT">-->
-                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@OUTPATIENT_Department@" answerLabel="OPD" />
+<!--                    &lt;!&ndash;                <input id="obs.OPDEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       value="9e5e7ffc-6eb8-4d0f-a1a8-319eed6399fb^OUTPATIENT Department^99DCT">&ndash;&gt;-->
+<!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@OUTPATIENT_Department@" answerLabel="OPD" />-->
 
 
-                    <!--                <input id="obs.familyPlanningEntryPoint" name="obs.EntryPoint" type="radio"-->
-                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
-                    <!--                       value="3ce6a212-26fe-102b-80cb-0017a47871b2^FAMILY PLANNING CLINIC^99DCT">-->
-                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@FAMILY_PLANNING_CLINIC@" answerLabel="Family planning" />
+<!--                    &lt;!&ndash;                <input id="obs.familyPlanningEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       value="3ce6a212-26fe-102b-80cb-0017a47871b2^FAMILY PLANNING CLINIC^99DCT">&ndash;&gt;-->
+<!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@FAMILY_PLANNING_CLINIC@" answerLabel="Family planning" />-->
 
 
-                    <!--                <input id="obs.vaccinationEntryPoint" name="obs.EntryPoint" type="radio"-->
-                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
-                    <!--                       value="16edb286-a2c0-4b35-a3b6-101ea2bbb231^VACCINATION SERVICE^99DCT">-->
-                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@VACCINATION_SERVICE@" answerLabel="Vaccination" />
+<!--                    &lt;!&ndash;                <input id="obs.vaccinationEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       value="16edb286-a2c0-4b35-a3b6-101ea2bbb231^VACCINATION SERVICE^99DCT">&ndash;&gt;-->
+<!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@VACCINATION_SERVICE@" answerLabel="Vaccination" />-->
 
 
-                    <!--                <input id="obs.ANCEntryPoint" name="obs.EntryPoint" type="radio"-->
-                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
-                    <!--                       value="29ce8244-5251-4c76-8e99-bbad280be2ef^Consultation ANC^99DCT">-->
-                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@Consultation_ANC@" answerLabel="ANC" />
+<!--                    &lt;!&ndash;                <input id="obs.ANCEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       value="29ce8244-5251-4c76-8e99-bbad280be2ef^Consultation ANC^99DCT">&ndash;&gt;-->
+<!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@Consultation_ANC@" answerLabel="ANC" />-->
 
 
-                    <!--                <input id="obs.WCEDEntryPoint" name="obs.EntryPoint" type="radio"-->
-                    <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
-                    <!--                       value="e8e6a8fa-0aab-427d-9960-8501de238ad7^woman cancer early detection CLINIC^99DCT">-->
-                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@woman_cancer_early_detection_CLINIC@" answerLabel="WCED Clinic" />
+<!--                    &lt;!&ndash;                <input id="obs.WCEDEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                       value="e8e6a8fa-0aab-427d-9960-8501de238ad7^woman cancer early detection CLINIC^99DCT">&ndash;&gt;-->
+<!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@woman_cancer_early_detection_CLINIC@" answerLabel="WCED Clinic" />-->
 
-                </td>
-            </tr>
+<!--                </td>-->
+<!--            </tr>-->
             <tr class="form-group">
                 <td>Currently pregant? </td>
                 <td class="font-normal">
@@ -819,7 +918,10 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     </td>
                 </tr>
                 <tr class="form-group">
-                    <td><strong>If breast symptoms, </strong> please check all that apply</td>
+                    <td><strong>If breast symptoms, </strong> please check all that apply
+
+
+                    </td>
                     <td class="font-normal">
                         <!--                    <input id="obs.breastPain" name="obs.breastSymptoms" type="radio"-->
                         <!--                           data-concept="b761e2c9-3d07-4a03-b274-c38282cc723c^Breast symptoms^99DCT"-->
@@ -837,6 +939,9 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                         <!--                           data-concept="b761e2c9-3d07-4a03-b274-c38282cc723c^Breast symptoms^99DCT"-->
                         <!--                           value="1d9561ca-ac25-406e-bd8b-81174ab68a26^nipple discharge^99DCT">-->
                         <obs conceptId="$@Breast_symptoms@" answerConceptId="$@nipple_discharge@" answerLabel="nipple discharge" />
+
+
+                        <obs conceptId="$@Breast_symptoms@" answerConceptId="$@breast_wound@" answerLabel="breast wound" />
 
                         <!--                    <input id="obs.skinChanges" name="obs.breastSymptoms" type="radio"-->
                         <!--                           data-concept="b761e2c9-3d07-4a03-b274-c38282cc723c^Breast symptoms^99DCT"-->
@@ -876,22 +981,6 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     </td>
                 </tr>
                 <tr>
-                    <td> Axillary: </td>
-                    <td class="font-normal">
-                        <!--                    <input id="obs.axillaryLeft" name="obs.axillary" type="checkbox"-->
-                        <!--                           data-concept="3ce9672c-26fe-102b-80cb-0017a47871b2^AXILLARY^99DCT"-->
-                        <!--                           value="3ce99198-26fe-102b-80cb-0017a47871b2^LEFT^99DCT">-->
-                        <obs conceptId="$@AXILLARY@" answerConceptId="$@LEFT@" answerLabel="Left" />
-
-
-                        <!--                    <input id="obs.axillaryRight" name="obs.axillary" type="checkbox"-->
-                        <!--                           data-concept="3ce9672c-26fe-102b-80cb-0017a47871b2^AXILLARY^99DCT"-->
-                        <!--                           value="3ce9949a-26fe-102b-80cb-0017a47871b2^RIGHT^99DCT">-->
-                        <obs conceptId="$@AXILLARY@" answerConceptId="$@RIGHT@" answerLabel="Right" />
-
-                    </td>
-                </tr>
-                <tr>
                     <td> Supraclavicular: </td>
                     <td class="font-normal">
                         <!--                    <input id="obs.SupraclavicularLeft" name="obs.SUPRACLAVICULAR" type="checkbox"-->
@@ -909,14 +998,47 @@ getField('reactionNonCoded3.value')[0].disabled = true;
 
                 </tr>
                 <tr>
-                    <td class="font-normal" colspan="2">
-                        <!--                    <input id="obs.Otherlymphadenopathy" name="obs.Otherlymphadenopathy" type="checkbox"-->
-                        <!--                           data-concept="d12597da-602f-4642-b15c-2463a617da57^LYMPHADENOPATHY TYPE^99DCT"-->
-                        <!--                           value="3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT">-->
-                        <obs conceptId="$@LYMPHADENOPATHY_TYPE@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="OTHER NON-CODED" />
+                    <td>Infraclavicular: </td>
+                    <td class="font-normal">
+                        <!--                    <input id="obs.SupraclavicularLeft" name="obs.SUPRACLAVICULAR" type="checkbox"-->
+                        <!--                           data-concept="3cd170d6-26fe-102b-80cb-0017a47871b2^SUPRACLAVICULAR^99DCT"-->
+                        <!--                           value="3ce99198-26fe-102b-80cb-0017a47871b2^LEFT^99DCT">-->
+                        <obs conceptId="$@Infraclavicular@" answerConceptId="$@LEFT@" answerLabel="Left" />
+
+
+                        <!--                    <input id="obs.SupraclavicularRight" name="obs.SUPRACLAVICULAR" type="checkbox"-->
+                        <!--                           data-concept="3cd170d6-26fe-102b-80cb-0017a47871b2^SUPRACLAVICULAR^99DCT"-->
+                        <!--                           value="3ce9949a-26fe-102b-80cb-0017a47871b2^RIGHT^99DCT">-->
+                        <obs conceptId="$@Infraclavicular@" answerConceptId="$@RIGHT@" answerLabel="Right" />
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td> Axillary: </td>
+                    <td class="font-normal">
+                        <!--                    <input id="obs.axillaryLeft" name="obs.axillary" type="checkbox"-->
+                        <!--                           data-concept="3ce9672c-26fe-102b-80cb-0017a47871b2^AXILLARY^99DCT"-->
+                        <!--                           value="3ce99198-26fe-102b-80cb-0017a47871b2^LEFT^99DCT">-->
+                        <obs conceptId="$@AXILLARY@" answerConceptId="$@LEFT@" answerLabel="Left" />
+
+
+                        <!--                    <input id="obs.axillaryRight" name="obs.axillary" type="checkbox"-->
+                        <!--                           data-concept="3ce9672c-26fe-102b-80cb-0017a47871b2^AXILLARY^99DCT"-->
+                        <!--                           value="3ce9949a-26fe-102b-80cb-0017a47871b2^RIGHT^99DCT">-->
+                        <obs conceptId="$@AXILLARY@" answerConceptId="$@RIGHT@" answerLabel="Right" />
 
                     </td>
                 </tr>
+<!--                <tr>-->
+<!--                    <td class="font-normal" colspan="2">-->
+<!--                        &lt;!&ndash;                    <input id="obs.Otherlymphadenopathy" name="obs.Otherlymphadenopathy" type="checkbox"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                           data-concept="d12597da-602f-4642-b15c-2463a617da57^LYMPHADENOPATHY TYPE^99DCT"&ndash;&gt;-->
+<!--                        &lt;!&ndash;                           value="3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT">&ndash;&gt;-->
+<!--                        <obs conceptId="$@LYMPHADENOPATHY_TYPE@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="OTHER NON-CODED" />-->
+
+<!--                    </td>-->
+<!--                </tr>-->
                 <tr class="form-group">
                     <td> Breast mass: </td>
                     <td class="font-normal">
@@ -933,7 +1055,6 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <!--                    No-->
                     <!--                </label>-->
                 </tr>
-
                 <tr>
                     <td colspan="2">
                         <table>
@@ -960,6 +1081,11 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                                 <td for="obs.cmFromNipple1">Cm from nipple:
                                     <obs conceptId="$@cm_from_Nipple@" />
                                 <!--                    <input id="obs.cmFromNipple1" class="form-control" name="obs.cmFromNipple1" type="text" data-concept="bc0d7955-9777-4eb1-82ed-52d8be66b0f6^cm from Nipple^99DCT"/>-->
+                                </td>
+                                <td>
+                                    size:
+                                    <obs conceptId="$@mass_size_value1@" /> x
+                                    <obs conceptId="$@mass_size_value2@" />
                                 </td>
                             </tr>
                         </table>
@@ -992,6 +1118,11 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                                     <obs conceptId="$@cm_from_Nipple@" />
                                 <!--                    <input id="obs.cmFromNipple1" class="form-control" name="obs.cmFromNipple1" type="text" data-concept="bc0d7955-9777-4eb1-82ed-52d8be66b0f6^cm from Nipple^99DCT"/>-->
                                 </td>
+                                <td>
+                                    size:
+                                    <obs conceptId="$@mass_size_value1@" /> x
+                                    <obs conceptId="$@mass_size_value2@" />
+                                </td>
                             </tr>
                         </table>
                     </td>
@@ -1022,6 +1153,11 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                                 <td for="obs.cmFromNipple1">Cm from nipple:
                                     <obs conceptId="$@cm_from_Nipple@" />
                                 <!--                    <input id="obs.cmFromNipple1" class="form-control" name="obs.cmFromNipple1" type="text" data-concept="bc0d7955-9777-4eb1-82ed-52d8be66b0f6^cm from Nipple^99DCT"/>-->
+                                </td>
+                                <td>
+                                    size:
+                                    <obs conceptId="$@mass_size_value1@" /> x
+                                    <obs conceptId="$@mass_size_value2@" />
                                 </td>
                             </tr>
                         </table>
@@ -1042,11 +1178,40 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                         <!--                           value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">-->
                         <!--                    No-->
                         <!--                </label>-->
-                        Other exam findings:
+                        <br/>
+                        : If skin change:
+                        <obs conceptId="$@skin_change_types@" answerConceptId="$@peau_d_orange@" answerLabel="Peau d'orange" style="checkbox" />
+                        <obs conceptId="$@skin_change_types@" answerConceptId="$@redness@" answerLabel="redness" style="checkbox" />
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        Nipple discharge:
+                    </td>
+                    <td>
+                        <obs conceptId="$@nipple_discharge@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />
+                        <br/>
+                    ,If yes
+                        <obs conceptId="$@Types_of_nipples_discharge@" answerConceptId="$@BLOOD@" answerLabel="blood" style="checkbox" />
+                        <obs conceptId="$@skin_change_types@" answerConceptId="$@pus@" answerLabel="pus" style="checkbox" />
+                        <obs conceptId="$@skin_change_types@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="other" style="checkbox" />
+                        :
+                        <obs conceptId="$@other_nipple_discharge@" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Other :
+
+                        <obs conceptId="$@other_breast_changes@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />
                         <!--                <textarea class="form-control" id="obs.otherExamFindings"-->
                         <!--                          name="obs.otherExamFindings" type="text"  rows="5"-->
                         <!--                          data-concept="8d8597b4-0b54-4bc1-a35c-fa06d80e7a2b^OTHER GENERAL EXAM FINDINGS^99DCT"></textarea>-->
-                        <obs conceptId="$@OTHER_GENERAL_EXAM_FINDINGS@" cols="60"/>
+<!--                        <obs conceptId="$@OTHER_GENERAL_EXAM_FINDINGS@" cols="60"/>-->
+                        <br/>
+                        If yes specify
+                        <obs conceptId="$@other_breast_change_(text)@" />
                     </td>
                 </tr>
             </table>
@@ -1070,13 +1235,13 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                                 <obs conceptId="$@Breast_diagnosis@" answerConceptId="$@breast_pain@" answerLabel="" />
                                 breast pain only ( <i>no mass,skin changes,nipple discharge</i> )
                             </label>
-                            <label class="font-normal">
-                                <!--                    <input id="obs.BreastInfectionDignosis" name="obs.breastClinicalDiagnosis" type="checkbox"-->
-                                <!--                           data-concept="1ed543c7-36ff-4444-bc99-0f01eede9937^Breast diagnosis^99DCT"-->
-                                <!--                           value="56ac82d2-547d-4a28-9148-11659b15a459^Breast infection^99DCT">-->
-                                <obs conceptId="$@Breast_diagnosis@" answerConceptId="$@Breast_infection@" answerLabel="breast infection" />
+<!--                            <label class="font-normal">-->
+<!--                                &lt;!&ndash;                    <input id="obs.BreastInfectionDignosis" name="obs.breastClinicalDiagnosis" type="checkbox"&ndash;&gt;-->
+<!--                                &lt;!&ndash;                           data-concept="1ed543c7-36ff-4444-bc99-0f01eede9937^Breast diagnosis^99DCT"&ndash;&gt;-->
+<!--                                &lt;!&ndash;                           value="56ac82d2-547d-4a28-9148-11659b15a459^Breast infection^99DCT">&ndash;&gt;-->
+<!--                                <obs conceptId="$@Breast_diagnosis@" answerConceptId="$@Breast_infection@" answerLabel="breast infection" />-->
 
-                            </label>
+<!--                            </label>-->
                             <label class="font-normal">
                                 <!--                    <input id="obs.MastitisDignosis" name="obs.breastClinicalDiagnosis" type="checkbox"-->
                                 <!--                           data-concept="1ed543c7-36ff-4444-bc99-0f01eede9937^Breast diagnosis^99DCT"-->
@@ -1106,29 +1271,29 @@ getField('reactionNonCoded3.value')[0].disabled = true;
 
                             </label>
                             <br/>
-                            <label class="font-normal">
-                                <!--                    <input id="obs.otherInfectionDignosis" name="obs.breastClinicalDiagnosis" type="checkbox"-->
-                                <!--                           data-concept="1ed543c7-36ff-4444-bc99-0f01eede9937^Breast diagnosis^99DCT"-->
-                                <!--                           value="e5155801-8d61-43c9-ac7d-dcb886a36f46^Other infection^99DCT">-->
-                                <obs conceptId="$@Breast_diagnosis@" answerConceptId="$@Other_infection@" answerLabel="Other infection(specify)" />
+<!--                            <label class="font-normal">-->
+<!--                                &lt;!&ndash;                    <input id="obs.otherInfectionDignosis" name="obs.breastClinicalDiagnosis" type="checkbox"&ndash;&gt;-->
+<!--                                &lt;!&ndash;                           data-concept="1ed543c7-36ff-4444-bc99-0f01eede9937^Breast diagnosis^99DCT"&ndash;&gt;-->
+<!--                                &lt;!&ndash;                           value="e5155801-8d61-43c9-ac7d-dcb886a36f46^Other infection^99DCT">&ndash;&gt;-->
+<!--                                <obs conceptId="$@Breast_diagnosis@" answerConceptId="$@Other_infection@" answerLabel="Other infection(specify)" />-->
 
-                            </label>
-                            <!--                <textarea class="form-control" id="obs.otherInfectionDignosisText"-->
-                            <!--                          name="obs.otherInfectionDignosisText" type="text"  rows="5"-->
-                            <!--                          data-concept="e5155801-8d61-43c9-ac7d-dcb886a36f46^Other infection^99DCT"></textarea>-->
-                            <obs conceptId="$@Other_infection@" cols="60"/>
+<!--                            </label>-->
+<!--                            &lt;!&ndash;                <textarea class="form-control" id="obs.otherInfectionDignosisText"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                          name="obs.otherInfectionDignosisText" type="text"  rows="5"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                          data-concept="e5155801-8d61-43c9-ac7d-dcb886a36f46^Other infection^99DCT"></textarea>&ndash;&gt;-->
+<!--                            <obs conceptId="$@Other_infection@" cols="60"/>-->
 
                             <label class="font-normal">
                                 <!--                    <input id="obs.otherDignosis" name="obs.breastClinicalDiagnosis" type="checkbox"-->
                                 <!--                           data-concept="1ed543c7-36ff-4444-bc99-0f01eede9937^Breast diagnosis^99DCT"-->
                                 <!--                           value="3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT">-->
-                                <obs conceptId="$@Breast_diagnosis@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other,please specify" />
+                                <obs conceptId="$@Breast_diagnosis@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other (specify)" />
 
                             </label>
                             <!--                <textarea class="form-control" id="obs.otherDignosisText"-->
                             <!--                          name="obs.otherDignosisText" type="text"  rows="5"-->
                             <!--                          data-concept="135d1163-d50a-411c-9ea1-530ca2033e10^Other clinical diagnosis, non-coded^99DCT"></textarea>-->
-                            <obs conceptId="$@Other_clinical_diagnosis_non-coded@" cols="60"/>
+                            <obs conceptId="$@Other_clinical_diagnosis_non-coded@" />
                         </td>
                     </tr>
                 </table>
@@ -1395,6 +1560,8 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <!--                       value="3cd743f8-26fe-102b-80cb-0017a47871b2^NONE^99DCT">-->
                     <obs conceptId="$@Procedures_done@" answerConceptId="$@NONE@" answerLabel="None" />
 
+                    <obs conceptId="$@Procedures_done@" answerConceptId="$@CLEAN_AND_DRESSING@" answerLabel="None" />
+
 
                     <!--                <input id="obs.ProcedureDoneAspirationOfCyst" name="obs.ProcedureDone" type="radio"-->
                     <!--                       data-concept="e44f17a3-28bd-4fe1-a4e1-1bb94779a1fd^Procedures done^99DCT"-->
@@ -1431,40 +1598,37 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <!--                <input id="obs.BreastDispositionAtThisHealthFacility" name="obs.BreastDisposition" type="radio"-->
                     <!--                       data-concept="69b9671b-d8b1-461b-bb7d-adb151775a57^Next step^99DCT"-->
                     <!--                       value="d0e94536-0b91-40a1-b994-04bb4f5cd15d^Follow-up at this health facility^99DCT">-->
-                    <obs conceptId="$@Next_step@" answerConceptId="$@Follow-up_at_this_health_facility@" answerLabel="Follow-up at this health facility;" />
+                    <obs conceptId="$@Next_step@" answerConceptId="$@referred_to@" answerLabel="Referral to (facility name):" />
 
-                    date
+                    <obs conceptId="$@Health_Facility_Text@" />
+
 <!--                    <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"-->
 <!--                           data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>-->
-                    <obs conceptId="$@RETURN_VISIT_DATE@"/>
 
                     <br/>
                     <!--                <input id="obs.BreastDispositionReferralTo" name="obs.BreastDisposition" type="radio"-->
                     <!--                       data-concept="69b9671b-d8b1-461b-bb7d-adb151775a57^Next step^99DCT"-->
                     <!--                       value="25782f2c-074f-4834-b7d2-4668cd645a57^referred to^99DCT">-->
-                    <obs conceptId="$@Next_step@" answerConceptId="$@referred_to@" answerLabel="Referral to:" />
 
+<!--                    <strong >-->
 
+<!--                        <label class="font-normal">-->
+<!--                            &lt;!&ndash;                        <input id="obs.ReferredToDistrictHospital" name="obs.ReferredTo" type="radio"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                               data-concept="4c12ce40-d2d9-42dc-8202-3ffc91e1e642^Patient referred to where^99DCT"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                               value="e3f356b2-a340-47df-8b87-b70224437833^DISTRICT HOSPITAL^99DCT">&ndash;&gt;-->
+<!--                            <obs conceptId="$@Patient_referred_to_where@" answerConceptId="$@DISTRICT_HOSPITAL@" answerLabel="District hospital" />-->
 
-                    <strong >
+<!--                        </label>-->
 
-                        <label class="font-normal">
-                            <!--                        <input id="obs.ReferredToDistrictHospital" name="obs.ReferredTo" type="radio"-->
-                            <!--                               data-concept="4c12ce40-d2d9-42dc-8202-3ffc91e1e642^Patient referred to where^99DCT"-->
-                            <!--                               value="e3f356b2-a340-47df-8b87-b70224437833^DISTRICT HOSPITAL^99DCT">-->
-                            <obs conceptId="$@Patient_referred_to_where@" answerConceptId="$@DISTRICT_HOSPITAL@" answerLabel="District hospital" />
+<!--                        <label class="font-normal">-->
+<!--                            &lt;!&ndash;                        <input id="obs.ReferredToReferralHospital" name="obs.ReferredTo" type="radio"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                               data-concept="4c12ce40-d2d9-42dc-8202-3ffc91e1e642^Patient referred to where^99DCT"&ndash;&gt;-->
+<!--                            &lt;!&ndash;                               value="da32efc3-f18c-404c-bab2-acf68f42f85c^REFERRAL HOSPITAL^99DCT">&ndash;&gt;-->
+<!--                            <obs conceptId="$@Patient_referred_to_where@" answerConceptId="$@REFERRAL_HOSPITAL@" answerLabel="Referral hospital" />-->
 
-                        </label>
+<!--                        </label>-->
 
-                        <label class="font-normal">
-                            <!--                        <input id="obs.ReferredToReferralHospital" name="obs.ReferredTo" type="radio"-->
-                            <!--                               data-concept="4c12ce40-d2d9-42dc-8202-3ffc91e1e642^Patient referred to where^99DCT"-->
-                            <!--                               value="da32efc3-f18c-404c-bab2-acf68f42f85c^REFERRAL HOSPITAL^99DCT">-->
-                            <obs conceptId="$@Patient_referred_to_where@" answerConceptId="$@REFERRAL_HOSPITAL@" answerLabel="Referral hospital" />
-
-                        </label>
-
-                    </strong>
+<!--                    </strong>-->
                 </td>
             </tr>
             <tr>
@@ -1503,6 +1667,9 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <!--                <input id="obs.otherReasonForReferral" name="obs.otherReasonForReferral" type="text"-->
                     <!--                       data-concept="eea065ac-117b-4be9-976b-2948b29046b7^Other reason for referral^99DCT"/>-->
                     <obs conceptId="$@Other_reason_for_referral@"/>
+                    <br/>
+                    Scheduled appoint date
+                    <obs conceptId="$@RETURN_VISIT_DATE@"/>
 
                 </td>
 
