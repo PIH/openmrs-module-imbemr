@@ -91,89 +91,51 @@
         </div>
     </div>
     <hr/>
-    <h3>Diagnosis </h3>
-
+    <h3>HPV Lab Request Form </h3>
     <fieldset>
         <div class="form-group">
             <label>
                 Specimen code
             </label>
-            <br/>
             <label class="font-normal">
                 <input id="obs.specimenCode" name="obs.specimenCode" type="text"
                        data-concept="16cd65e3-45af-4291-88fd-fe4d91847e4f^Specimen Code^99DCT">
 
             </label>
         </div>
-
         <div class="form-group">
-            <label>
-                Result
-            </label>
-            <br/>
             <label class="font-normal">
-                <input id="obs.positiveHPVTestResult" name="obs.HPVTestResult" type="radio"
-                       data-concept="bfb3eb1e-db98-4846-9915-0168511c6298^Test Result^99DCT"
-                       value="1b4a5f67-6106-4a4d-a389-2f430be543e4^HPV positive^99DCT">
-                HPV Positive
+                Sample collection method:
             </label>
-            <br/>
             <label class="font-normal">
-                <input id="obs.negativeHPVTestResult" name="obs.HPVTestResult" type="radio"
-                       data-concept="bfb3eb1e-db98-4846-9915-0168511c6298^Test Result^99DCT"
-                       value="64c23192-54e4-4750-9155-2ed0b736a0db^HPV negative^99DCT">
-                HPV Negative
+                <input id="obs.providerCollectedSample" name="obs.samplingMethod" type="radio"
+                       data-concept="f6f60fcb-2e6f-4e72-940d-ff96e22452aa^sampling method^99DCT"
+                       value="37ad4306-50b9-4d4c-ab78-a1a77ddd7223^Provider Collected Sample^99DCT">
+                Provider collected sample
             </label>
-
-        </div>
-        <div class="form-group">
-            <label>If Positive specify</label>
-            <br/>
             <label class="font-normal">
-                <input id="obs.positiveHPV16" name="obs.positiveHPVType" type="checkbox"
-                       data-concept="1b4a5f67-6106-4a4d-a389-2f430be543e4^HPV positive Type^99DCT"
-                       value="059fddd3-711f-47ab-818f-087984aeecc3^HPV 16^99DCT">
-                HPV 16
-            </label>
-            <br/>
-            <label class="font-normal">
-                <input id="obs.positiveHPV18" name="obs.positiveHPVType" type="checkbox"
-                       data-concept="1b4a5f67-6106-4a4d-a389-2f430be543e4^HPV positive Type^99DCT"
-                       value="b672c3ff-96c9-41cd-9ae6-aa0811ce347f^HPV 18^99DCT">
-                HPV 18
-            </label>
-            <br/>
-            <label class="font-normal">
-                <input id="obs.positiveHPVotherHR" name="obs.positiveHPVType" type="checkbox"
-                       data-concept="1b4a5f67-6106-4a4d-a389-2f430be543e4^HPV positive Type^99DCT"
-                       value="6c3428c6-f406-4ef9-b2dd-4fe5a79f3432^Other HR HPV^99DCT">
-                Other HR HPV
+                <input id="obs.selfCollectedSample" name="obs.samplingMethod" type="radio"
+                       data-concept="f6f60fcb-2e6f-4e72-940d-ff96e22452aa^sampling method^99DCT"
+                       value="8b710fc4-efa6-4ee1-b9a8-e2608149d7ff^Self Collected Sample^99DCT">
+                Self collected sample
             </label>
         </div>
     </fieldset>
-    <div class="form-group">
-        <fieldset>
-            <label>Other test</label>
-            <br/>
-            <label class="font-normal">
-                <input id="obs.OtherTest" name="obs.OtherTest" type="text"
-                       data-concept="3cd9b714-26fe-102b-80cb-0017a47871b2^LABORATORY TESTS OTHER^99DCT">
+
+    <fieldset>
+        <div class="form-group">
+            <label>
+                Other clinical information
             </label>
-            <br/>
-            <label>Result</label>
             <label class="font-normal">
-                <input id="obs.OtherTestResult" name="obs.OtherTestResult" type="text"
-                       data-concept="3ce1ca8a-26fe-102b-80cb-0017a47871b2^OTHER LAB TEST RESULT^99DCT">
+                <input id="obs.otherClinicalInfo" name="obs.otherClinicalInfo" type="text"
+                       data-concept="f07791fa-de5d-4977-916c-35a433bfa280^Other Clinical Information^99DCT">
+
             </label>
-        </fieldset>
-    </div>
+        </div>
 
+    </fieldset>
 
-
-<!--    <div>-->
-<!--        <input id="save_draft" name="save_draft" type="submit" value="Draft"/>-->
-<!--        <input id="submit_form" name="submit_form" type="submit" value="submit"/>-->
-<!--    </div>-->
 </form>
 
 </body>

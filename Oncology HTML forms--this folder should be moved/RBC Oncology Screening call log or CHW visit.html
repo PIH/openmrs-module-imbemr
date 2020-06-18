@@ -24,6 +24,7 @@
         @LOST_TO_FOLLOWUP@ = 3ceb0ed8-26fe-102b-80cb-0017a47871b2
         @Transfered@ = 3a296bb6-5fc8-40ee-84fc-97c13cacf8d8
         @PATIENT_DEFAULTED@ = 3cdd5176-26fe-102b-80cb-0017a47871b2
+        @Other_return_visit_location@ = 4c80b141-2287-4397-bfe6-3e06b8aa2604
     </macros>
 
     <style>
@@ -469,7 +470,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
             </tr>
             <tr>
                 <td>Location Name: <encounterLocation
-                        id="encounterLocation" default="Butaro Hospital" />
+                        id="encounterLocation" />
                 </td>
                 <td>Provider:<encounterProvider id="encounterProvider"
                                                 default="currentUser"/>
@@ -506,7 +507,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     Next  Appointment date:
                 </td>
                 <td>
-                    <obs conceptId="$@RETURN_VISIT_DATE@"/>
+                    <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
 
                 </td>
             </tr>
@@ -515,7 +516,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     Next appointment location (if different from before)
                 </td>
                 <td>
-                    <obs conceptId="$@Return_Visit_Location@"/>
+                    <obs conceptId="$@return_visit_location@"/>
                 </td>
             </tr>
             <tr>

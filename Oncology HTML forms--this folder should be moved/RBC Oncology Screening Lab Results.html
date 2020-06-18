@@ -19,6 +19,7 @@
         @Other_HR_HPV@ = 6c3428c6-f406-4ef9-b2dd-4fe5a79f3432
         @LABORATORY_TESTS_OTHER@ = 3cd9b714-26fe-102b-80cb-0017a47871b2
         @OTHER_LAB_TEST_RESULT@ = 3ce1ca8a-26fe-102b-80cb-0017a47871b2
+        @Specimen_Code@ = 16cd65e3-45af-4291-88fd-fe4d91847e4f
 
     </macros>
 
@@ -465,7 +466,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
             </tr>
             <tr>
                 <td>Location Name: <encounterLocation
-                        id="encounterLocation" default="Butaro Hospital" />
+                        id="encounterLocation" />
                 </td>
                 <td>Provider:<encounterProvider id="encounterProvider"
                                                 default="currentUser"/>
@@ -476,6 +477,18 @@ getField('reactionNonCoded3.value')[0].disabled = true;
     </section>
     <section >
         <table class="form-group" border="1">
+            <tr>
+                <td>
+
+                        Specimen code
+                </td>
+                <td>
+<!--                        <input id="obs.specimenCode" name="obs.specimenCode" type="text"-->
+<!--                               data-concept="16cd65e3-45af-4291-88fd-fe4d91847e4f^Specimen Code^99DCT">-->
+                    <obs conceptId="$@Specimen_Code@"/>
+
+                </td>
+            </tr>
             <tr>
                 <td>
                     Lab Test:
@@ -491,12 +504,14 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                 </td>
                 <td>
 
-                    <obs conceptId="$@Test_Result@" answerConceptId="$@HPV_positive@" answerLabel="HPV Positive" style="checkbox"/>
+                    <obs conceptId="$@Test_Result@" answerConceptIds="$@HPV_positive@,$@HPV_negative@" answerLabels="HPV Positive,HPV Negative" style="radio"/>
 
-                    <obs conceptId="$@Test_Result@" answerConceptId="$@HPV_negative@" answerLabel="HPV Negative" style="checkbox"/>
+<!--                    <obs conceptId="$@Test_Result@" answerConceptId="$@HPV_negative@" answerLabel="HPV Negative" style="checkbox"/>-->
                     <br/><br/>
                     If positive,specify
-                    <obs conceptId="$@HPV_positive_Type@" answerConceptIds="$@HPV_16@,$@HPV_18@,$@Other_HR_HPV@" answerLabels="HPV 16,HPV 18,Other HR HPV" style="radio"/>
+                    <obs conceptId="$@HPV_positive_Type@" answerConceptId="$@HPV_16@" answerLabel="HPV 16" style="checkbox"/>
+                    <obs conceptId="$@HPV_positive_Type@" answerConceptId="$@HPV_18@" answerLabel="HPV 18" style="checkbox"/>
+                    <obs conceptId="$@HPV_positive_Type@" answerConceptId="$@Other_HR_HPV@" answerLabel="Other HR HPV" style="checkbox"/>
                 </td>
             </tr>
             <tr>

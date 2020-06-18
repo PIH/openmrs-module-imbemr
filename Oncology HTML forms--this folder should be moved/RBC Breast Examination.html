@@ -124,6 +124,8 @@
         @other_breast_change_(text)@ = 334efbef-93b0-4ea3-90db-2f64f8c3f402
         @CLEAN_AND_DRESSING@ = 3cd10bf0-26fe-102b-80cb-0017a47871b2
         @Health_Facility_Text@ = c4118ec7-e441-4947-b04a-dbe75b61a5a6
+        @Name_of_Rwanda_Hospital@ = a12c9b1e-3f21-4e8f-bcc3-8c5e46cd6e52
+        @referred_to_(coded)@ = 3a84ab37-f75c-48ad-8bcf-322c927f36bb
 
     </macros>
 
@@ -570,7 +572,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
             </tr>
             <tr>
                 <td>Location Name: <encounterLocation
-                        id="encounterLocation" default="Butaro Hospital" />
+                        id="encounterLocation"  />
                 </td>
                 <td>Provider:<encounterProvider id="encounterProvider"
                                                 default="currentUser"/>
@@ -1600,9 +1602,11 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <!--                       value="d0e94536-0b91-40a1-b994-04bb4f5cd15d^Follow-up at this health facility^99DCT">-->
                     <obs conceptId="$@Next_step@" answerConceptId="$@referred_to@" answerLabel="Referral to (facility name):" />
 
-                    <obs conceptId="$@Health_Facility_Text@" />
+<!--                    <obs conceptId="$@Health_Facility_Text@" />-->
+                    <obs conceptId="$@referred_to_(coded)@" />
 
-<!--                    <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"-->
+
+                    <!--                    <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"-->
 <!--                           data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>-->
 
                     <br/>
@@ -1669,7 +1673,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <obs conceptId="$@Other_reason_for_referral@"/>
                     <br/>
                     Scheduled appoint date
-                    <obs conceptId="$@RETURN_VISIT_DATE@"/>
+                    <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
 
                 </td>
 

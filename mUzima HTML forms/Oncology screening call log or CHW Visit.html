@@ -103,6 +103,7 @@
                        value="ce01fc27-05c3-425e-877a-5dbb52a9ae6a^Phone call^99DCT">
                 Call
             </label>
+            <br/>
             <label class="font-normal">
                 <input id="obs.CHWVisitlogMean" name="obs.logMean" type="radio"
                        data-concept="98672ac7-510e-4871-a0a1-81de095cf326^Type of Attempt^99DCT"
@@ -123,18 +124,21 @@
                        value="ce01fc27-05c3-425e-877a-5dbb52a9ae6a^Phone call^99DCT">
                 Call again
             </label>
+            <br/>
             <label class="font-normal">
                 <input id="obs.CHWVisitAsNextStep" name="obs.NextStep" type="radio"
                        data-concept="e79ccc1c-903a-453f-871b-2e40a47ad23e^call log next step^99DCT"
                        value="355b7292-69af-414e-8985-086ec802e017^CHW Visit^99DCT">
                 CHW Visit
             </label>
+            <br/>
             <label class="font-normal">
                 <input id="obs.NewAppointmentAsNextStep" name="obs.NextStep" type="radio"
                        data-concept="e79ccc1c-903a-453f-871b-2e40a47ad23e^call log next step^99DCT"
                        value="5a2cd0f1-aeb1-4f9d-ae56-1023a336acfb^RDV Changed^99DCT">
                 New Appointment
             </label>
+            <br/>
             <label class="font-normal">
                 <input id="obs.PatientWillNotReturnAsNextStep" name="obs.NextStep" type="radio"
                        data-concept="e79ccc1c-903a-453f-871b-2e40a47ad23e^call log next step^99DCT"
@@ -151,11 +155,12 @@
             <input class="form-control datepicker future-or-today-date" id="obs.NextDate" name="obs.NextDate" type="text"
                    data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>
         </label>
+            <br/>
         <label class="font-normal">
             Next appointment location (if different from before)
             <br/>
-            <input class="form-control datepicker future-or-today-date" id="obs.NextVisitLocation" name="obs.NextVisitLocation" type="date"
-                   data-concept="d3c8c5f8-9ebb-4622-98ca-c55ca41d3d44^Return Visit Location^99DCT"/>
+            <input class="form-control" id="obs.NextVisitLocation" name="obs.NextVisitLocation" type="text"
+                   data-concept="4c80b141-2287-4397-bfe6-3e06b8aa2604^Other return visit location^99DCT"/>
         </label>
         </fieldset>
     </div>
@@ -172,23 +177,27 @@
                 Patient Died
 
             </label>
+            <br/>
             <label class="font-normal">
                 Date:
                 <input class="form-control datepicker future-or-today-date" id="obs.DeathDate" name="obs.DeathDate" type="date"
                        data-concept="ce0afb8a-35b3-496e-8ac9-37c3b8f6592e^Date of Death^99DCT"/>
             </label>
+            <br/>
             <label class="font-normal">
                 <input id="obs.lostToFollowUpResultOfCall" name="obs.ResultOfCall" type="radio"
                        data-concept="f89b3523-c37a-4d50-ace7-cc50f2292d77^Result of Call^99DCT"
                        value="3ceb0ed8-26fe-102b-80cb-0017a47871b2^LOST TO FOLLOWUP^99DCT">
                 Patient Lost to follow-up
             </label>
+            <br/>
             <label class="font-normal">
                 <input id="obs.TransferResultOfCall" name="obs.ResultOfCall" type="radio"
                        data-concept="f89b3523-c37a-4d50-ace7-cc50f2292d77^Result of Call^99DCT"
                        value="3a296bb6-5fc8-40ee-84fc-97c13cacf8d8^Transfered^99DCT">
                 Transfer
             </label>
+            <br/>
             <label class="font-normal">
                 <input id="obs.DecidedNotToReturnResultOfCall" name="obs.ResultOfCall" type="radio"
                        data-concept="f89b3523-c37a-4d50-ace7-cc50f2292d77^Result of Call^99DCT"
@@ -200,10 +209,10 @@
     </div>
 
 
-    <div>
-        <input id="save_draft" name="save_draft" type="submit" value="Draft"/>
-        <input id="submit_form" name="submit_form" type="submit" value="submit"/>
-    </div>
+<!--    <div>-->
+<!--        <input id="save_draft" name="save_draft" type="submit" value="Draft"/>-->
+<!--        <input id="submit_form" name="submit_form" type="submit" value="submit"/>-->
+<!--    </div>-->
 </form>
 
 </body>

@@ -7,16 +7,23 @@
 	-->
 
     <macros>
-        @CONFIRMED_DIAGNOSIS@ = 3d762b82-f951-4d13-b147-6aaba63b25d1
-        @YES@ = 3cd6f600-26fe-102b-80cb-0017a47871b2
-        @NO@ = 3cd6f86c-26fe-102b-80cb-0017a47871b2
-        @Confirmed_cancer_diagnosis@ = 3dc2eb50-6981-43d3-b907-e3dd8b5ed620
-        @Breast_Cancer@ = e1bd83f4-e9fa-4564-b8aa-74a9b199aca8
-        @Breast_Cancer_Histology@ = 7625e1b7-7571-485e-b023-20a7d03dc7dc
-        @Cervical_cancer@ = 36052b70-ba49-466f-a4eb-bc99581be7a2
-        @Cervical_cancer_Histology@ = 3cef6fc6-49e1-490c-829f-d9003a7b50ad
+        @Screening_through@ = 7e4e6554-d6c5-4ca3-b371-49806a754992
+        @HPV_DNA_test@ = f7c2d59d-2043-42ce-b04d-08564d54b0c7
         @OTHER_NON-CODED@ = 3cee7fb4-26fe-102b-80cb-0017a47871b2
-        @Other_Histology@ = b99ff54e-4e1b-4277-89ab-136eab980621
+        @Test_Result@ = bfb3eb1e-db98-4846-9915-0168511c6298
+        @HPV_positive@ = 1b4a5f67-6106-4a4d-a389-2f430be543e4
+        @HPV_negative@ = 64c23192-54e4-4750-9155-2ed0b736a0db
+        @HPV_positive_Type@ = 1b4a5f67-6106-4a4d-a389-2f430be543e4
+        @HPV_16@ = 059fddd3-711f-47ab-818f-087984aeecc3
+        @HPV_18@ = b672c3ff-96c9-41cd-9ae6-aa0811ce347f
+        @Other_HR_HPV@ = 6c3428c6-f406-4ef9-b2dd-4fe5a79f3432
+        @LABORATORY_TESTS_OTHER@ = 3cd9b714-26fe-102b-80cb-0017a47871b2
+        @OTHER_LAB_TEST_RESULT@ = 3ce1ca8a-26fe-102b-80cb-0017a47871b2
+        @Specimen_Code@ = 16cd65e3-45af-4291-88fd-fe4d91847e4f
+        @sampling_method@ = f6f60fcb-2e6f-4e72-940d-ff96e22452aa
+        @Provider_Collected_Sample@ = 37ad4306-50b9-4d4c-ab78-a1a77ddd7223
+        @Self_Collected_Sample@ = 8b710fc4-efa6-4ee1-b9a8-e2608149d7ff
+        @Other_Clinical_Information@ = f07791fa-de5d-4977-916c-35a433bfa280
 
     </macros>
 
@@ -458,7 +465,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                         Inshuti Mu Buzima <br /> PIH Rwanda
                     </h2></td>
                 <td ><strong>
-                    Oncology Screening Diagnosis
+                    Oncology Screening Lab Request
                 </strong> </td>
             </tr>
             <tr>
@@ -476,30 +483,42 @@ getField('reactionNonCoded3.value')[0].disabled = true;
         <table class="form-group" border="1">
             <tr>
                 <td>
-                    Confirmed cancer?:
+
+                    Specimen code
                 </td>
                 <td>
+                    <!--                        <input id="obs.specimenCode" name="obs.specimenCode" type="text"-->
+                    <!--                               data-concept="16cd65e3-45af-4291-88fd-fe4d91847e4f^Specimen Code^99DCT">-->
+                    <obs conceptId="$@Specimen_Code@"/>
 
-                    <obs conceptId="$@CONFIRMED_DIAGNOSIS@" answerConceptIds="$@YES@,$@NO@" answerLabels="Cancer confirmed, Not Cancer" style="radio"/>
+                </td>
+            </tr>
+
+            <tr class="form-group">
+                <td>
+                    Sample collection method:
+                </td>
+                <td>
+<!--                    <input id="obs.providerCollectedSample" name="obs.samplingMethod" type="radio"-->
+<!--                           data-concept="f6f60fcb-2e6f-4e72-940d-ff96e22452aa^sampling method^99DCT"-->
+<!--                           value="37ad4306-50b9-4d4c-ab78-a1a77ddd7223^Provider Collected Sample^99DCT">-->
+<!--                    Provider collected sample-->
+
+<!--                    <input id="obs.selfCollectedSample" name="obs.samplingMethod" type="radio"-->
+<!--                           data-concept="f6f60fcb-2e6f-4e72-940d-ff96e22452aa^sampling method^99DCT"-->
+<!--                           value="8b710fc4-efa6-4ee1-b9a8-e2608149d7ff^Self Collected Sample^99DCT">-->
+<!--                    Self collected sample-->
+
+
+                    <obs conceptId="$@sampling_method@" answerConceptIds="$@Provider_Collected_Sample@,$@Self_Collected_Sample@" answerLabels="Provider collected sample,Self collected sample" style="radio"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Cancer Diagnosis
+                    Other clinical information
                 </td>
                 <td>
-
-                    <obs conceptId="$@Confirmed_cancer_diagnosis@" answerConceptId="$@Breast_Cancer@" answerLabel="Breast cancer" style="checkbox"/>
-                    ,Histology
-                    <obs conceptId="$@Breast_Cancer_Histology@" cols="40"/>
-                    <br/>
-                    <obs conceptId="$@Confirmed_cancer_diagnosis@" answerConceptId="$@Cervical_cancer@" answerLabel="Cervical cancer" style="checkbox"/>
-                    ,Histology
-                    <obs conceptId="$@Cervical_cancer_Histology@" cols="40"/>
-                    <br/>
-                    <obs conceptId="$@Confirmed_cancer_diagnosis@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other cancer" style="checkbox"/>
-                    ,Histology
-                    <obs conceptId="$@Other_Histology@" cols="40"/>
+                    <obs conceptId="$@Other_Clinical_Information@"/>
                 </td>
             </tr>
         </table>

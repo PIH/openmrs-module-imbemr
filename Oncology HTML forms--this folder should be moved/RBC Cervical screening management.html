@@ -195,6 +195,7 @@
         @Voluntary@ = 6c31b035-4a63-48e0-bfed-e8dd32c00475
         @TRANSFER_IN_FROM@ = 3cda3efa-26fe-102b-80cb-0017a47871b2
         @OTHER_METHOD_OF_ENROLLMENT@ = cd5fc859-79e6-4184-af6c-e493c95a4749
+        @referred_to_(coded)@ = 3a84ab37-f75c-48ad-8bcf-322c927f36bb
 
     </macros>
 
@@ -641,7 +642,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
             </tr>
             <tr>
                 <td>Location Name: <encounterLocation
-                        id="encounterLocation" default="Butaro Hospital" />
+                        id="encounterLocation" />
                 </td>
                 <td>Provider:<encounterProvider id="encounterProvider"
                                                 default="currentUser"/>
@@ -1056,35 +1057,37 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <!--                    <input id="obs.ManagementReferralReasonSuspectedCancer" name="obs.ManagementReferralReason" type="checkbox"-->
                     <!--                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"-->
                     <!--                           value="476123d7-54f1-4278-92f1-2de4f19ae951^Suspected cancer diagnosis^99DCT">-->
-                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Suspected_cancer_diagnosis@" answerLabel="Suspected cancer" />
-                    Suspected cancer
+<!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Suspected_cancer_diagnosis@" answerLabel="Suspected cancer" />-->
+                    <obs conceptId="$@Reasons_for_Referral@" answerConceptIds="$@Suspected_cancer_diagnosis@,$@thermal-ablation@,$@Cryotherapy@,$@Loop_Electrosurgical_Excision_Procedure@,$@OTHER_NON-CODED@"
+                         answerLabels="Suspected cancer,Thermal ablation,Cryotherapy,LEEP,Other reasons" />
+<!--                    Suspected cancer-->
                     <!--                </label>-->
                     <!--                <label class="font-normal">-->
                     <!--                    <input id="obs.ManagementReferralReasonThermoAblation" name="obs.ManagementReferralReason" type="checkbox"-->
                     <!--                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"-->
                     <!--                           value="ef4d5bd3-2c4e-4ac2-9b91-9d4ba12b44f8^thermo-ablation^99DCT">-->
-                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@thermal-ablation@" answerLabel="Thermal ablation" />
-                    Thermal ablation
+<!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@thermal-ablation@" answerLabel="Thermal ablation" />-->
+<!--                    Thermal ablation-->
                     <!--                </label>-->
                     <!--                <label class="font-normal">-->
                     <!--                    <input id="obs.ManagementReferralReasonCryotherapy" name="obs.ManagementReferralReason" type="checkbox"-->
                     <!--                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"-->
                     <!--                           value="e48bc8db-8f6e-4556-9083-0a000a136e95^Cryotherapy^99DCT">-->
-                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Cryotherapy@" answerLabel="Cryotherapy" />
+<!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Cryotherapy@" answerLabel="Cryotherapy" />-->
                     <!--                </label>-->
                     <!--                -->
                     <!--                <label class="font-normal">-->
                     <!--                    <input id="obs.ManagementReferralReasonLEEP" name="obs.ManagementReferralReason" type="checkbox"-->
                     <!--                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"-->
                     <!--                           value="55040927-bae5-410c-80da-c79f7574167f^Loop Electrosurgical Excision Procedure^99DCT">-->
-                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Loop_Electrosurgical_Excision_Procedure@" answerLabel="LEEP" />
+<!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Loop_Electrosurgical_Excision_Procedure@" answerLabel="LEEP" />-->
                     <!--                    LEEP-->
                     <!--                </label>-->
                     <!--                <label class="font-normal">-->
                     <!--                    <input id="obs.ManagementReferralReasonOther" name="obs.ManagementReferralReason" type="checkbox"-->
                     <!--                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"-->
                     <!--                           value="3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT">-->
-                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other reasons" />
+<!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other reasons" />-->
                     Other reasons:
                     <!--                </label>-->
                     <!--                <label class="font-normal">-->
@@ -1106,7 +1109,8 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                 <td class="font-normal">
                     <!--                    <input id="obs.ManagementReferredTo" class="form-control" name="obs.ManagementReferredTo"-->
                     <!--                           type="text" data-concept="25782f2c-074f-4834-b7d2-4668cd645a57^referred to^99DCT"/>-->
-                    <obs conceptId="$@referred_to@"/>
+<!--                    <obs conceptId="$@referred_to@"/>-->
+                    <obs conceptId="$@referred_to_(coded)@"/>
                 </td>
             </tr>
             <!--            <tr>-->
@@ -1202,7 +1206,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                 <td class="font-normal">
                     <!--                    <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"-->
                     <!--                           data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>-->
-                    <obs conceptId="$@RETURN_VISIT_DATE@"/>
+                    <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
                 </td>
 
             </tr>
