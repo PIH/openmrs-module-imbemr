@@ -560,12 +560,11 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                 <td> Date Of Birth: <lookup class="value" expression="patient.birthdate"/> </td>
             </tr>
             <tr>
-                <td><img
-                        src="/openmrs/moduleResources/rwandareports/images/pihHands.png"
-                        align="left" height="65"></img>
-                    <h2>
-                        Inshuti Mu Buzima <br /> PIH Rwanda
-                    </h2></td>
+                <td><img src="/openmrs/moduleResources/rwandareports/images/rwanda-logo.jpg" align="left"
+                         height="65" ></img>
+                    <b>REPUBLIC OF RWANDA
+                        <br />MINISTRY OF HEALTH</b>
+                </td>
                 <td ><strong>
                     Breast Cancer Early Detection
                 </strong> </td>
@@ -753,7 +752,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
         </table>
     </section>
 
-    <section headerLabel="ServPast History">
+    <section >
         <table class="section" border="1">
             <tr class="form-group">
                 <td for="obs.familyBreastCancerHistory">History of breast cancer in the family: </td>
@@ -1059,110 +1058,116 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <table>
-                            <tr class="form-group">
-                                <td>Mass 1: </td>
-                                <td class="font-normal">
-                                    <!--                        <input id="obs.breastMassLeft1" name="obs.breastMassPosition1" type="radio"-->
-                                    <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
-                                    <!--                               value="3ce99198-26fe-102b-80cb-0017a47871b2^LEFT^99DCT">-->
-                                    <obs conceptId="$@breast_mass@" answerConceptId="$@LEFT@" answerLabel="Left" />
+                        <obsgroup groupingConceptId="9b551488-8b10-4a98-8d4e-7ee194acbccf">
+                            <table>
+                                <tr class="form-group" >
+                                    <td>Mass 1: </td>
+                                    <td class="font-normal">
+                                        <!--                        <input id="obs.breastMassLeft1" name="obs.breastMassPosition1" type="radio"-->
+                                        <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
+                                        <!--                               value="3ce99198-26fe-102b-80cb-0017a47871b2^LEFT^99DCT">-->
+                                        <obs conceptId="$@breast_mass@" answerConceptId="$@LEFT@" answerLabel="Left"  style="checkbox"/>
 
 
 
-                                    <!--                        <input id="obs.breastMassRight1" name="obs.breastMassPosition1" type="radio"-->
-                                    <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
-                                    <!--                               value="3ce9949a-26fe-102b-80cb-0017a47871b2^RIGHT^99DCT">-->
-                                    <obs conceptId="$@breast_mass@" answerConceptId="$@RIGHT@" answerLabel="Right" />
+                                        <!--                        <input id="obs.breastMassRight1" name="obs.breastMassPosition1" type="radio"-->
+                                        <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
+                                        <!--                               value="3ce9949a-26fe-102b-80cb-0017a47871b2^RIGHT^99DCT">-->
+                                        <obs conceptId="$@breast_mass@" answerConceptId="$@RIGHT@" answerLabel="Right" style="checkbox"/>
 
-                                </td>
-                                <td for="obs.LocationOnClockFace1">Location on clock face :
-                                <!--                    <input id="obs.LocationOnClockFace1" class="form-control" name="obs.LocationOnClockFace1" type="text" data-concept="12bb321d-d1fe-4929-bf8a-8577ae2a3568^Location on clock face^99DCT"/>-->
-                                    <obs conceptId="$@Location_on_clock_face@" />
-                                </td>
-                                <td for="obs.cmFromNipple1">Cm from nipple:
-                                    <obs conceptId="$@cm_from_Nipple@" />
-                                <!--                    <input id="obs.cmFromNipple1" class="form-control" name="obs.cmFromNipple1" type="text" data-concept="bc0d7955-9777-4eb1-82ed-52d8be66b0f6^cm from Nipple^99DCT"/>-->
-                                </td>
-                                <td>
-                                    size:
-                                    <obs conceptId="$@mass_size_value1@" /> x
-                                    <obs conceptId="$@mass_size_value2@" />
-                                </td>
-                            </tr>
-                        </table>
+                                    </td>
+                                    <td for="obs.LocationOnClockFace1">Location on clock face :
+                                    <!--                    <input id="obs.LocationOnClockFace1" class="form-control" name="obs.LocationOnClockFace1" type="text" data-concept="12bb321d-d1fe-4929-bf8a-8577ae2a3568^Location on clock face^99DCT"/>-->
+                                        <obs conceptId="$@Location_on_clock_face@" />
+                                    </td>
+                                    <td for="obs.cmFromNipple1">Cm from nipple:
+                                        <obs conceptId="$@cm_from_Nipple@" />
+                                    <!--                    <input id="obs.cmFromNipple1" class="form-control" name="obs.cmFromNipple1" type="text" data-concept="bc0d7955-9777-4eb1-82ed-52d8be66b0f6^cm from Nipple^99DCT"/>-->
+                                    </td>
+                                    <td>
+                                        size:
+                                        <obs conceptId="$@mass_size_value1@" /> x
+                                        <obs conceptId="$@mass_size_value2@" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </obsgroup>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <table>
-                            <tr class="form-group">
-                                <td>Mass 1: </td>
-                                <td class="font-normal">
-                                    <!--                        <input id="obs.breastMassLeft1" name="obs.breastMassPosition1" type="radio"-->
-                                    <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
-                                    <!--                               value="3ce99198-26fe-102b-80cb-0017a47871b2^LEFT^99DCT">-->
-                                    <obs conceptId="$@breast_mass@" answerConceptId="$@LEFT@" answerLabel="Left" />
+                        <obsgroup groupingConceptId="7f8dd1c5-e09f-4abc-b7ce-bec784f8f83b">
+                            <table>
+                                <tr class="form-group">
+                                    <td>Mass 2: </td>
+                                    <td class="font-normal">
+                                        <!--                        <input id="obs.breastMassLeft1" name="obs.breastMassPosition1" type="radio"-->
+                                        <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
+                                        <!--                               value="3ce99198-26fe-102b-80cb-0017a47871b2^LEFT^99DCT">-->
+                                        <obs conceptId="$@breast_mass@" answerConceptId="$@LEFT@" answerLabel="Left" />
 
 
 
-                                    <!--                        <input id="obs.breastMassRight1" name="obs.breastMassPosition1" type="radio"-->
-                                    <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
-                                    <!--                               value="3ce9949a-26fe-102b-80cb-0017a47871b2^RIGHT^99DCT">-->
-                                    <obs conceptId="$@breast_mass@" answerConceptId="$@RIGHT@" answerLabel="Right" />
+                                        <!--                        <input id="obs.breastMassRight1" name="obs.breastMassPosition1" type="radio"-->
+                                        <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
+                                        <!--                               value="3ce9949a-26fe-102b-80cb-0017a47871b2^RIGHT^99DCT">-->
+                                        <obs conceptId="$@breast_mass@" answerConceptId="$@RIGHT@" answerLabel="Right" />
 
-                                </td>
-                                <td for="obs.LocationOnClockFace1">Location on clock face :
-                                <!--                    <input id="obs.LocationOnClockFace1" class="form-control" name="obs.LocationOnClockFace1" type="text" data-concept="12bb321d-d1fe-4929-bf8a-8577ae2a3568^Location on clock face^99DCT"/>-->
-                                    <obs conceptId="$@Location_on_clock_face@" />
-                                </td>
-                                <td for="obs.cmFromNipple1">Cm from nipple:
-                                    <obs conceptId="$@cm_from_Nipple@" />
-                                <!--                    <input id="obs.cmFromNipple1" class="form-control" name="obs.cmFromNipple1" type="text" data-concept="bc0d7955-9777-4eb1-82ed-52d8be66b0f6^cm from Nipple^99DCT"/>-->
-                                </td>
-                                <td>
-                                    size:
-                                    <obs conceptId="$@mass_size_value1@" /> x
-                                    <obs conceptId="$@mass_size_value2@" />
-                                </td>
-                            </tr>
-                        </table>
+                                    </td>
+                                    <td for="obs.LocationOnClockFace1">Location on clock face :
+                                    <!--                    <input id="obs.LocationOnClockFace1" class="form-control" name="obs.LocationOnClockFace1" type="text" data-concept="12bb321d-d1fe-4929-bf8a-8577ae2a3568^Location on clock face^99DCT"/>-->
+                                        <obs conceptId="$@Location_on_clock_face@" />
+                                    </td>
+                                    <td for="obs.cmFromNipple1">Cm from nipple:
+                                        <obs conceptId="$@cm_from_Nipple@" />
+                                    <!--                    <input id="obs.cmFromNipple1" class="form-control" name="obs.cmFromNipple1" type="text" data-concept="bc0d7955-9777-4eb1-82ed-52d8be66b0f6^cm from Nipple^99DCT"/>-->
+                                    </td>
+                                    <td>
+                                        size:
+                                        <obs conceptId="$@mass_size_value1@" /> x
+                                        <obs conceptId="$@mass_size_value2@" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </obsgroup>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <table>
-                            <tr class="form-group">
-                                <td>Mass 1: </td>
-                                <td class="font-normal">
-                                    <!--                        <input id="obs.breastMassLeft1" name="obs.breastMassPosition1" type="radio"-->
-                                    <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
-                                    <!--                               value="3ce99198-26fe-102b-80cb-0017a47871b2^LEFT^99DCT">-->
-                                    <obs conceptId="$@breast_mass@" answerConceptId="$@LEFT@" answerLabel="Left" />
+                        <obsgroup groupingConceptId="654fe058-ce95-4fb8-88f1-6dc652ad9634">
+                            <table>
+                                <tr class="form-group">
+                                    <td>Mass 3: </td>
+                                    <td class="font-normal">
+                                        <!--                        <input id="obs.breastMassLeft1" name="obs.breastMassPosition1" type="radio"-->
+                                        <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
+                                        <!--                               value="3ce99198-26fe-102b-80cb-0017a47871b2^LEFT^99DCT">-->
+                                        <obs conceptId="$@breast_mass@" answerConceptId="$@LEFT@" answerLabel="Left" />
 
 
 
-                                    <!--                        <input id="obs.breastMassRight1" name="obs.breastMassPosition1" type="radio"-->
-                                    <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
-                                    <!--                               value="3ce9949a-26fe-102b-80cb-0017a47871b2^RIGHT^99DCT">-->
-                                    <obs conceptId="$@breast_mass@" answerConceptId="$@RIGHT@" answerLabel="Right" />
+                                        <!--                        <input id="obs.breastMassRight1" name="obs.breastMassPosition1" type="radio"-->
+                                        <!--                               data-concept="09e3246a-5968-4ab4-960a-6b324517dc64^breast mass^99DCT"-->
+                                        <!--                               value="3ce9949a-26fe-102b-80cb-0017a47871b2^RIGHT^99DCT">-->
+                                        <obs conceptId="$@breast_mass@" answerConceptId="$@RIGHT@" answerLabel="Right" />
 
-                                </td>
-                                <td for="obs.LocationOnClockFace1">Location on clock face :
-                                <!--                    <input id="obs.LocationOnClockFace1" class="form-control" name="obs.LocationOnClockFace1" type="text" data-concept="12bb321d-d1fe-4929-bf8a-8577ae2a3568^Location on clock face^99DCT"/>-->
-                                    <obs conceptId="$@Location_on_clock_face@" />
-                                </td>
-                                <td for="obs.cmFromNipple1">Cm from nipple:
-                                    <obs conceptId="$@cm_from_Nipple@" />
-                                <!--                    <input id="obs.cmFromNipple1" class="form-control" name="obs.cmFromNipple1" type="text" data-concept="bc0d7955-9777-4eb1-82ed-52d8be66b0f6^cm from Nipple^99DCT"/>-->
-                                </td>
-                                <td>
-                                    size:
-                                    <obs conceptId="$@mass_size_value1@" /> x
-                                    <obs conceptId="$@mass_size_value2@" />
-                                </td>
-                            </tr>
-                        </table>
+                                    </td>
+                                    <td for="obs.LocationOnClockFace1">Location on clock face :
+                                    <!--                    <input id="obs.LocationOnClockFace1" class="form-control" name="obs.LocationOnClockFace1" type="text" data-concept="12bb321d-d1fe-4929-bf8a-8577ae2a3568^Location on clock face^99DCT"/>-->
+                                        <obs conceptId="$@Location_on_clock_face@" />
+                                    </td>
+                                    <td for="obs.cmFromNipple1">Cm from nipple:
+                                        <obs conceptId="$@cm_from_Nipple@" />
+                                    <!--                    <input id="obs.cmFromNipple1" class="form-control" name="obs.cmFromNipple1" type="text" data-concept="bc0d7955-9777-4eb1-82ed-52d8be66b0f6^cm from Nipple^99DCT"/>-->
+                                    </td>
+                                    <td>
+                                        size:
+                                        <obs conceptId="$@mass_size_value1@" /> x
+                                        <obs conceptId="$@mass_size_value2@" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </obsgroup>
                     </td>
                 </tr>
                 <tr class="form-group">
@@ -1562,7 +1567,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <!--                       value="3cd743f8-26fe-102b-80cb-0017a47871b2^NONE^99DCT">-->
                     <obs conceptId="$@Procedures_done@" answerConceptId="$@NONE@" answerLabel="None" />
 
-                    <obs conceptId="$@Procedures_done@" answerConceptId="$@CLEAN_AND_DRESSING@" answerLabel="None" />
+                    <obs conceptId="$@Procedures_done@" answerConceptId="$@CLEAN_AND_DRESSING@" answerLabel="Dressing" />
 
 
                     <!--                <input id="obs.ProcedureDoneAspirationOfCyst" name="obs.ProcedureDone" type="radio"-->
@@ -1672,9 +1677,22 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     <!--                       data-concept="eea065ac-117b-4be9-976b-2948b29046b7^Other reason for referral^99DCT"/>-->
                     <obs conceptId="$@Other_reason_for_referral@"/>
                     <br/>
-                    Scheduled appoint date
-                    <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
+<!--                    Scheduled appoint date-->
+<!--                    <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>-->
 
+                </td>
+
+            </tr>
+        </table>
+    </section>
+    <section headerLabel="Biopsy">
+        <table border="1">
+            <tr>
+                <td class="font-normal"> <strong> Date of next visit:  </strong> </td>
+                <td class="font-normal">
+                    <!--                    <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"-->
+                    <!--                           data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>-->
+                    <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
                 </td>
 
             </tr>

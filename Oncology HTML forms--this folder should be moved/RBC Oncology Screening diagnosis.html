@@ -17,6 +17,7 @@
         @Cervical_cancer_Histology@ = 3cef6fc6-49e1-490c-829f-d9003a7b50ad
         @OTHER_NON-CODED@ = 3cee7fb4-26fe-102b-80cb-0017a47871b2
         @Other_Histology@ = b99ff54e-4e1b-4277-89ab-136eab980621
+        @RETURN_VISIT_DATE@ = 3ce94df0-26fe-102b-80cb-0017a47871b2
 
     </macros>
 
@@ -451,12 +452,11 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                 <td> Date Of Birth: <lookup class="value" expression="patient.birthdate"/> </td>
             </tr>
             <tr>
-                <td><img
-                        src="/openmrs/moduleResources/rwandareports/images/pihHands.png"
-                        align="left" height="65"></img>
-                    <h2>
-                        Inshuti Mu Buzima <br /> PIH Rwanda
-                    </h2></td>
+                <td><img src="/openmrs/moduleResources/rwandareports/images/rwanda-logo.jpg" align="left"
+                         height="65" ></img>
+                    <b>REPUBLIC OF RWANDA
+                        <br />MINISTRY OF HEALTH</b>
+                </td>
                 <td ><strong>
                     Oncology Screening Diagnosis
                 </strong> </td>
@@ -501,6 +501,19 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                     ,Histology
                     <obs conceptId="$@Other_Histology@" cols="40"/>
                 </td>
+            </tr>
+        </table>
+    </section>
+    <section headerLabel="Biopsy">
+        <table border="1">
+            <tr>
+                <td class="font-normal"> <strong> Date of next visit:  </strong> </td>
+                <td class="font-normal">
+                    <!--                    <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"-->
+                    <!--                           data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>-->
+                    <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
+                </td>
+
             </tr>
         </table>
     </section>

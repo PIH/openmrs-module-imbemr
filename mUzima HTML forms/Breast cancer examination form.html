@@ -262,7 +262,7 @@
 <!--        </fieldset>-->
 <!--    </div>-->
     <hr/>
-    <h3>ServPast History</h3>
+    <h3>History</h3>
     <hr/>
     <div class="section">
         <fieldset>
@@ -589,7 +589,7 @@
                 </div>
             </fieldset>
             <fieldset>
-                <div class="form-group concept-set">
+                <div class="form-group concept-set" data-concept="9b551488-8b10-4a98-8d4e-7ee194acbccf^First Mass^99DCT">
                     <label>Mass 1: </label>
                     <br/>
                     <label class="font-normal">
@@ -623,7 +623,7 @@
                 </div>
             </fieldset>
             <fieldset>
-                <div class="form-group concept-set">
+                <div class="form-group concept-set" data-concept="7f8dd1c5-e09f-4abc-b7ce-bec784f8f83b^Second mass^99DCT">
                     <label>Mass 2: </label>
                     <br/>
                     <label class="font-normal">
@@ -657,7 +657,7 @@
                 </div>
             </fieldset>
             <fieldset>
-                <div class="form-group concept-set">
+                <div class="form-group concept-set" data-concept="654fe058-ce95-4fb8-88f1-6dc652ad9634^Third mass^99DCT">
                     <label>Mass 3: </label>
                     <br/>
                     <label class="font-normal">
@@ -729,6 +729,23 @@
                     </label>
 
                 </div>
+                <div>
+                    <label>Nipple discharge: </label>
+                    <br/>
+                    <label class="font-normal">
+                        <input id="obs.nippleDischarderYes" name="obs.nippleDischarder" type="radio"
+                               data-concept="1d9561ca-ac25-406e-bd8b-81174ab68a26^nipple discharge^99DCT"
+                               value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">
+                        Yes
+                    </label>
+                    <br/>
+                    <label class="font-normal">
+                        <input id="obs.nippleDischarderNo" name="obs.nippleDischarder" type="radio"
+                               data-concept="1d9561ca-ac25-406e-bd8b-81174ab68a26^nipple discharge^99DCT"
+                               value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">
+                        No
+                    </label>
+                </div>
                 <div class="form-group">
                     <label>If yes: </label>
                     <br/>
@@ -780,7 +797,7 @@
                         If yes specify:
                     </label>
                     <br/>
-                    <label class="font-normal"
+                    <label class="font-normal">
                         <input id="obs.otherBreastChangesText" class="form-control" name="obs.otherBreastChanges"
                                type="text" data-concept="334efbef-93b0-4ea3-90db-2f64f8c3f402^other breast change (text)^99DCT"/>
                     </label>
@@ -1243,8 +1260,9 @@
 
             </label>
             <br/>
-            <label>
-                Scheduled  Appointment date:
+            <label class="font-normal"> <strong> Date of next visit:  </strong> </label>
+            <br/>
+            <label class="font-normal">
                 <input class="form-control datepicker future-or-today-date" id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="text"
                        data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>
             </label>
@@ -1339,6 +1357,16 @@
                 {"val": "9b04a9ee-60dd-46c6-8ce1-e3657ec55d67^Masaka Hospital^99DCT", "label": "Masaka Hospital "},
                 {"val": "2514bef8-5bc6-4657-bdf5-c5d82abc8e11^Munini Hospital^99DCT", "label": "Munini Hospital "},
                 {"val": "3cda8388-26fe-102b-80cb-0017a47871b2^RWINKWAVU^99DCT", "label": "RWINKWAVU Hospital "},
+                {"val": "bc64178d-d6a5-4289-88ec-debdd7a6f885^Bushenge Hospital^99DCT", "label": "Bushenge Hospital "},
+                {"val": "544547d4-dac5-49e3-9e0d-718a8fe324dc^Kinihira Hospital^99DCT", "label": "Kinihira Hospital "},
+                {"val": "f2e75b8c-b770-4019-a70e-7acec43c53ee^RWAMAGANA HOSPITAL^99DCT", "label": "Rwamagana HOSPITAL "},
+                {"val": "9020f09f-237f-4ccf-a3f9-8755044fbe29^Ruhango Hospital^99DCT", "label": "Ruhango Hospital "},
+                {"val": "3cb82e34-7ea2-44f6-af0b-f0ea4d995bf4^RUHENGERI HOSPITAL^99DCT", "label": "Ruhengeri Hospital "},
+                {"val": "3b49bab4-9e1f-425e-b597-47fa60606fc9^KIBUNGO HOSPITAL^99DCT", "label": "Kibungo Hospital "},
+                {"val": "b757c3c7-d259-419f-9fa8-56292c0d2d0d^Kibuye Hospital^99DCT", "label": "Kibuye Hospital "},
+                {"val": "68222ccb-71ee-418e-a4a4-b924b4e80108^Centre Hôspitalier Universitaire de Kigali (CHUK)^99DCT", "label": "CHUK Hospital "},
+                {"val": "2b472c6b-a0d4-44b1-bb2f-3d44289a19e5^Centre Hôspitalier Universitaire de Butare (CHUB)^99DCT", "label": "CHUB Hospital "},
+                {"val": "c8f88b6d-0781-4171-bf61-88f1681778d8^Rwanda Military Hospital^99DCT", "label": "Rwanda Military Hospital "},
                 {"val": "3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT", "label": "Other "}
             ];
             document.setupAutoComplete('obs\\.healthFacility', WhereToRefer);

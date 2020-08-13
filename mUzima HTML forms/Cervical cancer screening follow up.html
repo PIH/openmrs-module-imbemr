@@ -386,26 +386,51 @@
 <!--        </div>-->
 <!--    </fieldset>-->
     <fieldset>
-        <div class="section">
-            <h3> <u> HPV test </u></h3>
-            <br/>
-            <label class="font-normal"> <strong> <u> Sampling method </u> </strong> </label>
-            <br/>
-            <label class="font-normal">
-                <input id="obs.HPVCollectedByProvider" name="obs.HPVCollected" type="checkbox"
-                       data-concept="f6f60fcb-2e6f-4e72-940d-ff96e22452aa^sampling method^99DCT"
-                       value="37ad4306-50b9-4d4c-ab78-a1a77ddd7223^Provider Collected Sample^99DCT">
-                Provider collected sample
 
+        <div class="form-group">
+            <label>
+                Specimen code
             </label>
             <br/>
             <label class="font-normal">
-                <input id="obs.HPVCollectedBySelf" name="obs.HPVCollected" type="checkbox"
+                <input id="obs.specimenCode" name="obs.specimenCode" type="text"
+                       data-concept="16cd65e3-45af-4291-88fd-fe4d91847e4f^Specimen Code^99DCT">
+
+            </label>
+        </div>
+        <div class="form-group">
+            <label class="font-normal">
+                Sample collection method:
+            </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.providerCollectedSample" name="obs.samplingMethod" type="radio"
+                       data-concept="f6f60fcb-2e6f-4e72-940d-ff96e22452aa^sampling method^99DCT"
+                       value="37ad4306-50b9-4d4c-ab78-a1a77ddd7223^Provider Collected Sample^99DCT">
+                Provider collected sample
+            </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.selfCollectedSample" name="obs.samplingMethod" type="radio"
                        data-concept="f6f60fcb-2e6f-4e72-940d-ff96e22452aa^sampling method^99DCT"
                        value="8b710fc4-efa6-4ee1-b9a8-e2608149d7ff^Self Collected Sample^99DCT">
                 Self collected sample
             </label>
         </div>
+
+        <div class="form-group">
+            <label>
+                Other clinical information
+            </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.otherClinicalInfo" name="obs.otherClinicalInfo" type="text"
+                       data-concept="f07791fa-de5d-4977-916c-35a433bfa280^Other Clinical Information^99DCT">
+
+            </label>
+        </div>
+
+
         <div class="form-group">
             <label>
                 Test result:
@@ -923,11 +948,17 @@
                 <input class="form-control" name="obs.healthFacility" type="text" data-concept="3a84ab37-f75c-48ad-8bcf-322c927f36bb^referred to (coded)^99DCT">
             </label>
             <br/>
-            <label class="font-normal"> <strong> referral completion date: </strong> </label>
+<!--            <label class="font-normal"> <strong> referral completion date: </strong> </label>-->
+<!--            <br/>-->
+<!--            <label class="font-normal">-->
+<!--                <input id="obs.ManagementReferralCompletionDate" class="form-control" name="obs.ManagementReferralCompletionDate"-->
+<!--                       type="Date" data-concept="2ec83708-c126-48f2-b5f8-0ce37500e11b^Referral completion Date^99DCT"/>-->
+<!--            </label>-->
+            <label class="font-normal"> <strong> Date of next visit:  </strong> </label>
             <br/>
             <label class="font-normal">
-                <input id="obs.ManagementReferralCompletionDate" class="form-control" name="obs.ManagementReferralCompletionDate"
-                       type="Date" data-concept="2ec83708-c126-48f2-b5f8-0ce37500e11b^Referral completion Date^99DCT"/>
+                <input class="form-control datepicker future-or-today-date" id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="text"
+                       data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>
             </label>
         </div>
     </fieldset>
@@ -1111,6 +1142,16 @@
                 {"val": "9b04a9ee-60dd-46c6-8ce1-e3657ec55d67^Masaka Hospital^99DCT", "label": "Masaka Hospital "},
                 {"val": "2514bef8-5bc6-4657-bdf5-c5d82abc8e11^Munini Hospital^99DCT", "label": "Munini Hospital "},
                 {"val": "3cda8388-26fe-102b-80cb-0017a47871b2^RWINKWAVU^99DCT", "label": "RWINKWAVU Hospital "},
+                {"val": "bc64178d-d6a5-4289-88ec-debdd7a6f885^Bushenge Hospital^99DCT", "label": "Bushenge Hospital "},
+                {"val": "544547d4-dac5-49e3-9e0d-718a8fe324dc^Kinihira Hospital^99DCT", "label": "Kinihira Hospital "},
+                {"val": "f2e75b8c-b770-4019-a70e-7acec43c53ee^RWAMAGANA HOSPITAL^99DCT", "label": "Rwamagana HOSPITAL "},
+                {"val": "9020f09f-237f-4ccf-a3f9-8755044fbe29^Ruhango Hospital^99DCT", "label": "Ruhango Hospital "},
+                {"val": "3cb82e34-7ea2-44f6-af0b-f0ea4d995bf4^RUHENGERI HOSPITAL^99DCT", "label": "Ruhengeri Hospital "},
+                {"val": "3b49bab4-9e1f-425e-b597-47fa60606fc9^KIBUNGO HOSPITAL^99DCT", "label": "Kibungo Hospital "},
+                {"val": "b757c3c7-d259-419f-9fa8-56292c0d2d0d^Kibuye Hospital^99DCT", "label": "Kibuye Hospital "},
+                {"val": "68222ccb-71ee-418e-a4a4-b924b4e80108^Centre Hôspitalier Universitaire de Kigali (CHUK)^99DCT", "label": "CHUK Hospital "},
+                {"val": "2b472c6b-a0d4-44b1-bb2f-3d44289a19e5^Centre Hôspitalier Universitaire de Butare (CHUB)^99DCT", "label": "CHUB Hospital "},
+                {"val": "c8f88b6d-0781-4171-bf61-88f1681778d8^Rwanda Military Hospital^99DCT", "label": "Rwanda Military Hospital "},
                 {"val": "3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT", "label": "Other "}
             ];
             document.setupAutoComplete('obs\\.healthFacility', WhereToRefer);

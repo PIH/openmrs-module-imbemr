@@ -129,7 +129,7 @@
             <label class="font-normal">
                 Histology:
                 <textarea class="form-control" id="obs.BreastCancerHistory"
-                          name="obs.BreastCancerHistory" type="text"  rows="5"
+                          name="obs.BreastCancerHistory" type="text"  cols="80"
                           data-concept="7625e1b7-7571-485e-b023-20a7d03dc7dc^Breast Cancer Histology^99DCT"></textarea>
             </label>
             <br/>
@@ -143,7 +143,7 @@
             <label class="font-normal">
                 Histology:
                 <textarea class="form-control" id="obs.CervicalCancerHistory"
-                          name="obs.CervicalCancerHistory" type="text"  rows="5"
+                          name="obs.CervicalCancerHistory" type="text"  cols="80"
                           data-concept="3cef6fc6-49e1-490c-829f-d9003a7b50ad^Cervical cancer Histology^99DCT"></textarea>
             </label>
             <br/>
@@ -161,6 +161,12 @@
                           data-concept="b99ff54e-4e1b-4277-89ab-136eab980621^Other Histology^99DCT"></textarea>
             </label>
             <br/>
+            <label class="font-normal"> <strong> Date of next visit:  </strong> </label>
+            <br/>
+            <label class="font-normal">
+                <input class="form-control datepicker future-or-today-date" id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="text"
+                       data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>
+            </label>
         </fieldset>
     </div>
 

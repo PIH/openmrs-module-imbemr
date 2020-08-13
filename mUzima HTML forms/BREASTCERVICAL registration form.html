@@ -85,8 +85,8 @@
         <fieldset>
             <h3>Attributes</h3>
             <div class="form-group group-set" data-group="patient.personattribute^2">
-                <label for="patient.phone_number">Phone: <span class="required">*</span></label>
-                <input class="form-control phoneNumber" id="patient.phone_number" name="attribute_value" type="tel" required="required">
+                <label for="patient.phone_number">Phone: </label>
+                <input class="form-control phoneNumber" id="patient.phone_number" name="attribute_value" type="tel" >
                 <input type="hidden" id="attribute_type_name" name="attribute_type_name" value="Phone number">
                 <input type="hidden" id="attribute_type_uuid" name="attribute_type_uuid" value="d6bcc287-4576-4264-961b-6bf1c08fbf68">
             </div>
@@ -227,6 +227,32 @@
         // Start- generate patient identifier whenever provider ID is changed
 
           //Listen to changes to input field that has id attribute set to encounter.provider_id_select
+          //$('#encounter\\.provider_id_select').change(function(){
+
+            //Get the Provider ID value
+             //var provider_id = $('#encounter\\.provider_id').val();
+
+             //Generate patient identifier if the provider ID field is not empty
+             //if(provider_id != ''){
+             //  var currentTime = new Date();
+             //  var yearInTwoDigits = currentTime.getFullYear().toString().substr(-2);
+
+             //  var startDateOfYear = new Date(currentTime.getFullYear(), 0, 1);
+             //  var millisecondsSinceStartOfYear = currentTime - startDateOfYear;
+             //  var oneDayInMilliseconds = 1000 * 60 * 60 * 24;
+             //  var daysElapsedThisYear = Math.ceil(millisecondsSinceStartOfYear / oneDayInMilliseconds);
+
+             //  currentTimeInSeconds = currentTime.getHours() * 60 * 60 + currentTime.getMinutes()*60 + currentTime.getSeconds()
+             //  var medicalRecordNumber = provider_id + yearInTwoDigits + daysElapsedThisYear + currentTimeInSeconds;
+
+               //Update medical record number field in the form with generated value
+             //  $("#identifier_value").val(medicalRecordNumber);
+             //}
+          //});
+        // End- generate patient identifier whenever provider ID is changed
+
+        // Start - version 2 of patient  identifier generation whenever provider ID is changed
+          //Listen to changes to input field that has id attribute set to encounter.provider_id_select
           $('#encounter\\.provider_id_select').change(function(){
 
             //Get the Provider ID value
@@ -234,22 +260,40 @@
 
              //Generate patient identifier if the provider ID field is not empty
              if(provider_id != ''){
-               var currentTime = new Date();
-               var yearInTwoDigits = currentTime.getFullYear().toString().substr(-2);
 
-               var startDateOfYear = new Date(currentTime.getFullYear(), 0, 1);
-               var millisecondsSinceStartOfYear = currentTime - startDateOfYear;
-               var oneDayInMilliseconds = 1000 * 60 * 60 * 24;
-               var daysElapsedThisYear = Math.ceil(millisecondsSinceStartOfYear / oneDayInMilliseconds);
+                 var providerIdwithoutSeparator = provider_id.replace('-', '');
 
-               currentTimeInSeconds = currentTime.getHours() * 60 * 60 + currentTime.getMinutes()*60 + currentTime.getSeconds()
-               var medicalRecordNumber = provider_id + yearInTwoDigits + daysElapsedThisYear + currentTimeInSeconds;
+                 var currentTime = new Date();
+                 var baseDate = new Date( "01/01/2020 00:00:00" );
+
+
+                 var millisecondsSinceStartOfYear = currentTime - baseDate;
+                 var secondsElapsedSince2020 = Math.floor(millisecondsSinceStartOfYear/1000);
+                 var secondsElapsedSince2020With100SecBetween = Math.floor(secondsElapsedSince2020/100);
+                 var secNumberSize =[secondsElapsedSince2020With100SecBetween].toString().split('').length;
+
+                 if(secNumberSize<7){
+                    secondsElapsedSince2020With100SecBetween = "0" + secondsElapsedSince2020With100SecBetween;
+
+                 }
+
+
+                 var combinedVariables = providerIdwithoutSeparator + secondsElapsedSince2020With100SecBetween;
+                 var medicalRecordNumber;
+                 if(!isNaN(combinedVariables)){
+
+                    medicalRecordNumber= parseInt(combinedVariables).toString(16);
+                  }
+                  else{
+                     medicalRecordNumber= "z"+combinedVariables ;
+                  }
+
 
                //Update medical record number field in the form with generated value
                $("#identifier_value").val(medicalRecordNumber);
              }
           });
-        // End- generate patient identifier whenever provider ID is changed
+        // End- version 2 of patient  identifier generation whenever provider ID is changed
         var requireMedicalRecordNumber = true;
         if(requireMedicalRecordNumber){
           $(".require_medical_record_number_hint").show();

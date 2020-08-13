@@ -17,7 +17,7 @@
         @RDV_Changed@ = 5a2cd0f1-aeb1-4f9d-ae56-1023a336acfb
         @patient_will_not_return@ = 95fc1647-ddc8-4a78-80cb-2049c6cb706a
         @RETURN_VISIT_DATE@ = 3ce94df0-26fe-102b-80cb-0017a47871b2
-        @Return_Visit_Location@ = d3c8c5f8-9ebb-4622-98ca-c55ca41d3d44
+        @return_visit_location@ = d3c8c5f8-9ebb-4622-98ca-c55ca41d3d44
         @Result_of_Call@ = f89b3523-c37a-4d50-ace7-cc50f2292d77
         @PATIENT_DIED@ = 3cdd446a-26fe-102b-80cb-0017a47871b2
         @Date_of_Death@ = ce0afb8a-35b3-496e-8ac9-37c3b8f6592e
@@ -458,12 +458,11 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                 <td> Date Of Birth: <lookup class="value" expression="patient.birthdate"/> </td>
             </tr>
             <tr>
-                <td><img
-                        src="/openmrs/moduleResources/rwandareports/images/pihHands.png"
-                        align="left" height="65"></img>
-                    <h2>
-                        Inshuti Mu Buzima <br /> PIH Rwanda
-                    </h2></td>
+                <td><img src="/openmrs/moduleResources/rwandareports/images/rwanda-logo.jpg" align="left"
+                         height="65" ></img>
+                    <b>REPUBLIC OF RWANDA
+                        <br />MINISTRY OF HEALTH</b>
+                </td>
                 <td ><strong>
                     Oncology Screening Call log or CHW visit
                 </strong> </td>
@@ -504,7 +503,7 @@ getField('reactionNonCoded3.value')[0].disabled = true;
             </tr>
             <tr>
                 <td>
-                    Next  Appointment date:
+                    Next  visit date:
                 </td>
                 <td>
                     <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>

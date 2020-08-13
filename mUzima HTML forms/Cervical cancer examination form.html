@@ -359,6 +359,122 @@
                 <input id="obs.LastTreatmentDate" class="form-control" name="obs.LastTreatmentDate" type="Date" data-concept="d1514c0f-efaf-4dcc-90a2-9f488745e142^Last Treatment Date^99DCT"/>
             </label>
         </div>
+        <div class="form-group">
+            <label for="obs.HIVStatusHistory">HIV Status: </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.positiveHIVStatusHistory" name="obs.HIVStatusHistory" type="radio"
+                       data-concept="aec6ad18-f4dd-4cfa-b68d-3d7bb6ea908e^HIV STATUS^99DCT"
+                       value="3cd3a7a2-26fe-102b-80cb-0017a47871b2^POSITIVE^99DCT">
+                Positive
+            </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.negativeHIVStatusHistory" name="obs.HIVStatusHistory" type="radio"
+                       data-concept="aec6ad18-f4dd-4cfa-b68d-3d7bb6ea908e^HIV STATUS^99DCT"
+                       value="3cd28732-26fe-102b-80cb-0017a47871b2^NEGATIVE^99DCT">
+                Negative
+            </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.unknownHIVStatusHistory" name="obs.HIVStatusHistory" type="radio"
+                       data-concept="aec6ad18-f4dd-4cfa-b68d-3d7bb6ea908e^HIV STATUS^99DCT"
+                       value="3cd6fac4-26fe-102b-80cb-0017a47871b2^UNKNOWN^99DCT">
+                Unknown
+            </label>
+        </div>
+        <div class="form-group">
+            <label> If HIV positive on ARV: </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.onARVYes" name="obs.onARV" type="radio"
+                       data-concept="6086ea54-d658-44ec-84fe-ab898c2f0cf6^On ARVs^99DCT"
+                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">
+                Yes
+            </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.onARVNo" name="obs.onARV" type="radio"
+                       data-concept="6086ea54-d658-44ec-84fe-ab898c2f0cf6^On ARVs^99DCT"
+                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">
+                No
+            </label>
+        </div>
+        <!--        <div class="form-group">-->
+        <!--            <label> Entry point: </label>-->
+        <!--            <label class="font-normal">-->
+        <!--                <input id="obs.HIVCLINICEntryPoint" name="obs.EntryPoint" type="radio"-->
+        <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+        <!--                       value="398996ac-93bd-4a95-884f-3b58132d2367^HIV clinic^99DCT">-->
+        <!--                HIV clinic-->
+        <!--            </label>-->
+        <!--            <label class="font-normal">-->
+        <!--                <input id="obs.OPDEntryPoint" name="obs.EntryPoint" type="radio"-->
+        <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+        <!--                       value="9e5e7ffc-6eb8-4d0f-a1a8-319eed6399fb^OUTPATIENT Department^99DCT">-->
+        <!--                OPD-->
+        <!--            </label>-->
+        <!--            <label class="font-normal">-->
+        <!--                <input id="obs.familyPlanningEntryPoint" name="obs.EntryPoint" type="radio"-->
+        <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+        <!--                       value="3ce6a212-26fe-102b-80cb-0017a47871b2^FAMILY PLANNING CLINIC^99DCT">-->
+        <!--                Family planning-->
+        <!--            </label>-->
+        <!--            <label class="font-normal">-->
+        <!--                <input id="obs.vaccinationEntryPoint" name="obs.EntryPoint" type="radio"-->
+        <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+        <!--                       value="16edb286-a2c0-4b35-a3b6-101ea2bbb231^VACCINATION SERVICE^99DCT">-->
+        <!--                Vaccination-->
+        <!--            </label>-->
+        <!--            <label class="font-normal">-->
+        <!--                <input id="obs.ANCEntryPoint" name="obs.EntryPoint" type="radio"-->
+        <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+        <!--                       value="29ce8244-5251-4c76-8e99-bbad280be2ef^Consultation ANC^99DCT">-->
+        <!--                ANC-->
+        <!--            </label>-->
+        <!--            <label class="font-normal">-->
+        <!--                <input id="obs.WCEDEntryPoint" name="obs.EntryPoint" type="radio"-->
+        <!--                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"-->
+        <!--                       value="e8e6a8fa-0aab-427d-9960-8501de238ad7^woman cancer early detection CLINIC^99DCT">-->
+        <!--                WCED Clinic-->
+        <!--            </label>-->
+        <!--        </div>-->
+        <div class="form-group">
+            <label>Currently pregant? </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.pregnantYes" name="obs.pregnant" type="radio"
+                       data-concept="3ceb4880-26fe-102b-80cb-0017a47871b2^PREGNANCY STATUS^99DCT"
+                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">
+                Yes
+            </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.pregnantNo" name="obs.pregnant" type="radio"
+                       data-concept="3ceb4880-26fe-102b-80cb-0017a47871b2^PREGNANCY STATUS^99DCT"
+                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">
+                No
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Currently breastfeeding? </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.breastfeedingYes" name="obs.breastfeeding" type="radio"
+                       data-concept="3cd4860e-26fe-102b-80cb-0017a47871b2^BREASTFEEDING^99DCT"
+                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">
+                Yes
+            </label>
+            <br/>
+            <label class="font-normal">
+                <input id="obs.breastfeedingNo" name="obs.breastfeeding" type="radio"
+                       data-concept="3cd4860e-26fe-102b-80cb-0017a47871b2^BREASTFEEDING^99DCT"
+                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">
+                No
+            </label>
+
+
+        </div>
     </fieldset>
     <hr/>
     <h3>CERVICAL CANCER SCREENING RESULTS AND MANAGEMENT</h3>
@@ -402,7 +518,7 @@
                 <input id="obs.ScreeningTypePapSmear" name="obs.ScreeningType" type="checkbox"
                        data-concept="7e4e6554-d6c5-4ca3-b371-49806a754992^Screening through^99DCT"
                        value="3cd4de2e-26fe-102b-80cb-0017a47871b2^PAPANICOLAOU SMEAR^99DCT">
-                Papa smear
+                Pap smear
             </label>
 
         </div>
@@ -974,11 +1090,17 @@
                 <input class="form-control" name="obs.healthFacility" type="hidden" data-concept="3a84ab37-f75c-48ad-8bcf-322c927f36bb^referred to (coded)^99DCT">
             </label>
             <br/>
-            <label class="font-normal"> <strong> referral completion date: </strong> </label>
+<!--            <label class="font-normal"> <strong> referral completion date: </strong> </label>-->
+<!--            <br/>-->
+<!--            <label class="font-normal">-->
+<!--                <input id="obs.ManagementReferralCompletionDate" class="form-control" name="obs.ManagementReferralCompletionDate"-->
+<!--                       type="Date" data-concept="2ec83708-c126-48f2-b5f8-0ce37500e11b^Referral completion Date^99DCT"/>-->
+<!--            </label>-->
+            <label class="font-normal"> <strong> Date of next visit:  </strong> </label>
             <br/>
             <label class="font-normal">
-                <input id="obs.ManagementReferralCompletionDate" class="form-control" name="obs.ManagementReferralCompletionDate"
-                       type="Date" data-concept="2ec83708-c126-48f2-b5f8-0ce37500e11b^Referral completion Date^99DCT"/>
+                <input class="form-control datepicker future-or-today-date" id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="text"
+                       data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>
             </label>
         </div>
     </fieldset>
@@ -1162,6 +1284,16 @@
                 {"val": "9b04a9ee-60dd-46c6-8ce1-e3657ec55d67^Masaka Hospital^99DCT", "label": "Masaka Hospital "},
                 {"val": "2514bef8-5bc6-4657-bdf5-c5d82abc8e11^Munini Hospital^99DCT", "label": "Munini Hospital "},
                 {"val": "3cda8388-26fe-102b-80cb-0017a47871b2^RWINKWAVU^99DCT", "label": "RWINKWAVU Hospital "},
+                {"val": "bc64178d-d6a5-4289-88ec-debdd7a6f885^Bushenge Hospital^99DCT", "label": "Bushenge Hospital "},
+                {"val": "544547d4-dac5-49e3-9e0d-718a8fe324dc^Kinihira Hospital^99DCT", "label": "Kinihira Hospital "},
+                {"val": "f2e75b8c-b770-4019-a70e-7acec43c53ee^RWAMAGANA HOSPITAL^99DCT", "label": "Rwamagana HOSPITAL "},
+                {"val": "9020f09f-237f-4ccf-a3f9-8755044fbe29^Ruhango Hospital^99DCT", "label": "Ruhango Hospital "},
+                {"val": "3cb82e34-7ea2-44f6-af0b-f0ea4d995bf4^RUHENGERI HOSPITAL^99DCT", "label": "Ruhengeri Hospital "},
+                {"val": "3b49bab4-9e1f-425e-b597-47fa60606fc9^KIBUNGO HOSPITAL^99DCT", "label": "Kibungo Hospital "},
+                {"val": "b757c3c7-d259-419f-9fa8-56292c0d2d0d^Kibuye Hospital^99DCT", "label": "Kibuye Hospital "},
+                {"val": "68222ccb-71ee-418e-a4a4-b924b4e80108^Centre Hôspitalier Universitaire de Kigali (CHUK)^99DCT", "label": "CHUK Hospital "},
+                {"val": "2b472c6b-a0d4-44b1-bb2f-3d44289a19e5^Centre Hôspitalier Universitaire de Butare (CHUB)^99DCT", "label": "CHUB Hospital "},
+                {"val": "c8f88b6d-0781-4171-bf61-88f1681778d8^Rwanda Military Hospital^99DCT", "label": "Rwanda Military Hospital "},
                 {"val": "3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT", "label": "Other "}
             ];
             document.setupAutoComplete('obs\\.healthFacility', WhereToRefer);

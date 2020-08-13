@@ -197,6 +197,7 @@
         @OTHER_METHOD_OF_ENROLLMENT@ = cd5fc859-79e6-4184-af6c-e493c95a4749
         @Specimen_Code@ = 16cd65e3-45af-4291-88fd-fe4d91847e4f
         @Other_Clinical_Information@ = f07791fa-de5d-4977-916c-35a433bfa280
+        @referred_to_(coded)@ = 3a84ab37-f75c-48ad-8bcf-322c927f36bb
 
     </macros>
 
@@ -631,12 +632,11 @@ getField('reactionNonCoded3.value')[0].disabled = true;
                 <td> Date Of Birth: <lookup class="value" expression="patient.birthdate"/> </td>
             </tr>
             <tr>
-                <td><img
-                        src="/openmrs/moduleResources/rwandareports/images/pihHands.png"
-                        align="left" height="65"></img>
-                    <h2>
-                        Inshuti Mu Buzima <br /> PIH Rwanda
-                    </h2></td>
+                <td><img src="/openmrs/moduleResources/rwandareports/images/rwanda-logo.jpg" align="left"
+                         height="65" ></img>
+                    <b>REPUBLIC OF RWANDA
+                        <br />MINISTRY OF HEALTH</b>
+                </td>
                 <td ><strong>
                     Cervical Cancer Screen
                 </strong> </td>
@@ -923,7 +923,152 @@ getField('reactionNonCoded3.value')[0].disabled = true;
             </tr>
         </table>
     </section>
+    <section >
+        <table class="section" border="1">
+            <tr class="form-group">
+                <td for="obs.familyBreastCancerHistory">History of breast cancer in the family: </td>
+                <td class="font-normal">
+                    <!--                <input id="obs.familyBreastCancerHistoryYes" name="obs.familyBreastCancerHistory" type="radio"-->
+                    <!--                       data-concept="b1ce912b-a90e-4f87-93ac-c64650904828^Family History of breast cancer^99DCT"-->
+                    <!--                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">-->
+                    <obs conceptId="$@Family_History_of_breast_cancer@" answerConceptIds="$@YES@,$@NO@,$@UNKNOWN@" answerLabels="Yes,No,Unknown" style="radio" />
 
+
+                    <!--            <label class="font-normal">-->
+                    <!--                <input id="obs.familyBreastCancerHistoryNo" name="obs.familyBreastCancerHistory" type="radio"-->
+                    <!--                       data-concept="b1ce912b-a90e-4f87-93ac-c64650904828^Family History of breast cancer^99DCT"-->
+                    <!--                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">-->
+                    <!--                <obs conceptId="$@Family_History_of_breast_cancer@" answerConceptId="$@NO@" answerLabel="No" />-->
+
+                    <!--            </label>-->
+
+                    <!--                <input id="obs.familyBreastCancerHistoryUnkown" name="obs.familyBreastCancerHistory" type="radio"-->
+                    <!--                       data-concept="b1ce912b-a90e-4f87-93ac-c64650904828^Family History of breast cancer^99DCT"-->
+                    <!--                       value="3cd6fac4-26fe-102b-80cb-0017a47871b2^UNKNOWN^99DCT">-->
+                    <!--                    <obs conceptId="$@Family_History_of_breast_cancer@" answerConceptId="$@UNKNOWN@" answerLabel="Unknown" />-->
+
+                </td>
+            </tr>
+
+            <tr class="form-group">
+                <td for="obs.HIVStatusHistory">HIV Status: </td>
+                <td class="font-normal">
+                    <!--                <input id="obs.positiveHIVStatusHistory" name="obs.HIVStatusHistory" type="radio"-->
+                    <!--                       data-concept="aec6ad18-f4dd-4cfa-b68d-3d7bb6ea908e^HIV STATUS^99DCT"-->
+                    <!--                       value="3cd3a7a2-26fe-102b-80cb-0017a47871b2^POSITIVE^99DCT">-->
+                    <obs conceptId="$@HIV_STATUS@" answerConceptIds="$@POSITIVE@,$@NEGATIVE@,$@UNKNOWN@" answerLabels="Positive,Negative,Unknown" style="radio" />
+
+
+                    <!--                <input id="obs.negativeHIVStatusHistory" name="obs.HIVStatusHistory" type="radio"-->
+                    <!--                       data-concept="aec6ad18-f4dd-4cfa-b68d-3d7bb6ea908e^HIV STATUS^99DCT"-->
+                    <!--                       value="3cd28732-26fe-102b-80cb-0017a47871b2^NEGATIVE^99DCT">-->
+                    <!--                    <obs conceptId="$@HIV_STATUS@" answerConceptId="$@NEGATIVE@" answerLabel="Negative" />-->
+
+
+                    <!--                <input id="obs.unknownHIVStatusHistory" name="obs.HIVStatusHistory" type="radio"-->
+                    <!--                       data-concept="aec6ad18-f4dd-4cfa-b68d-3d7bb6ea908e^HIV STATUS^99DCT"-->
+                    <!--                       value="3cd6fac4-26fe-102b-80cb-0017a47871b2^UNKNOWN^99DCT">-->
+                    <!--                    <obs conceptId="$@HIV_STATUS@" answerConceptId="$@UNKNOWN@" answerLabel="Unknown" />-->
+
+                </td>
+            </tr>
+            <tr class="form-group">
+                <td> If HIV positive on ARV: </td>
+                <td class="font-normal">
+                    <!--                <input id="obs.onARVYes" name="obs.onARV" type="radio"-->
+                    <!--                       data-concept="6086ea54-d658-44ec-84fe-ab898c2f0cf6^On ARVs^99DCT"-->
+                    <!--                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">-->
+                    <obs conceptId="$@On_ARVs@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />
+
+                </td>
+                <!--            <label class="font-normal">-->
+                <!--                <input id="obs.onARVNo" name="obs.onARV" type="radio"-->
+                <!--                       data-concept="6086ea54-d658-44ec-84fe-ab898c2f0cf6^On ARVs^99DCT"-->
+                <!--                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">-->
+                <!--                <obs conceptId="$@On_ARVs@" answerConceptId="$@NO@" answerLabel="No" />-->
+                <!--            </label>-->
+            </tr>
+
+
+
+            <!--            <tr class="form-group">-->
+            <!--                <td> Entry point: </td>-->
+            <!--                <td class="font-normal">-->
+            <!--                    &lt;!&ndash;                <input id="obs.HIVCLINICEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       value="398996ac-93bd-4a95-884f-3b58132d2367^HIV clinic^99DCT">&ndash;&gt;-->
+            <!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@HIV_clinic@" answerLabel="HIV clinic" />-->
+
+
+            <!--                    &lt;!&ndash;                <input id="obs.OPDEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       value="9e5e7ffc-6eb8-4d0f-a1a8-319eed6399fb^OUTPATIENT Department^99DCT">&ndash;&gt;-->
+            <!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@OUTPATIENT_Department@" answerLabel="OPD" />-->
+
+
+            <!--                    &lt;!&ndash;                <input id="obs.familyPlanningEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       value="3ce6a212-26fe-102b-80cb-0017a47871b2^FAMILY PLANNING CLINIC^99DCT">&ndash;&gt;-->
+            <!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@FAMILY_PLANNING_CLINIC@" answerLabel="Family planning" />-->
+
+
+            <!--                    &lt;!&ndash;                <input id="obs.vaccinationEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       value="16edb286-a2c0-4b35-a3b6-101ea2bbb231^VACCINATION SERVICE^99DCT">&ndash;&gt;-->
+            <!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@VACCINATION_SERVICE@" answerLabel="Vaccination" />-->
+
+
+            <!--                    &lt;!&ndash;                <input id="obs.ANCEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       value="29ce8244-5251-4c76-8e99-bbad280be2ef^Consultation ANC^99DCT">&ndash;&gt;-->
+            <!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@Consultation_ANC@" answerLabel="ANC" />-->
+
+
+            <!--                    &lt;!&ndash;                <input id="obs.WCEDEntryPoint" name="obs.EntryPoint" type="radio"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       data-concept="3cdc85ac-26fe-102b-80cb-0017a47871b2^METHOD OF ENROLLMENT^99DCT"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                       value="e8e6a8fa-0aab-427d-9960-8501de238ad7^woman cancer early detection CLINIC^99DCT">&ndash;&gt;-->
+            <!--                    <obs conceptId="$@METHOD_OF_ENROLLMENT@" answerConceptId="$@woman_cancer_early_detection_CLINIC@" answerLabel="WCED Clinic" />-->
+
+            <!--                </td>-->
+            <!--            </tr>-->
+            <tr class="form-group">
+                <td>Currently pregant? </td>
+                <td class="font-normal">
+                    <!--                <input id="obs.pregnantYes" name="obs.pregnant" type="radio"-->
+                    <!--                       data-concept="3ceb4880-26fe-102b-80cb-0017a47871b2^PREGNANCY STATUS^99DCT"-->
+                    <!--                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">-->
+                    <obs conceptId="$@PREGNANCY_STATUS@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />
+
+
+                </td>
+                <!--            <label class="font-normal">-->
+                <!--                <input id="obs.pregnantNo" name="obs.pregnant" type="radio"-->
+                <!--                       data-concept="3ceb4880-26fe-102b-80cb-0017a47871b2^PREGNANCY STATUS^99DCT"-->
+                <!--                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">-->
+                <!--                <obs conceptId="$@On_ARVs@" answerConceptId="$@NO@" answerLabel="No" />-->
+                <!--                No-->
+                <!--            </label>-->
+            </tr>
+            <tr class="form-group">
+                <td>Currently breastfeeding? </td>
+                <td class="font-normal">
+                    <!--                <input id="obs.breastfeedingYes" name="obs.breastfeeding" type="radio"-->
+                    <!--                       data-concept="3cd4860e-26fe-102b-80cb-0017a47871b2^BREASTFEEDING^99DCT"-->
+                    <!--                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">-->
+                    <obs conceptId="$@BREASTFEEDING@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />
+
+                </td>
+                <!--            <label class="font-normal">-->
+                <!--                <input id="obs.breastfeedingNo" name="obs.breastfeeding" type="radio"-->
+                <!--                       data-concept="3cd4860e-26fe-102b-80cb-0017a47871b2^BREASTFEEDING^99DCT"-->
+                <!--                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">-->
+                <!--                No-->
+                <!--            </label>-->
+
+
+            </tr>
+        </table>
+    </section>
     <section headerLabel="CERVICAL CANCER SCREENING RESULTS AND MANAGEMENT">
         <table border="1">
 <!--            <tr class="section">-->
@@ -1344,225 +1489,228 @@ getField('reactionNonCoded3.value')[0].disabled = true;
             </tr>
         </table>
     </section>
-<!--    <section headerLabel="Management">-->
-<!--        <table border="1">-->
-<!--            <tr class="section">-->
-<!--&lt;!&ndash;                <h3 class="font-normal">Management</h3>&ndash;&gt;-->
-<!--                <td class="font-normal"> <strong> Treatment performed: </strong> </td>-->
-<!--                <td class="font-normal">-->
-<!--    &lt;!&ndash;                <input id="obs.ManagementTreatmentPerformedYes" name="obs.ManagementTreatmentPerformed" type="radio"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="ae47a54a-9111-475c-9cc2-76951d78b0c8^Treatment performed^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@Treatment_performed@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />-->
-<!--    &lt;!&ndash;                Yes&ndash;&gt;-->
-<!--    &lt;!&ndash;            </label>&ndash;&gt;-->
-<!--    &lt;!&ndash;            <label class="font-normal">&ndash;&gt;-->
-<!--    &lt;!&ndash;                <input id="obs.ManagementTreatmentPerformedNo" name="obs.ManagementTreatmentPerformed" type="radio"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="ae47a54a-9111-475c-9cc2-76951d78b0c8^Treatment performed^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">&ndash;&gt;-->
-<!--    &lt;!&ndash;                No&ndash;&gt;-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="font-normal">Treatment type: </td>-->
-<!--                <td class="font-normal">-->
-<!--    &lt;!&ndash;                <input id="obs.ManagementTypeOfTreatmentPerformedThermoAblation" name="obs.ManagementTypeOfTreatmentPerformed" type="checkbox"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="f7719cd4-e591-4a39-8bfe-9dd93d3cab89^Type of Treatment performed^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="ef4d5bd3-2c4e-4ac2-9b91-9d4ba12b44f8^thermo-ablation^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@Type_of_Treatment_performed@" answerConceptId="$@thermal-ablation@" answerLabel="Thermal ablation" />-->
-<!--    &lt;!&ndash;                Thermo ablation&ndash;&gt;-->
+    <section headerLabel="Management">
+        <table border="1">
+            <tr class="section">
+                <!--                <h3 class="font-normal">Management</h3>-->
+                <td class="font-normal"> <strong> Treatment performed: </strong> </td>
+                <td class="font-normal">
+                    <!--                <input id="obs.ManagementTreatmentPerformedYes" name="obs.ManagementTreatmentPerformed" type="radio"-->
+                    <!--                       data-concept="ae47a54a-9111-475c-9cc2-76951d78b0c8^Treatment performed^99DCT"-->
+                    <!--                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">-->
+                    <obs conceptId="$@Treatment_performed@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />
+                    <!--                Yes-->
+                    <!--            </label>-->
+                    <!--            <label class="font-normal">-->
+                    <!--                <input id="obs.ManagementTreatmentPerformedNo" name="obs.ManagementTreatmentPerformed" type="radio"-->
+                    <!--                       data-concept="ae47a54a-9111-475c-9cc2-76951d78b0c8^Treatment performed^99DCT"-->
+                    <!--                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">-->
+                    <!--                No-->
+                </td>
+            </tr>
+            <tr>
+                <td class="font-normal">Treatment type: </td>
+                <td class="font-normal">
+                    <!--                <input id="obs.ManagementTypeOfTreatmentPerformedThermoAblation" name="obs.ManagementTypeOfTreatmentPerformed" type="checkbox"-->
+                    <!--                       data-concept="f7719cd4-e591-4a39-8bfe-9dd93d3cab89^Type of Treatment performed^99DCT"-->
+                    <!--                       value="ef4d5bd3-2c4e-4ac2-9b91-9d4ba12b44f8^thermo-ablation^99DCT">-->
+                    <obs conceptId="$@Type_of_Treatment_performed@" answerConceptId="$@thermal-ablation@" answerLabel="Thermal ablation" />
+                    <!--                Thermo ablation-->
 
-<!--    &lt;!&ndash;                <input id="obs.ManagementTypeOfTreatmentPerformedCryotherapy" name="obs.ManagementTypeOfTreatmentPerformed" type="checkbox"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="f7719cd4-e591-4a39-8bfe-9dd93d3cab89^Type of Treatment performed^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="e48bc8db-8f6e-4556-9083-0a000a136e95^Cryotherapy^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@Type_of_Treatment_performed@" answerConceptId="$@Cryotherapy@" answerLabel="Cryotherapy(DH)" />-->
-<!--&lt;!&ndash;                    Cryotherapy(DH)&ndash;&gt;-->
+                    <!--                <input id="obs.ManagementTypeOfTreatmentPerformedCryotherapy" name="obs.ManagementTypeOfTreatmentPerformed" type="checkbox"-->
+                    <!--                       data-concept="f7719cd4-e591-4a39-8bfe-9dd93d3cab89^Type of Treatment performed^99DCT"-->
+                    <!--                       value="e48bc8db-8f6e-4556-9083-0a000a136e95^Cryotherapy^99DCT">-->
+                    <obs conceptId="$@Type_of_Treatment_performed@" answerConceptId="$@Cryotherapy@" answerLabel="Cryotherapy(DH)" />
+                    <!--                    Cryotherapy(DH)-->
 
-<!--&lt;!&ndash;                    <input id="obs.ManagementTypeOfTreatmentPerformedLEEP" name="obs.ManagementTypeOfTreatmentPerformed" type="checkbox"&ndash;&gt;-->
-<!--&lt;!&ndash;                           data-concept="f7719cd4-e591-4a39-8bfe-9dd93d3cab89^Type of Treatment performed^99DCT"&ndash;&gt;-->
-<!--&lt;!&ndash;                           value="55040927-bae5-410c-80da-c79f7574167f^Loop Electrosurgical Excision Procedure^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@Type_of_Treatment_performed@" answerConceptId="$@Loop_Electrosurgical_Excision_Procedure@" answerLabel="LEEP(DH)" />-->
-<!--&lt;!&ndash;                    LEEP(DH)&ndash;&gt;-->
-<!--                    <br/>-->
-<!--                    other treatment (if other diagnosis):-->
-<!--                    <obs conceptId="$@Other_Treatment@"/>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="font-normal"> <strong> Referred:  </strong> </td>-->
-<!--                <td class="font-normal">-->
-<!--&lt;!&ndash;                    <input id="obs.PatientReferredOutYes" name="obs.PatientReferredOut" type="radio"&ndash;&gt;-->
-<!--&lt;!&ndash;                           data-concept="805f40f2-4720-4474-b761-5880c9d3870e^has patient been referred^99DCT"&ndash;&gt;-->
-<!--&lt;!&ndash;                           value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@has_patient_been_referred@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />-->
-<!--&lt;!&ndash;                    Yes&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input id="obs.PatientReferredOutNo" name="obs.PatientReferredOut" type="radio"&ndash;&gt;-->
-<!--&lt;!&ndash;                           data-concept="805f40f2-4720-4474-b761-5880c9d3870e^has patient been referred^99DCT"&ndash;&gt;-->
-<!--&lt;!&ndash;                           value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">&ndash;&gt;-->
-<!--&lt;!&ndash;                    No&ndash;&gt;-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="font-normal"> <strong> Referral reason: </strong> </td>-->
-<!--                <td class="font-normal">-->
-<!--&lt;!&ndash;                    <input id="obs.ManagementReferralReasonSuspectedCancer" name="obs.ManagementReferralReason" type="checkbox"&ndash;&gt;-->
-<!--&lt;!&ndash;                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"&ndash;&gt;-->
-<!--&lt;!&ndash;                           value="476123d7-54f1-4278-92f1-2de4f19ae951^Suspected cancer diagnosis^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptIds="$@Suspected_cancer_diagnosis@,$@thermal-ablation@,$@Cryotherapy@,$@Loop_Electrosurgical_Excision_Procedure@,$@OTHER_NON-CODED@"-->
-<!--                         answerLabels="Suspected cancer,Thermal ablation,Cryotherapy,LEEP,Other reasons" />-->
-<!--&lt;!&ndash;                    Suspected cancer&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input id="obs.ManagementReferralReasonThermoAblation" name="obs.ManagementReferralReason" type="checkbox"&ndash;&gt;-->
-<!--&lt;!&ndash;                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"&ndash;&gt;-->
-<!--&lt;!&ndash;                           value="ef4d5bd3-2c4e-4ac2-9b91-9d4ba12b44f8^thermo-ablation^99DCT">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@thermal-ablation@" answerLabel="Thermal ablation" />&ndash;&gt;-->
-<!--&lt;!&ndash;                    Thermal ablation&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input id="obs.ManagementReferralReasonCryotherapy" name="obs.ManagementReferralReason" type="checkbox"&ndash;&gt;-->
-<!--&lt;!&ndash;                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"&ndash;&gt;-->
-<!--&lt;!&ndash;                           value="e48bc8db-8f6e-4556-9083-0a000a136e95^Cryotherapy^99DCT">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Cryotherapy@" answerLabel="Cryotherapy" />&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                &ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input id="obs.ManagementReferralReasonLEEP" name="obs.ManagementReferralReason" type="checkbox"&ndash;&gt;-->
-<!--&lt;!&ndash;                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"&ndash;&gt;-->
-<!--&lt;!&ndash;                           value="55040927-bae5-410c-80da-c79f7574167f^Loop Electrosurgical Excision Procedure^99DCT">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Loop_Electrosurgical_Excision_Procedure@" answerLabel="LEEP" />&ndash;&gt;-->
-<!--&lt;!&ndash;                    LEEP&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input id="obs.ManagementReferralReasonOther" name="obs.ManagementReferralReason" type="checkbox"&ndash;&gt;-->
-<!--&lt;!&ndash;                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"&ndash;&gt;-->
-<!--&lt;!&ndash;                           value="3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other reasons" />&ndash;&gt;-->
-<!--&lt;!&ndash;                    Other reasons:&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input id="obs.ManagementReferralOtherReasonText" class="form-control" name="obs.ManagementReferralOtherReasonText"&ndash;&gt;-->
-<!--&lt;!&ndash;                           type="text" data-concept="eea065ac-117b-4be9-976b-2948b29046b7^Other reason for referral^99DCT"/>&ndash;&gt;-->
-<!--                    <obs conceptId="$@Other_reason_for_referral@"/>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--&lt;!&ndash;            <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                <td class="font-normal"> <strong> Date of referral: </strong> </td>&ndash;&gt;-->
-<!--&lt;!&ndash;                <td class="font-normal">&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;                    <input id="obs.ManagementDateOfReferral" class="form-control" name="obs.ManagementDateOfReferral"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;                           type="Date" data-concept="5f96394b-2620-4ce3-b5d1-a4aa6108c70f^Date of Referring^99DCT"/>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                    <obs conceptId="$@Date_of_Referring@"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
-<!--            <tr>-->
-<!--                <td class="font-normal"> <strong> Referred to (facility name):  </strong> </td>-->
-<!--                <td class="font-normal">-->
-<!--&lt;!&ndash;                    <input id="obs.ManagementReferredTo" class="form-control" name="obs.ManagementReferredTo"&ndash;&gt;-->
-<!--&lt;!&ndash;                           type="text" data-concept="25782f2c-074f-4834-b7d2-4668cd645a57^referred to^99DCT"/>&ndash;&gt;-->
-<!--                    <obs conceptId="$@referred_to@"/>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--&lt;!&ndash;            <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                <td class="font-normal"> <strong> referral completion date: </strong> </td>&ndash;&gt;-->
-<!--&lt;!&ndash;                <td class="font-normal">&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;                    <input id="obs.ManagementReferralCompletionDate" class="form-control" name="obs.ManagementReferralCompletionDate"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;                           type="Date" data-concept="2ec83708-c126-48f2-b5f8-0ce37500e11b^Referral completion Date^99DCT"/>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                    <obs conceptId="$@Referral_completion_Date@"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                </td>&ndash;&gt;-->
-<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
-<!--        </table>-->
-<!--    </section>-->
-<!--    <section headerLabel="Biopsy">-->
-<!--        <table border="1">-->
-<!--            <tr class="section">-->
-<!--&lt;!&ndash;                <h3 class="font-normal">Biopsy</h3>&ndash;&gt;-->
-<!--                <td class="font-normal"> <strong> Biopsy performed? </strong> </td>-->
-<!--                <td class="font-normal">-->
-<!--    &lt;!&ndash;                <input id="obs.BiopsyPerformedYes" name="obs.BiopsyPerformed" type="radio"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="5563e827-9a1e-40eb-b05b-81d55981ce6d^Biopsy performed^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@Biopsy_performed@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />-->
-<!--    &lt;!&ndash;                Yes&ndash;&gt;-->
-<!--    &lt;!&ndash;            </label>&ndash;&gt;-->
-<!--    &lt;!&ndash;            <label class="font-normal">&ndash;&gt;-->
-<!--    &lt;!&ndash;                <input id="obs.BiopsyPerformedNo" name="obs.BiopsyPerformed" type="radio"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="5563e827-9a1e-40eb-b05b-81d55981ce6d^Biopsy performed^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">&ndash;&gt;-->
-<!--    &lt;!&ndash;                No&ndash;&gt;-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="font-normal">  Date Performed: </td>-->
-<!--                <td class="font-normal">-->
-<!--    &lt;!&ndash;                <input id="obs.DateBiopsyPerformed" class="form-control" name="obs.DateBiopsyPerformed"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       type="Date" data-concept="a9a2d145-e50e-4ceb-9fa9-9ad467c5dda2^BIOPSY DATE^99DCT"/>&ndash;&gt;-->
-<!--                    <obs conceptId="$@BIOPSY_DATE@"/>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td class="font-normal">-->
-<!--    &lt;!&ndash;                <input id="obs.BiopsyResultsSquamousMetaplasia" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="8303e328-bf92-4cbc-bb23-a81312de0cff^Squamous metaplasia^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@Squamous_metaplasia@" answerLabel="Squamous metaplasia" />-->
-<!--    &lt;!&ndash;                Squamous metaplasia&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--    &lt;!&ndash;                <input id="obs.BiopsyResultsCIN1" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="56db2876-4469-4e2d-9f95-01972592d964^cervical intraepithelial neoplasia 1^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@cervical_intraepithelial_neoplasia_1@" answerLabel="CIN 1" />-->
-<!--    &lt;!&ndash;                CIN 1&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                &ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--    &lt;!&ndash;                <input id="obs.BiopsyResultsCIN2" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="853dd92d-f9bc-4b4d-b806-c763c01e4378^cervical intraepithelial neoplasia 2^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@cervical_intraepithelial_neoplasia_2@" answerLabel="CIN 2" />-->
-<!--    &lt;!&ndash;                CIN 2&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--    &lt;!&ndash;                <input id="obs.BiopsyResultsCIN3" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="d98f5c34-6158-42cd-b7bd-0934749dee25^cervical intraepithelial neoplasia 3^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@cervical_intraepithelial_neoplasia_3@" answerLabel="CIN 3" />-->
-<!--    &lt;!&ndash;                CIN 3&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--    &lt;!&ndash;                <input id="obs.BiopsyResultsCIS" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="f8a41deb-0549-414e-abaa-cc20141b9d20^carcinoma in-situ^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@carcinoma_in-situ@" answerLabel="CIS" />-->
-<!--    &lt;!&ndash;                CIS&ndash;&gt;-->
-<!--&lt;!&ndash;                </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
-<!--    &lt;!&ndash;                <input id="obs.BiopsyResultsInvasiveCancer" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
-<!--    &lt;!&ndash;                       value="3ce5d01c-26fe-102b-80cb-0017a47871b2^INVASIVE CERVICAL CARCINOMA^99DCT">&ndash;&gt;-->
-<!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@INVASIVE_CERVICAL_CARCINOMA@" answerLabel="Invasive cancer" />-->
-<!--    &lt;!&ndash;                Invasive cancer&ndash;&gt;-->
-<!--                </td>-->
+                    <!--                    <input id="obs.ManagementTypeOfTreatmentPerformedLEEP" name="obs.ManagementTypeOfTreatmentPerformed" type="checkbox"-->
+                    <!--                           data-concept="f7719cd4-e591-4a39-8bfe-9dd93d3cab89^Type of Treatment performed^99DCT"-->
+                    <!--                           value="55040927-bae5-410c-80da-c79f7574167f^Loop Electrosurgical Excision Procedure^99DCT">-->
+                    <obs conceptId="$@Type_of_Treatment_performed@" answerConceptId="$@Loop_Electrosurgical_Excision_Procedure@" answerLabel="LEEP(DH)" />
+                    <!--                    LEEP(DH)-->
+                    <br/>
+                    other treatment (if other diagnosis):
+                    <obs conceptId="$@Other_Treatment@"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="font-normal"> <strong> Referred:  </strong> </td>
+                <td class="font-normal">
+                    <!--                    <input id="obs.PatientReferredOutYes" name="obs.PatientReferredOut" type="radio"-->
+                    <!--                           data-concept="805f40f2-4720-4474-b761-5880c9d3870e^has patient been referred^99DCT"-->
+                    <!--                           value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">-->
+                    <obs conceptId="$@has_patient_been_referred@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />
+                    <!--                    Yes-->
+                    <!--                </label>-->
+                    <!--                <label class="font-normal">-->
+                    <!--                    <input id="obs.PatientReferredOutNo" name="obs.PatientReferredOut" type="radio"-->
+                    <!--                           data-concept="805f40f2-4720-4474-b761-5880c9d3870e^has patient been referred^99DCT"-->
+                    <!--                           value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">-->
+                    <!--                    No-->
+                </td>
+            </tr>
+            <tr>
+                <td class="font-normal"> <strong> Referral reason: </strong> </td>
+                <td class="font-normal">
+                    <!--                    <input id="obs.ManagementReferralReasonSuspectedCancer" name="obs.ManagementReferralReason" type="checkbox"-->
+                    <!--                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"-->
+                    <!--                           value="476123d7-54f1-4278-92f1-2de4f19ae951^Suspected cancer diagnosis^99DCT">-->
+                    <!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Suspected_cancer_diagnosis@" answerLabel="Suspected cancer" />-->
+                    <obs conceptId="$@Reasons_for_Referral@" answerConceptIds="$@Suspected_cancer_diagnosis@,$@thermal-ablation@,$@Cryotherapy@,$@Loop_Electrosurgical_Excision_Procedure@,$@OTHER_NON-CODED@"
+                         answerLabels="Suspected cancer,Thermal ablation,Cryotherapy,LEEP,Other reasons" />
+                    <!--                    Suspected cancer-->
+                    <!--                </label>-->
+                    <!--                <label class="font-normal">-->
+                    <!--                    <input id="obs.ManagementReferralReasonThermoAblation" name="obs.ManagementReferralReason" type="checkbox"-->
+                    <!--                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"-->
+                    <!--                           value="ef4d5bd3-2c4e-4ac2-9b91-9d4ba12b44f8^thermo-ablation^99DCT">-->
+                    <!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@thermal-ablation@" answerLabel="Thermal ablation" />-->
+                    <!--                    Thermal ablation-->
+                    <!--                </label>-->
+                    <!--                <label class="font-normal">-->
+                    <!--                    <input id="obs.ManagementReferralReasonCryotherapy" name="obs.ManagementReferralReason" type="checkbox"-->
+                    <!--                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"-->
+                    <!--                           value="e48bc8db-8f6e-4556-9083-0a000a136e95^Cryotherapy^99DCT">-->
+                    <!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Cryotherapy@" answerLabel="Cryotherapy" />-->
+                    <!--                </label>-->
+                    <!--                -->
+                    <!--                <label class="font-normal">-->
+                    <!--                    <input id="obs.ManagementReferralReasonLEEP" name="obs.ManagementReferralReason" type="checkbox"-->
+                    <!--                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"-->
+                    <!--                           value="55040927-bae5-410c-80da-c79f7574167f^Loop Electrosurgical Excision Procedure^99DCT">-->
+                    <!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@Loop_Electrosurgical_Excision_Procedure@" answerLabel="LEEP" />-->
+                    <!--                    LEEP-->
+                    <!--                </label>-->
+                    <!--                <label class="font-normal">-->
+                    <!--                    <input id="obs.ManagementReferralReasonOther" name="obs.ManagementReferralReason" type="checkbox"-->
+                    <!--                           data-concept="1aa373f4-4db5-4b01-bce0-c10a636bb931^Reasons for Referral^99DCT"-->
+                    <!--                           value="3cee7fb4-26fe-102b-80cb-0017a47871b2^OTHER NON-CODED^99DCT">-->
+                    <!--                    <obs conceptId="$@Reasons_for_Referral@" answerConceptId="$@OTHER_NON-CODED@" answerLabel="Other reasons" />-->
+                    Other reasons:
+                    <!--                </label>-->
+                    <!--                <label class="font-normal">-->
+                    <!--                    <input id="obs.ManagementReferralOtherReasonText" class="form-control" name="obs.ManagementReferralOtherReasonText"-->
+                    <!--                           type="text" data-concept="eea065ac-117b-4be9-976b-2948b29046b7^Other reason for referral^99DCT"/>-->
+                    <obs conceptId="$@Other_reason_for_referral@"/>
+                </td>
+            </tr>
+            <!--            <tr>-->
+            <!--                <td class="font-normal"> <strong> Date of referral: </strong> </td>-->
+            <!--                <td class="font-normal">-->
+            <!--&lt;!&ndash;                    <input id="obs.ManagementDateOfReferral" class="form-control" name="obs.ManagementDateOfReferral"&ndash;&gt;-->
+            <!--&lt;!&ndash;                           type="Date" data-concept="5f96394b-2620-4ce3-b5d1-a4aa6108c70f^Date of Referring^99DCT"/>&ndash;&gt;-->
+            <!--                    <obs conceptId="$@Date_of_Referring@"/>-->
+            <!--                </td>-->
+            <!--            </tr>-->
+            <tr>
+                <td class="font-normal"> <strong> Referred to (facility name):  </strong> </td>
+                <td class="font-normal">
+                    <!--                    <input id="obs.ManagementReferredTo" class="form-control" name="obs.ManagementReferredTo"-->
+                    <!--                           type="text" data-concept="25782f2c-074f-4834-b7d2-4668cd645a57^referred to^99DCT"/>-->
+                    <!--                    <obs conceptId="$@referred_to@"/>-->
+                    <obs conceptId="$@referred_to_(coded)@"/>
+                </td>
+            </tr>
+            <!--            <tr>-->
+            <!--                <td class="font-normal"> <strong> referral completion date: </strong> </td>-->
+            <!--                <td class="font-normal">-->
+            <!--&lt;!&ndash;                    <input id="obs.ManagementReferralCompletionDate" class="form-control" name="obs.ManagementReferralCompletionDate"&ndash;&gt;-->
+            <!--&lt;!&ndash;                           type="Date" data-concept="2ec83708-c126-48f2-b5f8-0ce37500e11b^Referral completion Date^99DCT"/>&ndash;&gt;-->
+            <!--                    <obs conceptId="$@Referral_completion_Date@"/>-->
+            <!--                </td>-->
+            <!--            </tr>-->
+        </table>
+    </section>
+    <!--    <section headerLabel="Biopsy">-->
+    <!--        <table border="1">-->
+    <!--            <tr class="section">-->
+    <!--&lt;!&ndash;                <h3 class="font-normal">Biopsy</h3>&ndash;&gt;-->
+    <!--                <td class="font-normal"> <strong> Biopsy performed? </strong> </td>-->
+    <!--                <td class="font-normal">-->
+    <!--    &lt;!&ndash;                <input id="obs.BiopsyPerformedYes" name="obs.BiopsyPerformed" type="radio"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       data-concept="5563e827-9a1e-40eb-b05b-81d55981ce6d^Biopsy performed^99DCT"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       value="3cd6f600-26fe-102b-80cb-0017a47871b2^YES^99DCT">&ndash;&gt;-->
+    <!--                    <obs conceptId="$@Biopsy_performed@" answerConceptIds="$@YES@,$@NO@" answerLabels="Yes,No" style="radio" />-->
+    <!--    &lt;!&ndash;                Yes&ndash;&gt;-->
+    <!--    &lt;!&ndash;            </label>&ndash;&gt;-->
+    <!--    &lt;!&ndash;            <label class="font-normal">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                <input id="obs.BiopsyPerformedNo" name="obs.BiopsyPerformed" type="radio"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       data-concept="5563e827-9a1e-40eb-b05b-81d55981ce6d^Biopsy performed^99DCT"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       value="3cd6f86c-26fe-102b-80cb-0017a47871b2^NO^99DCT">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                No&ndash;&gt;-->
+    <!--                </td>-->
+    <!--            </tr>-->
+    <!--            <tr>-->
+    <!--                <td class="font-normal">  Date Performed: </td>-->
+    <!--                <td class="font-normal">-->
+    <!--    &lt;!&ndash;                <input id="obs.DateBiopsyPerformed" class="form-control" name="obs.DateBiopsyPerformed"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       type="Date" data-concept="a9a2d145-e50e-4ceb-9fa9-9ad467c5dda2^BIOPSY DATE^99DCT"/>&ndash;&gt;-->
+    <!--                    <obs conceptId="$@BIOPSY_DATE@"/>-->
+    <!--                </td>-->
+    <!--            </tr>-->
+    <!--            <tr>-->
+    <!--                <td class="font-normal">-->
+    <!--    &lt;!&ndash;                <input id="obs.BiopsyResultsSquamousMetaplasia" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       value="8303e328-bf92-4cbc-bb23-a81312de0cff^Squamous metaplasia^99DCT">&ndash;&gt;-->
+    <!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@Squamous_metaplasia@" answerLabel="Squamous metaplasia" />-->
+    <!--    &lt;!&ndash;                Squamous metaplasia&ndash;&gt;-->
+    <!--&lt;!&ndash;                </label>&ndash;&gt;-->
+    <!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                <input id="obs.BiopsyResultsCIN1" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       value="56db2876-4469-4e2d-9f95-01972592d964^cervical intraepithelial neoplasia 1^99DCT">&ndash;&gt;-->
+    <!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@cervical_intraepithelial_neoplasia_1@" answerLabel="CIN 1" />-->
+    <!--    &lt;!&ndash;                CIN 1&ndash;&gt;-->
+    <!--&lt;!&ndash;                </label>&ndash;&gt;-->
+    <!--&lt;!&ndash;                &ndash;&gt;-->
+    <!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                <input id="obs.BiopsyResultsCIN2" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       value="853dd92d-f9bc-4b4d-b806-c763c01e4378^cervical intraepithelial neoplasia 2^99DCT">&ndash;&gt;-->
+    <!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@cervical_intraepithelial_neoplasia_2@" answerLabel="CIN 2" />-->
+    <!--    &lt;!&ndash;                CIN 2&ndash;&gt;-->
+    <!--&lt;!&ndash;                </label>&ndash;&gt;-->
+    <!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                <input id="obs.BiopsyResultsCIN3" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       value="d98f5c34-6158-42cd-b7bd-0934749dee25^cervical intraepithelial neoplasia 3^99DCT">&ndash;&gt;-->
+    <!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@cervical_intraepithelial_neoplasia_3@" answerLabel="CIN 3" />-->
+    <!--    &lt;!&ndash;                CIN 3&ndash;&gt;-->
+    <!--&lt;!&ndash;                </label>&ndash;&gt;-->
+    <!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                <input id="obs.BiopsyResultsCIS" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       value="f8a41deb-0549-414e-abaa-cc20141b9d20^carcinoma in-situ^99DCT">&ndash;&gt;-->
+    <!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@carcinoma_in-situ@" answerLabel="CIS" />-->
+    <!--    &lt;!&ndash;                CIS&ndash;&gt;-->
+    <!--&lt;!&ndash;                </label>&ndash;&gt;-->
+    <!--&lt;!&ndash;                <label class="font-normal">&ndash;&gt;-->
+    <!--    &lt;!&ndash;                <input id="obs.BiopsyResultsInvasiveCancer" name="obs.BiopsyResults" type="checkbox"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       data-concept="89b01201-80c7-4690-93de-2e587d427bd5^BIOPSY RESULT coded^99DCT"&ndash;&gt;-->
+    <!--    &lt;!&ndash;                       value="3ce5d01c-26fe-102b-80cb-0017a47871b2^INVASIVE CERVICAL CARCINOMA^99DCT">&ndash;&gt;-->
+    <!--                    <obs conceptId="$@BIOPSY_RESULT_coded@" answerConceptId="$@INVASIVE_CERVICAL_CARCINOMA@" answerLabel="Invasive cancer" />-->
+    <!--    &lt;!&ndash;                Invasive cancer&ndash;&gt;-->
+    <!--                </td>-->
 
-<!--            </tr>-->
-<!--        </table>-->
-<!--    </section>-->
+    <!--            </tr>-->
+    <!--        </table>-->
+    <!--    </section>-->
 
     <section headerLabel="Biopsy">
         <table border="1">
             <tr>
                 <td class="font-normal"> <strong> Date of next visit:  </strong> </td>
                 <td class="font-normal">
-<!--                    <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"-->
-<!--                           data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>-->
+                    <!--                    <input id="obs.BreastDispositionNextDate" name="obs.BreastDispositionNextDate" type="date"-->
+                    <!--                           data-concept="3ce94df0-26fe-102b-80cb-0017a47871b2^RETURN VISIT DATE^99DCT"/>-->
                     <obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true"/>
                 </td>
 
             </tr>
         </table>
     </section>
+
 
     <br />
     <br />
