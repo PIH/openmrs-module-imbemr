@@ -1,6 +1,6 @@
 <htmlform> <!--PDC ECD Intervention
 	Author: Todd
-	Prime copy source: 
+	Prime copy source:
 	Start date of programming: 2016 February 02
 	 --> <macros> @YES@=3cd6f600-26fe-102b-80cb-0017a47871b2
     @NO@=3cd6f86c-26fe-102b-80cb-0017a47871b2
@@ -401,12 +401,35 @@
     @PLAY@=bb764127-bf3f-4117-a1ef-895792dd685b
     @COMMUNICATION@=8a71da9c-1b67-4be4-8d46-b797d854f1b2
     @CONCERNS@=c25c3a7d-bac4-4f51-81de-6b0dd754ba1d
-    @SOLUTIONS@=6836dd6e-79ae-43dd-9d1e-65bed0e6ef17
+    @Progress_notes_and_recommendations@=6836dd6e-79ae-43dd-9d1e-65bed0e6ef17
     @DATE_OF_STARTING_FOLLOW_UP@=4f6089bd-6d3a-4346-9aeb-1a6f852fc5c1
 
     @ECD_SESSION_TYPE@=803464b8-cfa0-4ff8-a9d0-7ee082bfeb1a
     @ECD_GROUP@=f57cf6d1-a812-4bff-9af6-4c1cdf282129
     @ECD_INDIVIDUAL@=2599cbe1-af9b-442c-899f-23759c46e1ec
+    @RETURN_VISIT_DATE@ = 3ce94df0-26fe-102b-80cb-0017a47871b2
+
+    @Play_activities_recommended_(coded)@ = 98d21104-bb50-4a8f-8917-4534d508925a
+    @Dangle_a_bright_object_for_child_to_look_at@ = 4c9a03ed-9243-4f09-9288-9466c5bafc21
+    @Gently_massage_your_child@ = 3982d90d-8a70-4e66-92f7-5b733affe5ba
+    @Play_with_a_rattle@ = 1bb90c41-029b-43ca-a33b-1b3d5366c67a
+    @Provide_safe_clean_colorful_objects_for_child_to_reach_grasp_and_touch@ = 956a58c3-5307-4f4c-87db-52b98358b6de
+    @Make_noise_with_different_objects@ = a8222501-7832-4494-84b2-8fde205fd10a
+    @Reach_explore_and_pass_objects_from_hand_to_hand@ = 3afa1b22-78a7-436d-856e-ae7c92010b3b
+    @Explore_finger_foods@ = a906c587-b0ef-4212-83ca-c261b49bd35e
+    @Play_peek-a-boo_@ = 46befd10-e565-4041-b9c9-197d072a25de
+    @Play_ball_games@ = a920cda3-79dd-4f6e-a70e-ec1098ae0b2f
+    @Play_where_is_it_game@ = b40b5535-e6db-44ea-8738-303e0353bb8c
+    @Play_pat-a-cake_game@ = 2c1bd16f-1e3f-4622-860b-845303a96971
+    @Putting_objects_in_and_out_of_containers@ = b8448a31-4a96-4799-b11f-810493bfae3b
+    @Stacking_game@ = 5bee5ff1-3978-4409-b756-1b4e59834c1c
+    @Using_push_and_pull_toys@ = d479de0d-8af4-437d-8593-5a628ae7d861
+    @Scribbling@ = e93594e5-f7b0-42e0-b7ea-81ca63d8799d
+    @Named_objects_in_and_out_of_containers@ = 89bc4021-a71e-446f-8a05-ee3c63090f3a
+    @Sorting_game@ = b32fd44c-1754-4e70-9346-4fa4a34cb57b
+    @Stringing_beads@ = 2f33d359-6f3c-478f-b8ee-90ebb49c1bec
+    @Making_things_with_clay_or_dough@ = 9c9eaf19-ea4f-40aa-aad5-287beb547dfc
+    @Simple_puzzles@ = 98c55f81-3b70-48ca-ade5-b4a22206c5c2
 
 
 </macros>
@@ -595,10 +618,10 @@
                 </tr>
                 <tr>
                     <td>Clinique / Clinic: <encounterLocation
-                            id="encounterLocation"  />
+                            id="encounterLocation" default="Butaro Hospital" />
                     </td>
                     <td>Provider:<encounterProvider id="encounterProvider"
-                                                    role="Oncology Provider"  /> <!--  NOT READY FOR PDC !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                                                    role="Oncology Provider" default="currentUser" /> <!--  NOT READY FOR PDC !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
                     </td>
                 </tr>
                 <tr>
@@ -629,17 +652,84 @@
     <table >
         <section>
             <table >
-                <th class="tableHeader" ><b>Play Activities Recommended (write in number from Appendix)</b></th>
                 <th class="tableHeader" ><b>Communication activities Recommended (write in number from Appendix)</b></th>
                 <th class="tableHeader" ><b>Any concerns shared?</b></th>
-                <th class="tableHeader" ><b>Solutions Provided</b></th>
+                <th class="tableHeader" ><b>Progress note(s) and recommendations</b></th>
                 <th class="tableHeader" ><b>Follow-up Date</b></th>
 
                 <tr>
-                    <td><obs conceptId="$@PLAY@" />			</td>
                     <td><obs conceptId="$@COMMUNICATION@" /></td>
                     <td><obs conceptId="$@CONCERNS@" cols="40" /></td>
-                    <td><obs conceptId="$@SOLUTIONS@" cols="40"/></td>
+                    <td><obs conceptId="$@Progress_notes_and_recommendations@" cols="40"/></td>
+                    <td><obs conceptId="$@RETURN_VISIT_DATE@" /></td>
+                </tr>
+                <tr>
+                    <th class="tableHeader" colspan="4"><b>Play Activities Recommended (write in number from Appendix)</b></th>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <!--                        <obs conceptId="$@PLAY@" />-->
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Dangle_a_bright_object_for_child_to_look_at@"
+                             answerLabel="Dangle a bright object for child to look at" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Gently_massage_your_child@"
+                             answerLabel="Gently massage your child" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Play_with_a_rattle@"
+                             answerLabel="Play with a rattle" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Provide_safe_clean_colorful_objects_for_child_to_reach_grasp_and_touch@"
+                             answerLabel="Provide safe&#44; clean&#44; colorful objects for child to reach&#44; grasp and touch" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Make_noise_with_different_objects@"
+                             answerLabel="Make noise with different objects" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Reach_explore_and_pass_objects_from_hand_to_hand@"
+                             answerLabel="Reach &#44; explore and pass objects from hand to hand" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Explore_finger_foods@"
+                             answerLabel="Explore finger foods" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Play_peek-a-boo_@"
+                             answerLabel="Play &#39;peek-a-boo&#39;" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Play_ball_games@"
+                             answerLabel="Play ball games" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Play_where_is_it_game@"
+                             answerLabel="Play &#39;where is it&#63;&#39; game" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Play_pat-a-cake_game@"
+                             answerLabel="Play &#39;pat-a-cake&#39; game" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Putting_objects_in_and_out_of_containers@"
+                             answerLabel="Putting objects in and out of containers" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Stacking_game@"
+                             answerLabel="Stacking game" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Using_push_and_pull_toys@"
+                             answerLabel="Using push and pull toys" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Scribbling@"
+                             answerLabel="Scribbling" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Named_objects_in_and_out_of_containers@"
+                             answerLabel="Named objects in and out of containers" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Sorting_game@"
+                             answerLabel="Sorting game" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Stringing_beads@"
+                             answerLabel="Stringing beads" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Making_things_with_clay_or_dough@"
+                             answerLabel="Making things with clay or dough" style="checkbox"/>
+                        <br/>
+                        <obs conceptId="$@Play_activities_recommended_(coded)@" answerConceptId="$@Simple_puzzles@"
+                             answerLabel="Simple puzzles" style="checkbox"/>
+
+                    </td>
                 </tr>
 
             </table>
