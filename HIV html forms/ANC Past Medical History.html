@@ -1,67 +1,30 @@
 <htmlform xmlns="http://www.w3.org/1999/html">
     <macros>
-        headerColor =#009d8e
-        fontOnHeaderColor = white
-
-        @TELEPHONE_NUMBER@ = 3cda3d7e-26fe-102b-80cb-0017a47871b2
-        @HEIGHT_(CM)@ = 3ce93cf2-26fe-102b-80cb-0017a47871b2
-        @GRAVIDITY@ = 3cee82de-26fe-102b-80cb-0017a47871b2
-        @PARITY@ = 3cd6dda0-26fe-102b-80cb-0017a47871b2
-        @Number_of_term_births@ = 9fee2f9e-7e6f-4947-a2cb-6f2e6cf8c25a
-        @Number_of_abortions/miscarriages@ = 6df78bbb-24a6-4a1d-af5a-3717ecbeb260
-        @number_of_children_who_died_after_birth@ = c7e538a1-67d0-441e-aa6a-63d11dd77a89
-        @NUMBER_OF_CHILDREN@ = 3ce64114-26fe-102b-80cb-0017a47871b2
-        @Last_Born_Birth_Date@ = 789dabea-e83e-478a-871b-215559288746
-        @Last_born_status@ = 65f25261-fb7b-46aa-a22e-a1a1595d560a
-        @Number_of_cesarean_sections@  = 9aee29d7-8d05-4195-bca6-1eaa606fc79d
-        @Number_of_stillbirths@ = 8d843794-11f1-42f9-a6cb-fc6c1e8da5eb
-        @OB_Risk_factors@ = 30b9957e-9134-4cf7-9498-5862c80c93fb
-        @Small_pelvis@ = baac7b35-1a65-4de2-a5c6-bf511990a7f9
-        @Loss_of_consciousness_while_pregnant_or_when_giving_birth@ = b0846fc5-7e46-45c9-93bd-e771513f43d3
-        @Postconvulsive_loss_of_consciousness_previously@ = ef9e7460-53ae-4fe0-8d62-88162ca7e909
-        @Uterine_rupture@ = fb6507ea-08e0-4734-ac24-99a83740b425
-        @Bleeding_very_much_soon_after_giving_birth@ = d1cf0f7b-6857-4b46-90a1-2c38b65064c0
-        @Give_birth_to_a_child_who_die_the_same_day@ = af8769c9-4d95-4e6f-a664-65af6a28d533
-        @Successively_abortion@ = 7de34033-430c-4a7c-8c92-36d52d373f65
-        @Height_Risk_Factor@ = d131b274-35b1-4abe-8c1e-6d95996a5ef1
-        @First_pregnancy_and_the_woman_over_30_years@ = d535d356-a8e4-41a3-a564-a8c9448ba79a
-        @Woman_under_18_years_or_over_35_years@ = d043d649-727c-4000-af85-374ec3e19d9f
-        @More_Than_5_pregnancies@ = b4f2b2d2-093d-46dc-9418-c37b7fe8a213
-        @Incomplete_placenta@ = 87441b5b-f726-4ea8-a661-07fb0c2b7038
-        @Past_Medical_Conditions@ = e5d2db12-9e55-446c-a030-49974453c058
-        @HEART_DISEASE@ = f40bf9bb-fcaa-4f90-8199-197bc6cb2b03
-        @Kidney_disease@ = 37c267c6-fa16-46e6-a712-d92627eb8995
-        @Uterine_fibroids@ = 9c4a4929-806e-443f-a96c-26f3cee9480a
-        @DIABETES_v2@ = edf4ecc4-44f6-457a-b561-179f4426b16a
-        @ASTHMA@ = 3ccc4bf6-26fe-102b-80cb-0017a47871b2
-        @TUBERCULOSIS@ = 3ccca7cc-26fe-102b-80cb-0017a47871b2
-        @HYPERTENSION@ = 3cd50188-26fe-102b-80cb-0017a47871b2
-        @HIV_TESTING_DONE@ = 3cdc5ab4-26fe-102b-80cb-0017a47871b2
-        @DATE_OF_LAST_MENSTRUAL_PERIOD@ = 3cd653c6-26fe-102b-80cb-0017a47871b2
-        @EXPECTED_DUE_DATE@ = ea6a744d-846c-4e29-bc89-30404853c4f9
+    headerColor =#009d8e
+    fontOnHeaderColor = white
     </macros>
     <style>
-        .section {
-        border: 1px solid $headerColor;
-        padding: 2px;
-        text-align: left;
-        margin-bottom: 1em;
-        }
-        .sectionHeader {
-        background-color: $headerColor;
-        color: $fontOnHeaderColor;
-        display: block;
-        padding: 2px;
-        font-weight: bold;
-        }
-        table.baseline-aligned td {
-        vertical-align: baseline;
-        }
-        th.subheader {
-        background-color: $headerColor;
-        color:white
-        }
-    </style>
+   .section {
+      border: 1px solid $headerColor;
+      padding: 2px;
+      text-align: left;
+      margin-bottom: 1em;
+   }
+   .sectionHeader {
+      background-color: $headerColor;
+      color: $fontOnHeaderColor;
+      display: block;
+      padding: 2px;
+      font-weight: bold;
+   }
+   table.baseline-aligned td {
+      vertical-align: baseline;
+   }
+   th.subheader {
+   background-color: $headerColor;
+   color:white
+   }
+</style>
 
     <translations defaultLocale="en">
         <code name="hd">
@@ -350,29 +313,29 @@ $j(document).ready(function(){
      -->
 
     <style>
-        table.risks td {
-        font-size: 0.9em;
-        }
+table.risks td {
+	font-size: 0.9em;
+}
 
-        .section {
-        border: 1px solid$headerColor;
-        padding: 2px;
-        text-align: left;
-        margin-bottom: 1em;
-        }
+.section {
+	border: 1px solid$headerColor;
+	padding: 2px;
+	text-align: left;
+	margin-bottom: 1em;
+}
 
-        .sectionHeader {
-        background-color: $headerColor;
-        color: $fontOnHeaderColor;
-        display: block;
-        padding: 2px;
-        font-weight: bold;
-        }
+.sectionHeader {
+	background-color: $headerColor;
+	color: $fontOnHeaderColor;
+	display: block;
+	padding: 2px;
+	font-weight: bold;
+}
 
-        table.baseline-aligned td {
-        vertical-align: center;
-        }
-    </style>
+table.baseline-aligned td {
+	vertical-align: center;
+}
+</style>
 
     <!--<span style="float: right">Paper Form ID: $paperFormId</span>-->
     <h2>ANC Past Medical History (v1.0)</h2>
@@ -385,7 +348,7 @@ $j(document).ready(function(){
                 </tr>
                 <tr>
                     <td>Location:</td>
-                    <td><encounterLocation id="location" default="GlobalProperty:registration.defaultLocationCode"/></td>
+                    <td><encounterLocation id="location" /></td>
                 </tr>
                 <tr>
                     <td>Provider:</td>
@@ -400,65 +363,64 @@ $j(document).ready(function(){
                 <table class="baseline-aligned">
                     <tr>
 
-
-                        <td><obs conceptId="$@TELEPHONE_NUMBER@"  labelCode="phone"/></td>
+                        <td><obs conceptId="3cda3d7e-26fe-102b-80cb-0017a47871b2"  labelCode="phone"/></td>
                     </tr>
                     <tr>
 
-                        <td><obs conceptId="$@HEIGHT_(CM)@" id="height" labelCode="height"/>(cm)</td>
+                        <td><obs conceptId="3ce93cf2-26fe-102b-80cb-0017a47871b2" id="height" labelCode="height"/>(cm)</td>
                     </tr>
 
                     <tr>
 
-                        <td><obs conceptId="$@GRAVIDITY@" id="nop" labelCode="pregnancies"/></td>
+                        <td><obs conceptId="3cee82de-26fe-102b-80cb-0017a47871b2" id="nop" labelCode="pregnancies"/></td>
                     </tr>
                     <tr style="display: none;">
                         <td><span id="age"><lookup expression="patient.age" /></span></td>
                     </tr>
                     <tr>
 
-                        <td><obs conceptId="$@PARITY@" labelCode="numberOfBirths"/></td>
+                        <td><obs conceptId="3cd6dda0-26fe-102b-80cb-0017a47871b2" labelCode="numberOfBirths"/></td>
                     </tr>
 
                     <tr>
 
-                        <td><obs conceptId="$@Number_of_term_births@" labelCode="births"/></td>
+                        <td><obs conceptId="9fee2f9e-7e6f-4947-a2cb-6f2e6cf8c25a" labelCode="births"/></td>
                     </tr>
                     <tr>
 
-                        <td><obs conceptId="$@Number_of_abortions/miscarriages@" labelCode="abortion"/></td>
+                        <td><obs conceptId="6df78bbb-24a6-4a1d-af5a-3717ecbeb260" labelCode="abortion"/></td>
                     </tr>
 
-
-
-
-                    <tr>
-
-                        <td><obs conceptId="$@number_of_children_who_died_after_birth@" labelCode="dead_children"/></td>
-                    </tr>
-                    <tr>
-
-                        <td><obs conceptId="$@NUMBER_OF_CHILDREN@" labelCode="children"/></td>
-                    </tr>
 
 
 
                     <tr>
 
-                        <td><obs conceptId="$@Last_Born_Birth_Date@" labelCode="lbdob"/></td>
+                        <td><obs conceptId="c7e538a1-67d0-441e-aa6a-63d11dd77a89" labelCode="dead_children"/></td>
                     </tr>
                     <tr>
 
-                        <td><obs conceptId="$@Last_born_status@" answerConceptIds="6543,6544,1067"
+                        <td><obs conceptId="3ce64114-26fe-102b-80cb-0017a47871b2" labelCode="children"/></td>
+                    </tr>
+
+
+
+                    <tr>
+
+                        <td><obs conceptId="789dabea-e83e-478a-871b-215559288746" labelCode="lbdob"/></td>
+                    </tr>
+                    <tr>
+
+                        <td><obs conceptId="65f25261-fb7b-46aa-a22e-a1a1595d560a" answerConceptIds="b056404d-333c-4231-989e-a3abe01e5cd0,9665c868-c00a-425a-a350-235f2e4b37c5,3cd6fac4-26fe-102b-80cb-0017a47871b2"
                                  answerCodes="Alive,Dead,Unknown" style="radio" labelCode="lbstatus"/></td>
                     </tr>
                     <tr>
 
-                        <td><obs conceptId="$@Number_of_cesarean_sections@" labelCode="csection"/></td>
+                        <td><obs conceptId="9aee29d7-8d05-4195-bca6-1eaa606fc79d" labelCode="csection"/></td>
                     </tr>
                     <tr>
 
-                        <td><obs conceptId="$@Number_of_stillbirths@" labelCode="sbirths"/></td>
+                        <td><obs conceptId="8d843794-11f1-42f9-a6cb-fc6c1e8da5eb" labelCode="sbirths"/></td>
                     </tr>
 
 
@@ -468,45 +430,44 @@ $j(document).ready(function(){
             <section headerCode="obstetricalRiskFactors">
                 <table class="baseline-aligned risks">
                     <tr>
-                        <td><obs conceptId="$@OB_Risk_factors@" answerConceptId="$@Small_pelvis@"
+                        <td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" answerConceptId="baac7b35-1a65-4de2-a5c6-bf511990a7f9"
                                  answerCodes="Small Pelvis" style="checkbox" /></td>
-                        <td><obs conceptId="$@OB_Risk_factors@" answerConceptId="$@Loss_of_consciousness_while_pregnant_or_when_giving_birth@"
+                        <td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" answerConceptId="b0846fc5-7e46-45c9-93bd-e771513f43d3"
                                  answerCodes="Loss of Conciousness While Pregnant or When Giving Birth"
                                  style="checkbox" /></td>
-                        <td><obs conceptId="$@OB_Risk_factors@" answerConceptId="$@Postconvulsive_loss_of_consciousness_previously@"
+                        <td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" answerConceptId="ef9e7460-53ae-4fe0-8d62-88162ca7e909"
                                  answerCodes="Postconvulsive Loss of Consciousness"
                                  style="checkbox" /></td>
                     </tr>
 
                     <tr>
-                        <td><obs conceptId="$@OB_Risk_factors@" answerConceptId="$@Uterine_rupture@"
+                        <td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" answerConceptId="fb6507ea-08e0-4734-ac24-99a83740b425"
                                  answerCodes="Uterine Rupture" style="checkbox" /></td>
-                        <td> <obs conceptId="$@OB_Risk_factors@" answerConceptId="$@Bleeding_very_much_soon_after_giving_birth@"
+                        <td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" answerConceptId="d1cf0f7b-6857-4b46-90a1-2c38b65064c0"
                                  answerCodes="Excessive Bleeding"
-                                 style="checkbox" /> </td>
-                        <td><obs conceptId="$@OB_Risk_factors@" answerConceptId="$@Give_birth_to_a_child_who_die_the_same_day@"
+                                 style="checkbox" /></td>
+                        <td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" answerConceptId="af8769c9-4d95-4e6f-a664-65af6a28d533"
                                  answerCodes="Gave Birth to a Child Who Died the Same Day"
                                  style="checkbox" /></td>
                     </tr>
-
                     <tr>
-                        <td><obs conceptId="$@OB_Risk_factors@" answerConceptId="$@Successively_abortion@"
+                        <td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" answerConceptId="7de34033-430c-4a7c-8c92-36d52d373f65"
                                  answerCodes="Successive Abortions" style="checkbox" /></td>
-                        <!--<td><obs conceptId="$@OB_Risk_factors@" id="heightOK" answerConceptId="8518" style="checkbox" answerCodes="hrisk"/>
+                        <!--<td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" id="heightOK" answerConceptId="d131b274-35b1-4abe-8c1e-6d95996a5ef1" style="checkbox" answerCodes="hrisk"/>
                         </td>-->
-                        <td><obs conceptId="$@OB_Risk_factors@" answerConceptId="$@Height_Risk_Factor@" id="heightOK" answerCodes="risk"/></td>
-                        <td><obs id="ageTwo" conceptId="$@OB_Risk_factors@"
-                                 answerConceptId="$@First_pregnancy_and_the_woman_over_30_years@"
+                        <td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" answerConceptId="d131b274-35b1-4abe-8c1e-6d95996a5ef1" id="heightOK" answerCodes="risk"/></td>
+                        <td><obs id="ageTwo" conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb"
+                                 answerConceptId="d535d356-a8e4-41a3-a564-a8c9448ba79a"
                                  answerCodes="First Pregnancy and is Above 30" style="checkbox" /></td>
                     </tr>
                     <tr>
-                        <td><obs id="ageOne" conceptId="$@OB_Risk_factors@"
-                                 answerConceptId="$@Woman_under_18_years_or_over_35_years@" answerCodes="Is Under 18 or Above 35"
+                        <td><obs id="ageOne" conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb"
+                                 answerConceptId="d043d649-727c-4000-af85-374ec3e19d9f" answerCodes="Is Under 18 or Above 35"
                                  style="checkbox" /></td>
-                        <td><obs conceptId="$@OB_Risk_factors@" answerConceptId="$@More_Than_5_pregnancies@" id="parity" answerCode="5preg"/></td>
-                        <!--<td><obs conceptId="$@OB_Risk_factors@" answerConceptId="9618" answerCodes="risk" id="parity" style="checkbox" /></td>-->
-                        <td><obs conceptId="$@OB_Risk_factors@"
-                                 answerConceptId="$@Incomplete_placenta@" answerCode="placenta"
+                        <td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" answerConceptId="b4f2b2d2-093d-46dc-9418-c37b7fe8a213" id="parity" answerCode="5preg"/></td>
+                        <!--<td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb" answerConceptId="b4f2b2d2-093d-46dc-9418-c37b7fe8a213" answerCodes="risk" id="parity" style="checkbox" /></td>-->
+                        <td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb"
+                                 answerConceptId="87441b5b-f726-4ea8-a661-07fb0c2b7038" answerCode="placenta"
                                  style="checkbox" /></td>
                     </tr>
 
@@ -515,26 +476,26 @@ $j(document).ready(function(){
             <section headerCode="medicalConditions">
                 <table class="baseline-aligned">
                     <tr>
-                        <td><obs conceptId="$@Past_Medical_Conditions@" answerConceptId="$@HEART_DISEASE@"
+                        <td><obs conceptId="e5d2db12-9e55-446c-a030-49974453c058" answerConceptId="f40bf9bb-fcaa-4f90-8199-197bc6cb2b03"
                                  style="checkbox" answerCode="hd"/></td>
-                        <td><obs conceptId="$@Past_Medical_Conditions@" answerConceptId="$@Kidney_disease@"
+                        <td><obs conceptId="e5d2db12-9e55-446c-a030-49974453c058" answerConceptId="37c267c6-fa16-46e6-a712-d92627eb8995"
                                  style="checkbox" /></td>
-                        <td><obs conceptId="$@Past_Medical_Conditions@" answerConceptId="$@Uterine_fibroids@"
+                        <td><obs conceptId="e5d2db12-9e55-446c-a030-49974453c058" answerConceptId="9c4a4929-806e-443f-a96c-26f3cee9480a"
                                  style="checkbox" answerCode="fibroids"/></td>
                     </tr>
 
                     <tr>
-                        <td><obs conceptId="$@Past_Medical_Conditions@" answerConceptId="$@DIABETES_v2@"
+                        <td><obs conceptId="e5d2db12-9e55-446c-a030-49974453c058" answerConceptId="edf4ecc4-44f6-457a-b561-179f4426b16a"
                                  style="checkbox" answerCode="diabetes"/></td>
-                        <td><obs conceptId="$@Past_Medical_Conditions@" answerConceptId="$@ASTHMA@"
+                        <td><obs conceptId="e5d2db12-9e55-446c-a030-49974453c058" answerConceptId="3ccc4bf6-26fe-102b-80cb-0017a47871b2"
                                  style="checkbox" answerCode="asthma"/></td>
-                        <td><obs conceptId="$@Past_Medical_Conditions@" answerConceptId="$@TUBERCULOSIS@"
+                        <td><obs conceptId="e5d2db12-9e55-446c-a030-49974453c058" answerConceptId="3ccca7cc-26fe-102b-80cb-0017a47871b2"
                                  style="checkbox" answerCode="tb"/></td>
                     </tr>
-                    <tr><td><obs conceptId="$@OB_Risk_factors@"
-                                 answerConceptId="$@HYPERTENSION@" answerCode="hbp"
+                    <tr><td><obs conceptId="30b9957e-9134-4cf7-9498-5862c80c93fb"
+                                 answerConceptId="3cd50188-26fe-102b-80cb-0017a47871b2" answerCode="hbp"
                                  style="checkbox"/></td>
-                        <td><obs conceptId="$@HIV_TESTING_DONE@" style="checkbox" labelCode="tested"/></td>
+                        <td><obs conceptId="3cdc5ab4-26fe-102b-80cb-0017a47871b2" style="checkbox" labelCode="tested"/></td>
                     </tr>
 
                     <tr>
@@ -548,11 +509,11 @@ $j(document).ready(function(){
                 <table class="baseline-aligned">
                     <tr>
 
-                        <td><obs conceptId="$@DATE_OF_LAST_MENSTRUAL_PERIOD@" id="lmp" labelCode="lmp"/></td>
+                        <td><obs conceptId="3cd653c6-26fe-102b-80cb-0017a47871b2" id="lmp" labelCode="lmp"/></td>
                     </tr>
                     <tr>
 
-                        <td><obs conceptId="$@EXPECTED_DUE_DATE@" id="dd" allowFutureDates="true" labelCode="due_date"/></td>
+                        <td><obs conceptId="ea6a744d-846c-4e29-bc89-30404853c4f9" id="dd" allowFutureDates="true" labelCode="due_date"/></td>
                     </tr>
 
 
