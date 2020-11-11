@@ -1,21 +1,16 @@
 <htmlform>
-    <!-- Diabetes flowsheet:  Insulin list
-         Written by jberchmas
-           -->
+    <!-- Heart Failure flowsheet:  Other Investigation
+         written by jberchmas
+         -->
     <macros>
-        paperFormId = Flow-DM-RW.V2.0.akb.15May09
-        headerColor =#009d8e
-        fontOnHeaderColor = white
-            <!-- drugs -->
-        @MORNING_DOSE_IN_MILLIGRAMS@ = f032b306-4d4b-4b02-8335-3cce084f30a6
-        @NOON_DOSE_IN_MILLIGRAMS@ = 41abbe03-04da-4b5d-8223-0a249245dcf1
-        @NIGHT_DOSE_IN_MILLIGRAMS@ = 305c266e-2035-4ef2-ab44-b4e70756998d
-        @BED_TIME_DOSE_IN_MILLIGRAMS@ = ef7581c0-18f7-40a6-acb9-1e31e1c325f8
-        @REASON_ORDER_STOPPED@=3cde6070-26fe-102b-80cb-0017a47871b2
-        @Insuline_rapide@ = 7614d49a-57d8-4b55-9fac-9be4fdd06c84
-        @Insulin_lente@ = 80b647a7-73ae-4aa2-af5c-8a1f34ce0e44
-        @Insulin_70/30_mixte@ = d18fc471-51b7-4469-83b5-03f0716a1af6
-
+        @STUDY@=3ce1c90e-26fe-102b-80cb-0017a47871b2
+        @RESULTS@=3ce1ca8a-26fe-102b-80cb-0017a47871b2
+        @DATE_OF_RETURNED_RESULT@ = c19867c0-fec9-404c-bf25-6cf7a8c54eb7
+        @AFB_results@ = 00f6aecd-813c-4676-a354-d50cd73f21e1
+        @CXR_Results@ = 8f33541b-fb0e-4a0d-9b4c-9deecfcb2237
+        @OTHER_LAB_TEST_RESULT@ = 3ce1ca8a-26fe-102b-80cb-0017a47871b2
+        @DATE_OF_LABORATORY_TEST@ = bbeb58d7-63ba-4d7b-ac5b-4f72d3985888
+        @dates_group@ = b982a38b-9a3a-4445-b59d-f8d58fa58f47
     </macros>
     <style>
         th.tableHeader {
@@ -132,7 +127,6 @@
         }
         }
     </style>
-
     <table cellspacing="0" cellpadding="6" width="100%">
         <tr>
             <td><img src="/openmrs/moduleResources/mohbilling/images/rwanda-logo.jpg" align="left"
@@ -140,7 +134,7 @@
                 <b>REPUBLIC OF RWANDA
                     <br />MINISTRY OF HEALTH</b>
             </td>
-            <td><strong> LISTE D'INSULINE/</strong>INSULIN LIST <br/>
+            <td><strong>ANTECENDENTS/</strong> PAST HISTORY <br/>
                 <b> IMB ID: <lookup class="value"
                                     expression="patientIdentifiers.get(&quot;IMB ID&quot;)" /> <lookup class="value"
                                                                                                        expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" /></b>
@@ -160,58 +154,46 @@
         </tr>
     </table>
 
-    <section>
-        <div>
-            <table border="1" >
-                <tr>
-                    <th class="tableHeader" colspan="9">
-                        <center><strong>LISTE D'INSULINE/</strong> INSULIN LIST</center>
-                    </th>
-                </tr>
-                <tr>
-                    <th> <strong> EMR </strong> </th>
-                    <th> <strong> Type d'Insuline </strong>
-                        <br/> Insulin Type
-                    </th>
-                    <th> <strong> Matin </strong>
-                        <br/> Morning Dose
-                    </th>
-                    <th> <strong> Midi </strong>
-                        <br/> Lunch Dose
-                    </th>
-                    <th> <strong> Soir </strong>
-                        <br/> Dinner Dose
-                    </th>
-                    <th> <strong> au <br/> couché </strong>
-                        <br/> Bed Dose
-                    </th>
-                </tr>
-                <tr>
-                    <td> </td>
-                    <td>
-                        <drugOrder drugNames="$@Insuline_rapide@,$@Insulin_lente@,$@Insulin_70/30_mixte@" discontinuedReasonConceptId="$@REASON_ORDER_STOPPED@" discontinueReasonLabel="Raison pour l'arrêt/Reason for stopping"/>
-                    </td>
-                    <td>
-                        <obs conceptId="$@MORNING_DOSE_IN_MILLIGRAMS@"/>
-                    </td>
-                    <td>
-                        <obs conceptId="$@NOON_DOSE_IN_MILLIGRAMS@"/>
-                    </td>
-                    <td>
-                        <obs conceptId="$@NIGHT_DOSE_IN_MILLIGRAMS@"/>
-                    </td>
-                    <td>
-                        <obs conceptId="$@BED_TIME_DOSE_IN_MILLIGRAMS@"/>
-                    </td>
-                </tr>
-            </table>
-        </div>
+    <section headerLabel=" AUTRE INVESTIGATIONS / OTHER INVESTIGATION" >
+        <table border="1" width="100%">
+            <tr>
+                <td>Etude / Study</td>
+                <td>Date requested</td>
+                <td>Résultats / Results</td>
+            </tr>
+            <tr>
+                <td><strong>Crachats</strong><br/>/Sputum smear for AFB</td>
+                <obsgroup groupingConceptId="$@dates_group@">
+                <td><obs conceptId="$@DATE_OF_LABORATORY_TEST@" allowFutureDates="true"/></td>
+                    </obsgroup>
+                <td><obs conceptId="$@AFB_results@" rows="2" cols="60" dateLabel="Date" showDate="true" allowFutureDates="true"/></td>
+            </tr>
+            <tr>
+                <td><strong>Cliche du thorax</strong>/CXR</td>
+                <obsgroup groupingConceptId="$@dates_group@">
+                    <td><obs conceptId="$@DATE_OF_LABORATORY_TEST@" allowFutureDates="true"/></td>
+                </obsgroup>
+                <td><obs conceptId="$@CXR_Results@" rows="2" cols="60"  dateLabel="Date" showDate="true" allowFutureDates="true"/></td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Others</strong>
+                    <br/>
+                    <obs conceptId="$@STUDY@" />
+                </td>
+                <obsgroup groupingConceptId="$@dates_group@">
+                    <td><obs conceptId="$@DATE_OF_LABORATORY_TEST@" allowFutureDates="true"/></td>
+                </obsgroup>
+                <td><obs conceptId="$@OTHER_LAB_TEST_RESULT@" rows="2" cols="60" dateLabel="Date" showDate="true" allowFutureDates="true"/></td>Zz
+            </tr>
+
+        </table>
     </section>
 
+    <br />
     <center>
-        <br/>
         <submit />
-        <br/>
     </center>
+    <br />
 
 </htmlform>

@@ -344,7 +344,7 @@
                 </td>
                 <td>
                     <lookup expression="fn.message('Provider')"/>:<encounterProvider id="encounterProvider"
-                                                                                     role="Provider" default="currentUser"/>
+                                                                                     role="Provider" />
                 </td>
             </tr>
         </table>
@@ -555,7 +555,8 @@
                     <strong><lookup expression="fn.message('Is_the_CHW_notified_about_this_patient')"/></strong> :
                     <br/> <br/>
                     <obs conceptId="$@Is_the_CHW_notified_about_this_patient@" answerConceptIds="$@YES@,$@NO@" answerCodes="Yes,No" style="radio"/>
-
+                    <br/><br/>
+                    <font color="red"> Is it decided wheather to use the tag or the concept?</font>
                         <br/><br/>
                     <relationship type="d283d13a-2700-102b-80cb-0017a47871b2" whoAmI="B" required="false"
                                   changeExistingRelationship="false"  />

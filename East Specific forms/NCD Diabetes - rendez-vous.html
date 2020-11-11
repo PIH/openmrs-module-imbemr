@@ -160,131 +160,6 @@
         }
     </style>
 
-    <script type="text/javascript">
-	if (jQuery) {
-		$j(document)
-				.ready(
-						function() {
-							if ($j.browser.msie) {
-								$j(":checkbox").click(function() {
-									$j(this).change();
-								});
-							}
-							$j(".checkboxGroup")
-									.each(
-											function() {
-												var group = $j(this);
-												var uncheckAll = function() {
-													group
-															.find(
-																	"input[type$='checkbox']")
-															.attr("checked",
-																	false);
-													group
-															.find(
-																	"input[type$='checkbox']")
-															.change();
-												}
-												var uncheckRadioAndAll = function() {
-													group
-															.find(
-																	"#checkboxAll,#checkboxRadio")
-															.find(
-																	"input[type$='checkbox']")
-															.attr("checked",
-																	false);
-													group
-															.find(
-																	"#checkboxAll,#checkboxRadio")
-															.find(
-																	"input[type$='checkbox']")
-															.change();
-												}
-
-												group
-														.find("#checkboxAll")
-														.find("input")
-														.click(
-																function() {
-																	var flip;
-																	var checked = $j(
-																			this)
-																			.siblings(
-																					":checkbox:first")
-																			.attr(
-																					"checked");
-																	if ($j(this)
-																			.attr(
-																					"name") == $j(
-																			this)
-																			.parents(
-																					"#checkboxAll:first")
-																			.find(
-																					":checkbox:first")
-																			.attr(
-																					"name")) {
-																		checked = $j(
-																				this)
-																				.attr(
-																						"checked");
-																		flip = checked;
-																	} else {
-																		flip = !checked;
-																	}
-																	if ($j(this)
-																			.attr(
-																					"type") == "text")
-																		if (flip == false)
-																			flip = !filp; // this is so the user doesn't go to check the checkbox, then uncheck it when they hit the input.
-																	uncheckAll();
-																	$j(this)
-																			.parents(
-																					"#checkboxAll:first")
-																			.find(
-																					":checkbox")
-																			.attr(
-																					"checked",
-																					flip);
-																	$j(this)
-																			.parents(
-																					"#checkboxAll:first")
-																			.find(
-																					":checkbox")
-																			.change();
-																});
-
-												group
-														.find("#checkboxRadio")
-														.find(
-																"input[type$='checkbox']")
-														.click(
-																function() {
-																	uncheckAll();
-																	$j(this)
-																			.siblings(
-																					"input[type$='checkbox']")
-																			.attr(
-																					"checked",
-																					false);
-																	$j(this)
-																			.attr(
-																					"checked",
-																					true);
-																	$j(this)
-																			.change();
-																});
-
-												group
-														.find(
-																"#checkboxCheckbox")
-														.click(
-																function() {
-																	uncheckRadioAndAll();
-											  });
-											});
-						                });
-	}
-	</script>
     <table cellspacing="0" cellpadding="6" width="100%">
         <tr>
             <td><img src="/openmrs/moduleResources/mohbilling/images/rwanda-logo.jpg" align="left"
@@ -339,54 +214,18 @@
                     <obs conceptId="$@GLUCOSE@" answerConceptIds="$@FASTING@,$@RANDOM@" answerLabels="   F,R" style="radio"/>
                 </td>
                 <td><obs conceptId="$@HBA1C@" />%</td>
-                <td><obs conceptId="$@NA@" /> mmol/L</td>
-                <td><obs conceptId="$@K@" /> mEq/L</td>
+                <td><obs conceptId="$@NA@" /></td>
+                <td><obs conceptId="$@K@" /></td>
                 <td><obs conceptId="$@CR@" /> <obs conceptId="$@CLEARANCE@" /> </td>
                 <td><obs conceptId="$@ADHERENCE@" answerConceptIds="$@YES@,$@NO@" answerLabels="oui/yes, non/no" style="radio"/></td>
-                <td class="checkboxGroup">Sensation:<br /> D/R: <obs conceptId="$@SENSATION_IN_RIGHT_FOOT@" />/6 <br />
-                    D/L: <obs conceptId="$@SENSATION_IN_LEFT_FOOT@" />/6<br />
-                    <span id="checkboxRadio">
-                        Plaies/sores<obs conceptId="$@FINDS@"  answerConceptId="$@FOOTSORES@" answerLabel="Yes" />
-                        <obs conceptId="$@FINDS@"  answerConceptId="$@NOFOOTSORES@" answerLabel="No" />
-                    </span>
-                </td>
+                <td>Sensation:<br /> D/R: <obs conceptId="$@SENSATION_IN_RIGHT_FOOT@" />/6 <br />D/L: <obs conceptId="$@SENSATION_IN_LEFT_FOOT@" />/6<br />Plaies/sores<obs conceptId="$@FINDS@"  answerConceptId="$@FOOTSORES@" answerLabel="Yes" /><obs conceptId="$@FINDS@"  answerConceptId="$@NOFOOTSORES@" answerLabel="No" /></td>
                 <td><obs conceptId="$@RETURN_VISIT_DATE@" allowFutureDates="true" /></td>
             </tr>
 
             <tr>
-                <td colspan="15">
-                    <table>
-                        <tr>
-                            <td class="checkboxGroup">
-                            <strong>Episodes d'hypoglycemie(Meme aujourd'hui</strong>
-                            / History of Hypoglicemic episodes including today:
-
-                                <span id="checkboxRadio">
-                                    <obs conceptId="$@HYPOGLYCEMIA@" answerConceptId="$@YES@" answerLabel="oui/yes" />
-                                    <obs conceptId="$@HYPOGLYCEMIA@" answerConceptId="$@NO@" answerLabel="non/no" />
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="checkboxGroup">
-                                <strong> Quand?/When?:</strong>
-                                <span id="checkboxRadio">
-                                    <obs conceptId="$@PART_OF_THEDAY@" answerConceptId="$@MORNING@" answerLabel="le matin/morning" />
-                                    <obs conceptId="$@PART_OF_THEDAY@" answerConceptId="$@AFTERNOON@" answerLabel="l'apres midi/Afternoon" />
-                                    <obs conceptId="$@PART_OF_THEDAY@" answerConceptId="$@EVENING@" answerLabel="le soir /evening" />
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="checkboxGroup">
-                            <strong> A manqué de nouriture?/Lacked of food? </strong>
-                                <span id="checkboxRadio">
-                                    <obs conceptId="$@FOOD_INSECURITY@" answerConceptId="$@YES@" answerLabel="oui/yes" />
-                                    <obs conceptId="$@FOOD_INSECURITY@" answerConceptId="$@NO@" answerLabel="non/no" />
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
+                <td colspan="15"><strong>Episodes d'hypoglycemie(Meme aujourd'hui</strong>/ History of Hypoglicemic episodes including today: <obs conceptId="$@HYPOGLYCEMIA@
+" answerConceptId="$@YES@" answerLabel="oui/yes" /> <obs conceptId="$@HYPOGLYCEMIA@
+" answerConceptId="$@NO@" answerLabel="non/no" />  Quand?/When?: <obs conceptId="$@PART_OF_THEDAY@" answerConceptId="$@MORNING@" answerLabel="le matin/morning" />  <obs conceptId="$@PART_OF_THEDAY@" answerConceptId="$@AFTERNOON@" answerLabel="l'apres midi/Afternoon" /> <obs conceptId="$@PART_OF_THEDAY@" answerConceptId="$@EVENING@" answerLabel="le soir /evening" /> A manqué de nouriture?/Lacked of food?<obs conceptId="$@FOOD_INSECURITY@" answerConceptId="$@YES@" answerLabel="oui/yes" /> <obs conceptId="$@FOOD_INSECURITY@" answerConceptId="$@NO@" answerLabel="non/no" />
                 </td>
             </tr>
 

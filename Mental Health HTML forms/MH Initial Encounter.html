@@ -322,20 +322,12 @@
         @Quantity@ = e5cd76b5-0148-4188-a10a-29e8732e2ae3
         @today@ = 3b7a7e5c-3bab-43b1-b0f4-90b93b05e43a
         @ALLERGY@ = 3ccd369c-26fe-102b-80cb-0017a47871b2
-        @Provincial_Hospital@=cd760628-82ca-447a-9f96-9e2c2f7b74e6
-        @HEALTH_CENTER@=7e327a1a-c1df-4712-ab5d-e05dc0dac35d
-        @TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@=c3e1d8d4-3040-49dd-ad66-c0928d912941
-        @DISTRICT_HOSPITAL@=e3f356b2-a340-47df-8b87-b70224437833
-        @REFERRAL_HOSPITAL@=da32efc3-f18c-404c-bab2-acf68f42f85c
-        @FACILITY@=3c9331e3-d02c-4b7d-840e-59e2d8ab7dff
-        @Health_Facility_Text@ = c4118ec7-e441-4947-b04a-dbe75b61a5a6
 
 
         <!-- program -->
         @Mental_Health@= 51304c8c-ecc2-4bed-818b-a5c785ad58a6
 
-        <!-- forms -->
-        @MH_Diagnosis@ = 79cae8d0-c799-4cbb-b0f3-36c04731b4cf
+
 
     </macros>
 
@@ -1396,7 +1388,7 @@
             <variant locale="rw" value="Hagati y’ibyumweru 2 kugeza kumezi atandatu "/>
         </code>
         <code name="Between_6_months_and_2_years">
-            <variant locale="en" value="6 months-2  years "/>
+            <variant locale="en" value="6 months-2  years "/>
             <variant locale="rw" value="Hagati y’amezi 6 kugeza ku imyaka 2 "/>
         </code>
         <code name="greater_than_2_years">
@@ -1491,17 +1483,20 @@
     <section headerLabel="1. Encounter Details">
         <table cellspacing="0" cellpadding="6" width="100%">
             <tr>
-                <td><img src="/openmrs/moduleResources/rwandareports/images/rwanda-logo.jpg" align="left"
-                         height="65" ></img>
-                    <b>REPUBLIC OF RWANDA
-                        <br />MINISTRY OF HEALTH</b>
-                </td>
+                <td><img
+                        src="/openmrs/moduleResources/rwandareports/images/pihHands.png"
+                        align="left" height="65"></img>
+                    <h2>
+                        Inshuti Mu Buzima <br /> PIH Rwanda
+                    </h2></td>
                 <td>
                     <strong>
                         <lookup expression="fn.message('Initial_Encounter_Form')"/>
                     </strong>
                     <br/>
-                    <b>  ID:<lookup class="value" expression="patientIdentifiers.get(&quot;Primary Care ID Type&quot;)" /></b>
+                    <b> IMB ID: <lookup class="value"
+                                        expression="patientIdentifiers.get(&quot;IMB ID&quot;)" /> <lookup class="value"
+                                                                                                           expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" /></b>
                     <br/>
                     <lookup expression="fn.message('Last_name')"/> : <lookup class="value" expression="patient.personName.familyName" />
 
@@ -1524,7 +1519,7 @@
                 </td>
                 <td>
                     <lookup expression="fn.message('Provider')"/>:<encounterProvider id="encounterProvider"
-                                                                                     role="Provider" />
+                                                                                      />
                 </td>
             </tr>
         </table>
@@ -1704,8 +1699,8 @@
                 </td>
                 <td>
                     <strong>
-                        <obs conceptId="$@Mood@" answerConceptIds="$@Sad@,$@Angry@,$@IRRITABILITY@,$@euphoric_mood@,$@Neutral@,$@OTHER_NON-CODED@"
-                             answerCodes="Sad,Angry,Irritable,Euphoric,Neutral,Other" style="radio"/>
+                    <obs conceptId="$@Mood@" answerConceptIds="$@Sad@,$@Angry@,$@IRRITABILITY@,$@euphoric_mood@,$@Neutral@,$@OTHER_NON-CODED@"
+                         answerCodes="Sad,Angry,Irritable,Euphoric,Neutral,Other" style="radio"/>
                     </strong>
                     <obs conceptId="$@other_Mood@"/>
 
@@ -1722,7 +1717,7 @@
                     <obs conceptId="$@Affect@" answerConceptIds="$@Happy@,$@Sad@,$@Flat/No_emotion@,$@Neutral@,$@OTHER_NON-CODED@"
                          answerCodes="Bright/happy,Affect_sad,Affect_Flat,Neutral,Other"
                          style="radio"/>
-                </strong>
+                    </strong>
                     <obs conceptId="$@other_affect@"/>
 
                 </td>
@@ -1734,8 +1729,8 @@
                 </td>
                 <td>
                     <strong>
-                        <obs conceptId="$@thought_process@" answerConceptIds="$@NORMAL@,$@Tangential@,$@Disorganized@,$@OTHER_NON-CODED@"
-                             answerCodes="Normal_thought_process,Tangential,
+                    <obs conceptId="$@thought_process@" answerConceptIds="$@NORMAL@,$@Tangential@,$@Disorganized@,$@OTHER_NON-CODED@"
+                         answerCodes="Normal_thought_process,Tangential,
                          Disorganized,Other" style="radio"/>
                     </strong>
                     <obs conceptId="$@other_thought_process@"/>
@@ -2290,15 +2285,14 @@
                     <strong><lookup expression="fn.message('Rendez_vous')"/></strong>
                     <obs conceptId="$@RETURN_VISIT_DATE@"/>
                     <br/>
-                    <strong><lookup expression="fn.message('treatment_Location')"/></strong> :
-
-                    <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@" answerConceptIds="$@REFERRAL_HOSPITAL@,$@Provincial_Hospital@,$@DISTRICT_HOSPITAL@,$@HEALTH_CENTER@" answerLabels="REFERRAL HOSPITAL,PROVINCIAL HOSPITAL,DISTRICT HOSPITAL,HEALTH CENTER" style="dropdownlist"/>
-                    <!--
-                     <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@" answerConceptId="$@Provincial_Hospital@" answerCode="PROVINCIAL HOSPITAL" style="checkbox"/>
-                     <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@" answerConceptId="$@DISTRICT_HOSPITAL@" answerCode="DISTRICT HOSPITAL" style="checkbox"/>
-                     <obs conceptId="$@TYPE_OF_REFERRING_CLINIC_OR_HOSPITAL@" answerConceptId="$@HEALTH_CENTER@" answerCode="HEALTH CENTER" style="checkbox"/>
-                     -->
-                    <b>Specify:</b><obs conceptId="$@FACILITY@" cols="100"/>
+                    <strong><lookup expression="fn.message('treatment_Location')"/></strong> : <br/>
+                    <obs conceptId="$@Return_Visit_Location@" answerConceptId="$@Caraes_Ndera_Hospital@" answerCode="Ndera Hospital" style="checkbox"/>
+                    <obs conceptId="$@Return_Visit_Location@" answerConceptId="$@Butaro_Hospital@" answerCode="Butaro Hospital" style="checkbox"/>
+                    <obs conceptId="$@Return_Visit_Location@" answerConceptId="$@Rwinkwavu_Hospital@" answerCode="Rwinkwavu Hospital" style="checkbox"/>
+                    <obs conceptId="$@Return_Visit_Location@" answerConceptId="$@Kirehe_hospital@" answerCode="Kirehe Hospital" style="checkbox"/>
+                    <obs conceptId="$@Return_Visit_Location@" answerConceptId="$@HEALTH_CENTER@" answerCode="Health_Center" style="checkbox"/>
+                    <obs conceptId="$@Return_Visit_Location@" answerConceptId="$@OTHER_NON-CODED@" answerCode="other_place" style="checkbox"/>
+                    <obs conceptId="$@Other_return_visit_location@"/>
 
                 </td>
             </tr>
@@ -2438,7 +2432,7 @@
                     <!--<strong><lookup expression="fn.message('Family_History_of_Mental_Illness')"/></strong>-->
 
                     <!--<obs conceptId="$@Family_History_of_Mental_Illness@" answerConceptIds="$@YES@,$@NO@"-->
-                    <!--answerCodes="Yes,No" style="radio"/>-->
+                         <!--answerCodes="Yes,No" style="radio"/>-->
                     <!--<br/><br/>-->
                     <!--<strong><lookup expression="fn.message('If_YES_specify_which_family_member_and_diagnosis')"/></strong>-->
                     <!--<obs conceptId="$@Who_is_the_Family_member_with_mental_illness_history@"/>-->
@@ -2462,7 +2456,7 @@
                     <obs conceptId="$@substances_used@" answerConceptId="$@ALCOHOL@"
                          answerCode="Alcohol"/>
                     <!--<obs conceptId="$@substances_used@" answerConceptId="$@Illicit_drugs@"-->
-                    <!--answerCode="Illicit_drugs_please_name"/>-->
+                         <!--answerCode="Illicit_drugs_please_name"/>-->
                     <obs conceptId="$@substances_used@" answerConceptId="$@tobacco@"
                          answerCode="tobacco"/>
                     <obs conceptId="$@substances_used@" answerConceptId="$@marijuana@"
@@ -2671,7 +2665,13 @@
     </section>
 
     <section headerLabel="Diagnosis / Diagnostic/UBURWAYI">
-        <htmlformflowsheet formId="$@MH_Diagnosis@" sharedEncounter="true" windowHeight="400"/>
+        <table border="1" width="100%" >
+            <tr>
+                <td>
+                    <strong><lookup expression="fn.message('PLEASE_USE_SUPPLEMENTARY_FORM_TO_INDICATE_PRIMARY_AND_SECONDARY_DIAGNOSES')"/></strong>
+                </td>
+            </tr>
+        </table>
     </section>
 
     <strong><lookup expression="fn.message('Treatment_Plan')"/></strong>:
@@ -2697,14 +2697,12 @@
             <tr>
                 <td>
                     <strong><lookup expression="fn.message('Referrals')"/></strong>:
+                    <br/>
 
-                    <obs conceptId="$@plan_to_referral@" answerConceptIds="$@REFERRAL_HOSPITAL@,$@Provincial_Hospital@,$@DISTRICT_HOSPITAL@,$@HEALTH_CENTER@" answerLabels="REFERRAL HOSPITAL,PROVINCIAL HOSPITAL,DISTRICT HOSPITAL,HEALTH CENTER" style="dropdownlist"/>
+                    <obs conceptId="$@plan_to_referral@" answerConceptIds="$@GBV@,$@NONE@,$@Caraes_Ndera_Hospital@,$@Butaro_Hospital@,$@OTHER_NON-CODED@"
+                         answerCodes="Referrals_None,Ndera Hospital,Butaro Hospital,GBV,other_place" style="radio"/>
 
-<!--                    <obs conceptId="$@plan_to_referral@" answerConceptIds="$@GBV@,$@NONE@,$@Caraes_Ndera_Hospital@,$@Butaro_Hospital@,$@OTHER_NON-CODED@"-->
-<!--                         answerCodes="Referrals_None,Ndera Hospital,Butaro Hospital,GBV,other_place" style="radio"/>-->
-
-                    <strong> Specify</strong>
-                    <obs conceptId="$@Health_Facility_Text@" cols="40" rows="1"/>
+                    <obs conceptId="$@other_referrals_planned@"/>
 
                 </td>
             </tr>

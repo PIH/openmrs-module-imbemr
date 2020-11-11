@@ -411,8 +411,6 @@ Other_Non_coded
 @TRANSFERED@=3a296bb6-5fc8-40ee-84fc-97c13cacf8d8
 @OTHER_REASON_FOR_MISSING_VISIT@=5bdc0594-ebf3-4377-97d8-f3ea3b1e491f
 @PATIENT_DIED@=3cdd446a-26fe-102b-80cb-0017a47871b2
-@PATIENT_DIED_OBS@=98f8f93d-a77a-4cbf-a3b8-54ce9bdd0fe6
-
 
 @REASON_FOR_HOME_VISIT@=80201322-e406-44c0-b085-c65592c783af
 @THREE_CALLS_WITHOUT_SUCCESS@=825f67d1-6567-497e-b34d-66dbcea3c51e
@@ -438,38 +436,11 @@ Other_Non_coded
 @NCD_OUTCOMES@=b1c014cb-a027-43b4-ba9a-9e791b9fe716
 @NCD_DEATH@=9561a7ea-8662-4e21-b969-d69ac732fc64
 @UNKNOWN_CAUSE@=08176d5d-3cbe-4c40-8436-26b2e26a1acf
-@OTHER_DEATH_CAUSE@=a18bc25f-1757-4568-88a7-d58c4100f7f2
+@UNKNOWN_CAUSE@=a18bc25f-1757-4568-88a7-d58c4100f7f2
 @TRANSFERED@=3a296bb6-5fc8-40ee-84fc-97c13cacf8d8
 @LTFU@=3ceb0ed8-26fe-102b-80cb-0017a47871b2
 @DECLINED_CARE@=1b83f37a-df3a-42a5-b83b-ebc5237f2dbf
 @OTHER_CAUSE_OF_EXIT@=7f49cb15-c2d0-4feb-a7b7-1289edb039eb
-@CHANGE_LOCATION@=38248b3e-7376-4df7-8f95-869e5cd2b173
-@CLOSER_HF@=fddeccf6-bc83-47cf-975e-eaa4d14de64d
-@REFERRED_FOR_PALLIATION@=41b62034-9e2e-4967-b10a-4e47da65db6e
-@OTHER_REFERRAL_REASON@=eea065ac-117b-4be9-976b-2948b29046b7
-@NOT_NCD@=8b187595-0f36-4403-b50f-19ffd1687c26
-
-
-@LOCATION_OF_DEATH@=7d3a9892-1674-4943-adc5-414a8076319e
-@HOME@=e6969db3-6db8-493f-89a9-6b600724199b
-@HEALTH_FACILITY@=071a651b-9154-488b-a4f5-c1b79b379410
-@HEALTH_FACILITY_TEXT@=c4118ec7-e441-4947-b04a-dbe75b61a5a6
-@LOCATION_OF_DEATH_NON_CODED@=8fd332f2-d936-4943-9248-08ac0bc9169a
-
-@REFERRAL_LOCATION@=4c12ce40-d2d9-42dc-8202-3ffc91e1e642
-@HOME_OR_COMMUNITY@=199ee2f2-2ca7-42e0-bf51-73ae0a4a3ac9
-@HEALTH_CENTER@=7e327a1a-c1df-4712-ab5d-e05dc0dac35d
-@DISTRICT_HOSPITAL@=e3f356b2-a340-47df-8b87-b70224437833
-@REFERRAL_HOSPITAL@=da32efc3-f18c-404c-bab2-acf68f42f85c
-@OTHER_CLINIC@=3cd9fe5e-26fe-102b-80cb-0017a47871b2
-@FACILITY@=3c9331e3-d02c-4b7d-840e-59e2d8ab7dff
-
-@NOTE@=6602a73b-b8d3-40bc-bae8-f00ff3b9cceb
-
-
-@REASON_FOR_EXIT@=3cde5ef4-26fe-102b-80cb-0017a47871b2
-@TOP_NCD_REASON_FOR_EXIT@=bedc579c-cfdc-4a94-9b13-112ce21145f0
-
 
 
 
@@ -484,9 +455,6 @@ Other_Non_coded
 	margin-bottom: 1em;
 }
 
-.disabled {
-	color: #D8D8D8;
-}
 .sectionHeader {
 	background-color: $headerColor;
 	color: $fontOnHeaderColor;
@@ -599,180 +567,31 @@ td {
 	}
 }
 </style>
-
+<script type="text/javascript">
+	$j(document).ready(function() {
+		getField('HCG.value').change(function() {
+			var BetaHCG = getValue("HCG.value");
+			if( BetaHCG != null &amp;&amp; BetaHCG >= 500 &amp;&amp; BetaHCG &lt; 10000 ) {
+				var BHCGmL = calculateBetaHCG(BetaHCG);
+					setValue('HCG.value', BHCGmL);
+					}
+							 
+			});
+		});
+		
+		function calculateBetaHCG(BetaHCG) {
+		    var BHCG;
+		    
+		    BHCG = (BetaHCG*1000)
+		    
+		    return BHCG;
+		}
 		 
-<div id="50">Heart Failure<completeProgram programId="e60a89ad-de11-421a-b5bf-b489e264ffa6" /></div> 
-<script>
-	$j(function() {
-		$j('.disdiv').find('input').attr('disabled', 'true');
-	});
+		 </script> 
 
-	</script> <script type="text/javascript">
-	if (jQuery) {
-		$j(document)
-				.ready(
-						function() {
-							if ($j.browser.msie) {
-								$j(":checkbox").click(function() {
-									$j(this).change();
-								});
-							}
-							$j('.disabled').find('input, textarea, button, select').attr('disabled',true);
-							
-							$j(".enableDisable").each(
-									function() {
-										var group = $j(this);
-										function disableFn() {
-											group.children("#disabled").fadeTo(
-													250, 0.33);
-											group.children("#disabled").find(
-													":checkbox").attr(
-													"checked", false); //uncheck
-											group.children("#disabled").find(
-													"input[type$='text']").val(
-													"");
-											group.children("#disabled").find(
-													"input").attr("disabled",
-													true); //disable
-										}
-										function enableFn() {
-											group.children("#disabled").fadeTo(
-													250, 1);
-											group.children("#disabled").find(
-													"input").attr("disabled",
-													false);
-										}
-										disableFn();
-										$j(this).children("#trigger").find(
-												":checkbox:first").change(
-												function() {
-													var checked = $j(this)
-															.attr("checked");
-													if (checked == true) {
-														enableFn();
-													} else {
-														disableFn();
-													}
-												});
-									});
 
-							$j(".checkboxGroup")
-									.each(
-											function() {
-												var group = $j(this);
-												var uncheckAll = function() {
-													group
-															.find(
-																	"input[type$='checkbox']")
-															.attr("checked",
-																	false);
-													group
-															.find(
-																	"input[type$='checkbox']")
-															.change();
-												}
-												var uncheckRadioAndAll = function() {
-													group
-															.find(
-																	"#checkboxAll,#checkboxRadio")
-															.find(
-																	"input[type$='checkbox']")
-															.attr("checked",
-																	false);
-													group
-															.find(
-																	"#checkboxAll,#checkboxRadio")
-															.find(
-																	"input[type$='checkbox']")
-															.change();
-												}
 
-												group
-														.find("#checkboxAll")
-														.find("input")
-														.click(
-																function() {
-																	var flip;
-																	var checked = $j(
-																			this)
-																			.siblings(
-																					":checkbox:first")
-																			.attr(
-																					"checked");
-																	if ($j(this)
-																			.attr(
-																					"name") == $j(
-																			this)
-																			.parents(
-																					"#checkboxAll:first")
-																			.find(
-																					":checkbox:first")
-																			.attr(
-																					"name")) {
-																		checked = $j(
-																				this)
-																				.attr(
-																						"checked");
-																		flip = checked;
-																	} else {
-																		flip = !checked;
-																	}
-																	if ($j(this)
-																			.attr(
-																					"type") == "text")
-																		if (flip == false)
-																			flip = !filp; // this is so the user doesn't go to check the checkbox, then uncheck it when they hit the input.
-																	uncheckAll();
-																	$j(this)
-																			.parents(
-																					"#checkboxAll:first")
-																			.find(
-																					":checkbox")
-																			.attr(
-																					"checked",
-																					flip);
-																	$j(this)
-																			.parents(
-																					"#checkboxAll:first")
-																			.find(
-																					":checkbox")
-																			.change();
-																});
-
-												group
-														.find("#checkboxRadio")
-														.find(
-																"input[type$='checkbox']")
-														.click(
-																function() {
-																	uncheckAll();
-																	$j(this)
-																			.siblings(
-																					"input[type$='checkbox']")
-																			.attr(
-																					"checked",
-																					false);
-																	$j(this)
-																			.attr(
-																					"checked",
-																					true);
-																	$j(this)
-																			.change();
-																});
-
-												group
-														.find(
-																"#checkboxCheckbox")
-														.click(
-																function() {
-																	uncheckRadioAndAll();
-																});
-											});
-						});
-	}
-</script> 
-
-	<div id="container">
+<div id="container">
 	<!-- Generic Disease workup header  -->
 	<section>
 
@@ -783,7 +602,7 @@ td {
 							class="value"
 							expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" /></b>
 				</td>
-				<td>Date: <encounterDate id="encounterDate" default="today" />
+				<td>
 				</td>
 			</tr>
 			<tr>
@@ -802,7 +621,8 @@ td {
 					<h2>
 						Inshuti Mu Buzima <br /> PIH Rwanda
 					</h2></td>
-				<td><strong> NCD Exit Form </strong> 
+				<td><strong> NCD Call Log </strong> <br />
+					Visit Type <encounterType types= "d889bcb3-c99d-4648-a3ea-b373335b9efd, d8327a41-a0cc-49c5-af0e-63f0ba960330, 820004cd-5f2b-40a9-bf26-bf6f5a945790,2f75f29f-454d-4e91-915c-ec3fd49532b1  " />
 				</td>
 			</tr>
 			<tr>
@@ -810,7 +630,7 @@ td {
 						id="encounterLocation"  />
 				</td>
 				<td>Provider:<encounterProvider id="encounterProvider"
-						 default="currentUser" />
+						  />
 				</td>
 			</tr>
 		</table>
@@ -819,125 +639,99 @@ td {
 </div>
 
 
+<span style="float: right">Paper Form ID: $paperFormId</span>
 
+<th class="tableHeader" colspan="3">Date d'absence sur le RDV/ Date of missed RDV <obs conceptId="$@MISSED_VISIT_DATE@"/></th>
 <section>
 	<table class="baseline-aligned">
 		
-		<th class="tableHeader" colspan="3">Sortie / Exit</th>
-			<tr><td colspan = "2"><span class="disabled">Date de deces / Death Date:    ___ / ___ / _____ (filled out above)</span></td></tr>
-
-
-		<tr><td colspan="2">
-			If the patient is exiting permanently, fill this drop down. <exitFromCare/>
-		</td></tr>
-		<tr >
-			<td class="midleCell"><b>Reason for exit</b>:</td>
-			<td >
-				<obs conceptId="$@TOP_NCD_REASON_FOR_EXIT@" 
-					answerConceptId="$@PATIENT_DIED@" answerLabel="Décès (si oui, remplir ci-dessous) / Death(if yes, fill out below)" /> <br/>
-				<obs conceptId="$@TOP_NCD_REASON_FOR_EXIT@" 
-					answerConceptId="$@TRANSFERED@" answerLabel="Transfert a l'autre centre (si oui, completer si-dessous) / Transfer to another facility (if yes, fill out below) " /> <br/>
-				
-				<obs conceptId="$@NCD_OUTCOMES@" 
-					answerConceptId="$@NOT_NCD@" answerLabel="Patient n'a pas NCD apres consultation par specialiste / Patient does not have NCD after consultation by specialist" /> <br/>
-				<obs conceptId="$@NCD_OUTCOMES@" 
-					answerConceptId="$@LTFU@" answerLabel="Perdu de vue / Lost to Follow-up" /> <br/>
-				<obs conceptId="$@NCD_OUTCOMES@" 
+		<th class="tableHeader" colspan="3">Appel - Date d'appel/Call - Date call is made: <encounterDate id="encounterDate" default="today"/></th>
+		<tr>
+			<td>Resultat de l'appel/ Outcome of phone call</td>
+			<td class="checkboxGroup" colspan="3">
+				<obs conceptId="$@RESULT_OF_CALL@" 
+					answerConceptId="$@RDV_CHANGED@" answerLabel="RDV Change/ RDV rescheduled" /> <obs conceptId="$@NEXT_VISIT@" allowFutureDates="true"/><br/>
+				<obs conceptId="$@RESULT_OF_CALL@" 
+					answerConceptId="$@PATIENT_NOT_REACHED@" answerLabel="Patient pas accessible (pas de reponse)/ Patient not reached (no answer)" /> <br/>
+				<obs conceptId="$@RESULT_OF_CALL@" 
+					answerConceptId="$@PHONE_NOT_REACHED@" answerLabel="Telephone pas accessible/ Phone not reached" /> <br/>
+				<obs conceptId="$@RESULT_OF_CALL@" 
+					answerConceptId="$@OTHER_NON_CODED@" answerLabel="Autres/Other" /> <obs	conceptId="$@OTHER_RESULT_OF_CALL@" /> <br/>
+				<obs conceptId="$@RESULT_OF_CALL@" 
+					answerConceptId="$@PATIENT_EXITED@" answerLabel="Patient sortie de service (decede, perdue de vue, ou transfere)/ Patient exited (died, LTFU, or transfered) -> COMPLETER LA FORMULAIRE DE SORTIE/COMPLETE EXIT FORM" /> 					
+			</td>
+		</tr>
+		<tr>	<td colspan="3"><hr/> </td> </tr>
+		<tr>
+			<td> Raison d'absence sur le RDV/ Reason patient missed RDV</td>
+			<td class="checkboxGroup" colspan="3">
+				<obs conceptId="$@REASON_FOR_MISSED_VISIT@" 
+					answerConceptId="$@UNABLE_TO_AFFORD_TRANSPORT@" answerLabel="Manque de transport/ Unable to afford transportation" /><br/> 
+				<obs conceptId="$@REASON_FOR_MISSED_VISIT@" 
+					answerConceptId="$@ILLNESS@" answerLabel="La maladie (tres difficile d'arriver a la clinique) / Illness (too unwell to travel to facility)" /> <br/>
+				<obs conceptId="$@REASON_FOR_MISSED_VISIT@" 
+					answerConceptId="$@FORGOT_RDV@" answerLabel="Oublier la date de RDV/ Did not remember RDV Date" /> <br/>
+				<obs conceptId="$@REASON_FOR_MISSED_VISIT@" 
+					answerConceptId="$@DID_NOT_THINK_IT_WAS_NECESSARY_TO_COME@" answerLabel="Pense que ce n'etait pas necessaire de venir/ Did not think it was necessary to come" /> <br/>
+				<obs conceptId="$@REASON_FOR_MISSED_VISIT@" 
 					answerConceptId="$@DECLINED_CARE@" answerLabel="Refus de soins / Declined Care" /> <br/>
-				<obs conceptId="$@NCD_OUTCOMES@" 
-					answerConceptId="$@OTHER_CAUSE_OF_EXIT@" answerLabel="Autre / Other" /> <br/>	
-			</td>
-		</tr>
-     <!--
-        refer to RWA-506 ticket
-		<tr><td>
-			Fill out the treatment status here
-			<workflowState workflowId="22" style="dropdown"/> Heart Failure <br/>
-
-		</td></tr>
-     -->
-		<th class="tableHeader" colspan="3">Si Deces / If Death </th>
-		<tr>
-			<td colspan="2"><span class="disabled">Date de deces / Death Date:    ___ / ___ / _____</span></td>
-		</tr>
-		<tr >
-			
-			<td class="midleCell">Cause de deces / Cause of Death</td>
-			<td >
-				
-				<obs conceptId="$@NCD_OUTCOMES@" 
-					answerConceptId="$@NCD_DEATH@" answerLabel="Deces relative avec la maladie / Disease related death" /> <br/>
-				<obs conceptId="$@NCD_OUTCOMES@" 
-					answerConceptId="$@UNKNOWN_CAUSE@" answerLabel="inconnu / Unknown" /> <br/>
-				<obs conceptId="$@NCD_OUTCOMES@" 
-					answerConceptId="$@OTHER_DEATH_CAUSE@" answerLabel="Autre / Other" /> <br/>
-				
-			</td>
-			
-		</tr>
-		<tr>	<td colspan="3"><hr/> </td> </tr>
-		<tr>
-			<td>Lieu de deces / Location of death</td>
-			<td class="checkboxGroup" colspan="3">
-				<obs conceptId="$@LOCATION_OF_DEATH@" 
-					answerConceptId="$@HOME@" answerLabel="A la maison / home" /> <br/>
-				<obs conceptId="$@LOCATION_OF_DEATH@" 
-					answerConceptId="$@HEALTH_FACILITY@" answerLabel="A la formation sanitaire (nom de la FOSA)/ While admitted to hospital (health facility name)" /><obs	conceptId="$@HEALTH_FACILITY_TEXT@" /> <br/>
-				<obs conceptId="$@LOCATION_OF_DEATH@" 
-					answerConceptId="$@OTHER_NON_CODED@" answerLabel="Autres/Other" /> <obs	conceptId="$@LOCATION_OF_DEATH_NON_CODED@" /> <br/>
+				<obs conceptId="$@REASON_FOR_MISSED_VISIT@" 
+					answerConceptId="$@PATIENT_DIED@" answerLabel="Patient decede / Patient Died" /> <br/>
+                                 <obs conceptId="$@REASON_FOR_MISSED_VISIT@" 
+					answerConceptId="$@SEEN_AT_A_DIFFERENT_FACILITY@" answerLabel="Vu dans l'autre clinique / Seen at different health facility" /> <br/>
+				<obs conceptId="$@REASON_FOR_MISSED_VISIT@" 
+					answerConceptId="$@TRANSFERED@" answerLabel="Transfere (si oui, completer la formulaire de sortie) / Transfered (if yes, COMPLETE EXIT FORM)" /> <br/>
+				<obs conceptId="$@REASON_FOR_MISSED_VISIT@" 
+					answerConceptId="$@OTHER_NON_CODED@" answerLabel="Autres/Others" />  <obs	conceptId="$@OTHER_REASON_FOR_MISSING_VISIT@" /> <br/>
+					
 			</td>
 		</tr>
 
-		<th class="tableHeader" colspan="3">Si Transfert / If Referred</th>
+		<th class="tableHeader" colspan="3">Plantification et date de visite a domicile/ Home visit date.<obs conceptId="$@HOME_VISIT_DATE@"/></th>
 		<tr>
-			<td colspan="2"><span class="disabled">Date de Transfert / Date of Transfer:    ___ / ___ / _____</span></td>
-		</tr>
-		<tr >
-			
-			<td class="midleCell">Raison de transfert / Reason for transfer</td>
-			<td >
-				
-				<obs conceptId="$@NCD_OUTCOMES@" 
-					answerConceptId="$@CHANGE_LOCATION@" answerLabel="Changement de residence / Change in residence" /> <br/>
-				<obs conceptId="$@NCD_OUTCOMES@" 
-					answerConceptId="$@CLOSER_HF@" answerLabel="Tout pres de la formation sanitaire / Closer health facility" /> <br/>
-				<obs conceptId="$@NCD_OUTCOMES@" 
-					answerConceptId="$@REFERRED_FOR_PALLIATION@" answerLabel="Soins palliatif / Palliative care" /> <br/>
-				<obs conceptId="$@NCD_OUTCOMES@" 
-					answerConceptId="$@OTHER_REFERRAL_REASON@" answerLabel="Autre / Other" /> <br/>
+			<td>Raison de visite a domicile / Reasons for home visit</td>
+			<td class="checkboxGroup" colspan="3">
+				<obs conceptId="$@REASON_FOR_HOME_VISIT@" 
+					answerConceptId="$@THREE_CALLS_WITHOUT_SUCCESS@" answerLabel="3 appels mais pas reussi/ 3 calls without success" /><br/> 
+				<obs conceptId="$@REASON_FOR_HOME_VISIT@" 
+					answerConceptId="$@DECLINED_CARE@" answerLabel="Refus de soins/ Patient declined care" /> <br/>
+				<obs conceptId="$@REASON_FOR_HOME_VISIT@" 
+					answerConceptId="$@OTHER_NON_CODED@" answerLabel="Autres/ Other" /> <obs	conceptId="$@OTHER_REASON_FOR_HOME_VISIT@" />
 			</td>
-	
 		</tr>
 		<tr>	<td colspan="3"><hr/> </td> </tr>
 		<tr>
-			<td>Lieu de Reference / Referred to:</td>
+			<td> Conduite a tenir apres la visit a domicile / Action taken after this home visit</td>
 			<td class="checkboxGroup" colspan="3">
-				<obs conceptId="$@REFERRAL_LOCATION@" 
-					answerConceptId="$@HOME_OR_COMMUNITY@" answerLabel="A la maison ou communaute / At home or community" /> <br/>
-				<obs conceptId="$@REFERRAL_LOCATION@" 
-					answerConceptId="$@HEALTH_CENTER@" answerLabel="Centre de sante / Health Center" /> <br/>
-				<obs conceptId="$@REFERRAL_LOCATION@" 
-					answerConceptId="$@DISTRICT_HOSPITAL@" answerLabel="Hopital de ditrict / District hospital" /> <br/>
-				<obs conceptId="$@REFERRAL_LOCATION@" 
-					answerConceptId="$@REFERRAL_HOSPITAL@" answerLabel="Hopital de reference / Referral Hospital" /> <br/>
-				<obs conceptId="$@REFERRAL_LOCATION@" 
-					answerConceptId="$@OTHER_NON_CODED@" answerLabel="Autre / Other" /> 	 <obs	conceptId="$@OTHER_CLINIC@" /> <br/>
-				Nom du nouveau centre de soins / Name of new facility<obs	conceptId="$@FACILITY@" /> <br/>
+				<obs conceptId="$@ACTION_AFTER_HOME_VISIT@" 
+					answerConceptId="$@RDV_CHANGED@" answerLabel="RDV change/ RDV rescheduled" /> <obs conceptId="$@NEXT_VISIT@" allowFutureDates="true"/><br/>
+				<obs conceptId="$@ACTION_AFTER_HOME_VISIT@" 
+					answerConceptId="$@COMPLETED_EXIT_FORM@" answerLabel="La formulaire de sortie complete (Decede, refere et refus de soins / Completed exit form (died, referred, declined care)" /> <br/>
+				<obs conceptId="$@ACTION_AFTER_HOME_VISIT@" 
+					answerConceptId="$@OTHER_NON_CODED@" answerLabel="Autres/Other" /> <obs conceptId="$@OTHER_ACTION_AFTER_HOME_VISIT@"/>
+				
+					
 			</td>
 		</tr>
-			
+
 		<tr> <td colspan="3"><hr/> </td> </tr>
-		<tr> <td colspan = "3">Other Note (if any) <obs conceptId="$@NOTE@" rows = "4" cols = "60"/></td></tr>
-		
-
+		<tr>
+			<td> Visit a domicile fait par / Home visit done by:</td>
+			<td class="checkboxGroup" colspan="3">
+				<obs conceptId="$@HOME_VISITOR@"/>	<br/>
+				<obs conceptId="$@HOME_VISIT_COMPLETED_BY@" 
+					answerConceptId="$@NURSE@" answerLabel="Infirmier/Nurse" /> <br/>
+				<obs conceptId="$@HOME_VISIT_COMPLETED_BY@" 
+					answerConceptId="$@SOCIAL_WORKER@" answerLabel="Social Worker" /> <br/>
+				<obs conceptId="$@HOME_VISIT_COMPLETED_BY@" 
+					answerConceptId="$@OTHER_NON_CODED@" answerLabel="Autres/Other" />	
+			</td>
+		</tr>
 	</table>
 </section>
 <center><submit /></center>
 <br/>
+<br/>
+<br/>
 
-<br/>
-<br/>
-<br/>
-<encounterVoided/>
-
-</htmlform>
+ </htmlform>
