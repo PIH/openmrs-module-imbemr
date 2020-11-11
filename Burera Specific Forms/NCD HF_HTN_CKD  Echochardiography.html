@@ -200,8 +200,6 @@
         @PULMONARY_HYPERTENSION@=cadcbf7e-389b-4632-9f03-6df1aa74d15a
         @SIZE_OF_VENTRICULAR_SEPTAL_DEFECT@ = e6919af8-e227-4a65-bad3-4a12fee424bd
         @PEAK_GRADIENT_OF_VENTRICULAR_SEPTAL_DEFECT@ = eb154e9a-1821-474f-ac0d-123169e092f2
-        @PRIMUM@ = 04ac60cb-64e5-447b-ab83-84dd0230f83f
-        @SINUS_VENOUS@ = f52a4e50-eadd-41f8-91e1-a56169dba818
 
 
 
@@ -361,7 +359,7 @@
                     </td>
                     <td>Date: <encounterDate id="encounterDate" default="today" /> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
                         Provider:<encounterProvider id="encounterProvider"
-                                                    role="Provider" default="currentUser"/>
+                                                    default="currentUser"/>
                     </td>
                 </tr>
             </table>
@@ -526,7 +524,7 @@ Decreased" />
                              style="radio"
                              answerLabels="Normal, Small, Mildly Dilated, Moderately Dilated, Severely Dilated" /> <br />
                         <span class="indented"> ASD </span>
-                        <obs conceptId="$@ATRIAL_SEPTAL_DEFECT@" answerConceptIds="$@SECUNDUM@,$@PRIMUM@,$@SINUS_VENOUS@"
+                        <obs conceptId="$@ATRIAL_SEPTAL_DEFECT@" answerConceptIds="$@SECUNDUM@,3868,3869"
                              style="radio" answerLabels="Secundum, Primum, Sinus Venosus" />
                         <span class="indented"></span>
                         <obs conceptId="$@ATRIAL_SEPTAL_DEFECT_SIZE@" />
