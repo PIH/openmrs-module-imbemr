@@ -1,178 +1,178 @@
 <htmlform>
 
     <macros>
-        @PATIENT_IDENTIFIER@=IMB ID
+		@PATIENT_IDENTIFIER@=IMB ID
+    	
+   		@PATENT_VISIT_CONSTRUCT@=220304e9-556c-4c74-b1c7-38357cc9561a
+		@WEIGHT_KG@=3ce93b62-26fe-102b-80cb-0017a47871b2
+		@HEIGHT_CM@=3ce93cf2-26fe-102b-80cb-0017a47871b2
+		@Z_SCORE_HEIGHT@=6d4b1720-f45c-4069-98d9-e7e865105a7a
+		@Z_SCORE_WEIGHT@=c9d8c9db-518c-4a00-985d-d2fc8ac1f739
+		@WEIGHT_FOR_HEIGHT@=2438e295-d9da-4d5c-bacc-13c313e34755
+		@FUNCTIONAL_ABILITY_OF_THE_PATIENT@=3cdc979a-26fe-102b-80cb-0017a47871b2
+		@CURRENT_OPPORTUNISTIC_INFECTION@=1607
+		@CURRENT_OPPORTUNISTIC_INFECTION_NON_CODED@=1731
+		@SEXUALLY_TRANSMITTED_INFECTION@=0ae23a5a-15f5-102d-96e4-000c29c2a5d7
+		@SEXUALLY_TRANSMITTED_INFECTION_NON_CODED@=3cdd0f04-26fe-102b-80cb-0017a47871b2
+		@RESULT_OF_TUBERCULOSIS_SCREENING_QUALITATIVE@=3ce14c2c-26fe-102b-80cb-0017a47871b2
+		@PATIENT_INFORMED@=6654
+		@NUMBER_OF_DOSES_OF_ANTIRETROVIRALS_MISSED_IN_THE_PAST_MONTH@=3cdd3204-26fe-102b-80cb-0017a47871b2
+		@FREE_TEXT_REASON_FOR_POOR_ADHERENCE_TO_ANTIRETROVIRAL_THERAPY@=3ce67814-26fe-102b-80cb-0017a47871b2
+		@NEXT_VISIT@=3ce94df0-26fe-102b-80cb-0017a47871b2
 
-        @PATENT_VISIT_CONSTRUCT@=220304e9-556c-4c74-b1c7-38357cc9561a
-        @WEIGHT_KG@=3ce93b62-26fe-102b-80cb-0017a47871b2
-        @HEIGHT_CM@=3ce93cf2-26fe-102b-80cb-0017a47871b2
-        @Z_SCORE_HEIGHT@=6d4b1720-f45c-4069-98d9-e7e865105a7a
-        @Z_SCORE_WEIGHT@=c9d8c9db-518c-4a00-985d-d2fc8ac1f739
-        @WEIGHT_FOR_HEIGHT@=2438e295-d9da-4d5c-bacc-13c313e34755
-        @FUNCTIONAL_ABILITY_OF_THE_PATIENT@=3cdc979a-26fe-102b-80cb-0017a47871b2
-        @CURRENT_OPPORTUNISTIC_INFECTION@=1607
-        @CURRENT_OPPORTUNISTIC_INFECTION_NON_CODED@=1731
-        @SEXUALLY_TRANSMITTED_INFECTION@=0ae23a5a-15f5-102d-96e4-000c29c2a5d7
-        @SEXUALLY_TRANSMITTED_INFECTION_NON_CODED@=3cdd0f04-26fe-102b-80cb-0017a47871b2
-        @RESULT_OF_TUBERCULOSIS_SCREENING_QUALITATIVE@=3ce14c2c-26fe-102b-80cb-0017a47871b2
-        @PATIENT_INFORMED@=6654
-        @NUMBER_OF_DOSES_OF_ANTIRETROVIRALS_MISSED_IN_THE_PAST_MONTH@=3cdd3204-26fe-102b-80cb-0017a47871b2
-        @FREE_TEXT_REASON_FOR_POOR_ADHERENCE_TO_ANTIRETROVIRAL_THERAPY@=3ce67814-26fe-102b-80cb-0017a47871b2
-        @NEXT_VISIT@=3ce94df0-26fe-102b-80cb-0017a47871b2
+		@NORMAL@=3cd750a0-26fe-102b-80cb-0017a47871b2
+		@Assistance_required@=d335ec09-c724-4327-9726-f3c984bb1ca1
+		@BEDRIDDEN@=3cdc9c18-26fe-102b-80cb-0017a47871b2
+		
+		@YES@=1065
+		@NO@=1066
 
-        @NORMAL@=3cd750a0-26fe-102b-80cb-0017a47871b2
-        @Assistance_required@=d335ec09-c724-4327-9726-f3c984bb1ca1
-        @BEDRIDDEN@=3cdc9c18-26fe-102b-80cb-0017a47871b2
+		@OTHER_NON_CODED@=5622
+		<!-- 277e342c-79c6-470a-8427-e737d3114ba4 ELECTRONIC_RECORD_MATCHES_PAPER_FORM 7084 -->
+		@ELECTRONIC_RECORD_MATCHES_PAPER_FORM@=c8f6b4ae-600e-496c-b6b9-d6b395e13a1f
 
-        @YES@=1065
-        @NO@=1066
-
-        @OTHER_NON_CODED@=5622
-        <!-- 277e342c-79c6-470a-8427-e737d3114ba4 ELECTRONIC_RECORD_MATCHES_PAPER_FORM 7084 -->
-        @ELECTRONIC_RECORD_MATCHES_PAPER_FORM@=c8f6b4ae-600e-496c-b6b9-d6b395e13a1f
-
-    </macros>
-    <link type="text/css" rel="stylesheet" href="/openmrs/moduleResources/rwandahivflowsheet/hiv_flowsheet_new_row.css" />
-
-    <table border="2" cellspacing="0" cellpadding="6" width="100%">
-        <tr>
-            <td>
-                <b>
-                    $@PATIENT_IDENTIFIER@: <lookup class="value" expression="patientIdentifiers.get(&quot;$@PATIENT_IDENTIFIER@&quot;)" />
-                </b>
-            </td>
-            <td>
-                Date: <encounterDate default="today" disallowMultipleEncountersOnDate="warn" id="encounter"/>
-            </td>
-            <td>
-                Clinique / Clinic: <encounterLocation />
-            </td>
-            <td>
-                Nom / Signature: <encounterProvider role="HIV Patient Provider"/>
-            </td>
-        </tr>
-    </table>
-
-    <section headerLabel="RESUME DES VISITES / SUMMARY OF VISITS">
-        <table border="1" width="100%">
-            <obsgroup groupingConceptId="$@PATENT_VISIT_CONSTRUCT@">
-                <tr>
-                    <th>Poids /<br/>Weight</th>
-                    <td>
-                        <obs conceptId="$@WEIGHT_KG@" id="weight"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Taille /<br/>Height</th>
-                    <td>
-                        <obs conceptId="$@HEIGHT_CM@" id="height"/>
-                    </td>
-                </tr>
+		</macros>
+	<link type="text/css" rel="stylesheet" href="/openmrs/moduleResources/rwandahivflowsheet/hiv_flowsheet_new_row.css" />
+	
+	<table border="2" cellspacing="0" cellpadding="6" width="100%">
+		<tr>
+			<td>
+				<b>
+					$@PATIENT_IDENTIFIER@: <lookup class="value" expression="patientIdentifiers.get(&quot;$@PATIENT_IDENTIFIER@&quot;)" />
+				</b>
+			</td>
+			<td>
+				Date: <encounterDate default="today" />
+			</td>
+			<td>
+				Clinique / Clinic: <encounterLocation />
+			</td>
+			<td>
+				Nom / Signature: <encounterProvider role="HIV Patient Provider"/>
+			</td>
+		</tr>
+	</table>
+	
+	<section headerLabel="RESUME DES VISITES / SUMMARY OF VISITS">
+		<table border="1" width="100%">
+			<obsgroup groupingConceptId="$@PATENT_VISIT_CONSTRUCT@">
+			<tr>
+				<th>Poids /<br/>Weight</th>
+				<td>
+					<obs conceptId="$@WEIGHT_KG@" id="weight"/> 
+				</td>
+			</tr>
+			<tr>
+				<th>Taille /<br/>Height</th>
+				<td>
+					<obs conceptId="$@HEIGHT_CM@" id="height"/> 
+				</td>
+			</tr>
 			<span class="heightForAge">
 			<tr>
-                <th>Taille pour age /<br/>Height for age</th>
-                <td>
+				<th>Taille pour age /<br/>Height for age</th>
+				<td>
 					<span style="display: none">
 					<obs conceptId="$@Z_SCORE_HEIGHT@" id="heightForAge"/> 
 					</span>
-                    <span class="zscoreHeight"></span>
-                </td>
-            </tr>
+					<span class="zscoreHeight"></span>
+				</td>
+			</tr>
 			</span>
 			<span class="weightForAge">
 			<tr>
-                <th>Poids pour age /<br/>Weight for age</th>
-                <td>
+				<th>Poids pour age /<br/>Weight for age</th>
+				<td>
 					<span style="display: none">
 					<obs conceptId="$@Z_SCORE_WEIGHT@" id="weightForAge"/> 
 					</span>
-                    <span class="zscoreWeight"></span>
-                </td>
-            </tr>
+					<span class="zscoreWeight"></span>
+				</td>
+			</tr>
 			</span>
 			<span class="heightWeight">
 			<tr>
-                <th>Poids pour taille (%) /<br/>Weight for Height</th>
-                <td>
+				<th>Poids pour taille (%) /<br/>Weight for Height</th>
+				<td>
 					<span style="display: none">
 					<obs conceptId="$@WEIGHT_FOR_HEIGHT@" id="heightWeightPercent"/> 
 					</span>
-                    <span class="heightWeightPercentage"></span>
-                </td>
-            </tr>
-			</span>
-                <tr>
-                    <th>Evlution /<br/>Stage of patient</th>
-                    <td>
-                        <obs conceptId="$@FUNCTIONAL_ABILITY_OF_THE_PATIENT@" answerConceptIds="$@NORMAL@,$@Assistance_required@,$@BEDRIDDEN@" answerLabels="A=activites normaux,B=effectue des activites avec aide,C=alites" style="radio"/> <br/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>IO Actuelle? /<br/>Current OI?</th>
-                    <td>
-                        This will be populated from the Infections Opportunistes section, please fill in any opportunistic infections in the history tab of the flowsheet.
-                    </td>
-                </tr>
-                <tr>
-                    <th>IST Actuelle? /<br/>Current STI?</th>
-                    <td>
-                        <obs conceptId="$@SEXUALLY_TRANSMITTED_INFECTION@" id="currentSTI" />
-                        <obs conceptId="$@SEXUALLY_TRANSMITTED_INFECTION_NON_CODED@" id="currentSTINonCoded" size="40"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Depistage TB</th>
-                    <td>
-                        <obs conceptId="$@RESULT_OF_TUBERCULOSIS_SCREENING_QUALITATIVE@" style="radio"/> <br/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Announce du Diagnostic</th>
-                    <td>
-                        Update Workflow state
-                    </td>
-                </tr>
-                <tr>
-                    <th># de doses manques/30jrs /<br/># of doses missed/30days</th>
-                    <td>
-                        <obs conceptId="$@NUMBER_OF_DOSES_OF_ANTIRETROVIRALS_MISSED_IN_THE_PAST_MONTH@"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th>&lt;3 = &gt;95% = Tres bon<br/>4-8= 85-94% = bon<br/>&gt;9= &lt;85% = Faible /<br/>&lt;3 = &gt;95% = Tres bon<br/>4-8= 85-94% = bon<br/>&gt;9= &lt;85% = Faible</th>
-                    <td>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Explication pour les doses manques /<br/>Explanation for the missed doses</th>
-                    <td>
-                        <obs conceptId="$@FREE_TEXT_REASON_FOR_POOR_ADHERENCE_TO_ANTIRETROVIRAL_THERAPY@" size="80"/>
-                    </td>
-                </tr>
-                <tr>
-                    <th colspan="2">Was all the data just entered present on the flowsheet (not only found on RDV)?
-                        <obs conceptId="$@ELECTRONIC_RECORD_MATCHES_PAPER_FORM@" style="radio"/></th>
-                </tr>
-                <tr>
-                    <th>Porchain RDV /<br/>Next Visit</th>
-                    <td>
-                        <obs conceptId="$@NEXT_VISIT@" allowFutureDates="true"/>
-                    </td>
-                </tr>
-            </obsgroup>
-        </table>
-    </section>
-    <br />
-    <center><submit /></center>
-    <encounterVoided/>
-    <br />
+					<span class="heightWeightPercentage"></span>
+				</td>
+			</tr>	
+			</span>	
+			<tr>
+				<th>Evlution /<br/>Stage of patient</th>
+				<td>
+					<obs conceptId="$@FUNCTIONAL_ABILITY_OF_THE_PATIENT@" answerConceptIds="$@NORMAL@,$@Assistance_required@,$@BEDRIDDEN@" answerLabels="A=activites normaux,B=effectue des activites avec aide,C=alites" style="radio"/> <br/>
+				</td>
+			</tr>
+			<tr>
+				<th>IO Actuelle? /<br/>Current OI?</th>
+				<td>
+					This will be populated from the Infections Opportunistes section, please fill in any opportunistic infections in the history tab of the flowsheet.
+				</td>
+			</tr>
+			<tr>
+				<th>IST Actuelle? /<br/>Current STI?</th>
+				<td>
+					<obs conceptId="$@SEXUALLY_TRANSMITTED_INFECTION@" id="currentSTI" />
+					<obs conceptId="$@SEXUALLY_TRANSMITTED_INFECTION_NON_CODED@" id="currentSTINonCoded" size="40"/>
+				</td>
+			</tr>
+			<tr>
+				<th>Depistage TB</th>
+				<td>
+					<obs conceptId="$@RESULT_OF_TUBERCULOSIS_SCREENING_QUALITATIVE@" style="radio"/> <br/>
+				</td>
+			</tr>
+			<tr>
+				<th>Announce du Diagnostic</th>
+				<td>
+					Update Workflow state
+				</td>
+			</tr>
+			<tr>
+				<th># de doses manques/30jrs /<br/># of doses missed/30days</th>
+				<td>
+					<obs conceptId="$@NUMBER_OF_DOSES_OF_ANTIRETROVIRALS_MISSED_IN_THE_PAST_MONTH@"/> 
+				</td>
+			</tr>
+			<tr>
+				<th>&lt;3 = &gt;95% = Tres bon<br/>4-8= 85-94% = bon<br/>&gt;9= &lt;85% = Faible /<br/>&lt;3 = &gt;95% = Tres bon<br/>4-8= 85-94% = bon<br/>&gt;9= &lt;85% = Faible</th>
+				<td>
+				</td>
+			</tr>
+			<tr>
+				<th>Explication pour les doses manques /<br/>Explanation for the missed doses</th>
+				<td>
+					<obs conceptId="$@FREE_TEXT_REASON_FOR_POOR_ADHERENCE_TO_ANTIRETROVIRAL_THERAPY@" size="80"/>
+				</td>
+			</tr>
+			<tr>
+				<th colspan="2">Was all the data just entered present on the flowsheet (not only found on RDV)?
+			     <obs conceptId="$@ELECTRONIC_RECORD_MATCHES_PAPER_FORM@" style="radio"/></th>
+			</tr>
+			<tr>
+				<th>Porchain RDV /<br/>Next Visit</th>
+				<td>
+					<obs conceptId="$@NEXT_VISIT@" allowFutureDates="true"/>
+				</td>
+			</tr>			
+			</obsgroup>
+		</table>
+	</section>	
+	<br />
+	<center><submit /></center>
+	<encounterVoided/>
+	<br />
 	<span style="display: none"> 
 	<lookup expression="patient.birthdate" class="birthdate" id="birthdate"/>
 	<lookup expression="patient.gender" class="gender" id="gender"/>
-	</span>
+	</span> 
+	
 
-
-    <script type="text/javascript">
+<script type="text/javascript">
 $j(document).ready(function() {
 	getField('currentSTINonCoded.value')[0].disabled = true;
 

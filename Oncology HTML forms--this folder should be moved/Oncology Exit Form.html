@@ -351,7 +351,7 @@
                             class="value"
                             expression="patientIdentifiers.get(&quot;IMB Primary Care Registration ID&quot;)" /></b>
                     </td>
-                    <td>Date: <encounterDate id="encounterDate" default="today" />
+                    <td>Date: <encounterDate id="encounterDate" default="today" /> Date of death when patient died
                     </td>
                 </tr>
                 <tr>
@@ -389,7 +389,7 @@
         <section headerLabel="EXIT FROM PROGRAM">
             <table border="0" cellspacing="0" cellpadding="6" width="100%">
                 <tr >
-                    <td class="bottomCell"><b>Date of exit</b>:        </td>
+                    <td class="bottomCell"><b>Is the date estimated</b>:        </td>
                     <td class="bottomCell" colspan="2">
 
                         <!-- <encounterDate id="encounterDate" default="today" /> -->
@@ -398,8 +398,8 @@
                 </tr>
                 <tr >
                     <td class="midleCell"><b>Reason for exit</b>:</td>
-                    <td style="border-bottom-style:dashed; border-width:1px; border-color:black;" colspan="2" class="checkboxGroup">
-                        If the patient is exiting permanently, fill this drop down. <exitFromCare/>
+                 <td style="border-bottom-style:dashed; border-width:1px; border-color:black;" colspan="2" class="checkboxGroup">
+                      <!--  If the patient is exiting permanently, fill this drop down. <exitFromCare/> -->
                         <br/>
 						<span id="checkboxRadio">
 						<obs conceptId="$@ONC_END_REASON@"

@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html><htmlform>
+<htmlform>
     <macros>
         @PATIENT_IDENTIFIER@=VCT NUMBER
         <!--@PATIENT_IDENTIFIER@=TRACnet ID-->
@@ -18,7 +9,7 @@
         @RETURN VISIT DATE@=3ce94df0-26fe-102b-80cb-0017a47871b2
         @ENROLLMENT DATE@=badacf97-0970-4dde-aee4-5e1c2bb125f7
 
-        <!--declaration of header colors-->
+    <!--declaration of header colors--> 
         headerColor =#009d8e
         fontOnHeaderColor = white
     </macros>
@@ -39,14 +30,14 @@
 		table.baseline-aligned td {
 			vertical-align: baseline;
 		}
-		th.subheader {
-		background-color: $headerColor;
-		color:white
+		th.subheader { 
+		background-color: $headerColor; 
+		color:white 
 		}
 	</style>
-    <!--
-        <link type="text/css" rel="stylesheet" href="/openmrs/moduleResources/rwandahivflowsheet/hiv_flowsheet_new_row.css" />
-    -->
+<!--
+    <link type="text/css" rel="stylesheet" href="/openmrs/moduleResources/rwandahivflowsheet/hiv_flowsheet_new_row.css" />
+-->
 
     <section headerLabel="HIV program enrollment">
 
@@ -68,7 +59,7 @@
                     Return visit Date:
                 </td>
                 <td>
-                    <encounterDate default="today" disallowMultipleEncountersOnDate="warn"/>
+                    <encounterDate default="today" />
                 </td>
             </tr>
             <tr>
@@ -114,9 +105,9 @@
                 </td>
             </tr>
         </table>
-        ID: <patient field="identifier" />
-        <enrollInProgram programId="cf7c0e30-2700-102b-80cb-0017a47871b2" />
-    </section>
+ID: <patient field="identifier" />
+<enrollInProgram programId="cf7c0e30-2700-102b-80cb-0017a47871b2" />
+        </section>
 
     <br />
     <center><submit /></center>
