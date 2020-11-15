@@ -3,10 +3,10 @@
         @PATIENT_IDENTIFIER@=VCT NUMBER
         @TESTING_CODE@=a28ea8a3-e82f-4ad7-8ba3-2542efffa3c0
         @RESULT_OF_HIV_TEST@=3ce17cec-26fe-102b-80cb-0017a47871b2
-        headerColor =#009d8e
-        fontOnHeaderColor = white
+    headerColor =#009d8e
+	fontOnHeaderColor = white      
     </macros>
-    <style>
+     <style>
    .section {
       border: 1px solid $headerColor;
       padding: 2px;
@@ -27,8 +27,8 @@
    background-color: $headerColor;
    color:white
    }
-</style>
-    <section headerLabel="CLIENT TESTING Results">
+</style> 
+  <section headerLabel="CLIENT TESTING Results">
 
         <table cellspacing="0" cellpadding="6" width="100%">
             <tr>
@@ -48,7 +48,7 @@
                     Encounter Date:
                 </td>
                 <td>
-                    <encounterDate default="today" disallowMultipleEncountersOnDate="warn"/>
+                    <encounterDate default="today" />
                 </td>
             </tr>
             <tr>

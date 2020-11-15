@@ -986,13 +986,13 @@ input[type="submit"] {
                             <tr>
                                 <td>Transferring Department</td>
                                 <td>
-                                    <obs conceptId="6702"/>
+                                    <obs conceptId="2cda28df-2fe7-42e0-bb2f-376c9f803537"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Provider</td>
                                 <td>
-                                    <encounterProvider default="currentUser"/>
+                                    <encounterProvider />
                                 </td>
                             </tr>
                         </table>
@@ -1003,7 +1003,7 @@ input[type="submit"] {
                 <div class="section">
                     <div class="sectionheader">DESTINATION</div>
                     <div class="sectionbody">
-                        <obsgroup groupingConceptId="12088">
+                        <obsgroup groupingConceptId="43a672dd-7173-45fb-9d3c-6d3e7be2b7a6">
                             <table class="baseline-aligned">
                                 <tr>
                                     <td>Transferring Facility</td>
@@ -1011,15 +1011,15 @@ input[type="submit"] {
                                         <encounterLocation id="location"/>
                                     </td>
 
-                                    <td>Is it an Upper Lever Facility?
-                                        <obs conceptId="105498" required="true" style="no_yes" noLabel="Non" yesLabel="Oui" />
-                                    </td>
+                                <td>Is it an Upper Lever Facility?
+                                <obs conceptId="5cc5b819-38ef-4b43-bd12-196b282b3dea" required="true" style="no_yes" noLabel="Non" yesLabel="Oui" />
+                                </td>
                                 </tr>
 
                                 <tr>
                                     <td>Transfer Date and Time</td>
                                     <td>
-                                        <obs conceptId="12098"/>
+                                        <obs conceptId="2755fc59-2618-4ef9-89e3-a997bea3deb9"/>
                                     </td>
                                 </tr>
                                 <!-- <tr>
@@ -1031,17 +1031,17 @@ input[type="submit"] {
                                 <tr>
                                     <td>Receiving Department</td>
                                     <td>
-                                        <obs conceptId="6702"/>
+                                        <obs conceptId="2cda28df-2fe7-42e0-bb2f-376c9f803537"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Reason for Transferring</td>
                                     <td>
-                                        <obs conceptId="3004" id="past_medical" style="textarea" rows="3" cols="30"/>
+                                        <obs conceptId="8d77aa9f-87c9-4808-830f-e6202b1b0335" id="past_medical" style="textarea" rows="3" cols="30"/>
                                     </td>
                                 </tr>
 
-                                <obsgroup id="motive" groupingConceptId="3065">
+                                <obsgroup id="motive" groupingConceptId="f0230f4a-1b20-4a47-bce9-c5a9c01367ec">
                                     <tr>
                                         <td>Diagnosis</td>
                                         <td>
@@ -1051,7 +1051,7 @@ input[type="submit"] {
                                                         <table>
                                                             <tr>
                                                                 <td>
-                                                                    <obs id="presumptive" conceptId="3065"
+                                                                    <obs id="presumptive" conceptId="f0230f4a-1b20-4a47-bce9-c5a9c01367ec"
                                                                          answerClasses="Diagnosis"
                                                                          style="autocomplete" size="80"/>
                                                                 </td>
@@ -1094,24 +1094,24 @@ input[type="submit"] {
                 <div class="section">
                     <div class="sectionheader">Transportation</div>
                     <div class="sectionbody">
-                        <obsgroup groupingConceptId="12100">
+                        <obsgroup groupingConceptId="dd0a71dc-8beb-435d-adb3-bfcf807ec5c0">
                             <table class="baseline-aligned">
                                 <tr>
                                     <td>Required monitoring during transportation</td>
                                     <td>
-                                        <obs conceptId="12102" style="checkbox"/>
+                                        <obs conceptId="87ba9390-87fd-467d-89ff-1873486d6f3e" style="checkbox"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Type of transportation</td>
                                     <td>
-                                        <obs conceptId="975"/>
+                                        <obs conceptId="3cd65e02-26fe-102b-80cb-0017a47871b2"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Did the patient or next Kin consent?</td>
                                     <td>
-                                        <obs conceptId="12103"/>
+                                        <obs conceptId="df3976d7-cc12-40a3-99e7-ad981d85144f"/>
                                     </td>
                                 </tr>
                             </table>

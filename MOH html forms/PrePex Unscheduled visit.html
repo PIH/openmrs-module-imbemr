@@ -27,56 +27,58 @@
 		color:white
 		}
 	</style>
-    <includeIf velocityTest="$patient.gender == 'M' ">
-        <section headerLabel=" INFORMATION DEMOGRAPHIQUE" >
-            <table border="2" cellspacing="0" cellpadding="6" width="100%">
-                <tr>
-                    <td>
-                        <b>
-                            HTC NUMBER:
-                            <lookup class="value" expression="patientIdentifiers.get(&quot;HTC NUMBER&quot;)" />
-                        </b>
-                    </td>
-                    <td>
-                        Date:
-                        <encounterDate />
-                    </td>
+<includeIf velocityTest="$patient.gender == 'M' ">
 
-                    <td>
-                        Clinique / Clinic:
-                        <encounterLocation id="location" default="GlobalProperty:registration.defaultLocationCode"/>
-                    </td>
-                    <td>
-                        Clinician Nom/ Signature:
-                        <encounterProvider role="Provider"/>
-                    </td>
-                </tr>
-            </table>
-        </section>
+    <section headerLabel=" INFORMATION DEMOGRAPHIQUE" >
+        <table border="2" cellspacing="0" cellpadding="6" width="100%">
+            <tr>
+                <td>
+                    <b>
+                        HTC NUMBER: 
+                        <lookup class="value" expression="patientIdentifiers.get(&quot;HTC NUMBER&quot;)" />
 
-        <section headerLabel="Prepex removal Procedure">
-            <table class="baseline-aligned">
-                <tr>
-                    <td>
-                        Date:
-                        <encounterDate />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <obs conceptId="432d65ba-63b5-42e8-a2ee-500ad7bdc59c" labelText="Problem description:"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td><obs conceptId="3cd7c6fc-26fe-102b-80cb-0017a47871b2" labelText="Treatment:"/></td>
-                </tr>
-            </table>
-        </section>
+                    </b>
+                </td>
+                <td>
+                    Date:
+                    <encounterDate />
+                </td>
 
-        <left>
-            <submit />
-        </left>
-    </includeIf>
+                <td>
+                    Clinique / Clinic:
+                    <encounterLocation id="location" />
+                </td>
+                <td>
+                    Clinician Nom/ Signature:
+                    <encounterProvider role="Provider"/>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <section headerLabel="Prepex removal Procedure">
+        <table class="baseline-aligned">
+            <tr>
+            <td>
+                Date:
+                <encounterDate />
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <obs conceptId="432d65ba-63b5-42e8-a2ee-500ad7bdc59c" labelText="Problem description:"/>
+                </td>
+            </tr>
+            <tr>
+                <td><obs conceptId="3cd7c6fc-26fe-102b-80cb-0017a47871b2" labelText="Treatment:"/></td>
+            </tr>
+        </table>
+    </section>
+
+    <left>
+        <submit />
+    </left>
+</includeIf>
     <includeIf velocityTest="$patient.gender == 'F' ">
         <section headerLabel="Invalid Patient Message">
             <table border="0" width="100%">
