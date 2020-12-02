@@ -15,43 +15,11 @@
 	<require_version>${openMRSVersion}</require_version>
 	
 	<require_modules>
-        <require_module version="${addresshierarchyrwandaVersion}">org.openmrs.module.addresshierarchyrwanda</require_module>
 		<require_module version="${appframeworkVersion}">org.openmrs.module.appframework</require_module>
         <require_module version="${appuiVersion}">org.openmrs.module.appui</require_module>
-        <require_module version="${calculationVersion}">org.openmrs.calculation</require_module>
-        <require_module version="${emrmonitorVersion}">org.openmrs.module.emrmonitor</require_module>
-        <require_module version="${formfilterVersion}">org.openmrs.module.formfilter</require_module>
-        <require_module version="${groovyVersion}">org.openmrs.module.groovy</require_module>
-        <require_module version="${heightweighttrackerVersion}">org.openmrs.module.heightweighttracker</require_module>
-        <require_module version="${htmlformentryVersion}">org.openmrs.module.htmlformentry</require_module>
-        <require_module version="${htmlformentry19extVersion}">org.openmrs.module.htmlformentry19ext</require_module>
-        <require_module version="${htmlformflowsheetVersion}">org.openmrs.module.htmlformflowsheet</require_module>
-        <require_module version="${htmlwidgetsVersion}">org.openmrs.module.htmlwidgets</require_module>
-        <require_module version="${idgenVersion}">org.openmrs.module.idgen</require_module>
-        <require_module version="${logicVersion}">org.openmrs.logic</require_module>
-        <require_module version="${metadatamappingVersion}">org.openmrs.module.metadatamapping</require_module>
-        <require_module version="${metadatasharingVersion}">org.openmrs.module.metadatasharing</require_module>
-        <require_module version="${namephoneticsVersion}">org.openmrs.module.namephonetics</require_module>
-        <require_module version="${orderextensionVersion}">org.openmrs.module.orderextension</require_module>
-        <require_module version="${patientsummaryVersion}">org.openmrs.module.patientsummary</require_module>
-        <require_module version="${rwandahivflowsheetVersion}">org.openmrs.module.rwandahivflowsheet</require_module>
-        <require_module version="${reportingVersion}">org.openmrs.module.reporting</require_module>
-        <require_module version="${reportingcompatibilityVersion}">org.openmrs.module.reportingcompatibility</require_module>
-        <require_module version="${reportingobjectgroupVersion}">org.openmrs.module.reportingobjectgroup</require_module>
-        <require_module version="${rowperpatientreportsVersion}">org.openmrs.module.rowperpatientreports</require_module>
-        <require_module version="${rwandaprimarycareVersion}">org.openmrs.module.rwandaprimarycare</require_module>
-        <require_module version="${rwandareportsVersion}">org.openmrs.module.rwandareports</require_module>
-        <require_module version="${serializationVersion}">org.openmrs.module.serialization.xstream</require_module>
-        <require_module version="${simplelabentryVersion}">org.openmrs.module.simplelabentry</require_module>
-        <require_module version="${syncVersion}">org.openmrs.module.sync</require_module>
         <require_module version="${uicommonsVersion}">org.openmrs.module.uicommons</require_module>
 		<require_module version="${uiframeworkVersion}">org.openmrs.module.uiframework</require_module>
-        <require_module version="${usagestatisticsVersion}">org.openmrs.module.usagestatistics</require_module>
         <require_module version="${webservicesRestVersion}">org.openmrs.module.webservices.rest</require_module>
-        <require_module version="${omodExportVersion}">org.openmrs.module.omodexport</require_module>
-        <require_module version="${validationVersion}">org.openmrs.module.validation</require_module>
-        <require_module version="${patientFlagsVersion}">org.openmrs.module.patientflags</require_module>
-        <require_module version="${metadatadeployVersion}">org.openmrs.module.metadatadeploy</require_module>
 
     </require_modules>
 
