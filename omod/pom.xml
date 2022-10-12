@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.openmrs.module</groupId>
 		<artifactId>imbemr</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.1.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>imbemr-omod</artifactId>
@@ -19,7 +19,6 @@
             <version>${project.parent.version}</version>
             <scope>compile</scope>
         </dependency>
-
 		<dependency>
 			<groupId>org.openmrs.web</groupId>
 			<artifactId>openmrs-web</artifactId>
@@ -27,7 +26,6 @@
 			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.openmrs.web</groupId>
 			<artifactId>openmrs-web</artifactId>
@@ -35,39 +33,12 @@
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>
-
-        <dependency>
-            <groupId>org.openmrs.module</groupId>
-            <artifactId>appframework-api</artifactId>
-            <version>${appframeworkVersion}</version>
-            <scope>provided</scope>
-        </dependency>
-		<dependency>
-			<groupId>org.openmrs.module</groupId>
-			<artifactId>appui-omod</artifactId>
-			<version>${appuiVersion}</version>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>legacyui-omod</artifactId>
 			<version>${legacyuiVersion}</version>
 			<scope>provided</scope>
 		</dependency>
-        <dependency>
-            <groupId>org.openmrs.module</groupId>
-            <artifactId>webservices.rest-omod-common</artifactId>
-            <version>${webservicesRestVersion}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openmrs.module</groupId>
-            <artifactId>uicommons-omod</artifactId>
-            <version>${uicommonsVersion}</version>
-            <scope>provided</scope>
-        </dependency>
-        
 	</dependencies>
 
 	<build>
@@ -195,32 +166,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>Fetch SASS sources from uicommons</id>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <phase>generate-resources</phase>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.openmrs.module</groupId>
-                                    <artifactId>uicommons-scss</artifactId>
-                                    <version>${uicommonsVersion}</version>
-                                    <type>zip</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>src/main/compass/sass-external</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             
 		</plugins>
 	</build>
