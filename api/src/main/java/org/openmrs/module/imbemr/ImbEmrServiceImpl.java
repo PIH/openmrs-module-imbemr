@@ -13,6 +13,8 @@
  */
 package org.openmrs.module.imbemr;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.openmrs.Encounter;
 import org.openmrs.EncounterProvider;
 import org.openmrs.Obs;
@@ -31,6 +33,7 @@ import org.openmrs.api.context.Context;
 import org.openmrs.api.db.hibernate.ImmutableOrderInterceptor;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.util.PrivilegeConstants;
+import org.openmrs.validator.ValidateUtil;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
@@ -44,14 +47,19 @@ import java.util.List;
 @Transactional
 public class ImbEmrServiceImpl extends BaseOpenmrsService implements ImbEmrService  {
 
+	protected Log log = LogFactory.getLog(getClass());
+
 	@Transactional
 	@Authorized(PrivilegeConstants.EDIT_PATIENTS)
 	public List<String> triggerSyncForPatient(Patient patient) {
-		List<String> log = new ArrayList<String>();
+		List<String> messages = new ArrayList<String>();
 		Date now = new Date();
+		addMessage(messages, "Triggered Sync for patient: " + patient.getId());
 
+		Boolean originalDisableValidationValue = ValidateUtil.getDisableValidation();
 		ImmutableOrderInterceptor orderInterceptor = Context.getRegisteredComponents(ImmutableOrderInterceptor.class).get(0);
 		try {
+			ValidateUtil.setDisableValidation(true);
 			orderInterceptor.addMutablePropertiesForThread("dateCreated");
 			// Update patient
 			patient.setDateChanged(now);
@@ -76,16 +84,20 @@ public class ImbEmrServiceImpl extends BaseOpenmrsService implements ImbEmrServi
 				identifier.setDateChanged(now);
 			}
 
+			addMessage(messages, "Saving Patient: " + patient.getId());
 			Context.getPatientService().savePatient(patient);
-			log.add("Saved Patient: " + patient);
 
-			for (Relationship relationship : Context.getPersonService().getRelationshipsByPerson(patient)) {
+			List<Relationship> relationships = Context.getPersonService().getRelationshipsByPerson(patient);
+			addMessage(messages, "Found " + relationships.size() + " relationships to save");
+			for (Relationship relationship : relationships) {
 				relationship.setDateChanged(now);
+				addMessage(messages, "Saving Relationship: " + relationship.getId());
 				Context.getPersonService().saveRelationship(relationship);
-				log.add("Saved Relationship: " + relationship);
 			}
 
-			for (Encounter encounter : Context.getEncounterService().getEncountersByPatient(patient)) {
+			List<Encounter> encounters = Context.getEncounterService().getEncountersByPatient(patient);
+			addMessage(messages, "Found " + encounters.size() + " encounters to save");
+			for (Encounter encounter : encounters) {
 				encounter.setDateChanged(now);
 				if (encounter.getVisit() != null) {
 					encounter.getVisit().setDateChanged(now);
@@ -102,42 +114,59 @@ public class ImbEmrServiceImpl extends BaseOpenmrsService implements ImbEmrServi
 						encounterProvider.getEncounterRole().setDateChanged(now);
 					}
 				}
+				addMessage(messages, "Saving Encounter: " + encounter.getId());
 				Context.getEncounterService().saveEncounter(encounter);
-				log.add("Saved Encounter: " + encounter);
 			}
 
-			for (Visit visit : Context.getVisitService().getVisitsByPatient(patient)) {
+			List<Visit> visits = Context.getVisitService().getVisitsByPatient(patient);
+			addMessage(messages, "Found " + visits.size() + " visits to save");
+			for (Visit visit : visits) {
 				visit.setDateChanged(now);
+				addMessage(messages, "Saving Visit: " + visit.getId());
 				Context.getVisitService().saveVisit(visit);
-				log.add("Saved Visit: " + visit);
 			}
 
+			List<Obs> topLevelObs = new ArrayList<Obs>();
 			for (Obs obs : Context.getObsService().getObservationsByPerson(patient)) {
 				if (obs.getEncounter() == null) {
-					obs.setDateCreated(oneSecondLater(obs.getDateCreated()));
-					Context.getObsService().saveObs(obs, "Resaving patient and all data for sync");
-					log.add("Saved Obs: " + obs);
+					topLevelObs.add(obs);
 				}
 			}
+			addMessage(messages, "Found " + topLevelObs.size() + " top level obs to save");
+			for (Obs obs : topLevelObs) {
+				obs.setDateCreated(oneSecondLater(obs.getDateCreated()));
+				addMessage(messages, "Saving Obs: " + obs.getId());
+				Context.getObsService().saveObs(obs, "Resaving patient and all data for sync");
+			}
 
-			for (PatientProgram patientProgram : Context.getProgramWorkflowService().getPatientPrograms(patient, null, null, null, null, null, true)) {
+			List<PatientProgram> patientPrograms = Context.getProgramWorkflowService().getPatientPrograms(patient, null, null, null, null, null, true);
+			addMessage(messages, "Found " + patientPrograms.size() + " patient programs to save");
+			for (PatientProgram patientProgram : patientPrograms) {
 				patientProgram.setDateChanged(now);
 				for (PatientState patientState : patientProgram.getStates()) {
 					patientState.setDateChanged(now);
 				}
+				addMessage(messages, "Saving Patient Program: " + patientProgram.getId());
 				Context.getProgramWorkflowService().savePatientProgram(patientProgram);
-				log.add("Saved Patient Program: " + patientProgram);
 			}
 		}
 		catch (Exception e) {
-			log.add("Error: " + e.getMessage());
+			addMessage(messages, "Error: " + e.getMessage());
 			throw new RuntimeException(e);
 		}
 		finally {
+			ValidateUtil.setDisableValidation(originalDisableValidationValue);
 			orderInterceptor.removeMutablePropertiesForThread();
 		}
 
-		return log;
+		addMessage(messages, "Trigger Sync Completed: " + patient.getId());
+
+		return messages;
+	}
+
+	protected void addMessage(List<String> messages, String message) {
+		messages.add(message);
+		log.info(message);
 	}
 
 	private Date oneSecondLater(Date date) {

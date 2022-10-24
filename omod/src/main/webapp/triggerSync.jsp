@@ -12,9 +12,11 @@
 			jQuery.get("${pageContext.request.contextPath}/module/imbemr/triggerSync.form?patientId=" + pId, function(data) {
 				jQuery("#errorSection").html(data.error);
 				jQuery("#messagesSection").html("");
-				data.messages.forEach(function(message) {
-					jQuery("#messagesSection").append(message).append("<br/><br/>");
-				});
+				if (data && data.messages && data.messages.length > 0) {
+					data.messages.forEach(function (message) {
+						jQuery("#messagesSection").append(message).append("<br/><br/>");
+					});
+				}
 			});
 		});
 	} );
