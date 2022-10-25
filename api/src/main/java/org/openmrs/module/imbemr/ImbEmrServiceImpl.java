@@ -59,7 +59,7 @@ public class ImbEmrServiceImpl extends BaseOpenmrsService implements ImbEmrServi
 		Boolean originalDisableValidationValue = ValidateUtil.getDisableValidation();
 		ImmutableOrderInterceptor orderInterceptor = Context.getRegisteredComponents(ImmutableOrderInterceptor.class).get(0);
 		try {
-			ValidateUtil.setDisableValidation(true);
+			ValidateUtil.disableValidationForThread();
 			orderInterceptor.addMutablePropertiesForThread("dateCreated");
 			// Update patient
 			patient.setDateChanged(now);
@@ -155,7 +155,7 @@ public class ImbEmrServiceImpl extends BaseOpenmrsService implements ImbEmrServi
 			throw new RuntimeException(e);
 		}
 		finally {
-			ValidateUtil.setDisableValidation(originalDisableValidationValue);
+			ValidateUtil.resumeValidationForThread();
 			orderInterceptor.removeMutablePropertiesForThread();
 		}
 
