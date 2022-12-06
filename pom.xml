@@ -3,7 +3,7 @@
 
 	<groupId>org.openmrs.module</groupId>
 	<artifactId>imbemr</artifactId>
-	<version>1.1.0-SNAPSHOT</version>
+	<version>2.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>IMB Emr Module</name>
 	<url>https://wiki.openmrs.org/display/docs/IMB+EMR+Module</url>
@@ -27,7 +27,11 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <openMRSVersion>2.5.8-SNAPSHOT</openMRSVersion>
+        <appuiVersion>1.16.0</appuiVersion>
+        <authenticationVersion>1.0.0-SNAPSHOT</authenticationVersion>
+        <authenticationuiVersion>1.0.0-SNAPSHOT</authenticationuiVersion>
         <legacyuiVersion>1.6.0</legacyuiVersion>
+        <uiframeworkVersion>3.23.0</uiframeworkVersion>
         <MODULE_ID>${project.parent.artifactId}</MODULE_ID>
         <MODULE_NAME>IMB EMR</MODULE_NAME>
         <MODULE_VERSION>${project.parent.version}</MODULE_VERSION>
@@ -54,6 +58,20 @@
             <version>${openMRSVersion}</version>
             <classifier>tests</classifier>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>authentication-api</artifactId>
+            <version>${authenticationVersion}</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>authenticationui-api</artifactId>
+            <version>${authenticationuiVersion}</version>
+            <type>jar</type>
+            <scope>provided</scope>
         </dependency>
          <dependency>
             <groupId>org.openmrs.module</groupId>
@@ -128,8 +146,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.1</version>
                     <configuration>
-                        <target>1.6</target>
-                        <source>1.6</source>
+                        <target>1.8</target>
+                        <source>1.8</source>
                     </configuration>
                 </plugin>
                 <plugin>
