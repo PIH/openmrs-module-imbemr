@@ -30,6 +30,7 @@ public class ImbEmrActivator extends BaseModuleActivator {
 	 */
 	public void started() {
         log.info("IMB EMR Module started");
+		new AuthenticationInitializer().started();
 	}
 
 	/**
