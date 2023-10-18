@@ -27,6 +27,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <openMRSVersion>2.5.8-SNAPSHOT</openMRSVersion>
+        <appframeworkVersion>2.17.0</appframeworkVersion>
         <appuiVersion>1.16.0</appuiVersion>
         <authenticationVersion>1.0.0-SNAPSHOT</authenticationVersion>
         <authenticationuiVersion>1.0.0-SNAPSHOT</authenticationuiVersion>
@@ -63,6 +64,13 @@
             <groupId>org.openmrs.module</groupId>
             <artifactId>authentication-api</artifactId>
             <version>${authenticationVersion}</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>appframework-api</artifactId>
+            <version>${appframeworkVersion}</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
