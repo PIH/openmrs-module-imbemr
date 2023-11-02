@@ -21,22 +21,32 @@ public class ImbEmrAppLoaderFactory implements AppFrameworkFactory {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public ImbEmrAppLoaderFactory() {
         // Tell the parser to all // and /* style comments.
         objectMapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
     }
 
-    private List<File> getAppConfigFilesBySuffix(String suffix) {
-        List<File> files = new ArrayList<>();
+    private List<File> getConfigFilesBySuffix(String suffix) {
         File configDir = OpenmrsUtil.getDirectoryInApplicationDataDirectory("configuration");
         File appFrameworkDir = new File(configDir, "appframework");
-        File appDir = new File(appFrameworkDir, "apps");
-        if (appDir.exists() && appDir.isDirectory()) {
-            for (File f : appDir.listFiles()) {
-                if (f.getName().endsWith(suffix)) {
-                    files.add(f);
+        return getNestedFilesBySuffix(appFrameworkDir, suffix);
+    }
+
+    public List<File> getNestedFilesBySuffix(File directory, String suffix) {
+        List<File> files = new ArrayList<>();
+        if (directory.exists() && directory.isDirectory()) {
+            File[] filesInDirectory = directory.listFiles();
+            if (filesInDirectory != null) {
+                for (File f : filesInDirectory) {
+                    if (f.isDirectory()) {
+                        files.addAll(getNestedFilesBySuffix(f, suffix));
+                    } else {
+                        if (f.getName().endsWith(suffix)) {
+                            files.add(f);
+                        }
+                    }
                 }
             }
         }
@@ -46,7 +56,7 @@ public class ImbEmrAppLoaderFactory implements AppFrameworkFactory {
     @Override
     public List<AppTemplate> getAppTemplates() {
         List<AppTemplate> templates = new ArrayList<>();
-        for (File f : getAppConfigFilesBySuffix("AppTemplates.json")) {
+        for (File f : getConfigFilesBySuffix("AppTemplates.json")) {
             try {
                 List<AppTemplate> l = objectMapper.readValue(f, new TypeReference<List<AppTemplate>>() {});
                 templates.addAll(l);
@@ -61,7 +71,7 @@ public class ImbEmrAppLoaderFactory implements AppFrameworkFactory {
     @Override
     public List<AppDescriptor> getAppDescriptors() {
         List<AppDescriptor> descriptors = new ArrayList<>();
-        for (File f : getAppConfigFilesBySuffix("app.json")) {
+        for (File f : getConfigFilesBySuffix("app.json")) {
             try {
                 List<AppDescriptor> l = objectMapper.readValue(f, new TypeReference<List<AppDescriptor>>() {});
                 descriptors.addAll(l);
@@ -73,11 +83,10 @@ public class ImbEmrAppLoaderFactory implements AppFrameworkFactory {
         return descriptors;
     }
 
-
     @Override
     public List<Extension> getExtensions() {
         List<Extension> extensions = new ArrayList<>();
-        for (File f : getAppConfigFilesBySuffix("extension.json")) {
+        for (File f : getConfigFilesBySuffix("extension.json")) {
             try {
                 List<Extension> l = objectMapper.readValue(f, new TypeReference<List<Extension>>() {});
                 extensions.addAll(l);

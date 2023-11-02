@@ -1,6 +1,6 @@
 <%
     ui.decorateWith("appui", "standardEmrPage", [ title: "Welcome to IMB EMR" ])
-    //ui.includeCss("referenceapplication", "home.css")
+    ui.includeCss("imbemr", "home.css")
 
     def htmlSafeId = { extension ->
         "${ extension.id.replace(".", "-") }-${ extension.id.replace(".", "-") }-extension"

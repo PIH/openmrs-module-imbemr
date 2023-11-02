@@ -15,12 +15,8 @@ package org.openmrs.module.imbemr;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.api.AdministrationService;
-import org.openmrs.api.context.Context;
 import org.openmrs.module.BaseModuleActivator;
 import org.openmrs.module.ModuleActivator;
-import org.openmrs.module.appframework.service.AppFrameworkService;
-import org.openmrs.scheduler.SchedulerService;
 
 /**
  * This class contains the logic that is run every time this module is either started or stopped.
@@ -29,24 +25,12 @@ public class ImbEmrActivator extends BaseModuleActivator {
 	
 	protected Log log = LogFactory.getLog(getClass());
 
-	@Override
-	public void contextRefreshed() {
-		super.contextRefreshed();
-
-		AppFrameworkService appFrameworkService = Context.getService(AppFrameworkService.class);
-
-		appFrameworkService.disableApp("registrationapp.basicRegisterPatient");
-		appFrameworkService.disableApp("coreapps.awaitingAdmission");
-	}
-
 	/**
 	 * @see ModuleActivator#started()
 	 */
 	public void started() {
         log.info("IMB EMR Module started");
 		new AuthenticationInitializer().started();
-
-
 	}
 
 	/**
