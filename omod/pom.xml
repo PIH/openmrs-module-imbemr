@@ -49,6 +49,7 @@
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>appui-omod</artifactId>
 			<version>${appuiVersion}</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
