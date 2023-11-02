@@ -13,8 +13,6 @@
  */
 package org.openmrs.module.imbemr.page.controller;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.appframework.context.AppContextModel;
 import org.openmrs.module.appframework.service.AppFrameworkService;
@@ -30,8 +28,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class HomePageController {
-	
-	protected final Log log = LogFactory.getLog(getClass());
 	
 	@RequestMapping("/index.htm")
 	public String overrideHomepage() {
