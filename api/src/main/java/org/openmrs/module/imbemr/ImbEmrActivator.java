@@ -17,6 +17,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.module.BaseModuleActivator;
 import org.openmrs.module.ModuleActivator;
+import org.openmrs.module.reporting.config.ReportLoader;
 
 /**
  * This class contains the logic that is run every time this module is either started or stopped.
@@ -29,8 +30,11 @@ public class ImbEmrActivator extends BaseModuleActivator {
 	 * @see ModuleActivator#started()
 	 */
 	public void started() {
-        log.info("IMB EMR Module started");
+        log.warn("IMB EMR Module Started");
 		new AuthenticationInitializer().started();
+		log.warn("Authentication Configured");
+		ReportLoader.loadReportsFromConfig();
+		log.warn("Reports loaded from configuration");
 	}
 
 	/**
