@@ -24,7 +24,7 @@ import org.openmrs.module.ModuleActivator;
 public class ImbEmrActivator extends BaseModuleActivator {
 	
 	protected Log log = LogFactory.getLog(getClass());
-	
+
 	/**
 	 * @see ModuleActivator#started()
 	 */

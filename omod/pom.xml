@@ -35,20 +35,26 @@
 		</dependency>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
+			<artifactId>appui-omod</artifactId>
+			<version>${appuiVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
 			<artifactId>legacyui-omod</artifactId>
 			<version>${legacyuiVersion}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
-			<artifactId>uiframework-omod</artifactId>
-			<version>${uiframeworkVersion}</version>
+			<artifactId>uicommons-omod</artifactId>
+			<version>${uicommonsVersion}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
-			<artifactId>appui-omod</artifactId>
-			<version>${appuiVersion}</version>
+			<artifactId>uiframework-omod</artifactId>
+			<version>${uiframeworkVersion}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
