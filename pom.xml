@@ -34,6 +34,7 @@
         <initializerVersion>2.5.2</initializerVersion>
         <legacyuiVersion>1.6.0</legacyuiVersion>
         <uicommonsVersion>2.24.0</uicommonsVersion>
+        <reportingVersion>1.26.0</reportingVersion>
         <uiframeworkVersion>3.23.0</uiframeworkVersion>
         <MODULE_ID>${project.parent.artifactId}</MODULE_ID>
         <MODULE_NAME>IMB EMR</MODULE_NAME>
@@ -92,6 +93,12 @@
             <groupId>org.openmrs.module</groupId>
             <artifactId>legacyui-api</artifactId>
             <version>${legacyuiVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>reporting-api</artifactId>
+            <version>${reportingVersion}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
