@@ -31,7 +31,7 @@
         <appuiVersion>1.16.0</appuiVersion>
         <authenticationVersion>1.0.0</authenticationVersion>
         <authenticationuiVersion>1.0.0</authenticationuiVersion>
-        <initializerVersion>2.3.0</initializerVersion>
+        <initializerVersion>2.5.2</initializerVersion>
         <legacyuiVersion>1.6.0</legacyuiVersion>
         <uicommonsVersion>2.24.0</uicommonsVersion>
         <uiframeworkVersion>3.23.0</uiframeworkVersion>
