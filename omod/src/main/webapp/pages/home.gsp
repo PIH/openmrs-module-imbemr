@@ -10,7 +10,10 @@
     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <% if (authenticatedUser) { %>
             <h4>
-                ${ ui.encodeHtmlContent(ui.message("referenceapplication.home.currentUser", ui.format(authenticatedUser), ui.format(sessionContext.sessionLocation))) }
+                Logged in as ${ui.encodeHtmlContent(ui.format(authenticatedUser))}
+                <% if (sessionContext.sessionLocation) { %>
+                    at ${ ui.encodeHtmlContent(ui.format(sessionContext.sessionLocation)) }
+                <% } %>
             </h4>
         <% } else { %>
             <h4>
