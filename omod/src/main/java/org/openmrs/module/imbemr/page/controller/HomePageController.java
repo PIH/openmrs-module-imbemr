@@ -19,6 +19,7 @@ import org.openmrs.module.appframework.service.AppFrameworkService;
 import org.openmrs.module.appui.UiSessionContext;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.page.PageModel;
+import org.openmrs.util.ConfigUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,7 +32,11 @@ public class HomePageController {
 	
 	@RequestMapping("/index.htm")
 	public String overrideHomepage() {
-		return "forward:/imbemr/home.page";
+        String enable2x = ConfigUtil.getProperty("imbemr.enable2xHomePage");
+        if (Boolean.parseBoolean(enable2x)) {
+            return "forward:/imbemr/home.page";
+        }
+		return "forward:/module/legacyui/index.htm";
 	}
 
     /**
