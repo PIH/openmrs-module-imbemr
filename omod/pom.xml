@@ -53,10 +53,18 @@
 		</dependency>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
+			<artifactId>uicommons-scss</artifactId>
+			<version>${uicommonsVersion}</version>
+			<scope>provided</scope>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
 			<artifactId>uiframework-omod</artifactId>
 			<version>${uiframeworkVersion}</version>
 			<scope>provided</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>

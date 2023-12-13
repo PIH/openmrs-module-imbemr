@@ -15,7 +15,6 @@ package org.openmrs.module.imbemr.web;
 
 import org.apache.commons.lang.StringUtils;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.openmrs.OpenmrsCharacterEscapes;
 import org.openmrs.Patient;
 import org.openmrs.api.PatientService;
 import org.openmrs.module.imbemr.ImbEmrService;
@@ -70,7 +69,6 @@ public class TriggerSyncController {
 
         response.setContentType("text/json");
         ObjectMapper mapper = new ObjectMapper();
-        mapper.getJsonFactory().setCharacterEscapes(new OpenmrsCharacterEscapes());
         mapper.writeValue(response.getOutputStream(), data);
     }
 }
