@@ -35,6 +35,8 @@ public class ImbEmrActivator extends BaseModuleActivator {
 		log.warn("Authentication Configured");
 		ReportLoader.loadReportsFromConfig();
 		log.warn("Reports loaded from configuration");
+		GlobalResourceInitializer.includeGlobalResources();
+		log.warn("Global resources loaded from configuration");
 	}
 
 	/**
