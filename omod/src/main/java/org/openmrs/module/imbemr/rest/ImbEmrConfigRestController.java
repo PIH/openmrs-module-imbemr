@@ -8,6 +8,7 @@ import org.openmrs.messagesource.MutableMessageSource;
 import org.openmrs.module.ModuleFactory;
 import org.openmrs.module.imbemr.ImbEmrAppLoaderFactory;
 import org.openmrs.module.initializer.InitializerMessageSource;
+import org.openmrs.module.initializer.api.InitializerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,5 +67,18 @@ public class ImbEmrConfigRestController {
         catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
+    }
+
+    @RequestMapping(value = "/rest/v1/imbemr/config/initializer", method = RequestMethod.PUT)
+    @ResponseBody
+    public Object updateInitializerConfiguration() {
+        log.warn("Refreshing initializer configuration");
+        if (!Context.hasPrivilege(REQUIRED_PRIVILEGE) || !Context.hasPrivilege("SQL Level Access")) {
+            log.error("User does not have sufficient privileges: SQL Level Access and " + REQUIRED_PRIVILEGE);
+            return HttpStatus.UNAUTHORIZED;
+        }
+        Context.getService(InitializerService.class).load();
+        log.warn("Successfully refreshed initializer configuration");
+        return OK;
     }
 }

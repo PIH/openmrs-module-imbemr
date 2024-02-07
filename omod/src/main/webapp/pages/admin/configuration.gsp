@@ -49,6 +49,17 @@
                     jq(".action-button").removeProp('disabled');
                 });
         });
+
+        jq("#refresh-config-action").click(function() {
+            actionInitiated();
+            jq.ajax({type: "PUT", url: openmrsContextPath + '/ws/rest/v1/imbemr/config/initializer'})
+                .fail(function (data) {
+                    jq("#error-details").html('An error occurred: ' + data.responseText);
+                })
+                .always(function() {
+                    jq(".action-button").removeProp('disabled');
+                });
+        });
     });
 </script>
 
@@ -57,6 +68,8 @@
 <input id="refresh-messageproperties-action" type="button" class="action-button" value="Refresh Message Properties" />
 <br/>
 <input id="refresh-apps-action" type="button" class="action-button" value="Refresh Apps and Extensions" />
+<br/>
+<input id="refresh-config-action" type="button" class="action-button" value="Refresh Initializer Configuration" />
 <br/>
 <br/>
 <div id="error-details"></div>
