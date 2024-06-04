@@ -15,7 +15,7 @@
         <% } %>
         <ul>
             <% encounters.each { encounter ->
-                var url = ui.pageLink("htmlformentryui", "htmlform/editHtmlFormWithStandardUi", [
+                var url = ui.pageLink("htmlformentryui", "htmlform/viewEncounterWithHtmlForm", [
                         "patientId"     : encounter.patient.uuid,
                         "encounterId"   : encounter.uuid,
                         "returnProvider": "coreapps",

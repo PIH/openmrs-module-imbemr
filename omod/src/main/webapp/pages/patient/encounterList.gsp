@@ -147,7 +147,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
         }
         // the assumption here is that if there's an associated form, it's an HTML Form... once we start adopting O3/Ampath forms this may no longer be valid
         else if (e.form) {
-            pageLink = ui.pageLink("htmlformentryui", "htmlform/editHtmlFormWithStandardUi", [
+            pageLink = ui.pageLink("htmlformentryui", "htmlform/viewEncounterWithHtmlForm", [
                     "patientId": e.patient.uuid,
                     "encounterId": e.uuid,
                     "returnProvider": "imbemr",
