@@ -69,9 +69,9 @@ public class EncountersSectionFragmentController {
 		List<Encounter> encounters = encounterService.getEncounters(b.createEncounterSearchCriteria());
 		encounters.sort(Comparator.comparing(Encounter::getEncounterDatetime).reversed());
 
-		if (appDescriptor.getConfig().get("limit") != null) {
+		if (appDescriptor != null && appDescriptor.getConfig() != null && appDescriptor.getConfig().get("limit") != null) {
 			try {
-				Integer limit = Integer.parseInt(appDescriptor.getConfig().get("limit").getTextValue());
+				int limit = Integer.parseInt(appDescriptor.getConfig().get("limit").getTextValue());
 				if (encounters.size() > limit) {
 					encounters = encounters.subList(0, limit);
 				}

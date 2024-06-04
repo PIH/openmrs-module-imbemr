@@ -149,7 +149,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
         else if (e.form) {
             pageLink = ui.pageLink("htmlformentryui", "htmlform/viewEncounterWithHtmlForm", [
                     "patientId": e.patient.uuid,
-                    "encounterId": e.uuid,
+                    "encounter": e.uuid,
                     "returnProvider": "imbemr",
                     "returnPage": "patient/encounterList"])
         }
