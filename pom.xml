@@ -31,6 +31,8 @@
         <appuiVersion>1.16.0</appuiVersion>
         <authenticationVersion>1.0.0</authenticationVersion>
         <authenticationuiVersion>1.0.0</authenticationuiVersion>
+        <emrapiVersion>1.35.0-SNAPSHOT</emrapiVersion>
+        <coreappsVersion>1.40.0-SNAPSHOT</coreappsVersion>
         <initializerVersion>2.5.2</initializerVersion>
         <legacyuiVersion>1.6.0</legacyuiVersion>
         <uicommonsVersion>2.24.0</uicommonsVersion>
@@ -81,6 +83,19 @@
             <artifactId>authenticationui-api</artifactId>
             <version>${authenticationuiVersion}</version>
             <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>coreapps-api</artifactId>
+            <version>${coreappsVersion}</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>emrapi-api</artifactId>
+            <version>${emrapiVersion}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
