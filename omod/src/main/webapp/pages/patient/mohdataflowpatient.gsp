@@ -17,4 +17,4 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient ]) }
 
 <h3>Medical History</h3>
 
-<iframe class="frame-content" scrolling="no" src="/${ contextPath }/module/imbemr/mohdataflowpatient.htm?patientId=${ patient.patientId }"></iframe>
+<iframe class="frame-content" scrolling="yes" src="/${ contextPath }/module/imbemr/mohdataflowpatient.htm?patientId=${ patient.patientId }"></iframe>
