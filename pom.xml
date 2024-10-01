@@ -31,12 +31,13 @@
         <appuiVersion>1.16.0</appuiVersion>
         <authenticationVersion>1.0.0</authenticationVersion>
         <authenticationuiVersion>1.0.0</authenticationuiVersion>
-        <emrapiVersion>1.35.0-SNAPSHOT</emrapiVersion>
-        <coreappsVersion>1.40.0-SNAPSHOT</coreappsVersion>
+        <coreappsVersion>2.0.0-SNAPSHOT</coreappsVersion>
+        <emrapiVersion>2.0.0-SNAPSHOT</emrapiVersion>
         <initializerVersion>2.5.2</initializerVersion>
         <legacyuiVersion>1.6.0</legacyuiVersion>
-        <uicommonsVersion>2.24.0</uicommonsVersion>
+        <registrationappVersion>1.27.0-SNAPSHOT</registrationappVersion>
         <reportingVersion>1.26.0</reportingVersion>
+        <uicommonsVersion>2.24.0</uicommonsVersion>
         <uiframeworkVersion>3.23.0</uiframeworkVersion>
         <MODULE_ID>${project.parent.artifactId}</MODULE_ID>
         <MODULE_NAME>IMB EMR</MODULE_NAME>
@@ -108,6 +109,12 @@
             <groupId>org.openmrs.module</groupId>
             <artifactId>legacyui-api</artifactId>
             <version>${legacyuiVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>registrationapp-api</artifactId>
+            <version>${registrationappVersion}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
