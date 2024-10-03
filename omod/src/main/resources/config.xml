@@ -33,6 +33,8 @@
 		<require_module version="${metadatasharingVersion}">org.openmrs.module.metadatasharing</require_module>
 		<require_module version="${namephoneticsVersion}">org.openmrs.module.namephonetics</require_module>
 		<require_module version="${providermanagementVersion}">org.openmrs.module.providermanagement</require_module>
+		<require_module version="${registrationappVersion}">org.openmrs.module.registrationapp</require_module>
+		<require_module version="${registrationcoreVersion}">org.openmrs.module.registrationcore</require_module>
 		<require_module version="${reportingVersion}">org.openmrs.module.reporting</require_module>
 		<require_module version="${reportingcompatibilityVersion}">org.openmrs.module.reportingcompatibility</require_module>
 		<require_module version="${reportingrestVersion}">org.openmrs.module.reportingrest</require_module>
