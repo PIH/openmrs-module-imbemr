@@ -17,6 +17,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.module.BaseModuleActivator;
 import org.openmrs.module.ModuleActivator;
+import org.openmrs.module.imbemr.setup.NameTemplateSetup;
 import org.openmrs.module.reporting.config.ReportLoader;
 
 /**
@@ -37,6 +38,8 @@ public class ImbEmrActivator extends BaseModuleActivator {
 		log.warn("Reports loaded from configuration");
 		GlobalResourceInitializer.includeGlobalResources();
 		log.warn("Global resources loaded from configuration");
+		NameTemplateSetup.setup();
+		log.warn("Name templates setup");
 	}
 
 	/**
