@@ -35,12 +35,14 @@
         <emrapiVersion>2.0.0-SNAPSHOT</emrapiVersion>
         <initializerVersion>2.5.2</initializerVersion>
         <legacyuiVersion>1.6.0</legacyuiVersion>
+        <mohbillingVersion>2.0.2-SNAPSHOT</mohbillingVersion>
         <namephoneticsVersion>1.19.0</namephoneticsVersion>
         <registrationappVersion>1.27.0-SNAPSHOT</registrationappVersion>
         <registrationcoreVersion>1.12.0</registrationcoreVersion>
         <reportingVersion>1.26.0</reportingVersion>
         <uicommonsVersion>2.24.0</uicommonsVersion>
         <uiframeworkVersion>3.23.0</uiframeworkVersion>
+        <lombokVersion>1.18.26</lombokVersion>
         <MODULE_ID>${project.parent.artifactId}</MODULE_ID>
         <MODULE_NAME>IMB EMR</MODULE_NAME>
         <MODULE_VERSION>${project.parent.version}</MODULE_VERSION>
@@ -115,6 +117,12 @@
         </dependency>
         <dependency>
             <groupId>org.openmrs.module</groupId>
+            <artifactId>mohbilling-api</artifactId>
+            <version>${mohbillingVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
             <artifactId>namephonetics-api</artifactId>
             <version>${namephoneticsVersion}</version>
             <scope>provided</scope>
@@ -141,6 +149,13 @@
             <groupId>org.openmrs.module</groupId>
             <artifactId>uiframework-api</artifactId>
             <version>${uiframeworkVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombokVersion}</version>
             <scope>provided</scope>
         </dependency>
 
