@@ -8,9 +8,11 @@
         <a href="${ui.pageLink("imbemr", "patient/insurancePolicies", ["patientId": patient.patient.patientId])}" class="right">
             <i class="icon-share-alt edit-action" title="${ ui.message("imbemr.insurancePolicies") }"></i>
         </a>
-        <a href="${ui.pageLink("imbemr", "patient/insurancePolicy", ["patientId": patient.patient.patientId])}" class="right">
-            <i class="icon-plus add-action" title="${ ui.message("imbemr.insurancePolicies.add") }"></i>
-        </a>
+        <% if (sessionContext.currentUser.hasPrivilege("Create Insurance Policy")) { %>
+            <a href="${ui.pageLink("imbemr", "patient/insurancePolicy", ["patientId": patient.patient.patientId, "edit": true])}" class="right">
+                <i class="icon-plus add-action" title="${ ui.message("imbemr.insurancePolicies.add") }"></i>
+            </a>
+        <% } %>
     </div>
     <div class="info-body">
         <% if (insurancePolicies.isEmpty()) { %>
@@ -22,8 +24,7 @@
                 <p class="left">
                     <a href="${ui.pageLink("imbemr", "patient/insurancePolicy", [
                             "patientId": patient.patient.patientId,
-                            "policyId": policy.insurancePolicyId,
-                            "returnUrl": "registrationSummary"])}">
+                            "policyId": policy.insurancePolicyId])}">
                         ${ policy.insuranceCardNo }
                     </a>
                 </p>

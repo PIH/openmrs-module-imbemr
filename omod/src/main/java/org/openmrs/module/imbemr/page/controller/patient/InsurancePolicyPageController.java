@@ -1,6 +1,7 @@
 package org.openmrs.module.imbemr.page.controller.patient;
 
 import lombok.Data;
+import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.openmrs.Patient;
 import org.openmrs.User;
@@ -50,14 +51,21 @@ public class InsurancePolicyPageController {
                       @MethodParam("getPolicy") @BindParams InsurancePolicy policy,
                       @InjectBeans PatientDomainWrapper patientDomainWrapper,
                       @RequestParam(value = "patientId") Patient patient,
+                      @RequestParam(value = "edit", defaultValue = "false", required = false) Boolean edit,
                       @RequestParam(value = "returnUrl", required = false) String returnUrl) throws IOException {
 
-        if (!Context.hasPrivilege("Create Insurance Policy")) {
+        if (!Context.hasPrivilege("Create Insurance Policy") && policy.getInsurancePolicyId() == null) {
             return "redirect:/index.htm";
         }
+        if (!Context.hasPrivilege("Edit Insurance Policy") && BooleanUtils.isTrue(edit)) {
+            return "redirect:/index.htm";
+        }
+
         patientDomainWrapper.setPatient(patient);
+        model.addAttribute("editMode", BooleanUtils.isTrue(edit));
         model.addAttribute("patient", patientDomainWrapper);
-        model.addAttribute("policy", new InsurancePolicyModel(policy));
+        model.addAttribute("policy", policy);
+        model.addAttribute("policyModel", new InsurancePolicyModel(policy));
         model.addAttribute("insurances", InsuranceUtil.getInsurances(true));
         model.addAttribute("thirdParties", InsurancePolicyUtil.getAllThirdParties());
         model.addAttribute("owners", getEligiblePolicyOwnersForPatient(patient));
@@ -82,7 +90,10 @@ public class InsurancePolicyPageController {
         User currentUser = Context.getAuthenticatedUser();
 
         try {
-            if (!Context.hasPrivilege("Create Insurance Policy")) {
+            if (!Context.hasPrivilege("Create Insurance Policy") && policy.getInsurancePolicyId() == null) {
+                throw new APIException(mss.getMessage("require.unauthorized"));
+            }
+            if (!Context.hasPrivilege("Edit Insurance Policy") && policy.getInsurancePolicyId() != null) {
                 throw new APIException(mss.getMessage("require.unauthorized"));
             }
 
@@ -92,7 +103,7 @@ public class InsurancePolicyPageController {
                 errors.rejectValue("insuranceCardNo", "imbemr.insurance.error.duplicateCardNumber");
             }
 
-            policy.setInsurance(InsuranceUtil.getInsurance(policyModel.getInsuranceId()));
+            policy.setInsurance(policyModel.getInsuranceId() == null ? null : InsuranceUtil.getInsurance(policyModel.getInsuranceId()));
             policy.setOwner(policyModel.getOwner());
             policy.setInsuranceCardNo(policyModel.getInsuranceCardNo());
             policy.setCoverageStartDate(policyModel.getCoverageStartDate());
@@ -122,7 +133,7 @@ public class InsurancePolicyPageController {
             // TODO: There is some odd logic about how these are set in 1.x.  Review that or this for correctness.
             beneficiary.setOwnerName(policyModel.getOwnerName());
             beneficiary.setOwnerCode(policyModel.getOwnerCode());
-            beneficiary.setLevel(policyModel.getLevel());
+            beneficiary.setLevel(policyModel.getLevel() == null ? 0 : policyModel.getLevel());
             beneficiary.setCompany(policyModel.getCompany());
 
             InsurancePolicyValidator validator = new InsurancePolicyValidator();
@@ -149,11 +160,13 @@ public class InsurancePolicyPageController {
         catch (Exception e) {
             request.getSession().setAttribute("emr.errorMessage", e.getMessage());
             model.addAttribute("patient", patientDomainWrapper);
-            model.addAttribute("policy", policyModel);
+            model.addAttribute("policy", policy);
+            model.addAttribute("policyModel", policyModel);
             model.addAttribute("insurances", InsuranceUtil.getInsurances(true));
             model.addAttribute("thirdParties", InsurancePolicyUtil.getAllThirdParties());
             model.addAttribute("owners", getEligiblePolicyOwnersForPatient(patient));
             model.addAttribute("returnUrl", getReturnUrl(returnUrl, patient, policy));
+            model.addAttribute("editMode", true);
             return "patient/insurancePolicy";
         }
 
@@ -164,9 +177,6 @@ public class InsurancePolicyPageController {
 
     public String getReturnUrl(String returnUrl, Patient patient, InsurancePolicy policy) {
         if (StringUtils.isBlank(returnUrl)) {
-            returnUrl = "/imbemr/patient/insurancePolicies.page?patientId=" + patient.getId();
-        }
-        else if (returnUrl.equalsIgnoreCase("registrationSummary")) {
             returnUrl = "/registrationapp/registrationSummary.page?patientId=" + patient.getId() + "&appId=imbemr.registerPatient";
         }
         returnUrl = returnUrl.replace("{{patientId}}", patient.getId().toString());
@@ -192,16 +202,16 @@ public class InsurancePolicyPageController {
         public void validate(Object o, Errors errors) {
             InsurancePolicy policy = (InsurancePolicy) o;
             if (policy.getInsurance() == null) {
-                errors.rejectValue("insurance", "required");
+                errors.rejectValue("insuranceId", "error.required");
             }
             if (policy.getOwner() == null) {
-                errors.rejectValue("owner", "required");
+                errors.rejectValue("owner", "error.required");
             }
             if (StringUtils.isBlank((policy.getInsuranceCardNo()))) {
-                errors.rejectValue("insuranceCardNo", "required");
+                errors.rejectValue("insuranceCardNo", "error.required");
             }
             if (policy.getCoverageStartDate() == null) {
-                errors.rejectValue("coverageStartDate", "required");
+                errors.rejectValue("coverageStartDate", "error.required");
             }
         }
     }

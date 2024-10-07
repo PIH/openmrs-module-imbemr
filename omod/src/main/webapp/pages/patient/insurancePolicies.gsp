@@ -5,12 +5,14 @@
 ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ]) }
 
 <script type="text/javascript">
+    var breadcrumbs = [
+        { icon: "icon-home", link: '/' + OPENMRS_CONTEXT_PATH + '/index.htm' },
+        { label: '${ui.encodeJavaScript(ui.encodeHtmlContent(ui.format(patient.patient)))}', link: '${ui.pageLink("registrationapp", "registrationSummary", ["patientId": patient.id, "appId": "imbemr.registerPatient"])}' },
+        { label: "${ ui.message("imbemr.insurancePolicies")}" }
+    ];
     jq(document).ready(function() {
-       jq("#return-button").click(function(event) {
-           document.location.href = '${ui.pageLink("registrationapp", "registrationSummary", ["patientId": patient.id, "appId": "imbemr.registerPatient"])}';
-       });
         jq("#add-new-button").click(function(event) {
-            document.location.href = '${ui.pageLink("imbemr", "patient/insurancePolicy", ["patientId": patient.id])}';
+            document.location.href = '${ui.pageLink("imbemr", "patient/insurancePolicy", ["patientId": patient.id, "edit": true])}';
         });
     });
 </script>
@@ -25,6 +27,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
             <th>${ ui.message("imbemr.insurance.coverageStartDate") }</th>
             <th>${ ui.message("imbemr.insurance.expirationDate") }</th>
             <th>${ ui.message("imbemr.insurance.thirdParty") }</th>
+            <th>${ ui.message("general.action") }</th>
         </tr>
     </thead>
     <tbody>
@@ -36,14 +39,10 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
     <% insurancePolicies.each { policy -> %>
         <tr>
             <td>
-                <a href="${ui.pageLink("imbemr", "patient/insurancePolicy", ["patientId": patient.patient.patientId, "policyId": policy.insurancePolicyId])}">
-                    ${ ui.format(policy.insurance?.name) }
-                </a>
+                ${ ui.format(policy.insurance?.name) }
             </td>
             <td>
-                <a href="${ui.pageLink("imbemr", "patient/insurancePolicy", ["patientId": patient.patient.patientId, "policyId": policy.insurancePolicyId])}">
-                    ${ ui.format(policy.insuranceCardNo) }
-                </a>
+                ${ ui.format(policy.insuranceCardNo) }
             </td>
             <td>
                 ${ ui.format(policy.coverageStartDate) }
@@ -54,14 +53,25 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
             <td>
                 ${ ui.format(policy.thirdParty?.name) }
             </td>
+        <td>
+            <a href="${ui.pageLink("imbemr", "patient/insurancePolicy", ["patientId": patient.patient.patientId, "policyId": policy.insurancePolicyId])}">
+                <i class="icon-caret-right"></i>
+            </a>
+            <% if (sessionContext.currentUser.hasPrivilege("Edit Insurance Policy")) { %>
+                <a href="${ui.pageLink("imbemr", "patient/insurancePolicy", ["patientId": patient.patient.patientId, "policyId": policy.insurancePolicyId, "edit": true, "returnUrl": ui.pageLink("imbemr", "patient/insurancePolicies", ["patientId": patient.id])])}">
+                    <i class="icon-pencil"></i>
+                </a>
+            <% } %>
+        </td>
         </tr>
     <% } %>
     </tbody>
 </table>
 <br/>
 <div>
-    <input id="return-button" type="button" value="${ ui.message("imbemr.registration.summary") }"/>
-    <input id="add-new-button" type="button" value="${ ui.message("imbemr.insurancePolicies.add") }"/>
+    <% if (sessionContext.currentUser.hasPrivilege("Create Insurance Policy")) { %>
+        <input id="add-new-button" type="button" value="${ ui.message("imbemr.insurancePolicies.add") }"/>
+    <% } %>
 </div>
 
 
