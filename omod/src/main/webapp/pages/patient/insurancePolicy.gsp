@@ -18,6 +18,8 @@
         ownerOptions.push([ label: ui.format(it), value: it.id ])
     }
     ownerOptions = ownerOptions.sort { it.label }
+
+    def levelOptions = [[label: "1", value: 1],[label: "2", value: 2],[label: "3", value: 3],[label: "4", value: 4]]
 %>
 
 ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ]) }
@@ -56,7 +58,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
                 <legend>${ui.message("imbemr.insurance.owner")}</legend>
 
                 ${ ui.includeFragment("uicommons", "field/dropDown", [
-                        label: ui.message("imbemr.insurance.owner"),
+                        label: ui.message("imbemr.patientName"),
                         hideEmptyLabel: true,
                         formFieldName: "owner",
                         initialValue: (policy.owner?.id ?: ''),
@@ -68,7 +70,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
                 <legend>${ui.message("imbemr.insurance")}</legend>
 
                 ${ ui.includeFragment("uicommons", "field/dropDown", [
-                        label: ui.message("imbemr.insurance.type"),
+                        label: ui.message("imbemr.insurance.name"),
                         emptyOptionLabel: "",
                         formFieldName: "insuranceId",
                         initialValue: (policy.insuranceId ?: ''),
@@ -113,8 +115,39 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
         </td>
         <td>
             <fieldset>
-                <legend>${ui.message("imbemr.insurance.beneficiaries")}</legend>
+                <legend>${ui.message("imbemr.insurance.ownershipInfo")}</legend>
+
+                ${ ui.includeFragment("uicommons", "field/text", [
+                        label: ui.message("imbemr.insurance.beneficiary.company"),
+                        formFieldName: "company",
+                        initialValue: (policy.company ?: ''),
+                        size: 30
+                ])}
+
+                ${ ui.includeFragment("uicommons", "field/text", [
+                        label: ui.message("imbemr.insurance.beneficiary.ownerName"),
+                        formFieldName: "ownerName",
+                        initialValue: (policy.ownerName ?: ''),
+                        size: 30
+                ])}
+
+                ${ ui.includeFragment("uicommons", "field/text", [
+                        label: ui.message("imbemr.insurance.beneficiary.ownerCode"),
+                        formFieldName: "ownerCode",
+                        initialValue: (policy.ownerCode ?: ''),
+                        size: 30
+                ])}
+
+                ${ ui.includeFragment("uicommons", "field/dropDown", [
+                        label: ui.message("imbemr.insurance.beneficiary.level"),
+                        emptyOptionLabel: "",
+                        formFieldName: "level",
+                        initialValue: (policy.level ?: ''),
+                        options: levelOptions
+                ])}
+
             </fieldset>
+
         </td>
     </tr></table>
 

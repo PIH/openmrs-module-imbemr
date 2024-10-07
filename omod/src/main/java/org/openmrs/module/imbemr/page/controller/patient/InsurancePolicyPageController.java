@@ -3,13 +3,14 @@ package org.openmrs.module.imbemr.page.controller.patient;
 import lombok.Data;
 import org.apache.commons.lang.StringUtils;
 import org.openmrs.Patient;
-import org.openmrs.Relationship;
+import org.openmrs.User;
 import org.openmrs.api.APIException;
 import org.openmrs.api.context.Context;
 import org.openmrs.messagesource.MessageSourceService;
 import org.openmrs.module.emrapi.patient.PatientDomainWrapper;
 import org.openmrs.module.mohbilling.businesslogic.InsurancePolicyUtil;
 import org.openmrs.module.mohbilling.businesslogic.InsuranceUtil;
+import org.openmrs.module.mohbilling.model.Beneficiary;
 import org.openmrs.module.mohbilling.model.InsurancePolicy;
 import org.openmrs.module.mohbilling.service.BillingService;
 import org.openmrs.ui.framework.annotation.BindParams;
@@ -77,21 +78,18 @@ public class InsurancePolicyPageController {
 
         patientDomainWrapper.setPatient(patient);
 
+        Date now = new Date();
+        User currentUser = Context.getAuthenticatedUser();
+
         try {
             if (!Context.hasPrivilege("Create Insurance Policy")) {
                 throw new APIException(mss.getMessage("require.unauthorized"));
             }
 
+            // TODO: Review this, but 1.x billing module code does not allow any duplicate card numbers, even across insurance types
             InsurancePolicy existingPolicy = Context.getService(BillingService.class).getInsurancePolicyByCardNo(policyModel.getInsuranceCardNo());
-            if (existingPolicy != null) {
-                if (existingPolicy.getInsurancePolicyId().equals(policy.getInsurancePolicyId())) {
-                    // TODO: In the billing module, this leads to an error.  One is not allowed to edit an existing policy.  Is this what we want?
-                    // errors.rejectValue("insuranceCardNo", "imbemr.insurance.error.cannotEdit");
-                }
-                else {
-                    // TODO: In the billing module, this also leads to an error.  But can't the same card number exist for different insurance types?
-                    errors.rejectValue("insuranceCardNo", "imbemr.insurance.error.duplicateCardNumber");
-                }
+            if (existingPolicy != null && !existingPolicy.getInsurancePolicyId().equals(policy.getInsurancePolicyId())) {
+                errors.rejectValue("insuranceCardNo", "imbemr.insurance.error.duplicateCardNumber");
             }
 
             policy.setInsurance(InsuranceUtil.getInsurance(policyModel.getInsuranceId()));
@@ -100,15 +98,35 @@ public class InsurancePolicyPageController {
             policy.setCoverageStartDate(policyModel.getCoverageStartDate());
             policy.setExpirationDate(policyModel.getExpirationDate());
             policy.setThirdParty(policyModel.getThirdPartyId() == null ? null : InsurancePolicyUtil.getThirdParty(policyModel.getThirdPartyId()));
-            policy.setCreatedDate(new Date());
-            policy.setCreator(Context.getAuthenticatedUser());
+            policy.setCreatedDate(now);
+            policy.setCreator(currentUser);
+            policy.setRetired(false); // TODO: Support retiring and un-retiring?
+
+            Beneficiary beneficiary = null;
+            if (policy.getBeneficiaries() != null) {
+                for (Beneficiary b : policy.getBeneficiaries()) {
+                    beneficiary = b;
+                }
+            }
+            if (beneficiary == null) {
+                beneficiary = new Beneficiary();
+                beneficiary.setPatient(policy.getOwner());
+                beneficiary.setInsurancePolicy(policy);
+                beneficiary.setPolicyIdNumber(policy.getInsuranceCardNo());
+                beneficiary.setCreatedDate(now);
+                beneficiary.setCreator(currentUser);
+                beneficiary.setRetired(false);  // TODO: Support retiring and un-retiring?
+                policy.addBeneficiary(beneficiary);
+            }
+
+            // TODO: There is some odd logic about how these are set in 1.x.  Review that or this for correctness.
+            beneficiary.setOwnerName(policyModel.getOwnerName());
+            beneficiary.setOwnerCode(policyModel.getOwnerCode());
+            beneficiary.setLevel(policyModel.getLevel());
+            beneficiary.setCompany(policyModel.getCompany());
 
             InsurancePolicyValidator validator = new InsurancePolicyValidator();
             validator.validate(policy, errors);
-
-            // TODO: Handle retire/unretire (retired, retiredBy, retiredDate, retireReason
-            // TODO: Handle Set<Beneficiary>
-            // TODO: What about the Set<Admission> property?
 
             if (errors.hasErrors()) {
                 String message = "";
@@ -157,24 +175,10 @@ public class InsurancePolicyPageController {
         return returnUrl;
     }
 
-    // TODO: Limit this to particular relationship types?
     public List<Patient> getEligiblePolicyOwnersForPatient(Patient patient) {
         List<Patient> ret = new ArrayList<>();
         ret.add(patient);
-        for (Relationship relationship : Context.getPersonService().getRelationshipsByPerson(patient)) {
-            if (relationship.getPersonA() != null) {
-                Patient patientA = Context.getPatientService().getPatient(relationship.getPersonA().getPersonId());
-                if (patientA != null && !patientA.equals(patient)) {
-                    ret.add(patientA);
-                }
-            }
-            if (relationship.getPersonB() != null) {
-                Patient patientB = Context.getPatientService().getPatient(relationship.getPersonB().getPersonId());
-                if (patientB != null && !patientB.equals(patient)) {
-                    ret.add(patientB);
-                }
-            }
-        }
+        // TODO: Should we support owners other than the patient?  Maybe from relationships?
         return ret;
     }
 
@@ -212,6 +216,10 @@ public class InsurancePolicyPageController {
         private Date coverageStartDate;
         private Date expirationDate;
         private Integer thirdPartyId;
+        private String ownerName;
+        private String ownerCode;
+        private Integer level;
+        private String company;
 
         public InsurancePolicyModel() {}
 
@@ -223,10 +231,16 @@ public class InsurancePolicyPageController {
             this.coverageStartDate = policy.getCoverageStartDate();
             this.expirationDate = policy.getExpirationDate();
             this.thirdPartyId = policy.getThirdParty() == null ? null : policy.getThirdParty().getThirdPartyId();
-        }
 
-        public void validate(Errors errors) {
-
+            // TODO: This is how things are done in the 1.x code.  Only the owner is supported as a beneficiary.
+            if (policy.getBeneficiaries() != null) {
+                for (Beneficiary beneficiary : policy.getBeneficiaries()) {
+                    this.ownerName = beneficiary.getOwnerName();
+                    this.ownerCode = beneficiary.getOwnerCode();
+                    this.level = beneficiary.getLevel();
+                    this.company = beneficiary.getCompany();
+                }
+            }
         }
     }
 }

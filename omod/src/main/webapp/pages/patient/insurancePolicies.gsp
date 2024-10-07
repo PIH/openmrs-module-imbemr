@@ -20,7 +20,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
 <table id="insurance-policy-table">
     <thead>
         <tr>
-            <th>${ ui.message("imbemr.insurance.type") }</th>
+            <th>${ ui.message("imbemr.insurance.name") }</th>
             <th>${ ui.message("imbemr.insurance.insuranceCardNo") }</th>
             <th>${ ui.message("imbemr.insurance.coverageStartDate") }</th>
             <th>${ ui.message("imbemr.insurance.expirationDate") }</th>
