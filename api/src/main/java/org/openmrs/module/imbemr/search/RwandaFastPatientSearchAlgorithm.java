@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +35,9 @@ public class RwandaFastPatientSearchAlgorithm implements SimilarPatientSearchAlg
         // Only execute searches if at least the given and family names are entered
         if (StringUtils.isNotBlank(givenName) && StringUtils.isNotBlank(familyName)) {
             for (Patient candidate : getPhoneticsMatches(givenName, familyName)) {
-                List<String> matchedFields = Arrays.asList("names.givenName", "names.familyName");
+                List<String> matchedFields = new ArrayList<>();
+                matchedFields.add("names.givenName");
+                matchedFields.add("names.familyName");
                 // Only match if gender is not yet entered, or if it matches exactly
                 if (StringUtils.isBlank(gender) || gender.equals(candidate.getGender())) {
                     if (gender != null && gender.equals(candidate.getGender())) {
