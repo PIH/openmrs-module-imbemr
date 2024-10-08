@@ -11,6 +11,9 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
         { label: "${ ui.message("imbemr.insurancePolicies")}" }
     ];
     jq(document).ready(function() {
+        jq("#return-button").click(function(event) {
+            document.location.href = '${ui.pageLink("registrationapp", "registrationSummary", ["patientId": patient.id, "appId": "imbemr.registerPatient"])}';
+        });
         jq("#add-new-button").click(function(event) {
             document.location.href = '${ui.pageLink("imbemr", "patient/insurancePolicy", ["patientId": patient.id, "edit": true])}';
         });
@@ -69,6 +72,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
 </table>
 <br/>
 <div>
+    <input id="return-button" type="button" value="${ ui.message("imbemr.registration.summary") }"/>
     <% if (sessionContext.currentUser.hasPrivilege("Create Insurance Policy")) { %>
         <input id="add-new-button" type="button" value="${ ui.message("imbemr.insurancePolicies.add") }"/>
     <% } %>
