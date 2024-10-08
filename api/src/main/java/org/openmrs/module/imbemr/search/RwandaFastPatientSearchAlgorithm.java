@@ -39,7 +39,7 @@ public class RwandaFastPatientSearchAlgorithm implements SimilarPatientSearchAlg
                 List<String> matchedFields = Arrays.asList("names.givenName", "names.familyName");
                 // Only match if gender is not yet entered, or if it matches exactly
                 if (StringUtils.isBlank(gender) || gender.equals(candidate.getGender())) {
-                    if (gender.equals(candidate.getGender())) {
+                    if (gender != null && gender.equals(candidate.getGender())) {
                         matchedFields.add("gender");
                     }
                     ret.add(new PatientAndMatchQuality(candidate, cutoff, matchedFields));
