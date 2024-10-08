@@ -33,8 +33,10 @@
         <authenticationuiVersion>1.0.0</authenticationuiVersion>
         <coreappsVersion>2.0.0-SNAPSHOT</coreappsVersion>
         <emrapiVersion>2.0.0-SNAPSHOT</emrapiVersion>
+        <htmlformentryVersion>5.2.0</htmlformentryVersion>
         <initializerVersion>2.5.2</initializerVersion>
         <legacyuiVersion>1.6.0</legacyuiVersion>
+        <mohappointmentVersion>2.0.1-SNAPSHOT</mohappointmentVersion>
         <mohbillingVersion>2.0.2-SNAPSHOT</mohbillingVersion>
         <namephoneticsVersion>1.19.0</namephoneticsVersion>
         <registrationappVersion>1.27.0-SNAPSHOT</registrationappVersion>
@@ -105,6 +107,12 @@
         </dependency>
         <dependency>
             <groupId>org.openmrs.module</groupId>
+            <artifactId>htmlformentry-api</artifactId>
+            <version>${htmlformentryVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
             <artifactId>initializer-api</artifactId>
             <version>${initializerVersion}</version>
             <scope>provided</scope>
@@ -113,6 +121,12 @@
             <groupId>org.openmrs.module</groupId>
             <artifactId>legacyui-api</artifactId>
             <version>${legacyuiVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs.module</groupId>
+            <artifactId>mohappointment-api</artifactId>
+            <version>${mohappointmentVersion}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
