@@ -8,6 +8,7 @@ import org.openmrs.module.mohappointment.utils.AppointmentUtil;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Component
@@ -19,7 +20,11 @@ public class ImbEmrVelocityContextProvider implements VelocityContextContentProv
         // Add in appointment services
         List<String> appointmentServiceConceptUuids = new ArrayList<>();
         List<String> appointmentServiceNames = new ArrayList<>();
-        for (Services service : AppointmentUtil.getAllServices()) {
+
+        List<Services> services = AppointmentUtil.getAllServices();
+        services.sort(Comparator.comparing(Services::getName));
+
+        for (Services service : services) {
             if (service.getConcept() != null) {
                 appointmentServiceConceptUuids.add(service.getConcept().getUuid());
                 appointmentServiceNames.add(service.getName());

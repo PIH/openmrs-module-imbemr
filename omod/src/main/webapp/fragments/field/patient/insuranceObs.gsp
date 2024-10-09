@@ -6,12 +6,12 @@
     // config.initialInsuranceConcept
     // config.initialInsuranceNumber
     // config.initialEncounterDate
-    // config.encounterDateSelector
+    // config.encounterDateFieldId
     // config.label
     // config.classes
     // config.hideEmptyLabel
     // config.emptyOptionLabel
-    // config.size
+    // config.showAll
 %>
 
 <p id="${ config.id }">
@@ -96,8 +96,8 @@
         let initialEncounterDate = '${initialEncounterDate}';
         configureOptions(initialEncounterDate);
 
-        <% if (config.encounterDateSelector) { %>
-            jq("#${config.encounterDateSelector}").change(function() {
+        <% if (config.encounterDateFieldId) { %>
+            jq("#${config.encounterDateFieldId}").change(function() {
                 configureOptions(jq(this).val());
             });
         <% } %>
