@@ -19,7 +19,7 @@
         def val = p.value;
         if (val != null) {
             if (val instanceof String) {
-                val = val.replace("{patientId}", patient.id.toString()).replace("{visitId}", visit?.id?.toString());
+                val = val.replace("{patientId}", patient.id.toString()).replace("{visitId}", (visit?.id ? visit.id.toString() : ""))
             }
             encCreateParams.put(p.key, val);
         }
