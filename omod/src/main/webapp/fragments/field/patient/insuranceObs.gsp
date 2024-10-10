@@ -7,6 +7,7 @@
     // config.initialInsuranceNumber
     // config.initialEncounterDate
     // config.encounterDateFieldId
+    // config.hideLabel
     // config.label
     // config.classes
     // config.hideEmptyLabel
@@ -16,9 +17,11 @@
 
 <p id="${ config.id }">
 
-    <label for="${ config.id }-field">
-        ${ ui.message(config.label) ?: '' }
-    </label>
+    <% if (config.label != null && config.label != '') { %>
+        <label for="${ config.id }-field">
+            ${ ui.message(config.label) }
+        </label>
+    <% } %>
 
     <select id="${ config.id }-field"<% if (config.classes) { %> class="${ config.classes.join(' ') }" <% } %>></select>
 

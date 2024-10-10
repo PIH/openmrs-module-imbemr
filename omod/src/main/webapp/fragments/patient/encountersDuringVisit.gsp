@@ -57,11 +57,11 @@
             %>
                 <div class="encounter-container row col-12">
                     <% if (encounterIndex > 0) { %><hr/><% } %>
-                    <div id="${currentId}" class="in col-11 right">
+                    <div id="${currentId}" class="in col-11">
                         ${ ui.message("uicommons.loading.placeholder") }
                     </div>
-                    <div class="col-1 info-header" style="border-bottom: none;">
-                        <i class="${editIcon} edit-action right" title="${ ui.message("coreapps.edit") }"
+                    <div class="col-1 info-header right" style="border-bottom: none;">
+                        <i class="${editIcon} edit-action" title="${ ui.message("coreapps.edit") }"
                            onclick="location.href='${ui.pageLink(editProvider, editFragment, encEditParams)}';">
                         </i>
                     </div>
