@@ -59,13 +59,13 @@
         let fieldInput = jq("#${ config.id }-field");
         jq(fieldInput).change(function() {
             let policyId = jq(this).val();
+            jq("#${ config.id }-policy-id-input").val(policyId);
             if (policyId === "") {
                 jq("#${ config.id }-concept-input").val("");
                 jq("#${ config.id }-number-input").val("");
             }
             policies.forEach(p => {
                 if (p.policyId === policyId) {
-                    jq("#${ config.id }-policy-id-input").val(policyId);
                     jq("#${ config.id }-concept-input").val(p.conceptId);
                     jq("#${ config.id }-number-input").val(p.cardNumber);
                 };

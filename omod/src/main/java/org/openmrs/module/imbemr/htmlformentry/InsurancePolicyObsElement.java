@@ -103,7 +103,7 @@ public class InsurancePolicyObsElement implements HtmlGeneratorElement, FormSubm
                 ret.append(" ").append(getTranslation(label)).append(" ");
                 ret.append("</label>");
             }
-            ret.append("<span id=\"").append(id).append("\" class=\"obs-field\">");
+            ret.append("<span id=\"").append(id).append("\" class=\"insurance-field\">");
             ret.append(WidgetFactory.displayValue(insuranceName, "insurance-type"));
             ret.append(WidgetFactory.displayValue(insuranceNumber == null ? "" : insuranceNumber, "insurance-number"));
             ret.append("</span>");
@@ -146,6 +146,9 @@ public class InsurancePolicyObsElement implements HtmlGeneratorElement, FormSubm
                 sb.append(insuranceConceptErrorWidget.generateHtml(context));
                 sb.append(insuranceNumberErrorWidget.generateHtml(context));
                 sb.append(uiUtils.includeFragment("imbemr", "field/patient/insuranceObs", fragmentConfig));
+                if (required) {
+                    sb.append("<span class='required'>*</span>");
+                }
                 return sb.toString();
             }
             catch (Exception e) {
