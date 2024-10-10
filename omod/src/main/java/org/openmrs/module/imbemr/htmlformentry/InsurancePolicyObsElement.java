@@ -103,10 +103,13 @@ public class InsurancePolicyObsElement implements HtmlGeneratorElement, FormSubm
                 ret.append(" ").append(getTranslation(label)).append(" ");
                 ret.append("</label>");
             }
-            ret.append("<span id=\"").append(id).append("\" class=\"insurance-field\">");
-            ret.append(WidgetFactory.displayValue(insuranceName, "insurance-type"));
-            ret.append(WidgetFactory.displayValue(insuranceNumber == null ? "" : insuranceNumber, "insurance-number"));
-            ret.append("</span>");
+            ret.append("<div id=\"").append(id).append("\" class=\"insurance-field\">");
+            ret.append("<div class=\"insurance-type\">");
+            ret.append(WidgetFactory.displayValue(insuranceName));
+            ret.append("</div>");
+            ret.append("<div class=\"insurance-number\">");
+            ret.append(WidgetFactory.displayValue(insuranceNumber == null ? "" : insuranceNumber));
+            ret.append("</div>");
             return ret.toString();
         }
         else {
