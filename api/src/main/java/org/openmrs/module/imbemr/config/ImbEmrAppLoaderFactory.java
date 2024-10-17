@@ -1,4 +1,4 @@
-package org.openmrs.module.imbemr;
+package org.openmrs.module.imbemr.config;
 
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;

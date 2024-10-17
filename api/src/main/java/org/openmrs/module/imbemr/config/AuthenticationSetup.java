@@ -1,4 +1,4 @@
-package org.openmrs.module.imbemr;
+package org.openmrs.module.imbemr.config;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -16,19 +16,19 @@ import static org.openmrs.module.authentication.AuthenticationConfig.SCHEME_ID;
 import static org.openmrs.module.authentication.AuthenticationConfig.SCHEME_TYPE_TEMPLATE;
 import static org.openmrs.module.authentication.AuthenticationConfig.WHITE_LIST;
 
-public class AuthenticationInitializer {
+public class AuthenticationSetup {
 
-    protected static Log log = LogFactory.getLog(AuthenticationInitializer.class);
+    protected static Log log = LogFactory.getLog(AuthenticationSetup.class);
 
     public static final String BASIC = "basic";
     public static final String SECRET = "secret";
     public static final String TOTP = "totp";
     public static final String TWO_FACTOR = "2fa";
 
-    public void started() {
+    public static void configureAuthenticationSchemes() {
 
         // Add this classloader
-        AuthenticationConfig.registerClassLoader(AuthenticationInitializer.class.getClassLoader());
+        AuthenticationConfig.registerClassLoader(AuthenticationSetup.class.getClassLoader());
 
         // If no authentication scheme is explicitly configured, default to basic
         AuthenticationConfig.setProperty(SCHEME, "2fa");
@@ -104,12 +104,14 @@ public class AuthenticationInitializer {
         for (String key : sortedKeys) {
             log.info(key + " = " + p.getProperty(key));
         }
+
+        log.warn("Authentication setup complete");
     }
 
     /**
      * Add configuration for a scheme with the given schemeId, if a scheme with this schemeId is not already configured
      */
-    protected void addScheme(String schemeId, String className, Properties config, Set<String> whitelist) {
+    protected static void addScheme(String schemeId, String className, Properties config, Set<String> whitelist) {
         String schemeTypeProperty = SCHEME_TYPE_TEMPLATE.replace(SCHEME_ID, schemeId);
         if (StringUtils.isBlank(AuthenticationConfig.getProperty(schemeTypeProperty))) {
             AuthenticationConfig.setProperty(schemeTypeProperty, className);

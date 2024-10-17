@@ -1,4 +1,4 @@
-package org.openmrs.module.imbemr;
+package org.openmrs.module.imbemr.config;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
@@ -12,9 +12,9 @@ import org.openmrs.util.OpenmrsUtil;
 
 import java.io.File;
 
-public class GlobalResourceInitializer {
+public class GlobalResourceSetup {
 
-    protected static Log log = LogFactory.getLog(GlobalResourceInitializer.class);
+    protected static Log log = LogFactory.getLog(GlobalResourceSetup.class);
 
     public static final String GLOBAL_STYLES_DIR = "globalresources/styles";
     public static final String GLOBAL_SCRIPTS_DIR = "globalresources/scripts";
@@ -23,7 +23,6 @@ public class GlobalResourceInitializer {
      * Include custom styling sheets and scripts
      */
     public static void includeGlobalResources() {
-
         try {
             File configDir = OpenmrsUtil.getDirectoryInApplicationDataDirectory("configuration");
             File styleDir = new File(configDir, GLOBAL_STYLES_DIR);
@@ -42,6 +41,7 @@ public class GlobalResourceInitializer {
                     log.warn("Added global script resource: " + relativeResourcePath);
                 }
             }
+            log.warn("Global resources loaded from configuration");
         }
         // this entire catch is a hack to get component test to pass until we find the proper way to mock this
         // (see HtmlFormSetup where we do something similar)
