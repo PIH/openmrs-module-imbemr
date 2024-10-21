@@ -41,6 +41,18 @@
 		</dependency>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
+			<artifactId>authentication-omod</artifactId>
+			<version>${authenticationVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
+			<artifactId>authenticationui-omod</artifactId>
+			<version>${authenticationuiVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.openmrs.module</groupId>
 			<artifactId>coreapps-omod</artifactId>
 			<version>${coreappsVersion}</version>
 			<type>jar</type>

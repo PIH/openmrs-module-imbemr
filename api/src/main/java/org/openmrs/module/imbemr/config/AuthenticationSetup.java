@@ -38,7 +38,7 @@ public class AuthenticationSetup {
 
         Set<String> whitelist = new HashSet<>();
         whitelist.add("/login.htm");
-        whitelist.add("/authenticationui/login/login.page");
+        whitelist.add("/imbemr/login/login.page");
         whitelist.add("/appui/session/getLoginLocations.action");
         whitelist.add("/csrfguard");
         whitelist.add("*.js");
@@ -57,7 +57,7 @@ public class AuthenticationSetup {
         {
             String className = "org.openmrs.module.authentication.web.BasicWithLocationAuthenticationScheme";
             Properties p = new Properties();
-            p.put("loginPage", "/authenticationui/login/login.page");
+            p.put("loginPage", "/imbemr/login/login.page");
             p.put("usernameParam", "username");
             p.put("passwordParam", "password");
             p.put("locationParamName", "sessionLocation");

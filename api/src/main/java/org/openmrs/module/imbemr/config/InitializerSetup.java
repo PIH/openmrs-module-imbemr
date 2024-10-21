@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.imbemr.ImbEmrUtil;
 import org.openmrs.module.initializer.Domain;
 import org.openmrs.module.initializer.api.ConfigDirUtil;
 import org.openmrs.module.initializer.api.InitializerService;
@@ -19,6 +20,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
+
+import static org.openmrs.module.imbemr.ImbEmrUtil.IMBEMR_SERVER_NAME;
 
 /**
  * Custom loader for initializer configurations which enables us to do some things that iniz does not do by default
@@ -84,7 +87,7 @@ public class InitializerSetup {
 
     public static List<String> getSitesForServer() {
         List<String> ret = new ArrayList<>();
-        String site = ServerSetup.getServerName();
+        String site = ImbEmrUtil.getConfigValue(IMBEMR_SERVER_NAME);
         Properties p = getSiteConfigProperties();
         String sitesForServer = p.getProperty(site);
         if (StringUtils.isNotBlank(sitesForServer)) {
