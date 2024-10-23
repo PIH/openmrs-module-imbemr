@@ -3,13 +3,10 @@ package org.openmrs.module.imbemr.rest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.context.Context;
-import org.openmrs.messagesource.MessageSourceService;
 import org.openmrs.messagesource.MutableMessageSource;
 import org.openmrs.module.ModuleFactory;
-import org.openmrs.module.imbemr.ImbEmrAppLoaderFactory;
 import org.openmrs.module.initializer.InitializerMessageSource;
 import org.openmrs.module.initializer.api.InitializerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,12 +20,6 @@ import static org.springframework.http.HttpStatus.OK;
 public class ImbEmrConfigRestController {
 
     protected final Log log = LogFactory.getLog(getClass());
-
-    @Autowired
-    ImbEmrAppLoaderFactory imbEmrAppLoaderFactory;
-
-    @Autowired
-    MessageSourceService messageSourceService;
 
     private static final String REQUIRED_PRIVILEGE = "App: coreapps.systemAdministration";
 

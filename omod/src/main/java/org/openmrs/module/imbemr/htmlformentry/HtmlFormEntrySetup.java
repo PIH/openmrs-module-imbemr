@@ -18,6 +18,6 @@ public class HtmlFormEntrySetup {
         InsurancePolicyObsTagHandler tagHandler = new InsurancePolicyObsTagHandler();
         tagHandler.setUiUtils(uiUtils);
         Context.getService(HtmlFormEntryService.class).addHandler(INSURANCE_POLICY_OBS_TAG, tagHandler);
-        log.info("Registered " + INSURANCE_POLICY_OBS_TAG + " tag with htmlformentry");
+        log.warn("Registered " + INSURANCE_POLICY_OBS_TAG + " tag with htmlformentry");
     }
 }
