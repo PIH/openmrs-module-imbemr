@@ -17,8 +17,6 @@ public class RwandaPrecisePatientSearchAlgorithm extends RwandaFastPatientSearch
     @Override
     public List<PatientAndMatchQuality> findSimilarPatients(Patient search, Map<String, Object> otherDataPoints, Double cutoff, Integer maxResults) {
         List<PatientAndMatchQuality> ret = super.findSimilarPatients(search, otherDataPoints, cutoff, maxResults);
-
-        // TODO: We likely want to further refinement here based on address, person attributes, phone number, national id, etc
         return ret;
     }
 }

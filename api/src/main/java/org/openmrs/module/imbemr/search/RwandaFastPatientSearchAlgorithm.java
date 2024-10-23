@@ -1,16 +1,26 @@
 package org.openmrs.module.imbemr.search;
 
+import org.apache.commons.codec.language.DoubleMetaphone;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Patient;
+import org.openmrs.PatientIdentifier;
+import org.openmrs.PersonAttribute;
+import org.openmrs.PersonAttributeType;
+import org.openmrs.api.PatientService;
+import org.openmrs.api.PersonService;
 import org.openmrs.module.namephonetics.NamePhoneticsService;
+import org.openmrs.module.namephonetics.phoneticsalgorithm.KinyarwandaSoundex;
 import org.openmrs.module.registrationcore.api.search.PatientAndMatchQuality;
 import org.openmrs.module.registrationcore.api.search.SimilarPatientSearchAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +34,16 @@ public class RwandaFastPatientSearchAlgorithm implements SimilarPatientSearchAlg
     @Autowired
     NamePhoneticsService namePhoneticsService;
 
+    @Autowired
+    PatientService patientService;
+
+    @Autowired
+    PersonService personService;
+
+    private final DoubleMetaphone doubleMetaphone = new DoubleMetaphone();
+
+    private final KinyarwandaSoundex kinyarwandaSoundex = new KinyarwandaSoundex();
+
     @Override
     public List<PatientAndMatchQuality> findSimilarPatients(Patient search, Map<String, Object> otherDataPoints, Double cutoff, Integer maxResults) {
         List<PatientAndMatchQuality> ret = new ArrayList<>();
@@ -32,23 +52,91 @@ public class RwandaFastPatientSearchAlgorithm implements SimilarPatientSearchAlg
         String familyName = search.getFamilyName();
         String gender = search.getGender();
 
-        // Only execute searches if at least the given and family names are entered
-        if (StringUtils.isNotBlank(givenName) && StringUtils.isNotBlank(familyName)) {
-            for (Patient candidate : getPhoneticsMatches(givenName, familyName)) {
+        // If any identifiers are entered, and any match exactly, these should take precedence over anything else
+        for (PatientIdentifier pi : search.getIdentifiers()) {
+            for (Patient p : patientService.getPatients(null, pi.getIdentifier(), Collections.singletonList(pi.getIdentifierType()), true)) {
                 List<String> matchedFields = new ArrayList<>();
-                matchedFields.add("names.givenName");
-                matchedFields.add("names.familyName");
-                // Only match if gender is not yet entered, or if it matches exactly
-                if (StringUtils.isBlank(gender) || gender.equals(candidate.getGender())) {
-                    if (gender != null && gender.equals(candidate.getGender())) {
-                        matchedFields.add("gender");
-                    }
-                    ret.add(new PatientAndMatchQuality(candidate, cutoff, matchedFields));
-                }
+                matchedFields.add("identifier." + pi.getIdentifierType().getName());
+                ret.add(new PatientAndMatchQuality(p, cutoff + 100, matchedFields));
             }
         }
 
-        // TODO: We likely want to further refine here based on address, person attributes, phone number, national id, etc
+        // If we do not match by identifier, match by name and filter down as additional fields are entered
+        if (ret.isEmpty()) {
+            // Require given and family names at minimum to return matches
+            if (StringUtils.isNotBlank(givenName) && StringUtils.isNotBlank(familyName)) {
+                for (Patient candidate : getPhoneticsMatches(givenName, familyName)) {
+
+                    // If we make it here, we have matched on givenName and familyName
+                    boolean match = true;
+                    List<String> matchedFields = new ArrayList<>();
+                    matchedFields.add("names.givenName");
+                    matchedFields.add("names.familyName");
+
+                    // Refine based on gender if entered and if it matches exactly
+                    if (StringUtils.isNotBlank(gender)) {
+                        match = gender.equals(candidate.getGender());
+                        if (match) {
+                            matchedFields.add("gender");
+                        }
+                    }
+
+                    // Refine based on birthdate if entered and patient's birthday falls within 1 year
+                    if (match) {
+                        Date enteredBirthdate = getBirthdate(search, otherDataPoints);
+                        if (enteredBirthdate != null) {
+                            Date candidateBirthdate = candidate.getBirthdate();
+                            Calendar cal = Calendar.getInstance();
+                            cal.setTime(enteredBirthdate);
+                            cal.add(Calendar.YEAR, -1);
+                            Date fromDate = cal.getTime();
+                            cal.add(Calendar.YEAR, 2);
+                            Date toDate = cal.getTime();
+                            match = candidateBirthdate != null && !candidateBirthdate.before(fromDate) && !candidateBirthdate.after(toDate);
+                            if (match) {
+                                matchedFields.add("birthdate");
+                            }
+                        }
+                    }
+
+                    // Refine based on mother's name and father's name if entered, using phonetic match
+                    if (match) {
+                        PersonAttributeType mothersNameType = personService.getPersonAttributeTypeByUuid("8d871d18-c2cc-11de-8d13-0010c6dffd0f");
+                        PersonAttributeType fathersNameType = personService.getPersonAttributeTypeByUuid("b7e948d4-9458-4f06-8d93-e859b6be9b76");
+                        boolean hasMothersName = false;
+                        boolean hasMothersNameMatch = false;
+                        boolean hasFathersName = false;
+                        boolean hasFathersNameMatch = false;
+                        for (PersonAttribute attribute : search.getActiveAttributes()) {
+                            if (attribute.getAttributeType().equals(mothersNameType)) {
+                                hasMothersName = true;
+                                hasMothersNameMatch = hasMothersNameMatch || hasAttributeWithPhoneticMatch(candidate, attribute.getValue(), mothersNameType);
+                            }
+                            else if (attribute.getAttributeType().equals(fathersNameType)) {
+                                hasFathersName = true;
+                                hasFathersNameMatch = hasFathersNameMatch || hasAttributeWithPhoneticMatch(candidate, attribute.getValue(), fathersNameType);
+                            }
+                        }
+                        if (hasMothersName) {
+                            match = hasMothersNameMatch;
+                            if (match) {
+                                matchedFields.add("attribute." + mothersNameType.getName());
+                            }
+                        }
+                        if (match && hasFathersName) {
+                            match = hasFathersNameMatch;
+                            if (match) {
+                                matchedFields.add("attribute." + fathersNameType.getName());
+                            }
+                        }
+                    }
+
+                    if (match) {
+                        ret.add(new PatientAndMatchQuality(candidate, cutoff, matchedFields));
+                    }
+                }
+            }
+        }
         return ret;
     }
 
@@ -61,5 +149,43 @@ public class RwandaFastPatientSearchAlgorithm implements SimilarPatientSearchAlg
         }
         log.trace("Phonetics result count: " + ret.size());
         return ret;
+    }
+
+    public boolean hasAttributeWithPhoneticMatch(Patient p, String search, PersonAttributeType type) {
+        String doubleMetaphoneSearch = doubleMetaphone.encode(search);
+        String kinyarwandaSearch = kinyarwandaSoundex.encode(search);
+        for (PersonAttribute attribute : p.getActiveAttributes()) {
+            if (attribute.getAttributeType().equals(type)) {
+                boolean matches = doubleMetaphoneSearch.equalsIgnoreCase(doubleMetaphone.encode(attribute.getValue()));
+                if (!matches) {
+                    matches = kinyarwandaSearch.equalsIgnoreCase(kinyarwandaSoundex.encode(attribute.getValue()));
+                }
+                if (matches) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public Date getBirthdate(Patient patient, Map<String, Object> otherDataPoints) {
+        if (patient.getBirthdate() != null) {
+            return patient.getBirthdate();
+        }
+        if (otherDataPoints != null) {
+            Integer years = (Integer) otherDataPoints.get("birthdateYears");
+            Integer months = (Integer) otherDataPoints.get("birthdateMonths");
+            if (years != null || months != null) {
+                Calendar cal = Calendar.getInstance();
+                if (years != null) {
+                    cal.add(Calendar.YEAR, -1 * years);
+                }
+                if (months != null) {
+                    cal.add(Calendar.MONTH, -1 * months);
+                }
+                return cal.getTime();
+            }
+        }
+        return null;
     }
 }
