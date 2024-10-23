@@ -16,18 +16,21 @@ package org.openmrs.module.imbemr;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.module.BaseModuleActivator;
+import org.openmrs.module.DaemonToken;
+import org.openmrs.module.DaemonTokenAware;
 import org.openmrs.module.ModuleActivator;
 import org.openmrs.module.imbemr.config.AuthenticationSetup;
 import org.openmrs.module.imbemr.config.GlobalResourceSetup;
 import org.openmrs.module.imbemr.config.InitializerSetup;
 import org.openmrs.module.imbemr.config.ServerSetup;
 import org.openmrs.module.imbemr.htmlformentry.HtmlFormEntrySetup;
+import org.openmrs.module.imbemr.task.ImbEmrTimerTask;
 import org.openmrs.module.reporting.config.ReportLoader;
 
 /**
  * This class contains the logic that is run every time this module is either started or stopped.
  */
-public class ImbEmrActivator extends BaseModuleActivator {
+public class ImbEmrActivator extends BaseModuleActivator implements DaemonTokenAware {
 	
 	protected Log log = LogFactory.getLog(getClass());
 
@@ -47,6 +50,9 @@ public class ImbEmrActivator extends BaseModuleActivator {
 		ReportLoader.loadReportsFromConfig();
 		GlobalResourceSetup.includeGlobalResources();
 		HtmlFormEntrySetup.setup();
+		log.warn("HTMLFormEntry Configured");
+		ImbEmrTimerTask.setEnabled(true);
+		log.warn("ImbEmrTimerTask enabled");
 		log.warn("IMB EMR configuration complete");
 	}
 
@@ -56,5 +62,9 @@ public class ImbEmrActivator extends BaseModuleActivator {
 	public void stopped() {
 		log.info("IMB EMR Module stopped");
 	}
-	
+
+	@Override
+	public void setDaemonToken(DaemonToken daemonToken) {
+		ImbEmrTimerTask.setDaemonToken(daemonToken);
+	}
 }
