@@ -123,7 +123,6 @@ public class InsurancePolicyPageController {
                 beneficiary = new Beneficiary();
                 beneficiary.setPatient(policy.getOwner());
                 beneficiary.setInsurancePolicy(policy);
-                beneficiary.setPolicyIdNumber(policy.getInsuranceCardNo());
                 beneficiary.setCreatedDate(now);
                 beneficiary.setCreator(currentUser);
                 beneficiary.setRetired(false);  // TODO: Support retiring and un-retiring?
@@ -131,6 +130,7 @@ public class InsurancePolicyPageController {
             }
 
             // TODO: There is some odd logic about how these are set in 1.x.  Review that or this for correctness.
+            beneficiary.setPolicyIdNumber(policy.getInsuranceCardNo());
             beneficiary.setOwnerName(policyModel.getOwnerName());
             beneficiary.setOwnerCode(policyModel.getOwnerCode());
             beneficiary.setLevel(policyModel.getLevel() == null ? 0 : policyModel.getLevel());
