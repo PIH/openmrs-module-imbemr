@@ -44,4 +44,11 @@ public class MockImbEmrConfig extends ImbEmrConfig {
 		t.setName(ImbEmrConstants.TELEPHONE_NUMBER_NAME);
 		return t;
 	}
+
+	@Override
+	public PatientIdentifierType getPatientIdentifierTypeByUuid(String uuid) {
+		PatientIdentifierType t = new PatientIdentifierType();
+		t.setUuid(uuid);
+		return t;
+	}
 }

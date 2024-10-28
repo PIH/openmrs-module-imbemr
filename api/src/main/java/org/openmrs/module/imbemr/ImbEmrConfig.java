@@ -44,9 +44,13 @@ public class ImbEmrConfig {
 		return getPersonAttributeType(ImbEmrConstants.TELEPHONE_NUMBER_UUID, ImbEmrConstants.TELEPHONE_NUMBER_NAME);
 	}
 
+	public PatientIdentifierType getPatientIdentifierTypeByUuid(String uuid) {
+		return patientService.getPatientIdentifierTypeByUuid(uuid);
+	}
+
 	// Provides a means to look up a patient identifier type first by the expected uuid, or by name if uuid not found
 	private PatientIdentifierType getPatientIdentifierType(String uuid, String name) {
-		PatientIdentifierType ret = patientService.getPatientIdentifierTypeByUuid(uuid);
+		PatientIdentifierType ret = getPatientIdentifierTypeByUuid(uuid);
 		if (ret == null) {
 			ret = patientService.getPatientIdentifierTypeByName(name);
 		}

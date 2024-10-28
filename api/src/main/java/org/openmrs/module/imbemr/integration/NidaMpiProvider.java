@@ -31,6 +31,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +43,14 @@ import java.util.Map;
 public class NidaMpiProvider implements MpiProvider<Patient> {
 
 	protected Log log = LogFactory.getLog(getClass());
+
+	public static final List<String> SUPPORTED_IDENTIFIER_TYPES = Arrays.asList(
+			ImbEmrConstants.NATIONAL_ID_UUID,
+			ImbEmrConstants.NID_APPLICATION_NUMBER_UUID,
+			ImbEmrConstants.NIN_UUID,
+			ImbEmrConstants.UPID_UUID,
+			ImbEmrConstants.PASSPORT_NUMBER_UUID
+	);
 
 	private final FhirContext fhirContext;
 	private final NidaPatientTranslator patientTranslator;
@@ -60,9 +69,7 @@ public class NidaMpiProvider implements MpiProvider<Patient> {
 	 */
 	@Override
 	public MpiPatient fetchMpiPatient(String patientId, String identifierTypeUuid) {
-		// Currently we only have national ID
-		// TODO: Expand to support NID, UPID, NID Application Number, NIN, Passport, Foreigner ID, if they are defined
-		if (!ImbEmrConstants.NATIONAL_ID_UUID.equals(identifierTypeUuid)) {
+		if (!SUPPORTED_IDENTIFIER_TYPES.contains(identifierTypeUuid)) {
 			return null;
 		}
 		String url = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_URL_PROPERTY);

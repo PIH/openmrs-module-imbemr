@@ -1,11 +1,11 @@
 package org.openmrs.module.imbemr;
 
 import ca.uhn.fhir.context.FhirContext;
-import org.apache.commons.lang3.BooleanUtils;
 import org.hl7.fhir.r4.model.Bundle;
 import org.junit.Before;
 import org.junit.Test;
 import org.openmrs.Patient;
+import org.openmrs.PatientIdentifier;
 import org.openmrs.PersonAddress;
 import org.openmrs.PersonAttribute;
 import org.openmrs.module.imbemr.integration.NidaPatientTranslator;
@@ -14,7 +14,9 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 
 public class NidaPatientTranslatorTest {
 
@@ -43,6 +45,12 @@ public class NidaPatientTranslatorTest {
 			assertThat(p.getGivenName(), equalTo("TestP"));
 			assertThat(p.getFamilyName(), equalTo("TestP"));
 			assertThat(p.getDead(), equalTo(false));
+			assertThat(p.getIdentifiers().size(), equalTo(1));
+			PatientIdentifier identifier = p.getIdentifiers().iterator().next();
+			assertThat(identifier, notNullValue());
+			assertThat(identifier.getIdentifier(), equalTo("220919-7657-5617"));
+			assertThat(identifier.getIdentifierType(), notNullValue());
+			assertThat(identifier.getIdentifierType().getUuid(), equalTo(ImbEmrConstants.UPID_UUID));
 			assertThat(p.getActiveAttributes().size(), equalTo(1));
 			PersonAttribute phoneNumber = p.getAttribute(imbEmrConfig.getTelephoneNumber());
 			assertThat(phoneNumber, notNullValue());

@@ -18,12 +18,15 @@ import org.hl7.fhir.r4.model.*;
 import org.openmrs.Patient;
 import org.openmrs.*;
 import org.openmrs.module.imbemr.ImbEmrConfig;
+import org.openmrs.module.imbemr.ImbEmrConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Implementation of MpiProvider that connects to the Rwanda NIDA
@@ -41,6 +44,15 @@ public class NidaPatientTranslator {
 		this.imbEmrConfig = imbEmrConfig;
 	}
 
+	public static final Map<String, String> IDENTIFIER_SYSTEMS = new HashMap<>();
+	static {
+		IDENTIFIER_SYSTEMS.put("NID", ImbEmrConstants.NATIONAL_ID_UUID);
+		IDENTIFIER_SYSTEMS.put("NID_APPLICATION_NUMBER", ImbEmrConstants.NID_APPLICATION_NUMBER_UUID);
+		IDENTIFIER_SYSTEMS.put("NIN", ImbEmrConstants.NIN_UUID);
+		IDENTIFIER_SYSTEMS.put("UPI", ImbEmrConstants.UPID_UUID);
+		IDENTIFIER_SYSTEMS.put("PASSPORT", ImbEmrConstants.PASSPORT_NUMBER_UUID);
+	}
+
 	public Patient toOpenmrsType(@Nonnull org.hl7.fhir.r4.model.Patient fhirPatient) {
 		Patient p = new Patient();
 
@@ -50,10 +62,10 @@ public class NidaPatientTranslator {
 				if (StringUtils.isNotBlank(value)) {
 					String system = identifier.getSystem();
 					PatientIdentifierType identifierType = null;
-					if (system.equals("NID")) {
-						identifierType = imbEmrConfig.getNationalId();
+					String patientIdentifierTypeUuid = IDENTIFIER_SYSTEMS.get(system);
+					if (StringUtils.isNotBlank(patientIdentifierTypeUuid)) {
+						identifierType = imbEmrConfig.getPatientIdentifierTypeByUuid(patientIdentifierTypeUuid);
 					}
-					// TODO: Add in support for "UPI", "NIN", "NID_APPLICATION_NUMBER", "PASSPORT"
 					if (identifierType != null) {
 						PatientIdentifier pi = new PatientIdentifier();
 						pi.setPatient(p);

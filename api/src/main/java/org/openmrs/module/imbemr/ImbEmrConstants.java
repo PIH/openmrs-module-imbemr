@@ -17,6 +17,18 @@ public class ImbEmrConstants {
 	public static final String NATIONAL_ID_UUID = "ed52ec82-4b7c-411b-804a-13bd9651bb3e";
 	public static final String NATIONAL_ID_NAME = "Rwanda National ID";
 
+	public static final String NID_APPLICATION_NUMBER_UUID = "0f7d2e40-956a-11ef-93fa-0242ac120002";
+	public static final String NID_APPLICATION_NUMBER_NAME = "National ID Application Number";
+
+	public static final String UPID_UUID = "01edaedd-956a-11ef-93fa-0242ac120002";
+	public static final String UPID_NAME = "UPID";
+
+	public static final String NIN_UUID = "0c69d739-956a-11ef-93fa-0242ac120002";
+	public static final String NIN_NAME = "NIN";
+
+	public static final String PASSPORT_NUMBER_UUID = "12a72978-956a-11ef-93fa-0242ac120002";
+	public static final String PASSPORT_NUMBER_NAME = "Passport Number";
+
 	public static final String TELEPHONE_NUMBER_UUID = "d6bcc287-4576-4264-961b-6bf1c08fbf68";
 	public static final String TELEPHONE_NUMBER_NAME = "Phone number";
 
