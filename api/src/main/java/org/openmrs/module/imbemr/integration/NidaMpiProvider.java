@@ -63,6 +63,13 @@ public class NidaMpiProvider implements MpiProvider<Patient> {
 		this.patientTranslator = nidaPatientTranslator;
 	}
 
+	public boolean isEnabled() {
+		String url = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_URL_PROPERTY);
+		String username = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_USERNAME_PROPERTY);
+		String password = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_PASSWORD_PROPERTY);
+		return StringUtils.isNotBlank(url) && StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password);
+	}
+
 	/**
 	 * Ultimately, we should likely adopt and integrate this solution:
 	 * https://github.com/openmrs/openmrs-module-clientregistry
