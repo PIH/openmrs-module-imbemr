@@ -5,9 +5,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Before;
 import org.junit.Test;
+import org.openmrs.Patient;
 import org.openmrs.module.imbemr.integration.NidaMpiProvider;
 import org.openmrs.module.imbemr.integration.NidaPatientTranslator;
-import org.openmrs.module.registrationcore.api.mpi.common.MpiPatient;
 import org.openmrs.util.ConfigUtil;
 
 import java.text.SimpleDateFormat;
@@ -40,10 +40,10 @@ public class NidaMpiProviderTest {
 			log.warn("THE REQUIRED PROPERTIES SHOULD BE SET USING `-Dproperty=value` WHEN EXECUTING THE TEST");
 			return;
 		}
-		MpiPatient mpiPatient = provider.fetchMpiPatient("220919-7657-5617", ImbEmrConstants.NATIONAL_ID_UUID);
-		assertThat(mpiPatient, notNullValue());
-		assertThat(mpiPatient.getGender(), equalTo("M"));
-		assertThat(new SimpleDateFormat("yyyy-MM-dd").format(mpiPatient.getBirthdate()), equalTo("1999-03-20"));
+		Patient patient = provider.fetchPatient("220919-7657-5617", ImbEmrConstants.NATIONAL_ID_UUID);
+		assertThat(patient, notNullValue());
+		assertThat(patient.getGender(), equalTo("M"));
+		assertThat(new SimpleDateFormat("yyyy-MM-dd").format(patient.getBirthdate()), equalTo("1999-03-20"));
 	}
 
 	private boolean isConfiguredToRun() {

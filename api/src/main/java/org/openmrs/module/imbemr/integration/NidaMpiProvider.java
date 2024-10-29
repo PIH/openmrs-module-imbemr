@@ -20,10 +20,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.hl7.fhir.r4.model.Bundle;
 import org.openmrs.Patient;
-import org.openmrs.PatientIdentifier;
 import org.openmrs.module.imbemr.ImbEmrConstants;
-import org.openmrs.module.registrationcore.api.mpi.common.MpiPatient;
-import org.openmrs.module.registrationcore.api.mpi.common.MpiPatientFetcher;
 import org.openmrs.util.ConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,7 +33,7 @@ import java.util.List;
  * Implementation of MpiPatientFetcher that connects to the Rwandan Client Register
  */
 @Component("nidaMpiProvider")
-public class NidaMpiProvider implements MpiPatientFetcher {
+public class NidaMpiProvider {
 
 	protected Log log = LogFactory.getLog(getClass());
 
@@ -70,8 +67,7 @@ public class NidaMpiProvider implements MpiPatientFetcher {
 	 * Ultimately, we should likely adopt and integrate this solution:
 	 * https://github.com/openmrs/openmrs-module-clientregistry
 	 */
-	@Override
-	public MpiPatient fetchMpiPatient(String patientId, String identifierTypeUuid) {
+	public Patient fetchPatient(String patientId, String identifierTypeUuid) {
 		if (!SUPPORTED_IDENTIFIER_TYPES.contains(identifierTypeUuid)) {
 			return null;
 		}
@@ -102,18 +98,12 @@ public class NidaMpiProvider implements MpiPatientFetcher {
 					throw new IllegalStateException("Unexpected bundle found: " + bundle);
 				}
 				org.hl7.fhir.r4.model.Patient fhirPatient = (org.hl7.fhir.r4.model.Patient) bundle.getEntry().get(0).getResource();
-				Patient openmrsPatient = patientTranslator.toOpenmrsType(fhirPatient);
-				return new MpiPatient(openmrsPatient);
+				return patientTranslator.toOpenmrsType(fhirPatient);
 			}
 		} catch (Exception e) {
 			log.debug("An error occurred trying to fetch patients from NIDA, returning null", e);
 		}
 
 		return null;
-	}
-
-	@Override
-	public MpiPatient fetchMpiPatient(PatientIdentifier patientIdentifier) {
-		return fetchMpiPatient(patientIdentifier.getIdentifier(), patientIdentifier.getIdentifierType().getUuid());
 	}
 }

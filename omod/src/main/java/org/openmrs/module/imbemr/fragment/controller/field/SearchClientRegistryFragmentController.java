@@ -41,7 +41,7 @@ public class SearchClientRegistryFragmentController {
     public FragmentActionResult findByIdentifier(@RequestParam("identifier") String identifier,
                                                  @RequestParam("identifierTypeUuid") String identifierType,
                                                  @SpringBean NidaMpiProvider mpiProvider) {
-        Patient patient = mpiProvider.fetchMpiPatient(identifier, identifierType);
+        Patient patient = mpiProvider.fetchPatient(identifier, identifierType);
         if (patient == null) {
             return new FailureResult("imbemr.clientRegistry.patientNotFound");
         }
