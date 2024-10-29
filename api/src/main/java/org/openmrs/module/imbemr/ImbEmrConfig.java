@@ -44,6 +44,26 @@ public class ImbEmrConfig {
 		return getPersonAttributeTypeByUuid(ImbEmrConstants.TELEPHONE_NUMBER_UUID);
 	}
 
+	public PersonAttributeType getMothersName() {
+		return getPersonAttributeTypeByUuid(ImbEmrConstants.MOTHERS_NAME_UUID);
+	}
+
+	public PersonAttributeType getFathersName() {
+		return getPersonAttributeTypeByUuid(ImbEmrConstants.FATHERS_NAME_UUID);
+	}
+
+	public PersonAttributeType getEducationLevel() {
+		return getPersonAttributeTypeByUuid(ImbEmrConstants.EDUCATION_LEVEL_UUID);
+	}
+
+	public PersonAttributeType getProfession() {
+		return getPersonAttributeTypeByUuid(ImbEmrConstants.PROFESSION_UUID);
+	}
+
+	public PersonAttributeType getReligion() {
+		return getPersonAttributeTypeByUuid(ImbEmrConstants.RELIGION_UUID);
+	}
+
 	public PatientIdentifierType getPatientIdentifierTypeByUuid(String uuid) {
 		return patientService.getPatientIdentifierTypeByUuid(uuid);
 	}

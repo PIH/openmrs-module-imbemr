@@ -90,20 +90,14 @@ public class NidaPatientTranslator {
 
 		if (fhirPatient.hasName()) {
 			for (HumanName humanName : fhirPatient.getName()) {
-				List<String> givenNames = new ArrayList<>();
-				List<String> familyNames = new ArrayList<>();
-				if (humanName.hasFamily()) {
-					familyNames.add(humanName.getFamily());
-				}
-				if (humanName.hasGiven()) {
-					for (StringType givenPart : humanName.getGiven()) {
-						givenNames.add(givenPart.getValue());
-					}
-				}
 				PersonName name = new PersonName();
 				name.setPerson(p);
-				name.setGivenName(String.join(" ", givenNames));
-				name.setFamilyName(String.join(" ", familyNames));
+				if (humanName.hasGiven()) {
+					name.setGivenName(getGivenName(humanName));
+				}
+				if (humanName.hasFamily()) {
+					name.setFamilyName(humanName.getFamily());
+				}
 				if (p.getNames().isEmpty()) {
 					name.setPreferred(true);
 				}
@@ -194,10 +188,45 @@ public class NidaPatientTranslator {
 			}
 		}
 
-		// TODO: Not handled yet, need more information on how it is set and specified
-		// See extension for nationality that seems to have nationality, education level, profession and religion
-		// And see "contact" section, which seems to be used for Father Name, Mother Name, and Spouse Name
+		if (fhirPatient.hasContact()) {
+			for (org.hl7.fhir.r4.model.Patient.ContactComponent contactComponent : fhirPatient.getContact()) {
+				if (contactComponent.hasName()) {
+					HumanName contactName = contactComponent.getName();
+					if (contactName.hasGiven()) {
+						PersonAttributeType contactNameType = null;
+						if (contactName.getFamily().equals("MOTHER NAME")) {
+							contactNameType = imbEmrConfig.getMothersName();
+						}
+						else if (contactName.getFamily().equals("FATHER NAME")) {
+							contactNameType = imbEmrConfig.getFathersName();
+						}
+						if (contactNameType != null) {
+							PersonAttribute personAttribute = new PersonAttribute();
+							personAttribute.setPerson(p);
+							personAttribute.setAttributeType(contactNameType);
+							personAttribute.setValue(getGivenName(contactName));
+							p.addAttribute(personAttribute);
+						}
+					}
+				}
+			}
+		}
+
+		// TODO: Not handled yet: education level, profession and religion
 
 		return p;
+	}
+
+	// Returns a given name as a string
+	private String getGivenName(HumanName humanName) {
+		List<String> l = new ArrayList<>();
+		if (humanName.hasGiven()) {
+			for (StringType st : humanName.getGiven()) {
+				if (st.hasValue()) {
+					l.add(st.getValue());
+				}
+			}
+		}
+		return String.join(" ", l);
 	}
 }

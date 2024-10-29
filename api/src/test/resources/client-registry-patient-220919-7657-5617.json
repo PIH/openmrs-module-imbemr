@@ -101,13 +101,19 @@
 				"contact": [
 					{
 						"name": {
-							"family": "FATHER NAME"
+							"family": "FATHER NAME",
+							"given": [
+								"Test Father"
+							]
 						},
 						"gender": "male"
 					},
 					{
 						"name": {
-							"family": "MOTHER NAME"
+							"family": "MOTHER NAME",
+							"given": [
+								"Test Mother"
+							]
 						},
 						"gender": "female"
 					},

@@ -51,10 +51,16 @@ public class NidaPatientTranslatorTest {
 			assertThat(identifier.getIdentifier(), equalTo("220919-7657-5617"));
 			assertThat(identifier.getIdentifierType(), notNullValue());
 			assertThat(identifier.getIdentifierType().getUuid(), equalTo(ImbEmrConstants.UPID_UUID));
-			assertThat(p.getActiveAttributes().size(), equalTo(1));
+			assertThat(p.getActiveAttributes().size(), equalTo(3));
 			PersonAttribute phoneNumber = p.getAttribute(imbEmrConfig.getTelephoneNumber());
 			assertThat(phoneNumber, notNullValue());
 			assertThat(phoneNumber.getValue(), equalTo("0000000000"));
+			PersonAttribute mothersName = p.getAttribute(imbEmrConfig.getMothersName());
+			assertThat(mothersName, notNullValue());
+			assertThat(mothersName.getValue(), equalTo("Test Mother"));
+			PersonAttribute fathersName = p.getAttribute(imbEmrConfig.getFathersName());
+			assertThat(fathersName, notNullValue());
+			assertThat(fathersName.getValue(), equalTo("Test Father"));
 			assertThat(p.getAddresses().size(), equalTo(2));
 			for (PersonAddress address : p.getAddresses()) {
 				if ("Rwanda".equals(address.getCountry())) {
