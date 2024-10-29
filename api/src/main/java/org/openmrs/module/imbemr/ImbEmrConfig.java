@@ -37,32 +37,18 @@ public class ImbEmrConfig {
 	}
 
 	public PatientIdentifierType getNationalId() {
-		return getPatientIdentifierType(ImbEmrConstants.NATIONAL_ID_UUID, ImbEmrConstants.NATIONAL_ID_NAME);
+		return getPatientIdentifierTypeByUuid(ImbEmrConstants.NATIONAL_ID_UUID);
 	}
 
 	public PersonAttributeType getTelephoneNumber() {
-		return getPersonAttributeType(ImbEmrConstants.TELEPHONE_NUMBER_UUID, ImbEmrConstants.TELEPHONE_NUMBER_NAME);
+		return getPersonAttributeTypeByUuid(ImbEmrConstants.TELEPHONE_NUMBER_UUID);
 	}
 
 	public PatientIdentifierType getPatientIdentifierTypeByUuid(String uuid) {
 		return patientService.getPatientIdentifierTypeByUuid(uuid);
 	}
 
-	// Provides a means to look up a patient identifier type first by the expected uuid, or by name if uuid not found
-	private PatientIdentifierType getPatientIdentifierType(String uuid, String name) {
-		PatientIdentifierType ret = getPatientIdentifierTypeByUuid(uuid);
-		if (ret == null) {
-			ret = patientService.getPatientIdentifierTypeByName(name);
-		}
-		return ret;
-	}
-
-	// Provides a means to look up a person attribute type first by the expected uuid, or by name if uuid not found
-	private PersonAttributeType getPersonAttributeType(String uuid, String name) {
-		PersonAttributeType ret = personService.getPersonAttributeTypeByUuid(uuid);
-		if (ret == null) {
-			ret = personService.getPersonAttributeTypeByName(name);
-		}
-		return ret;
+	public PersonAttributeType getPersonAttributeTypeByUuid(String uuid) {
+		return personService.getPersonAttributeTypeByUuid(uuid);
 	}
 }

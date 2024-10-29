@@ -33,7 +33,7 @@ public class MockImbEmrConfig extends ImbEmrConfig {
 	public PatientIdentifierType getNationalId() {
 		PatientIdentifierType t = new PatientIdentifierType();
 		t.setUuid(ImbEmrConstants.NATIONAL_ID_UUID);
-		t.setName(ImbEmrConstants.NATIONAL_ID_NAME);
+		t.setName("National ID");
 		return t;
 	}
 
@@ -41,7 +41,7 @@ public class MockImbEmrConfig extends ImbEmrConfig {
 	public PersonAttributeType getTelephoneNumber() {
 		PersonAttributeType t = new PersonAttributeType();
 		t.setUuid(ImbEmrConstants.TELEPHONE_NUMBER_UUID);
-		t.setName(ImbEmrConstants.TELEPHONE_NUMBER_NAME);
+		t.setName("Phone Number");
 		return t;
 	}
 
