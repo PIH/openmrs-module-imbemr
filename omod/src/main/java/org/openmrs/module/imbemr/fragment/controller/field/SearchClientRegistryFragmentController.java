@@ -59,7 +59,7 @@ public class SearchClientRegistryFragmentController {
             data.put("birthdateYear", c.get(Calendar.YEAR));
         }
 
-        // TODO: Ideally retrieve and configure form fields based on registration config.  Hard-code for now.
+        // TODO: Retrieve and configure from registration config, not hard-coded
 
         for (PatientIdentifier pi : patient.getIdentifiers()) {
             if (pi.getIdentifierType().getUuid().equals(ImbEmrConstants.NATIONAL_ID_UUID)) {
@@ -83,7 +83,21 @@ public class SearchClientRegistryFragmentController {
             if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.TELEPHONE_NUMBER_UUID)) {
                 data.put("phoneNumber", pa.getValue());
             }
-            // TODO mothersName, fathersName, educationLevel, profession, religion
+            else if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.MOTHERS_NAME_UUID)) {
+                data.put("mothersName", pa.getValue());
+            }
+            else if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.FATHERS_NAME_UUID)) {
+                data.put("fathersName", pa.getValue());
+            }
+            else if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.RELIGION_UUID)) {
+                data.put("educationLevel", pa.getValue());
+            }
+            else if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.PROFESSION_UUID)) {
+                data.put("profession", pa.getValue());
+            }
+            else if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.EDUCATION_LEVEL_UUID)) {
+                data.put("religion", pa.getValue());
+            }
         }
 
         PersonAddress pa = patient.getPersonAddress();

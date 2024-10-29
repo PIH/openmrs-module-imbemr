@@ -23,24 +23,20 @@ import org.openmrs.Patient;
 import org.openmrs.PatientIdentifier;
 import org.openmrs.module.imbemr.ImbEmrConstants;
 import org.openmrs.module.registrationcore.api.mpi.common.MpiPatient;
-import org.openmrs.module.registrationcore.api.mpi.common.MpiProvider;
-import org.openmrs.module.registrationcore.api.search.PatientAndMatchQuality;
+import org.openmrs.module.registrationcore.api.mpi.common.MpiPatientFetcher;
 import org.openmrs.util.ConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 /**
- * Implementation of MpiProvider that connects to the Rwanda NIDA
+ * Implementation of MpiPatientFetcher that connects to the Rwandan Client Register
  */
 @Component("nidaMpiProvider")
-public class NidaMpiProvider implements MpiProvider<Patient> {
+public class NidaMpiProvider implements MpiPatientFetcher {
 
 	protected Log log = LogFactory.getLog(getClass());
 
@@ -119,34 +115,5 @@ public class NidaMpiProvider implements MpiProvider<Patient> {
 	@Override
 	public MpiPatient fetchMpiPatient(PatientIdentifier patientIdentifier) {
 		return fetchMpiPatient(patientIdentifier.getIdentifier(), patientIdentifier.getIdentifierType().getUuid());
-	}
-
-	@Override
-	public List<PatientAndMatchQuality> findExactMatches(Patient patient, Map<String, Object> otherDataPoints, Double cutoff, Integer maxResults) {
-		// For now, just iterate over every provided identifier to search on, and try to fetch a patient from the mpi that matches
-		List<PatientAndMatchQuality> results = new ArrayList<>();
-		for (PatientIdentifier pi : patient.getIdentifiers()) {
-			MpiPatient match = fetchMpiPatient(pi);
-			if (match != null) {
-				results.add(new PatientAndMatchQuality(match, cutoff, Collections.singletonList("identifier." + pi.getIdentifierType().getUuid())));
-			}
-		}
-		return results;
-	}
-
-	@Override
-	public List<PatientAndMatchQuality> findSimilarMatches(Patient patient, Map<String, Object> otherDataPoints, Double cutoff, Integer maxResults) {
-		// We can expand this in the future if we want to query for possible matches in NIDA.  For now, we just support exact matching by ID
-		return findExactMatches(patient, otherDataPoints, cutoff, maxResults);
-	}
-
-	@Override
-	public String exportPatient(Patient patient) {
-		throw new UnsupportedOperationException("Saving patient records in NIDA is not yet supported");
-	}
-
-	@Override
-	public void updatePatient(Patient patient) {
-		throw new UnsupportedOperationException("Updating patient records in NIDA is not yet supported");
 	}
 }

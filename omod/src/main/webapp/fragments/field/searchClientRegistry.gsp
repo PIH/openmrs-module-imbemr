@@ -1,25 +1,41 @@
-<% if (clientRegistryEnabled) { %>
-
+<% if (clientRegistryEnabled && config.formFields) { %>
     <style>
         #search-client-registry-section {
             padding-top: 20px;
-        }
-        #client-registry-match-section {
-            display: none;
-            padding: 20px;
-            background-color: blue;
-            color: white;
-            position: relative;
-            z-index: 10000;
+            clear: left;
         }
         #search-client-registry-loading-spinner {
             display: none;
+        }
+        #search-client-registry-found-message {
+            display: none;
+        }
+        #search-client-registry-not-found-message {
+            display: none;
+        }
+        .search-success-icon {
+            font-size: 1.5em;
+            color: rgb(40, 201, 0);
+            padding: 3px 2px;
+        }
+        .search-failed-icon {
+            font-size: 1.5em;
+            color: darkred;
+            padding: 3px 2px;
         }
     </style>
 
     <p id="search-client-registry-section" class="left">
         <input id="client-registry-search-button" type="button" value="${ui.message("imbemr.clientRegistry.search")}" />
-        <i id="search-client-registry-loading-spinner" class="icon-spinner icon-spin"></i>
+        <i id="search-client-registry-loading-spinner" class="icon-spinner icon-spin icon-2x"></i>
+        <span id="search-client-registry-found-message">
+            <i class="search-success-icon icon-ok"></i>
+            ${ui.message("imbemr.clientRegistry.matchFound")}
+        </span>
+        <span id="search-client-registry-not-found-message">
+            <i class="search-failed-icon icon-remove"></i>
+            ${ui.message("imbemr.clientRegistry.noMatchFound")}
+        </span>
     </p>
 
     <script type="text/javascript">
@@ -28,29 +44,41 @@
             jq("#client-registry-search-button").click(function() {
                 jq("#client-registry-search-button").prop('disabled', true);
                 jq("#search-client-registry-loading-spinner").show();
-                jq.ajax({
-                    url: "${ ui.actionLink("imbemr", "field/searchClientRegistry", "findByIdentifier") }",
-                    dataType: "json",
-                    data: {
-                        'identifier': jq("#national-ids-questions input[name='upid']").val(),
-                        'identifierTypeUuid': '01edaedd-956a-11ef-93fa-0242ac120002'
-                    },
-                    success: function( data ) {
-                        jq('#search-client-registry-loading-spinner').hide();
-                        jq("#client-registry-search-button").removeProp('disabled');
-                        for (const [key, value] of Object.entries(data)) {
-                            jq("#registration [name='" + key + "']").val(value);
+                jq('#search-client-registry-not-found-message').hide();
+                jq('#search-client-registry-found-message').hide();
+                let successData = null;
+                <% config.formFields.each { field -> %>
+                    if (!successData) {
+                        let identifierValue = jq("input[name='${field.formFieldName}']").val();
+                        if (identifierValue) {
+                            console.debug("searching client registry for ${field.formFieldName}, ${field.identifierTypeUuid}: " + identifierValue);
+                            jq.ajax({
+                                url: "${ ui.actionLink("imbemr", "field/searchClientRegistry", "findByIdentifier") }",
+                                dataType: "json",
+                                data: {
+                                    'identifier': jq("input[name='${field.formFieldName}']").val(),
+                                    'identifierTypeUuid': '${field.identifierTypeUuid}'
+                                },
+                                success: function (data) {
+                                    successData = data;
+                                    jq('#search-client-registry-loading-spinner').hide();
+                                    jq('#client-registry-search-button').removeProp('disabled');
+                                    for (const [key, value] of Object.entries(data)) {
+                                        jq("#registration [name='" + key + "']").val(value);
+                                    }
+                                    jq('#search-client-registry-found-message').show();
+                                    console.debug(data);
+                                },
+                                error: function (data) {
+                                    jq('#search-client-registry-loading-spinner').hide();
+                                    jq("#client-registry-search-button").removeProp('disabled');
+                                    jq('#search-client-registry-not-found-message').show();
+                                    console.debug(data);
+                                }
+                            });
                         }
-                        console.log("Success!");
-                        console.log(data);
-                    },
-                    error: function( data ) {
-                        jq('#search-client-registry-loading-spinner').hide();
-                        jq("#client-registry-search-button").removeProp('disabled');
-                        console.log("Error!");
-                        console.log(data);
                     }
-                });
+                <% } %>
             });
 
             jq("#client-registry-close-button").click(function() {
@@ -58,18 +86,5 @@
             });
         });
     </script>
-
-    <div id="client-registry-match-section" class="dialog">
-        <div class="dialog-header">
-            <h3>${ ui.message("imbemr.clientRegistry.matchFound") }</h3>
-        </div>
-        <div class="dialog-content">
-            <p class="dialog-instructions">
-                Patient info here
-            </p>
-            <input id="client-registry-import-button" type="button" value="${ ui.message("imbemr.clientRegistry.import") }"/>
-            <input id="client-registry-close-button" type="button" value="${ ui.message("imbemr.clientRegistry.close") }"/>
-        </div>
-    </div>
 
 <% } %>
