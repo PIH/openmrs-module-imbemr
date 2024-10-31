@@ -23,23 +23,55 @@
 				},
 				"extension": [
 					{
-						"url": "http://hl7.org/fhir/StructureDefinition/patient-nationality",
+						"url": "https://hl7.org/fhir/StructureDefinition/patient-nationality",
 						"valueCodeableConcept": {
 							"coding": [
 								{
-									"system": "NATIONALITY",
-									"code": "RW"
-								},
-								{
-									"system": "EDUCATIONAL_LEVEL"
-								},
-								{
-									"system": "PROFESSION"
-								},
-								{
-									"system": "RELIGION"
+									"system": "https://hl7.org/fhir/StructureDefinition/patient-nationality",
+									"code": "RW",
+									"display": "RW"
 								}
-							]
+							],
+							"text": "NATIONALITY"
+						}
+					},
+					{
+						"url": "https://hl7.org/fhir/StructureDefinition/patient-religion",
+						"valueCodeableConcept": {
+							"coding": [
+								{
+									"system": "https://hl7.org/fhir/StructureDefinition/patient-religion",
+									"code": "some-religion",
+									"display": "some-religion"
+								}
+							],
+							"text": "RELIGION"
+						}
+					},
+					{
+						"url": "https://fhir.hie.moh.gov.rw/fhir/StructureDefinition/extensions/patient-educational-level",
+						"valueCodeableConcept": {
+							"coding": [
+								{
+									"system": "https://fhir.hie.moh.gov.rw/fhir/StructureDefinition/extensions/patient-educational-level",
+									"code": "Primary",
+									"display": "Primary"
+								}
+							],
+							"text": "EDUCATIONAL_LEVEL"
+						}
+					},
+					{
+						"url": "https://fhir.hie.moh.gov.rw/fhir/StructureDefinition/extensions/patient-profession",
+						"valueCodeableConcept": {
+							"coding": [
+								{
+									"system": "https://fhir.hie.moh.gov.rw/fhir/StructureDefinition/extensions/patient-profession",
+									"code": "1306",
+									"display": "1306"
+								}
+							],
+							"text": "PROFESSION"
 						}
 					}
 				],

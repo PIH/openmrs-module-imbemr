@@ -14,8 +14,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hl7.fhir.r4.model.Address;
+import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.ContactPoint;
 import org.hl7.fhir.r4.model.Enumerations;
+import org.hl7.fhir.r4.model.Extension;
 import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.StringType;
@@ -61,6 +63,10 @@ public class NidaPatientTranslator {
 		IDENTIFIER_SYSTEMS.put("UPI", ImbEmrConstants.UPID_UUID);
 		IDENTIFIER_SYSTEMS.put("PASSPORT", ImbEmrConstants.PASSPORT_NUMBER_UUID);
 	}
+
+	public static final String EDUCATION_EXTENSION_URL = "https://fhir.hie.moh.gov.rw/fhir/StructureDefinition/extensions/patient-educational-level";
+	public static final String RELIGION_EXTENSION_URL = "https://hl7.org/fhir/StructureDefinition/patient-religion";
+	public static final String PROFESSION_EXTENSION_URL = "https://fhir.hie.moh.gov.rw/fhir/StructureDefinition/extensions/patient-profession";
 
 	public Patient toOpenmrsType(@Nonnull org.hl7.fhir.r4.model.Patient fhirPatient) {
 		Patient p = new Patient();
@@ -212,7 +218,38 @@ public class NidaPatientTranslator {
 			}
 		}
 
-		// TODO: Not handled yet: education level, profession and religion
+		if (fhirPatient.hasExtension(EDUCATION_EXTENSION_URL)) {
+			String value = getExtensionCodedValue(fhirPatient.getExtensionByUrl(EDUCATION_EXTENSION_URL));
+			if (StringUtils.isNotBlank(value)) {
+				PersonAttribute personAttribute = new PersonAttribute();
+				personAttribute.setPerson(p);
+				personAttribute.setAttributeType(imbEmrConfig.getEducationLevel());
+				personAttribute.setValue(value);
+				p.addAttribute(personAttribute);
+			}
+		}
+
+		if (fhirPatient.hasExtension(RELIGION_EXTENSION_URL)) {
+			String value = getExtensionCodedValue(fhirPatient.getExtensionByUrl(RELIGION_EXTENSION_URL));
+			if (StringUtils.isNotBlank(value)) {
+				PersonAttribute personAttribute = new PersonAttribute();
+				personAttribute.setPerson(p);
+				personAttribute.setAttributeType(imbEmrConfig.getReligion());
+				personAttribute.setValue(value);
+				p.addAttribute(personAttribute);
+			}
+		}
+
+		if (fhirPatient.hasExtension(PROFESSION_EXTENSION_URL)) {
+			String value = getExtensionCodedValue(fhirPatient.getExtensionByUrl(PROFESSION_EXTENSION_URL));
+			if (StringUtils.isNotBlank(value)) {
+				PersonAttribute personAttribute = new PersonAttribute();
+				personAttribute.setPerson(p);
+				personAttribute.setAttributeType(imbEmrConfig.getProfession());
+				personAttribute.setValue(value);
+				p.addAttribute(personAttribute);
+			}
+		}
 
 		return p;
 	}
@@ -228,5 +265,15 @@ public class NidaPatientTranslator {
 			}
 		}
 		return String.join(" ", l);
+	}
+
+	private String getExtensionCodedValue(Extension extension) {
+		if (extension.getValue() != null && extension.getValue() instanceof CodeableConcept) {
+			CodeableConcept concept = ((CodeableConcept) extension.getValue());
+			if (concept != null && concept.hasCoding()) {
+				return concept.getCodingFirstRep().getCode();
+			}
+		}
+		return null;
 	}
 }
