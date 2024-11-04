@@ -49,7 +49,9 @@
                 let successData = null;
                 <% config.formFields.each { field -> %>
                     if (!successData) {
-                        let identifierValue = jq("input[name='${field.formFieldName}']").val();
+                        let identifierField = jq("input[name='${field.formFieldName}']");
+                        let registrationForm = jq(identifierField).closest("form");
+                        let identifierValue = jq(identifierField).val();
                         if (identifierValue) {
                             console.debug("searching client registry for ${field.formFieldName}, ${field.identifierTypeUuid}: " + identifierValue);
                             jq.ajax({
@@ -64,7 +66,7 @@
                                     jq('#search-client-registry-loading-spinner').hide();
                                     jq('#client-registry-search-button').removeProp('disabled');
                                     for (const [key, value] of Object.entries(data)) {
-                                        jq("#registration [name='" + key + "']").val(value);
+                                        jq(registrationForm).find("[name='" + key + "']").val(value);
                                     }
                                     jq('#search-client-registry-found-message').show();
                                     console.debug(data);
