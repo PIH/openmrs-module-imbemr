@@ -45,6 +45,7 @@
         <reportingVersion>1.26.0</reportingVersion>
         <uicommonsVersion>2.24.0</uicommonsVersion>
         <uiframeworkVersion>3.24.0</uiframeworkVersion>
+        <webservicesVersion>2.44.0</webservicesVersion>
         <lombokVersion>1.18.26</lombokVersion>
         <MODULE_ID>${project.parent.artifactId}</MODULE_ID>
         <MODULE_NAME>IMB EMR</MODULE_NAME>
