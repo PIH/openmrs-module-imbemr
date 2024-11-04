@@ -19,6 +19,7 @@
 		<require_module version="${authenticationVersion}">org.openmrs.module.authentication</require_module>
 		<require_module version="${authenticationuiVersion}">org.openmrs.module.authenticationui</require_module>
 		<require_module version="${appuiVersion}">org.openmrs.module.appui</require_module>
+		<require_module version="${mohbillingVersion}">org.openmrs.module.mohbilling</require_module>
 		<require_module version="${calculationVersion}">org.openmrs.calculation</require_module>
 		<require_module version="${coreappsVersion}">org.openmrs.module.coreapps</require_module>
 		<require_module version="${emrapiVersion}">org.openmrs.module.emrapi</require_module>
