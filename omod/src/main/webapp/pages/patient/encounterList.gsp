@@ -151,7 +151,11 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
                     "patientId": e.patient.uuid,
                     "encounter": e.uuid,
                     "returnProvider": "imbemr",
-                    "returnPage": "patient/encounterList"])
+                    "returnPage": "patient/encounterList"
+            ])
+        }
+        else {
+            pageLink = ui.pageLink("imbemr", "patient/simpleEncounterView", [ "encounter": e.uuid ])
         }
 
         %>
