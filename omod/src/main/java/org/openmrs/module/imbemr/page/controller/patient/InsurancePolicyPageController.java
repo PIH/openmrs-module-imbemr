@@ -126,7 +126,6 @@ public class InsurancePolicyPageController {
                 beneficiary.setCreatedDate(now);
                 beneficiary.setCreator(currentUser);
                 beneficiary.setRetired(false);  // TODO: Support retiring and un-retiring?
-                policy.addBeneficiary(beneficiary);
             }
 
             // TODO: There is some odd logic about how these are set in 1.x.  Review that or this for correctness.
@@ -135,6 +134,10 @@ public class InsurancePolicyPageController {
             beneficiary.setOwnerCode(policyModel.getOwnerCode());
             beneficiary.setLevel(policyModel.getLevel() == null ? 0 : policyModel.getLevel());
             beneficiary.setCompany(policyModel.getCompany());
+
+            if (beneficiary.getInsurancePolicy() == null) {
+                policy.addBeneficiary(beneficiary);
+            }
 
             InsurancePolicyValidator validator = new InsurancePolicyValidator();
             validator.validate(policy, errors);
