@@ -1,5 +1,8 @@
 <%
     ui.decorateWith("appui", "standardEmrPage")
+    def configurationIsValid = !locationTagUtil.isLocationSetupRequired()
+    def validVisitLocations = locationTagUtil.getValidVisitLocations()
+    def validLoginLocations = locationTagUtil.getValidLoginLocations()
 %>
 
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
@@ -45,18 +48,18 @@
 <h3>${ui.message("imbemr.admin.configureLoginLocations")}</h3>
 
 <div class="note-container">
-<% if (locationTagUtil.isLocationSetupRequired()) { %>
-    <div class="note warning" style="width: 100%;">
-        <div class="text">
-            <i class="fas fa-fw fa-exclamation-circle" style="vertical-align: middle;"></i>
-            Login Locations are not properly configured in this system, please complete the form below to ensure a proper setup.
-        </div>
-    </div>
-<% } else { %>
+<% if (configurationIsValid) { %>
     <div class="note" style="width: 100%;">
         <div class="text">
             <i class="fas fa-fw fa-check-circle" style="vertical-align: middle;"></i>
             Login Locations are currently valid.  You may change the configuration via the form below.
+        </div>
+    </div>
+<% } else { %>
+    <div class="note warning" style="width: 100%;">
+        <div class="text">
+            <i class="fas fa-fw fa-exclamation-circle" style="vertical-align: middle;"></i>
+            Login Locations are not properly configured in this system, please complete the form below to ensure a proper setup.
         </div>
     </div>
 <% } %>
@@ -121,8 +124,9 @@
 
     <div class="system-type-section" id="system-type-section-${locationTagUtil.SINGLE_LOCATION}">
         ${ui.includeFragment("imbemr", "field/location", [
-                "formFieldName": "visitLocations",
-                "label": "Single Visit and Login Location"
+                "formFieldName": "singleLocation",
+                "label": "Single Visit and Login Location",
+                "initialValue": (configurationIsValid && validLoginLocations.size() == 1) ? validLoginLocations.get(0) : null
         ])}
         <input type="submit" />
     </div>

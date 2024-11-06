@@ -13,6 +13,7 @@
  */
 package org.openmrs.module.imbemr;
 
+import org.openmrs.Location;
 import org.openmrs.Patient;
 import org.openmrs.api.OpenmrsService;
 
@@ -26,4 +27,6 @@ import java.util.List;
 public interface ImbEmrService extends OpenmrsService {
 
 	List<String> triggerSyncForPatient(Patient patient);
+
+	void updateVisitAndLoginLocations(List<Location> visitLocations, List<Location> loginLocations);
 }

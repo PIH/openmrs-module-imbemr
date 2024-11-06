@@ -15,9 +15,9 @@ package org.openmrs.module.imbemr.page.controller.admin;
 
 import org.apache.commons.lang.StringUtils;
 import org.openmrs.Location;
-import org.openmrs.LocationTag;
 import org.openmrs.api.LocationService;
 import org.openmrs.module.appui.UiSessionContext;
+import org.openmrs.module.imbemr.ImbEmrService;
 import org.openmrs.module.imbemr.LocationTagUtil;
 import org.openmrs.ui.framework.UiUtils;
 import org.openmrs.ui.framework.annotation.SpringBean;
@@ -25,6 +25,7 @@ import org.openmrs.ui.framework.page.PageModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,17 +51,63 @@ public class ConfigureLoginLocationsPageController {
     }
 
     public String post(PageModel model, UiUtils ui, UiSessionContext sessionContext,
+                       @SpringBean ImbEmrService imbEmrService,
                        @SpringBean LocationTagUtil locationTagUtil,
-                       @SpringBean("locationService") LocationService locationService,
-                       @RequestParam("visitLocations") List<Location> visitLocations,
+                       @RequestParam(value = "singleLocation", required = false) Location singleLocation,
+                       @RequestParam(value = "multiDepartmentVisitLocation", required = false) Location multiDepartmentVisitLocation,
+                       @RequestParam(value = "multiDepartmentLoginLocations", required = false) List<Location> multiDepartmentLoginLocations,
+                       @RequestParam(value = "multiFacilityVisitLocations", required = false) List<Location> multiFacilityVisitLocations,
+                       @RequestParam(value = "multiFacilityLoginLocations", required = false) List<Location> multiFacilityLoginLocations,
                        @RequestParam("systemType") String systemType) {
 
         try {
+            List<Location> visitLocations = null;
+            List<Location> loginLocations = null;
+
             if (LocationTagUtil.SINGLE_LOCATION.equals(systemType)) {
-                if (visitLocations.size() != 1) {
-                    throw new IllegalArgumentException("Exactly one visit location must be provided");
+                if (singleLocation == null) {
+                    throw new IllegalArgumentException("You must specify a location");
                 }
-                configureSingleLocation(locationService, locationTagUtil, visitLocations.get(0));
+                visitLocations = Collections.singletonList(singleLocation);
+                loginLocations = Collections.singletonList(singleLocation);
+            }
+            else if (LocationTagUtil.MULTI_DEPARTMENT.equals(systemType)) {
+                if (multiDepartmentVisitLocation == null) {
+                    throw new IllegalArgumentException("You must specify a single facility visit location");
+                }
+                if (multiDepartmentLoginLocations == null || multiDepartmentLoginLocations.isEmpty()) {
+                    throw new IllegalArgumentException("You must specify at least one login location");
+                }
+                for (Location location : multiDepartmentLoginLocations) {
+                    if (location.getParentLocation() == null || !location.getParentLocation().equals(multiDepartmentVisitLocation)) {
+                        throw new IllegalArgumentException("You can only configure login locations that are children of the selected visit location");
+                    }
+                }
+                visitLocations = Collections.singletonList(multiDepartmentVisitLocation);
+                loginLocations = multiDepartmentLoginLocations;
+            }
+            else if (LocationTagUtil.MULTI_FACILITY.equals(systemType)) {
+                if (multiFacilityVisitLocations == null || multiFacilityVisitLocations.isEmpty()) {
+                    throw new IllegalArgumentException("You must specify at least one facility visit location");
+                }
+                if (multiFacilityLoginLocations == null || multiFacilityLoginLocations.isEmpty()) {
+                    throw new IllegalArgumentException("You must specify at least one login location");
+                }
+                visitLocations = multiFacilityVisitLocations;
+                loginLocations = multiDepartmentLoginLocations;
+            }
+
+            if (visitLocations != null && loginLocations != null) {
+                imbEmrService.updateVisitAndLoginLocations(visitLocations, loginLocations);
+
+                Location sessionLocation = sessionContext.getSessionLocation();
+                if (!loginLocations.contains(sessionLocation)) {
+                    sessionContext.getSession().removeAttribute(UiSessionContext.LOCATION_SESSION_ATTRIBUTE);
+                    return "redirect:/";
+                }
+            }
+            else {
+                throw new IllegalArgumentException("You must specify a valid set of visit and login locations");
             }
         }
         catch (Exception e) {
@@ -70,22 +117,5 @@ public class ConfigureLoginLocationsPageController {
         Map<String, Object> params = new HashMap<>();
         params.put("systemType", systemType);
         return "redirect:" + ui.pageLink("imbemr", "admin/configureLoginLocations", params);
-    }
-
-    // TODO: Make transactional, move into a service
-    protected void configureSingleLocation(LocationService locationService, LocationTagUtil locationTagUtil, Location location) {
-        LocationTag visitLocationTag = locationTagUtil.getVisitLocationTag();
-        LocationTag loginLocationTag = locationTagUtil.getLoginLocationTag();
-        for (Location l : locationService.getAllLocations()) {
-            if (l.equals(location)) {
-                l.addTag(visitLocationTag);
-                l.addTag(loginLocationTag);
-            }
-            else {
-                l.removeTag(visitLocationTag);
-                l.removeTag(loginLocationTag);
-            }
-            locationService.saveLocation(l);
-        }
     }
 }
