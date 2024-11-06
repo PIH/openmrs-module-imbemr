@@ -19,6 +19,7 @@ import org.openmrs.api.LocationService;
 import org.openmrs.module.appui.UiSessionContext;
 import org.openmrs.module.imbemr.ImbEmrService;
 import org.openmrs.module.imbemr.LocationTagUtil;
+import org.openmrs.module.uicommons.UiCommonsConstants;
 import org.openmrs.ui.framework.UiUtils;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.page.PageModel;
@@ -111,7 +112,7 @@ public class ConfigureLoginLocationsPageController {
             }
         }
         catch (Exception e) {
-            // TODO: Gather error messages for display
+            sessionContext.getSession().setAttribute(UiCommonsConstants.SESSION_ATTRIBUTE_ERROR_MESSAGE, e.getMessage());
         }
 
         Map<String, Object> params = new HashMap<>();

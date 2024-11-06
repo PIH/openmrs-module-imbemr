@@ -3,6 +3,12 @@
     def configurationIsValid = !locationTagUtil.isLocationSetupRequired()
     def validVisitLocations = locationTagUtil.getValidVisitLocations()
     def validLoginLocations = locationTagUtil.getValidLoginLocations()
+    def locationsWithChildren = []
+    allLocations.each{l ->
+        if (l.childLocations != null && !l.childLocations.isEmpty()) {
+            locationsWithChildren.add(l)
+        }
+    }
 %>
 
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
@@ -32,37 +38,62 @@
         display: none;
         padding: 20px;
     }
+    .multi-department-login-location-section {
+        display: none;
+        padding: 20px;
+    }
 </style>
 
 <script type="text/javascript">
     jq(document).ready(function() {
+
+        function setupInitialValues() {
+            <% if (configurationIsValid && validVisitLocations.size() == 1) { %>
+                <% if (systemType == locationTagUtil.SINGLE_LOCATION) { %>
+                    jq("#singleLocationWidget-field").val('${validVisitLocations.get(0).id}');
+                <% } else if (systemType == locationTagUtil.MULTI_DEPARTMENT) { %>
+                    let visitLocationWidget = jq("#multiDepartmentVisitLocationWidget");
+                    jq(visitLocationWidget).val('${validVisitLocations.get(0).id}');
+                    jq(visitLocationWidget).change();
+                <% } %>
+            <% } %>
+            jq("input[name='systemType'][value='${systemType}']").click();
+        }
+
         jq("input[name='systemType']").click(function() {
             let value = jq(this).val();
             jq(".system-type-section").hide();
             jq("#system-type-section-" + value).show();
         });
-        jq("input[name='systemType'][value='${systemType}']").click();
+
+        jq("#multiDepartmentVisitLocationWidget").change(function() {
+            let value = jq(this).val();
+            jq(".multi-department-login-location-section").hide();
+            jq("#multi-department-login-location-section-" + value).show();
+        });
+
+        setupInitialValues();
     });
 </script>
 
 <h3>${ui.message("imbemr.admin.configureLoginLocations")}</h3>
 
 <div class="note-container">
-<% if (configurationIsValid) { %>
-    <div class="note" style="width: 100%;">
-        <div class="text">
-            <i class="fas fa-fw fa-check-circle" style="vertical-align: middle;"></i>
-            Login Locations are currently valid.  You may change the configuration via the form below.
+    <% if (configurationIsValid) { %>
+        <div class="note" style="width: 100%;">
+            <div class="text">
+                <i class="fas fa-fw fa-check-circle" style="vertical-align: middle;"></i>
+                Login Locations are currently valid.  You may change the configuration via the form below.
+            </div>
         </div>
-    </div>
-<% } else { %>
-    <div class="note warning" style="width: 100%;">
-        <div class="text">
-            <i class="fas fa-fw fa-exclamation-circle" style="vertical-align: middle;"></i>
-            Login Locations are not properly configured in this system, please complete the form below to ensure a proper setup.
+    <% } else { %>
+        <div class="note warning" style="width: 100%;">
+            <div class="text">
+                <i class="fas fa-fw fa-exclamation-circle" style="vertical-align: middle;"></i>
+                Login Locations are not properly configured in this system, please complete the form below to ensure a proper setup.
+            </div>
         </div>
-    </div>
-<% } %>
+    <% } %>
 </div>
 
 <div id="login-location-instructions">
@@ -124,22 +155,41 @@
 
     <div class="system-type-section" id="system-type-section-${locationTagUtil.SINGLE_LOCATION}">
         ${ui.includeFragment("imbemr", "field/location", [
+                "id": "singleLocationWidget",
                 "formFieldName": "singleLocation",
-                "label": "Single Visit and Login Location",
-                "initialValue": (configurationIsValid && validLoginLocations.size() == 1) ? validLoginLocations.get(0) : null
+                "label": "Single Visit and Login Location"
         ])}
         <input type="submit" />
     </div>
 
     <div class="system-type-section" id="system-type-section-${locationTagUtil.MULTI_DEPARTMENT}">
-
-        Configure multi department
-
+        <p>
+            <label for="multiDepartmentVisitLocationWidget">Facility Location to associate with all visits</label>
+            <select id="multiDepartmentVisitLocationWidget" name="multiDepartmentVisitLocation">
+                <option value=""></option>
+                <% locationsWithChildren.each{l -> %>
+                    <option value="${l.id}">${l.name}</option>
+                <% } %>
+            </select>
+        </p>
+        <% locationsWithChildren.each{ visitLoc -> %>
+            <div class="multi-department-login-location-section" id="multi-department-login-location-section-${visitLoc.id}">
+                <p>Please select the departments/services within ${visitLoc.name} which users will log into and create encounters</p>
+                <% visitLoc.childLocations.each{ loginLoc ->
+                    def selected = systemType == locationTagUtil.MULTI_DEPARTMENT && configurationIsValid && validLoginLocations.contains(loginLoc) %>
+                    <input type="checkbox" name="multiDepartmentLoginLocations" value="${loginLoc.id}" ${selected ? "checked": ""}>
+                    ${loginLoc.name}
+                    <br/>
+                <% } %>
+                <input type="submit" />
+            </div>
+        <% } %>
     </div>
 
     <div class="system-type-section" id="system-type-section-${locationTagUtil.MULTI_FACILITY}">
 
-        Configure multi facility
+        multiFacilityVisitLocations
+        multiFacilityLoginLocations
 
     </div>
 </form>

@@ -12,39 +12,40 @@
 </script>
 
 <style>
-    .login-location-select {
-        display: none
-    }
     #visit-location-section {
         padding-bottom: 20px;
+    }
+    .login-location-section {
+        display: none;
     }
 </style>
 
 <script type="text/javascript">
     jq(document).ready(function() {
 
-        <% if (visitLocations.size() == 1) { %>
-            jq('#login-location-section-${visitLocations.get(0).id}').show();
-        <% } %>
-
-        jq(".login-location-section").hide();
-        jq(".login-location-select").hide();
-
-        jq(".visit-location-select .location-list-item").click(function() {
-            let id = jq(this).attr('value');
-            console.log('Visit Location selected ' + id);
-
-            jq(".login-location-select").hide();
-            jq(".login-location-section").hide();
-
-            let loginLocationElements = jq("#login-location-select-"+id).find('.location-list-item');
-            if (loginLocationElements.length > 0) {
+        function showLoginLocationSection(visitLocationId) {
+            console.log('Visit Location selected ' + visitLocationId);
+            jq("#login-location-section").hide();
+            jq(".login-location-item").hide();
+            let loginLocationElements = jq(".login-location-item-"+visitLocationId);
+            if (loginLocationElements.length === 1) {
                 jq(loginLocationElements[0]).click();
             }
             else {
-                jq("#login-location-select-"+id).show();
-                jq("#login-location-section-"+id).show();
+                console.log('Showing ' + loginLocationElements.size() + " login locations");
+                jq(loginLocationElements).show();
+                jq("#login-location-section").show();
             }
+        }
+
+        <% if (visitLocations.size() == 1) { %>
+            showLoginLocationSection('${visitLocations.iterator().next().id}');
+        <% } %>
+
+
+        jq(".visit-location-select .location-list-item").click(function() {
+            let id = jq(this).attr('value');
+            showLoginLocationSection(id);
         });
 
         jq(".login-location-select .location-list-item").click(function() {
@@ -90,28 +91,24 @@
             </label>
             <ul class="select visit-location-select">
                 <% visitLocations.each { visitLocation -> %>
-                    <li class="location-list-item" value="${visitLocation.id}">${ui.format(visitLocation)}</li>
+                    <li id="visit-location-select-item-${visitLocation.id}" class="location-list-item" value="${visitLocation.id}">${ui.format(visitLocation)}</li>
                 <% } %>
             </ul>
         </div>
     <% } %>
 
-    <div id="login-location-section">
-        <% visitLocations.each { visitLocation ->
-            def loginLocations = visitAndLoginLocations.get(visitLocation) %>
-            <% if (loginLocations.size() > 0) { %>
-                <div class="clear login-location-section" id="login-location-section-${visitLocation.id}">
-                    <label>
-                        ${ ui.message("imbemr.login.chooseLoginLocation.title") }:
-                    </label>
-                    <ul id="login-location-select-${visitLocation.id}" class="select login-location-select">
-                        <% loginLocations.each { %>
-                            <li class="location-list-item" value="${visitLocation.id}">${ui.format(visitLocation)}</li>
-                        <% } %>
-                    </ul>
-                </div>
+    <div class="clear login-location-section" id="login-location-section">
+        <label>
+            ${ ui.message("imbemr.login.chooseLoginLocation.title") }:
+        </label>
+        <ul id="login-location-select" class="select login-location-select">
+            <% visitLocations.each { visitLocation ->
+                def loginLocations = visitAndLoginLocations.get(visitLocation)
+                loginLocations.each { loginLocation -> %>
+                    <li class="location-list-item login-location-item login-location-item-${visitLocation.id}" value="${loginLocation.id}">${ui.format(loginLocation)}</li>
+                <% } %>
             <% } %>
-        <% } %>
+        </ul>
     </div>
 
     <input id="session-location-input" type="hidden" name="sessionLocation" />

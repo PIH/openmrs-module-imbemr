@@ -44,7 +44,7 @@ public class LoginLocationPageController {
                 return post(sessionContext, response, loginLocations.get(0));
             }
         }
-        return "";
+        return "loginLocation";
     }
 
     public String post(UiSessionContext sessionContext, HttpServletResponse response,
