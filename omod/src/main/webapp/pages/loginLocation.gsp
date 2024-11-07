@@ -18,6 +18,10 @@
     .login-location-section {
         display: none;
     }
+    ul.select li.visit-location-selected {
+        background-color: #007FFF;
+        color: white;
+    }
 </style>
 
 <script type="text/javascript">
@@ -45,6 +49,8 @@
 
         jq(".visit-location-select .location-list-item").click(function() {
             let id = jq(this).attr('value');
+            jq(".visit-location-select li").removeClass('visit-location-selected');
+            jq(this).addClass('visit-location-selected');
             showLoginLocationSection(id);
         });
 

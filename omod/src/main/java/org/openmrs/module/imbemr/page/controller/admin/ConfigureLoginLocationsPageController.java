@@ -48,6 +48,7 @@ public class ConfigureLoginLocationsPageController {
         model.addAttribute("systemType", systemType);
         model.addAttribute("locationTagUtil", locationTagUtil);
         model.addAttribute("allLocations", locationService.getAllLocations());
+        model.addAttribute("rootLocations", locationService.getRootLocations(false));
         model.addAttribute("authenticatedUser", sessionContext.getCurrentUser());
     }
 
@@ -95,7 +96,7 @@ public class ConfigureLoginLocationsPageController {
                     throw new IllegalArgumentException("You must specify at least one login location");
                 }
                 visitLocations = multiFacilityVisitLocations;
-                loginLocations = multiDepartmentLoginLocations;
+                loginLocations = multiFacilityLoginLocations;
             }
 
             if (visitLocations != null && loginLocations != null) {

@@ -42,6 +42,9 @@
         display: none;
         padding: 20px;
     }
+    .login-location-checkboxes input[type=checkbox] {
+        float: unset;
+    }
 </style>
 
 <script type="text/javascript">
@@ -187,9 +190,20 @@
     </div>
 
     <div class="system-type-section" id="system-type-section-${locationTagUtil.MULTI_FACILITY}">
-
-        multiFacilityVisitLocations
-        multiFacilityLoginLocations
+        <p>
+            Please choose the locations that should be denoted as Visit Locations and Login Locations
+        </p>
+        <% rootLocations.each{ l -> %>
+            ${ui.includeFragment("imbemr", "field/admin/loginLocationCheckboxes", [
+                    "location": l,
+                    "padding": 10,
+                    "visitLocationFormFieldName": "multiFacilityVisitLocations",
+                    "loginLocationFormFieldName": "multiFacilityLoginLocations",
+                    "initialVisitLocations": validVisitLocations,
+                    "initialLoginLocations": validLoginLocations
+            ])}
+        <% } %>
+        <input type="submit" />
 
     </div>
 </form>
