@@ -103,6 +103,9 @@
         </div>
     <% } %>
 
+    <% if (visitLocations.size() == 1) { %>
+        <h3>${ ui.format(visitLocations.iterator().next()) }</h3>
+    <% } %>
     <div class="clear login-location-section" id="login-location-section">
         <label>
             ${ ui.message("imbemr.login.chooseLoginLocation.title") }:
