@@ -134,10 +134,7 @@ public class InsurancePolicyPageController {
             beneficiary.setOwnerCode(policyModel.getOwnerCode());
             beneficiary.setLevel(policyModel.getLevel() == null ? 0 : policyModel.getLevel());
             beneficiary.setCompany(policyModel.getCompany());
-
-            if (beneficiary.getInsurancePolicy() == null) {
-                policy.addBeneficiary(beneficiary);
-            }
+            policy.addBeneficiary(beneficiary);
 
             InsurancePolicyValidator validator = new InsurancePolicyValidator();
             validator.validate(policy, errors);
