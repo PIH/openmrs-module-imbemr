@@ -35,7 +35,7 @@
                     ${ ui.formatDatePretty(encounter.encounterDatetime) }
                 <% } %>
                 <span id="encountertype-tag-${encounter.id}" class="tag" >
-                    ${ ui.format(encounter.encounterType)}
+                    ${ ui.format(encounter.form ?: encounter.encounterType)}
                 </span>
             </li>
             <% } %>
