@@ -34,6 +34,20 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
                 lastType = typeName;
             });
 
+            // Get all the unique forms, ordered alphabetically, that are present in the list, and add to select list filter
+            let forms = [];
+            jq(".formColumn").each(function() {
+                let currentForm = this.innerHTML.trim();
+                if (currentForm && forms.indexOf(currentForm) < 0) {
+                    forms.push(currentForm);
+                }
+
+            });
+            forms.sort();
+            forms.forEach(function(formName) {
+                jq("#form-filter").append('<option value="' + formName + '">' + formName + '</option>');
+            });
+
             // Create a datatable of the encounter data
             let encTable = jq("#encounter-list-table").dataTable(
                 {
@@ -88,6 +102,21 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
            encTable.fnFilter(typeName, 1, true);
         });
 
+        jq("#form-filter").change(function() {
+            let typeName = jq(this).val();
+            if (typeName !== '') {
+                typeName = typeName.replace("\\(", "\\\\(");
+                typeName = typeName.replace("\\)", "\\\\)");
+                typeName = '^(\\s*)' + typeName + '(\\s*)\$'; // Regex to ensure exact match (eg. "Admission" should not return "COVID-19 Admission")
+            }
+            // https://legacy.datatables.net/api
+            // First parameter is regex on encounter type, to ensure only exact match is filtered
+            // Second parameter is the 0-indexed column number to filter on with encounter type
+            // Third parameter is true to indicate that a regex-based search should be used
+
+            encTable.fnFilter(typeName, 2, true);
+        });
+
     });
 </script>
 
@@ -115,6 +144,11 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
 <div id="encounter-filters">
     <span id="encounter-type-filter-label">${ ui.message("imbemr.encounterList.encounterType") }:</span>
     <select id="encounter-type-filter">
+        <option value="">${ ui.message("imbemr.all") }</option>
+    </select>
+
+    <span id="form-filter-label">${ ui.message("imbemr.encounterList.form") }:</span>
+    <select id="form-filter">
         <option value="">${ ui.message("imbemr.all") }</option>
     </select>
 </div>
@@ -169,7 +203,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
                 ${ ui.format(e.encounterType) }
             </td>
 
-            <td class="encounterTypeColumn${pageLink ? ' encounter-link' :''}">
+            <td class="formColumn${pageLink ? ' encounter-link' :''}">
                 ${ ui.format(e.form) }
             </td>
 
