@@ -124,6 +124,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
         <tr>
             <th>${ ui.message("imbemr.encounterList.encounterDatetime") }</th>
             <th>${ ui.message("imbemr.encounterList.encounterType") }</th>
+            <th>${ ui.message("imbemr.encounterList.form") }</th>
             <th>${ ui.message("imbemr.encounterList.provider") }</th>
             <th>${ ui.message("imbemr.encounterList.location") }</th>
             <th>${ ui.message("imbemr.encounterList.enteredDatetime") }</th>
@@ -167,6 +168,11 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
             <td class="encounterTypeColumn${pageLink ? ' encounter-link' :''}">
                 ${ ui.format(e.encounterType) }
             </td>
+
+            <td class="encounterTypeColumn${pageLink ? ' encounter-link' :''}">
+                ${ ui.format(e.form) }
+            </td>
+
             <td>
                 <% e.encounterProviders.eachWithIndex { ep, index -> %>
                     ${ ui.format(ep.provider) }${ e.encounterProviders.size() - index > 1 ? "<br/>" : ""}
