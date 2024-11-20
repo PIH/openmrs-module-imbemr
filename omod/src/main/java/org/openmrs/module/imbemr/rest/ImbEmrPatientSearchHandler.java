@@ -53,20 +53,26 @@ public class ImbEmrPatientSearchHandler extends PatientByIdentifierSearchHandler
 
 	/**
 	 * This has the same logic as the superclass, with the addition of searching by insurance number and phone number
+	 * There are 2 possible parameters that will be passed to this:
+	 *   - identifier = search with no white-space
+	 *   - q = search with white-space
+	 * This handles both the same way currently
 	 */
 	@Override
 	public PageableResult search(RequestContext context) throws ResponseException {
-		String identifier = context.getRequest().getParameter("identifier");
-		if (StringUtils.isNotBlank(identifier)) {
-
-			log.trace("Searching patients by: " + identifier);
+		String searchString = context.getRequest().getParameter("identifier");
+		if (StringUtils.isBlank(searchString)) {
+			searchString = context.getRequest().getParameter("q");
+		}
+		if (StringUtils.isNotBlank(searchString)) {
+			log.trace("Searching patients by: " + searchString);
 
 			// The core patient search matches on identifier, name, and attributes based on core configuration(s)
-			List<Patient> patients = patientService.getPatients(null, identifier, null, true);
+			List<Patient> patients = patientService.getPatients(null, searchString, null, true);
 			log.trace("Found " + patients.size() + " patients from core patient search");
 
 			BillingService billingService = Context.getService(BillingService.class);
-			InsurancePolicy policy = billingService.getInsurancePolicyByCardNo(identifier);
+			InsurancePolicy policy = billingService.getInsurancePolicyByCardNo(searchString);
 			if (policy != null) {
 				patients.add(policy.getOwner());
 				log.trace("Found " + patients.size() + " patients by insurance card number");
