@@ -215,19 +215,24 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
                     </p>
                 <% } %>
 
-                <% if (editMode) { %>
-                    ${ ui.includeFragment("uicommons", "field/dropDown", [
-                            label: ui.message("imbemr.insurance.beneficiary.level"),
-                            emptyOptionLabel: "",
-                            formFieldName: "level",
-                            initialValue: (policyModel.level ?: ''),
-                            options: levelOptions
-                    ])}
-                <% } else { %>
-                    <p>
-                        <label for="view-insurance-beneficiary-level">${ui.message("imbemr.insurance.beneficiary.level")}</label>
-                        <span id="view-insurance-beneficiary-level" class="field-value">${policyModel.level}</span>
-                    </p>
+                <!-- Policy mode level is deprecated.  Only show it if it has been previously recorded.  See RWA-979 -->
+                <% if (policyModel.level) { %>
+
+                    <% if (editMode) { %>
+                        ${ ui.includeFragment("uicommons", "field/dropDown", [
+                                label: ui.message("imbemr.insurance.beneficiary.level"),
+                                emptyOptionLabel: "",
+                                formFieldName: "level",
+                                initialValue: (policyModel.level ?: ''),
+                                options: levelOptions
+                        ])}
+                    <% } else { %>
+                        <p>
+                            <label for="view-insurance-beneficiary-level">${ui.message("imbemr.insurance.beneficiary.level")}</label>
+                            <span id="view-insurance-beneficiary-level" class="field-value">${policyModel.level}</span>
+                        </p>
+                    <% } %>
+
                 <% } %>
 
             </fieldset>
