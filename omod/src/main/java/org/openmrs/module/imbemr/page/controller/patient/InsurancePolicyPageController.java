@@ -22,7 +22,6 @@ import org.openmrs.ui.framework.page.PageModel;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ObjectError;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +29,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class InsurancePolicyPageController {
 
@@ -97,10 +97,36 @@ public class InsurancePolicyPageController {
                 throw new APIException(mss.getMessage("require.unauthorized"));
             }
 
+            String insurancePrefix = "imbemr.insurance.";
+            String beneficiaryPrefix = insurancePrefix + "beneficiary.";
+            rejectIfEmpty(errors, policyModel.getInsuranceId(), "insuranceId", insurancePrefix + "name");
+            rejectIfEmpty(errors, policyModel.getOwner(), "owner", insurancePrefix + "owner");
+            rejectIfEmpty(errors, policyModel.getInsuranceCardNo(), "insuranceCardNo", insurancePrefix + "insuranceCardNo");
+            rejectIfEmpty(errors, policyModel.getCoverageStartDate(), "coverageStartDate", insurancePrefix + "coverageStartDate");
+            rejectIfEmpty(errors, policyModel.getOwnerCode(), "ownerCode", beneficiaryPrefix + "ownerCode");
+
             // TODO: Review this, but 1.x billing module code does not allow any duplicate card numbers, even across insurance types
-            InsurancePolicy existingPolicy = Context.getService(BillingService.class).getInsurancePolicyByCardNo(policyModel.getInsuranceCardNo());
-            if (existingPolicy != null && !existingPolicy.getInsurancePolicyId().equals(policy.getInsurancePolicyId())) {
-                errors.rejectValue("insuranceCardNo", "imbemr.insurance.error.duplicateCardNumber");
+            if (StringUtils.isNotBlank(policyModel.getInsuranceCardNo())) {
+                InsurancePolicy existingPolicy = Context.getService(BillingService.class).getInsurancePolicyByCardNo(policyModel.getInsuranceCardNo());
+                if (existingPolicy != null && !existingPolicy.getInsurancePolicyId().equals(policy.getInsurancePolicyId())) {
+                    errors.rejectValue("insuranceCardNo", "imbemr.insurance.error.duplicateCardNumber");
+                }
+            }
+
+            if (errors.hasErrors()) {
+                String message = "";
+                for (ObjectError error : errors.getAllErrors()) {
+                    Object[] arguments = error.getArguments();
+                    String errorMessage = mss.getMessage(Objects.requireNonNull(error.getCode()));
+                    if (arguments != null) {
+                        for (int i = 0; i < arguments.length; i++) {
+                            String argument = (String) arguments[i];
+                            errorMessage = errorMessage.replaceAll("\\{" + i + "}", mss.getMessage(argument));
+                        }
+                    }
+                    message = message.concat(errorMessage).concat("<br>");
+                }
+                throw new APIException(message);
             }
 
             policy.setInsurance(policyModel.getInsuranceId() == null ? null : InsuranceUtil.getInsurance(policyModel.getInsuranceId()));
@@ -136,25 +162,6 @@ public class InsurancePolicyPageController {
             beneficiary.setCompany(policyModel.getCompany());
             policy.addBeneficiary(beneficiary);
 
-            InsurancePolicyValidator validator = new InsurancePolicyValidator();
-            validator.validate(policy, errors);
-
-            if (errors.hasErrors()) {
-                String message = "";
-                for (ObjectError error : errors.getAllErrors()) {
-                    Object[] arguments = error.getArguments();
-                    String errorMessage = mss.getMessage(error.getCode(), arguments, Context.getLocale());
-                    if (arguments != null) {
-                        for (int i = 0; i < arguments.length; i++) {
-                            String argument = (String) arguments[i];
-                            errorMessage = errorMessage.replaceAll("\\{" + i + "\\}", argument);
-                        }
-                    }
-                    message = message.concat(errorMessage).concat("<br>");
-                }
-                throw new APIException(message);
-            }
-
             Context.getService(BillingService.class).saveInsurancePolicy(policy);
         }
         catch (Exception e) {
@@ -175,6 +182,13 @@ public class InsurancePolicyPageController {
         return "redirect:" + getReturnUrl(returnUrl, patient, policy);
     }
 
+
+    private void rejectIfEmpty(Errors errors, Object value, String field, String fieldName) {
+        if (value == null || (value instanceof String && StringUtils.isBlank((String) value))) {
+            errors.rejectValue(field, "error.required", new Object[] { fieldName }, "Error");
+        }
+    }
+
     public String getReturnUrl(String returnUrl, Patient patient, InsurancePolicy policy) {
         if (StringUtils.isBlank(returnUrl)) {
             returnUrl = "/registrationapp/registrationSummary.page?patientId=" + patient.getId() + "&appId=imbemr.registerPatient";
@@ -190,30 +204,6 @@ public class InsurancePolicyPageController {
         ret.add(patient);
         // TODO: Should we support owners other than the patient?  Maybe from relationships?
         return ret;
-    }
-
-    public static class InsurancePolicyValidator implements Validator {
-        @Override
-        public boolean supports(Class<?> clazz) {
-            return InsurancePolicy.class.isAssignableFrom(clazz);
-        }
-
-        @Override
-        public void validate(Object o, Errors errors) {
-            InsurancePolicy policy = (InsurancePolicy) o;
-            if (policy.getInsurance() == null) {
-                errors.rejectValue("insuranceId", "error.required");
-            }
-            if (policy.getOwner() == null) {
-                errors.rejectValue("owner", "error.required");
-            }
-            if (StringUtils.isBlank((policy.getInsuranceCardNo()))) {
-                errors.rejectValue("insuranceCardNo", "error.required");
-            }
-            if (policy.getCoverageStartDate() == null) {
-                errors.rejectValue("coverageStartDate", "error.required");
-            }
-        }
     }
 
     @Data
