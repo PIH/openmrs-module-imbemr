@@ -12,6 +12,7 @@ import org.openmrs.module.emrapi.patient.PatientDomainWrapper;
 import org.openmrs.module.mohbilling.businesslogic.InsurancePolicyUtil;
 import org.openmrs.module.mohbilling.businesslogic.InsuranceUtil;
 import org.openmrs.module.mohbilling.model.Beneficiary;
+import org.openmrs.module.mohbilling.model.Insurance;
 import org.openmrs.module.mohbilling.model.InsurancePolicy;
 import org.openmrs.module.mohbilling.service.BillingService;
 import org.openmrs.ui.framework.annotation.BindParams;
@@ -103,7 +104,14 @@ public class InsurancePolicyPageController {
             rejectIfEmpty(errors, policyModel.getOwner(), "owner", insurancePrefix + "owner");
             rejectIfEmpty(errors, policyModel.getInsuranceCardNo(), "insuranceCardNo", insurancePrefix + "insuranceCardNo");
             rejectIfEmpty(errors, policyModel.getCoverageStartDate(), "coverageStartDate", insurancePrefix + "coverageStartDate");
-            rejectIfEmpty(errors, policyModel.getOwnerCode(), "ownerCode", beneficiaryPrefix + "ownerCode");
+
+            // If insurance category is not PRIVATE or NONE, then ownerCode is required.  See RWA-979
+            Insurance insurance = policyModel.getInsuranceId() == null ? null : InsuranceUtil.getInsurance(policyModel.getInsuranceId());
+            if (insurance != null && insurance.getCategory() != null) {
+                if (!insurance.getCategory().equals("NONE") && !insurance.getCategory().equals("PRIVATE")) {
+                    rejectIfEmpty(errors, policyModel.getOwnerCode(), "ownerCode", beneficiaryPrefix + "ownerCode");
+                }
+            }
 
             // TODO: Review this, but 1.x billing module code does not allow any duplicate card numbers, even across insurance types
             if (StringUtils.isNotBlank(policyModel.getInsuranceCardNo())) {
@@ -129,7 +137,7 @@ public class InsurancePolicyPageController {
                 throw new APIException(message);
             }
 
-            policy.setInsurance(policyModel.getInsuranceId() == null ? null : InsuranceUtil.getInsurance(policyModel.getInsuranceId()));
+            policy.setInsurance(insurance);
             policy.setOwner(policyModel.getOwner());
             policy.setInsuranceCardNo(policyModel.getInsuranceCardNo());
             policy.setCoverageStartDate(policyModel.getCoverageStartDate());
