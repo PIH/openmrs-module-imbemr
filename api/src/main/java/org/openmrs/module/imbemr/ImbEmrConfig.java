@@ -36,6 +36,10 @@ public class ImbEmrConfig {
 		this.personService = personService;
 	}
 
+	public PatientIdentifierType getPrimaryCareIdentifierType() {
+		return getPatientIdentifierTypeByUuid(ImbEmrConstants.PRIMARY_CARE_ID_UUID);
+	}
+
 	public PatientIdentifierType getNationalId() {
 		return getPatientIdentifierTypeByUuid(ImbEmrConstants.NATIONAL_ID_UUID);
 	}

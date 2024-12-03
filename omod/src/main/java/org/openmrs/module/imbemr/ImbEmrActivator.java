@@ -20,9 +20,11 @@ import org.openmrs.module.DaemonToken;
 import org.openmrs.module.DaemonTokenAware;
 import org.openmrs.module.ModuleActivator;
 import org.openmrs.module.imbemr.config.AuthenticationSetup;
+import org.openmrs.module.imbemr.config.EventSetup;
 import org.openmrs.module.imbemr.config.GlobalResourceSetup;
 import org.openmrs.module.imbemr.config.InitializerSetup;
 import org.openmrs.module.imbemr.config.ServerSetup;
+import org.openmrs.module.imbemr.event.PatientEventListener;
 import org.openmrs.module.imbemr.htmlformentry.HtmlFormEntrySetup;
 import org.openmrs.module.imbemr.task.ImbEmrTimerTask;
 import org.openmrs.module.reporting.config.ReportLoader;
@@ -50,6 +52,7 @@ public class ImbEmrActivator extends BaseModuleActivator implements DaemonTokenA
 		ReportLoader.loadReportsFromConfig();
 		GlobalResourceSetup.includeGlobalResources();
 		HtmlFormEntrySetup.setup();
+		EventSetup.setup();
 		log.warn("HTMLFormEntry Configured");
 		ImbEmrTimerTask.setEnabled(true);
 		log.warn("ImbEmrTimerTask enabled");
@@ -60,11 +63,13 @@ public class ImbEmrActivator extends BaseModuleActivator implements DaemonTokenA
 	 * @see ModuleActivator#stopped()
 	 */
 	public void stopped() {
+		EventSetup.teardown();
 		log.info("IMB EMR Module stopped");
 	}
 
 	@Override
 	public void setDaemonToken(DaemonToken daemonToken) {
 		ImbEmrTimerTask.setDaemonToken(daemonToken);
+		PatientEventListener.setDaemonToken(daemonToken);
 	}
 }

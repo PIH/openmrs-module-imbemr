@@ -14,6 +14,7 @@ package org.openmrs.module.imbemr;
  */
 public class ImbEmrConstants {
 
+	public static final String PRIMARY_CARE_ID_UUID = "4e458867-9a68-4e55-9fe0-fb49fac4e6b0";
 	public static final String NATIONAL_ID_UUID = "ed52ec82-4b7c-411b-804a-13bd9651bb3e";
 	public static final String NID_APPLICATION_NUMBER_UUID = "0f7d2e40-956a-11ef-93fa-0242ac120002";
 	public static final String UPID_UUID = "01edaedd-956a-11ef-93fa-0242ac120002";

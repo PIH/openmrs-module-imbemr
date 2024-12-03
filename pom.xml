@@ -33,6 +33,7 @@
         <authenticationuiVersion>1.1.0-SNAPSHOT</authenticationuiVersion>
         <coreappsVersion>2.0.0-SNAPSHOT</coreappsVersion>
         <emrapiVersion>2.0.0-SNAPSHOT</emrapiVersion>
+        <eventVersion>2.10.0</eventVersion>
         <fhir2Version>2.3.0-SNAPSHOT</fhir2Version>
         <htmlformentryVersion>5.3.0</htmlformentryVersion>
         <initializerVersion>2.7.0</initializerVersion>
@@ -105,6 +106,12 @@
             <groupId>org.openmrs.module</groupId>
             <artifactId>emrapi-api</artifactId>
             <version>${emrapiVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openmrs</groupId>
+            <artifactId>event-api</artifactId>
+            <version>${eventVersion}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
