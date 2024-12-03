@@ -40,7 +40,7 @@ public class NidaMpiProviderTest {
 			log.warn("THE REQUIRED PROPERTIES SHOULD BE SET USING `-Dproperty=value` WHEN EXECUTING THE TEST");
 			return;
 		}
-		Patient patient = provider.fetchPatient("220919-7657-5617", ImbEmrConstants.NATIONAL_ID_UUID);
+		Patient patient = provider.fetchPatientFromClientRegistry("220919-7657-5617");
 		assertThat(patient, notNullValue());
 		assertThat(patient.getGender(), equalTo("M"));
 		assertThat(new SimpleDateFormat("yyyy-MM-dd").format(patient.getBirthdate()), equalTo("1999-03-20"));

@@ -26,8 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
 
 /**
  * Implementation of MpiPatientFetcher that connects to the Rwandan Client Register
@@ -36,15 +35,6 @@ import java.util.List;
 public class NidaMpiProvider {
 
 	protected Log log = LogFactory.getLog(getClass());
-
-	public static final List<String> SUPPORTED_IDENTIFIER_TYPES = Arrays.asList(
-			ImbEmrConstants.NATIONAL_ID_UUID,
-			ImbEmrConstants.NID_APPLICATION_NUMBER_UUID,
-			ImbEmrConstants.NIN_UUID,
-			ImbEmrConstants.UPID_UUID,
-			ImbEmrConstants.PASSPORT_NUMBER_UUID
-	);
-
 	private final FhirContext fhirContext;
 	private final NidaPatientTranslator patientTranslator;
 
@@ -67,10 +57,27 @@ public class NidaMpiProvider {
 	 * Ultimately, we should likely adopt and integrate this solution:
 	 * https://github.com/openmrs/openmrs-module-clientregistry
 	 */
-	public Patient fetchPatient(String patientId, String identifierTypeUuid) {
-		if (!SUPPORTED_IDENTIFIER_TYPES.contains(identifierTypeUuid)) {
-			return null;
+	public Patient fetchPatientFromClientOrPopulationRegistry(Map<String, String> identifiersToSearch) {
+		Patient patient = null;
+		for (String identifierType : identifiersToSearch.keySet()) {
+			if (patient == null) {
+				if (NidaPatientTranslator.IDENTIFIER_SYSTEMS.containsValue(identifierType)) {
+					String identifier = identifiersToSearch.get(identifierType);
+					patient = fetchPatientFromClientRegistry(identifier);
+				}
+			}
 		}
+		if (patient == null) {
+			// Here we will hit the UPID Generator
+		}
+		return patient;
+	}
+
+	/**
+	 * Ultimately, we should likely adopt and integrate this solution:
+	 * https://github.com/openmrs/openmrs-module-clientregistry
+	 */
+	public Patient fetchPatientFromClientRegistry(String identifier) {
 		String url = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_URL_PROPERTY);
 		String username = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_USERNAME_PROPERTY);
 		String password = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_PASSWORD_PROPERTY);
@@ -80,8 +87,8 @@ public class NidaMpiProvider {
 		}
 
 		try (CloseableHttpClient httpClient = HttpUtils.getHttpClient(username, password, true)) {
-			HttpGet httpGet = new HttpGet(url + "/Patient?identifier=" + patientId);
-			log.debug("Attempting to find patient " + patientId + " from NIDA");
+			HttpGet httpGet = new HttpGet(url + "/Patient?identifier=" + identifier);
+			log.debug("Attempting to find patient " + identifier + " from NIDA");
 			try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
 				int statusCode = response.getStatusLine().getStatusCode();
 				HttpEntity entity = response.getEntity();

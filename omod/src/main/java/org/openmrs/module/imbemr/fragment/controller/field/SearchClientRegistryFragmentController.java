@@ -14,6 +14,7 @@
 
 package org.openmrs.module.imbemr.fragment.controller.field;
 
+import org.apache.commons.lang.StringUtils;
 import org.openmrs.Patient;
 import org.openmrs.PatientIdentifier;
 import org.openmrs.PersonAddress;
@@ -25,8 +26,8 @@ import org.openmrs.ui.framework.fragment.FragmentModel;
 import org.openmrs.ui.framework.fragment.action.FailureResult;
 import org.openmrs.ui.framework.fragment.action.FragmentActionResult;
 import org.openmrs.ui.framework.fragment.action.ObjectResult;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedHashMap;
@@ -38,10 +39,23 @@ public class SearchClientRegistryFragmentController {
         model.addAttribute("clientRegistryEnabled", mpiProvider.isEnabled());
     }
 
-    public FragmentActionResult findByIdentifier(@RequestParam("identifier") String identifier,
-                                                 @RequestParam("identifierTypeUuid") String identifierType,
+    public FragmentActionResult findByIdentifier(HttpServletRequest request,
                                                  @SpringBean NidaMpiProvider mpiProvider) {
-        Patient patient = mpiProvider.fetchPatient(identifier, identifierType);
+
+        Map<String, String> identifiersToSearch = new LinkedHashMap<>();
+        for (Object parameter : request.getParameterMap().keySet()) {
+            String paramName = (String) parameter;
+            if (paramName.startsWith("identifier_")) {
+                String[] split = paramName.split("_");
+                String identifierType = split[1];
+                String identifier = request.getParameter(paramName);
+                if (StringUtils.isNotBlank(identifier)) {
+                    identifiersToSearch.put(identifierType, identifier);
+                }
+            }
+        }
+
+        Patient patient = mpiProvider.fetchPatientFromClientOrPopulationRegistry(identifiersToSearch);
         if (patient == null) {
             return new FailureResult("imbemr.clientRegistry.patientNotFound");
         }
