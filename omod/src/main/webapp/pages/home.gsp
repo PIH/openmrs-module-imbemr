@@ -6,23 +6,25 @@
         "${ extension.id.replace(".", "-") }-${ extension.id.replace(".", "-") }-extension"
     }
 %>
-<div class="row">
-    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-        <% if (authenticatedUser) { %>
-            <h4>
-                Logged in as ${ui.encodeHtmlContent(ui.format(authenticatedUser))}
-                <% if (sessionContext.sessionLocation) { %>
-                    at ${ ui.encodeHtmlContent(ui.format(sessionContext.sessionLocation)) }
-                <% } %>
-            </h4>
-        <% } else { %>
-            <h4>
-                <a href="login.htm">${ ui.message("referenceapplication.home.logIn") }</a>
-            </h4>
-        <% } %>
-    </div>
-</div>
-<div class="row">
+
+<script type="text/javascript">
+    jq(function() {
+        jq('#patient-search').focus();
+    });
+</script>
+
+<div id="home-container">
+
+    <% if (sessionContext.currentUser.hasPrivilege("App: coreapps.findPatient")) { %>
+
+    ${ ui.message("imbemr.searchPatientHeading") }
+    ${ ui.includeFragment("coreapps", "patientsearch/patientSearchWidget", [
+            showLastViewedPatients: 'false',
+            afterSelectedUrl: '/coreapps/clinicianfacing/patient.page?patientId={{patientId}}'
+    ])}
+    <% } %>
+
+
     <div  class="col-12 col-sm-12 col-md-12 col-lg-12 homeList" id="apps">
             <% extensions.each { ext -> %>
                 <a id="${ htmlSafeId(ext) }" href="/${ contextPath }/${ ext.url }" class="btn btn-default btn-lg button app big align-self-center" type="button">
@@ -33,4 +35,5 @@
                 </a>
             <% } %>
     </div>
+
 </div>
