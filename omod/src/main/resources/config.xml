@@ -52,6 +52,16 @@
 
 	<activator>org.openmrs.module.imbemr.ImbEmrActivator</activator>
 
+	<filter>
+		<filter-name>RequireLoginLocationFilter</filter-name>
+		<filter-class>org.openmrs.module.imbemr.RequireLoginLocationFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>RequireLoginLocationFilter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
+
 	<extension>
 		<point>org.openmrs.admin.list</point>
 		<class>org.openmrs.module.imbemr.web.AdminPageExtension</class>
