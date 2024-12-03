@@ -24,6 +24,7 @@
 		<require_module version="${coreappsVersion}">org.openmrs.module.coreapps</require_module>
 		<require_module version="${emrapiVersion}">org.openmrs.module.emrapi</require_module>
 		<require_module version="${eventVersion}">org.openmrs.event</require_module>
+		<require_module version="${fhir2Version}">org.openmrs.module.fhir2</require_module>
 		<require_module version="${htmlformentryVersion}">org.openmrs.module.htmlformentry</require_module>
 		<require_module version="${htmlformentryuiVersion}">org.openmrs.module.htmlformentryui</require_module>
 		<require_module version="${htmlwidgetsVersion}">org.openmrs.module.htmlwidgets</require_module>
