@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 import org.openmrs.User;
 import org.openmrs.api.context.Context;
 import org.openmrs.ui.framework.WebConstants;
+import org.openmrs.util.ConfigUtil;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -45,24 +46,30 @@ public class RequireLoginLocationFilter implements Filter {
 			"/imbemr/admin/configureLoginLocations.page"
 	);
 
+	public boolean disabled = false;
+
 	@Override
 	public void init(FilterConfig filterConfig) {
+		String value = ConfigUtil.getRuntimeProperty("imbemr.disableRequireLoginLocationFilter");
+		disabled = Boolean.parseBoolean(value);
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		if (request instanceof HttpServletRequest && response instanceof HttpServletResponse) {
-			HttpServletRequest httpRequest = (HttpServletRequest) request;
-			HttpServletResponse httpResponse = (HttpServletResponse) response;
-			HttpSession session = httpRequest.getSession();
-			User currentUser = Context.getAuthenticatedUser();
-			if (currentUser != null) {
-				// Only redirect for page requests, not for included resources
-				if (!isExcluded(httpRequest.getRequestURI())) {
-					if (LocationTagWebUtil.getLoginLocation(session) == null) {
-						log.debug("Redirecting " + currentUser + " from " + httpRequest.getRequestURI() + " to " + LOGIN_LOCATION_PAGE);
-						httpResponse.sendRedirect(LOGIN_LOCATION_PAGE);
-						return;
+		if (!disabled) {
+			if (request instanceof HttpServletRequest && response instanceof HttpServletResponse) {
+				HttpServletRequest httpRequest = (HttpServletRequest) request;
+				HttpServletResponse httpResponse = (HttpServletResponse) response;
+				HttpSession session = httpRequest.getSession();
+				User currentUser = Context.getAuthenticatedUser();
+				if (currentUser != null) {
+					// Only redirect for page requests, not for included resources
+					if (!isExcluded(httpRequest.getRequestURI())) {
+						if (LocationTagWebUtil.getLoginLocation(session) == null) {
+							log.debug("Redirecting " + currentUser + " from " + httpRequest.getRequestURI() + " to " + LOGIN_LOCATION_PAGE);
+							httpResponse.sendRedirect(LOGIN_LOCATION_PAGE);
+							return;
+						}
 					}
 				}
 			}

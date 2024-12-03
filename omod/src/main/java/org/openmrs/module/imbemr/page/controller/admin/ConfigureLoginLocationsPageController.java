@@ -54,7 +54,6 @@ public class ConfigureLoginLocationsPageController {
 
     public String post(PageModel model, UiUtils ui, UiSessionContext sessionContext,
                        @SpringBean ImbEmrService imbEmrService,
-                       @SpringBean LocationTagUtil locationTagUtil,
                        @RequestParam(value = "singleLocation", required = false) Location singleLocation,
                        @RequestParam(value = "multiDepartmentVisitLocation", required = false) Location multiDepartmentVisitLocation,
                        @RequestParam(value = "multiDepartmentLoginLocations", required = false) List<Location> multiDepartmentLoginLocations,

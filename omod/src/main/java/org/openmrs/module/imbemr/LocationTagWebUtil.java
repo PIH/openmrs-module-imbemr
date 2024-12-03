@@ -5,7 +5,6 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.appui.UiSessionContext;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -26,10 +25,4 @@ public class LocationTagWebUtil {
         ctx.setSessionLocation(location);
         response.addCookie(new Cookie("emr.lastSessionLocation", location.getLocationId().toString()));
     }
-
-    public static void setLoginLocation(Location location, HttpServletRequest request, HttpServletResponse response) {
-        UiSessionContext ctx = new UiSessionContext(Context.getLocationService(), Context.getProviderService(), request);
-        setLoginLocation(location, ctx, response);
-    }
-
 }
