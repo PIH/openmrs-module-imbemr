@@ -104,6 +104,7 @@ public class InsurancePolicyPageController {
             rejectIfEmpty(errors, policyModel.getOwner(), "owner", insurancePrefix + "owner");
             rejectIfEmpty(errors, policyModel.getInsuranceCardNo(), "insuranceCardNo", insurancePrefix + "insuranceCardNo");
             rejectIfEmpty(errors, policyModel.getCoverageStartDate(), "coverageStartDate", insurancePrefix + "coverageStartDate");
+            rejectIfEmpty(errors, policyModel.getExpirationDate(), "expirationDate", insurancePrefix + "expirationDate");
 
             // If insurance category is not PRIVATE or NONE, then ownerCode is required.  See RWA-979
             Insurance insurance = policyModel.getInsuranceId() == null ? null : InsuranceUtil.getInsurance(policyModel.getInsuranceId());
