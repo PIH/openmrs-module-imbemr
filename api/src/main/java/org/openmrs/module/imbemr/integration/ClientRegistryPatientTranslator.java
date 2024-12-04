@@ -29,39 +29,27 @@ import org.openmrs.PersonAttribute;
 import org.openmrs.PersonAttributeType;
 import org.openmrs.PersonName;
 import org.openmrs.module.imbemr.ImbEmrConfig;
-import org.openmrs.module.imbemr.ImbEmrConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import static org.openmrs.module.imbemr.integration.IntegrationConstants.NIDA_IDENTIFIER_SYSTEMS;
 
 /**
- * Implementation of MpiProvider that connects to the Rwanda NIDA
+ * Translation layer between the FHIR Patient returned from the client registry and an OpenMRS patient
  */
 @Component
-public class NidaPatientTranslator {
+public class ClientRegistryPatientTranslator {
 
 	protected Log log = LogFactory.getLog(getClass());
 
 	private final ImbEmrConfig imbEmrConfig;
 
-	public NidaPatientTranslator(
-			@Autowired ImbEmrConfig imbEmrConfig
-	) {
+	public ClientRegistryPatientTranslator(@Autowired ImbEmrConfig imbEmrConfig) {
 		this.imbEmrConfig = imbEmrConfig;
-	}
-
-	public static final Map<String, String> IDENTIFIER_SYSTEMS = new HashMap<>();
-	static {
-		IDENTIFIER_SYSTEMS.put("NID", ImbEmrConstants.NATIONAL_ID_UUID);
-		IDENTIFIER_SYSTEMS.put("NID_APPLICATION_NUMBER", ImbEmrConstants.NID_APPLICATION_NUMBER_UUID);
-		IDENTIFIER_SYSTEMS.put("NIN", ImbEmrConstants.NIN_UUID);
-		IDENTIFIER_SYSTEMS.put("UPI", ImbEmrConstants.UPID_UUID);
-		IDENTIFIER_SYSTEMS.put("PASSPORT", ImbEmrConstants.PASSPORT_NUMBER_UUID);
 	}
 
 	public static final String EDUCATION_EXTENSION_URL = "https://fhir.hie.moh.gov.rw/fhir/StructureDefinition/extensions/patient-educational-level";
@@ -77,7 +65,7 @@ public class NidaPatientTranslator {
 				if (StringUtils.isNotBlank(value)) {
 					String system = identifier.getSystem();
 					PatientIdentifierType identifierType = null;
-					String patientIdentifierTypeUuid = IDENTIFIER_SYSTEMS.get(system);
+					String patientIdentifierTypeUuid = NIDA_IDENTIFIER_SYSTEMS.get(system);
 					if (StringUtils.isNotBlank(patientIdentifierTypeUuid)) {
 						identifierType = imbEmrConfig.getPatientIdentifierTypeByUuid(patientIdentifierTypeUuid);
 					}

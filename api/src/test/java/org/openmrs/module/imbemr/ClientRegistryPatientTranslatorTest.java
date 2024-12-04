@@ -8,7 +8,7 @@ import org.openmrs.Patient;
 import org.openmrs.PatientIdentifier;
 import org.openmrs.PersonAddress;
 import org.openmrs.PersonAttribute;
-import org.openmrs.module.imbemr.integration.NidaPatientTranslator;
+import org.openmrs.module.imbemr.integration.ClientRegistryPatientTranslator;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -18,17 +18,17 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 
-public class NidaPatientTranslatorTest {
+public class ClientRegistryPatientTranslatorTest {
 
 	FhirContext fhirContext;
-	NidaPatientTranslator patientTranslator;
+	ClientRegistryPatientTranslator patientTranslator;
 	ImbEmrConfig imbEmrConfig;
 
 	@Before
 	public void setUp() {
 		fhirContext = FhirContext.forR4Cached();
 		imbEmrConfig = new MockImbEmrConfig();
-		patientTranslator = new NidaPatientTranslator(imbEmrConfig);
+		patientTranslator = new ClientRegistryPatientTranslator(imbEmrConfig);
 	}
 	
 	@Test

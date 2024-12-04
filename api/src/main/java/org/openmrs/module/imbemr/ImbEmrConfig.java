@@ -11,8 +11,10 @@ package org.openmrs.module.imbemr;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.LocationAttributeType;
 import org.openmrs.PatientIdentifierType;
 import org.openmrs.PersonAttributeType;
+import org.openmrs.api.LocationService;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +32,14 @@ public class ImbEmrConfig {
 
 	private final PatientService patientService;
 
+	private final LocationService locationService;
+
 	public ImbEmrConfig(@Autowired PatientService patientService,
-						@Autowired PersonService personService) {
+						@Autowired PersonService personService,
+						@Autowired LocationService locationService) {
 		this.patientService = patientService;
 		this.personService = personService;
+		this.locationService = locationService;
 	}
 
 	public PatientIdentifierType getPrimaryCareIdentifierType() {
@@ -42,6 +48,22 @@ public class ImbEmrConfig {
 
 	public PatientIdentifierType getNationalId() {
 		return getPatientIdentifierTypeByUuid(ImbEmrConstants.NATIONAL_ID_UUID);
+	}
+
+	public PatientIdentifierType getNin() {
+		return getPatientIdentifierTypeByUuid(ImbEmrConstants.NIN_UUID);
+	}
+
+	public PatientIdentifierType getNidApplicationNumber() {
+		return getPatientIdentifierTypeByUuid(ImbEmrConstants.NID_APPLICATION_NUMBER_UUID);
+	}
+
+	public PatientIdentifierType getUpid() {
+		return getPatientIdentifierTypeByUuid(ImbEmrConstants.UPID_UUID);
+	}
+
+	public PatientIdentifierType getPassportNumber() {
+		return getPatientIdentifierTypeByUuid(ImbEmrConstants.PASSPORT_NUMBER_UUID);
 	}
 
 	public PersonAttributeType getTelephoneNumber() {
@@ -74,5 +96,9 @@ public class ImbEmrConfig {
 
 	public PersonAttributeType getPersonAttributeTypeByUuid(String uuid) {
 		return personService.getPersonAttributeTypeByUuid(uuid);
+	}
+
+	public LocationAttributeType getFosaId() {
+		return locationService.getLocationAttributeTypeByUuid(ImbEmrConstants.FOSA_ID_UUID);
 	}
 }
