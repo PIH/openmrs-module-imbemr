@@ -1,6 +1,7 @@
 package org.openmrs.module.imbemr.event;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.DateUtils;
 import org.openmrs.Patient;
 import org.openmrs.PatientIdentifier;
 import org.openmrs.PatientIdentifierType;
@@ -82,6 +83,7 @@ public class CreateInsurancePatientListener extends PatientEventListener {
 				policy.setInsurance(insurance);
 				policy.setInsuranceCardNo(primaryCareIdentifiers.get(0));
 				policy.setCoverageStartDate(patient.getDateCreated());
+				policy.setExpirationDate(DateUtils.addYears(policy.getCoverageStartDate(), 20));
 				policy.setCreatedDate(patient.getDateCreated());
 				policy.setCreator(patient.getCreator());
 				policy.setRetired(false);
