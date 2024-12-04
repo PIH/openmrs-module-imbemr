@@ -28,7 +28,9 @@ public class ImbEmrConstants {
 	public static final String PROFESSION_UUID = "ceb19b28-4327-472f-aac4-4c6c6106c7f9";
 	public static final String EDUCATION_LEVEL_UUID = "9add985a-cba2-421a-8dd5-6323eb5bda4f";
 
-	public static final String CLIENT_REGISTRY_URL_PROPERTY = "imbemr.clientregistry.url";
-	public static final String CLIENT_REGISTRY_USERNAME_PROPERTY = "imbemr.clientregistry.username";
-	public static final String CLIENT_REGISTRY_PASSWORD_PROPERTY = "imbemr.clientregistry.password";
+	public static final String FOSA_ID_UUID = "eb844bfb-b1d9-11ef-8756-0242ac120002";
+
+	public static final String MPI_URL_PROPERTY = "imbemr.mpi.url";
+	public static final String MPI_USERNAME_PROPERTY = "imbemr.mpi.username";
+	public static final String MPI_PASSWORD_PROPERTY = "imbemr.mpi.password";
 }

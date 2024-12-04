@@ -5,6 +5,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 import org.openmrs.Patient;
 import org.openmrs.module.imbemr.integration.NidaMpiProvider;
 import org.openmrs.module.imbemr.integration.NidaPatientTranslator;
@@ -23,14 +24,16 @@ public class NidaMpiProviderTest {
 	FhirContext fhirContext;
 	NidaPatientTranslator patientTranslator;
 	NidaMpiProvider provider;
+	LocationTagUtil locationTagUtil;
 	ImbEmrConfig imbEmrConfig;
 
 	@Before
 	public void setUp() {
 		fhirContext = FhirContext.forR4Cached();
 		imbEmrConfig = new MockImbEmrConfig();
+		locationTagUtil = Mockito.mock(LocationTagUtil.class);
 		patientTranslator = new NidaPatientTranslator(imbEmrConfig);
-		provider = new NidaMpiProvider(fhirContext, patientTranslator);
+		provider = new NidaMpiProvider(fhirContext, patientTranslator, locationTagUtil, imbEmrConfig);
 	}
 	
 	@Test
@@ -47,8 +50,8 @@ public class NidaMpiProviderTest {
 	}
 
 	private boolean isConfiguredToRun() {
-		return  ConfigUtil.getSystemProperty(ImbEmrConstants.CLIENT_REGISTRY_URL_PROPERTY) != null &&
-				ConfigUtil.getSystemProperty(ImbEmrConstants.CLIENT_REGISTRY_USERNAME_PROPERTY) != null &&
-				ConfigUtil.getSystemProperty(ImbEmrConstants.CLIENT_REGISTRY_PASSWORD_PROPERTY) != null;
+		return  ConfigUtil.getSystemProperty(ImbEmrConstants.MPI_URL_PROPERTY) != null &&
+				ConfigUtil.getSystemProperty(ImbEmrConstants.MPI_USERNAME_PROPERTY) != null &&
+				ConfigUtil.getSystemProperty(ImbEmrConstants.MPI_PASSWORD_PROPERTY) != null;
 	}
 }

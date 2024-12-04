@@ -1,18 +1,20 @@
 package org.openmrs.module.imbemr;
 
+import org.openmrs.LocationAttributeType;
 import org.openmrs.PatientIdentifierType;
 import org.openmrs.PersonAttributeType;
+import org.openmrs.api.LocationService;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.PersonService;
 
 public class MockImbEmrConfig extends ImbEmrConfig {
 
 	public MockImbEmrConfig() {
-		this(null, null);
+		this(null, null, null);
 	}
 
-	public MockImbEmrConfig(PatientService patientService, PersonService personService) {
-		super(patientService, personService);
+	public MockImbEmrConfig(PatientService patientService, PersonService personService, LocationService locationService) {
+		super(patientService, personService, locationService);
 	}
 
 	@Override
@@ -68,6 +70,14 @@ public class MockImbEmrConfig extends ImbEmrConfig {
 		PersonAttributeType t = new PersonAttributeType();
 		t.setUuid(ImbEmrConstants.RELIGION_UUID);
 		t.setName("Religion");
+		return t;
+	}
+
+	@Override
+	public LocationAttributeType getFosaId() {
+		LocationAttributeType t = new LocationAttributeType();
+		t.setUuid(ImbEmrConstants.FOSA_ID_UUID);
+		t.setName("FOSA ID");
 		return t;
 	}
 

@@ -11,8 +11,10 @@ package org.openmrs.module.imbemr;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.LocationAttributeType;
 import org.openmrs.PatientIdentifierType;
 import org.openmrs.PersonAttributeType;
+import org.openmrs.api.LocationService;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +32,14 @@ public class ImbEmrConfig {
 
 	private final PatientService patientService;
 
+	private final LocationService locationService;
+
 	public ImbEmrConfig(@Autowired PatientService patientService,
-						@Autowired PersonService personService) {
+						@Autowired PersonService personService,
+						@Autowired LocationService locationService) {
 		this.patientService = patientService;
 		this.personService = personService;
+		this.locationService = locationService;
 	}
 
 	public PatientIdentifierType getPrimaryCareIdentifierType() {
@@ -74,5 +80,9 @@ public class ImbEmrConfig {
 
 	public PersonAttributeType getPersonAttributeTypeByUuid(String uuid) {
 		return personService.getPersonAttributeTypeByUuid(uuid);
+	}
+
+	public LocationAttributeType getFosaId() {
+		return locationService.getLocationAttributeTypeByUuid(ImbEmrConstants.FOSA_ID_UUID);
 	}
 }

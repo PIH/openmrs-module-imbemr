@@ -16,20 +16,28 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.hl7.fhir.r4.model.Bundle;
+import org.openmrs.Location;
+import org.openmrs.LocationAttribute;
+import org.openmrs.LocationAttributeType;
 import org.openmrs.Patient;
+import org.openmrs.module.imbemr.ImbEmrConfig;
 import org.openmrs.module.imbemr.ImbEmrConstants;
+import org.openmrs.module.imbemr.LocationTagUtil;
 import org.openmrs.util.ConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
- * Implementation of MpiPatientFetcher that connects to the Rwandan Client Register
+ * Supports MPI-related functionality that requires integration with the Rwandan Client Register and UPID Generator
  */
 @Component("nidaMpiProvider")
 public class NidaMpiProvider {
@@ -37,57 +45,122 @@ public class NidaMpiProvider {
 	protected Log log = LogFactory.getLog(getClass());
 	private final FhirContext fhirContext;
 	private final NidaPatientTranslator patientTranslator;
+	private final LocationTagUtil locationTagUtil;
+	private final ImbEmrConfig imbEmrConfig;
 
 	public NidaMpiProvider(
 			@Autowired @Qualifier("fhirR4") FhirContext fhirContext,
-			@Autowired NidaPatientTranslator nidaPatientTranslator
+			@Autowired NidaPatientTranslator nidaPatientTranslator,
+			@Autowired LocationTagUtil locationTagUtil,
+			@Autowired ImbEmrConfig imbEmrConfig
 	) {
 		this.fhirContext = fhirContext;
 		this.patientTranslator = nidaPatientTranslator;
+		this.locationTagUtil = locationTagUtil;
+		this.imbEmrConfig = imbEmrConfig;
 	}
 
+	/**
+	 * @return true if the necessary properties are enabled that define the MPI endpoint and credentials
+	 */
 	public boolean isEnabled() {
-		String url = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_URL_PROPERTY);
-		String username = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_USERNAME_PROPERTY);
-		String password = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_PASSWORD_PROPERTY);
+		String url = ConfigUtil.getProperty(ImbEmrConstants.MPI_URL_PROPERTY);
+		String username = ConfigUtil.getProperty(ImbEmrConstants.MPI_USERNAME_PROPERTY);
+		String password = ConfigUtil.getProperty(ImbEmrConstants.MPI_PASSWORD_PROPERTY);
 		return StringUtils.isNotBlank(url) && StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password);
 	}
 
 	/**
-	 * Ultimately, we should likely adopt and integrate this solution:
-	 * https://github.com/openmrs/openmrs-module-clientregistry
+	 * This method attempts to fulfill the workflow laid out in the Rwanda HIE guidelines, which is to first look up
+	 * an existing patient in the Client Registry with an eligible identifier.  If no matching patient is found,
+	 * then use the UPID generator to retrieve a UPID and retrieve patient details from the national population registry
+	 * The registrationLocation is what will be used to determine the FOSA ID to send with the UPID generation request
 	 */
-	public Patient fetchPatientFromClientOrPopulationRegistry(Map<String, String> identifiersToSearch) {
+	public Patient fetchPatientFromClientOrPopulationRegistry(Map<String, String> identifiersToSearch, Location registrationLocation) {
 		Patient patient = null;
 		for (String identifierType : identifiersToSearch.keySet()) {
 			if (patient == null) {
-				if (NidaPatientTranslator.IDENTIFIER_SYSTEMS.containsValue(identifierType)) {
+				String identifierSystem = getIdentifierSystem(identifierType);
+				if (identifierSystem != null) {
 					String identifier = identifiersToSearch.get(identifierType);
 					patient = fetchPatientFromClientRegistry(identifier);
 				}
 			}
 		}
 		if (patient == null) {
-			// Here we will hit the UPID Generator
+			for (String identifierType : identifiersToSearch.keySet()) {
+				if (patient == null) {
+					String identifierSystem = getIdentifierSystem(identifierType);
+					if (identifierSystem != null) {
+						String identifier = identifiersToSearch.get(identifierType);
+						patient = generateUpidAndFetchPatientFromPopulationRegistry(identifierSystem, identifier, registrationLocation);
+					}
+				}
+			}
 		}
 		return patient;
 	}
 
 	/**
-	 * Ultimately, we should likely adopt and integrate this solution:
-	 * https://github.com/openmrs/openmrs-module-clientregistry
+	 * This will attempt to generate a UPID and retrieve patient details for the given identifierSystem and  identifier.
+	 * The registrationLocation is used to determine the FOSA ID to send with the request.  If this is not found, this will return null.
+	 * If this is successful, it will return the results.  If it is not successful, it will return null
 	 */
-	public Patient fetchPatientFromClientRegistry(String identifier) {
-		String url = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_URL_PROPERTY);
-		String username = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_USERNAME_PROPERTY);
-		String password = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_PASSWORD_PROPERTY);
-		if (StringUtils.isBlank(url) || StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
-			log.debug("Incomplete credentials supplied to fetch patient from NIDA, skipping");
+	public Patient generateUpidAndFetchPatientFromPopulationRegistry(String identifierSystem, String identifier, Location registrationLocation) {
+		if (!isEnabled()) {
+			log.debug("Incomplete credentials supplied to connect to NIDA, skipping");
 			return null;
 		}
+		if (!NidaPatientTranslator.IDENTIFIER_SYSTEMS.containsKey(identifierSystem)) {
+			log.debug("Identifier system " + identifierSystem + " is not supported, skipping UPID generation");
+			return null;
+		}
+		String fosaId = getFosaId(registrationLocation);
+		if (fosaId == null) {
+			log.debug("Unable to determine the FOSA ID for " + registrationLocation.getName() + ", skipping UPID generation");
+			return null;
+		}
+		try (CloseableHttpClient httpClient = getMpiClient()) {
+			String endpoint = "/api/v1/citizens/getCitizen";
+			String[] parameters = {"documentType", identifierSystem, "documentNumber", identifier, "fosaid", fosaId};
+			HttpPost httpPost = new HttpPost(getMpiEndpointUrl(endpoint, parameters));
+			log.debug("Attempting to generate UPID and retrieve patient " + identifier + " from NIDA");
+			try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
+				int statusCode = response.getStatusLine().getStatusCode();
+				HttpEntity entity = response.getEntity();
+				String data = "";
+				try {
+					data = EntityUtils.toString(entity);
+				} catch (Exception ignored) {
+				}
+				if (statusCode != 200) {
+					throw new IllegalStateException("Http Status Code: " + statusCode + "; Response: " + data);
+				}
+				Bundle bundle = fhirContext.newJsonParser().parseResource(Bundle.class, data);
+				if (bundle == null || bundle.getEntry() == null || bundle.getEntry().size() != 1) {
+					throw new IllegalStateException("Unexpected bundle found: " + bundle);
+				}
+				org.hl7.fhir.r4.model.Patient fhirPatient = (org.hl7.fhir.r4.model.Patient) bundle.getEntry().get(0).getResource();
+				return patientTranslator.toOpenmrsType(fhirPatient);
+			}
+		} catch (Exception e) {
+			log.debug("An error occurred trying to fetch patients from NIDA, returning null", e);
+		}
+		return null;
+	}
 
-		try (CloseableHttpClient httpClient = HttpUtils.getHttpClient(username, password, true)) {
-			HttpGet httpGet = new HttpGet(url + "/Patient?identifier=" + identifier);
+	/**
+	 * This looks up a patient based on the given identifier in the client registry.
+	 * If exactly 1 result is found, it is returned, otherwise, null is returned
+	 */
+	public Patient fetchPatientFromClientRegistry(String identifier) {
+		if (!isEnabled()) {
+			log.debug("Incomplete credentials supplied to connect to NIDA, skipping");
+			return null;
+		}
+		try (CloseableHttpClient httpClient = getMpiClient()) {
+			String url = getMpiEndpointUrl("/clientregistry/Patient", "identifier", identifier);
+			HttpGet httpGet = new HttpGet(url);
 			log.debug("Attempting to find patient " + identifier + " from NIDA");
 			try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
 				int statusCode = response.getStatusLine().getStatusCode();
@@ -110,7 +183,101 @@ public class NidaMpiProvider {
 		} catch (Exception e) {
 			log.debug("An error occurred trying to fetch patients from NIDA, returning null", e);
 		}
+		return null;
+	}
 
+	/**
+	 * @return the http client to use to interact with the mpi, or null if no mpi credentials are configured
+	 */
+	public CloseableHttpClient getMpiClient() {
+		String username = ConfigUtil.getProperty(ImbEmrConstants.MPI_USERNAME_PROPERTY);
+		String password = ConfigUtil.getProperty(ImbEmrConstants.MPI_PASSWORD_PROPERTY);
+		if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
+			return HttpUtils.getHttpClient(username, password, true);
+		}
+		return null;
+	}
+
+	/**
+	 * @return the base url configured for the MPI, with trailing slashes removed, or null if no mpi url is configured
+	 */
+	public String getMpiBaseUrl() {
+		String baseUrl = ConfigUtil.getProperty(ImbEmrConstants.MPI_URL_PROPERTY);
+		if (!StringUtils.isBlank(baseUrl)) {
+			if (baseUrl.endsWith("/")) {
+				baseUrl = baseUrl.substring(0, baseUrl.length() - 1);
+			}
+			return baseUrl;
+		}
+		return null;
+	}
+
+	/**
+	 * @return the full endpoint url for the given path and parameters, or null if no mpi base url is configured
+	 */
+	public String getMpiEndpointUrl(String path, String... parameterNamesAndValues) {
+		String baseUrl = getMpiBaseUrl();
+		if (!StringUtils.isBlank(baseUrl)) {
+			StringBuilder sb = new StringBuilder(baseUrl);
+			if (!path.startsWith("/")) {
+				sb.append("/");
+			}
+			sb.append(path);
+			for (int i=0; i<parameterNamesAndValues.length; i+=2) {
+				sb.append(i == 0 ? "?" : "&").append(parameterNamesAndValues[i]).append("=").append(parameterNamesAndValues[i+1]);
+			}
+			return sb.toString();
+		}
+		return null;
+	}
+
+	/**
+	 * Return the identifier system used to represent a particular identifier type in NIDA, given an identifier type uuid
+	 */
+	public String getIdentifierSystem(String patientIdentifierTypeUuid) {
+		for (String system : NidaPatientTranslator.IDENTIFIER_SYSTEMS.keySet()) {
+			String identifierType = NidaPatientTranslator.IDENTIFIER_SYSTEMS.get(system);
+			if (identifierType.equalsIgnoreCase(patientIdentifierTypeUuid)) {
+				return system;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Return the FOSA ID associated with the given location.  This will determine the visit location associated
+	 * with the given location, and return the FOSA ID associated with this visit location.  If more than one FOSA
+	 * ID is found that could be a match, then null is returned
+	 */
+	public String getFosaId(Location location) {
+		if (location != null) {
+			LocationAttributeType fosaIdType = imbEmrConfig.getFosaId();
+			if (fosaIdType != null) {
+				Set<String> fosaIdsFound = new HashSet<>();
+				for (Location visitLocation : locationTagUtil.getVisitLocationsForLocation(location)) {
+					for (LocationAttribute attribute : visitLocation.getActiveAttributes()) {
+						if (attribute.getAttributeType().equals(fosaIdType)) {
+							fosaIdsFound.add(attribute.getValueReference());
+						}
+					}
+				}
+				if (fosaIdsFound.size() == 1) {
+					return fosaIdsFound.iterator().next();
+				}
+				else if (fosaIdsFound.size() > 1) {
+					log.warn("Multiple FOSA IDs are found associated with location " + location.getName());
+				}
+				else {
+					log.warn("No FOSA IDs are associated with location " + location.getName());
+				}
+			}
+			else {
+				log.warn("No FOSA ID location attribute is defined");
+			}
+		}
+		else {
+			log.warn("No location is provided to determine FOSA ID");
+		}
 		return null;
 	}
 }

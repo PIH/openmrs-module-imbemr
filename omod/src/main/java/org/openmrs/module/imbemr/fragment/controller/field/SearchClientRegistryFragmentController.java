@@ -19,7 +19,10 @@ import org.openmrs.Patient;
 import org.openmrs.PatientIdentifier;
 import org.openmrs.PersonAddress;
 import org.openmrs.PersonAttribute;
+import org.openmrs.module.appui.UiSessionContext;
+import org.openmrs.module.imbemr.ImbEmrConfig;
 import org.openmrs.module.imbemr.ImbEmrConstants;
+import org.openmrs.module.imbemr.LocationTagUtil;
 import org.openmrs.module.imbemr.integration.NidaMpiProvider;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.fragment.FragmentModel;
@@ -40,6 +43,9 @@ public class SearchClientRegistryFragmentController {
     }
 
     public FragmentActionResult findByIdentifier(HttpServletRequest request,
+                                                 UiSessionContext uiSessionContext,
+                                                 @SpringBean ImbEmrConfig imbEmrConfig,
+                                                 @SpringBean LocationTagUtil locationTagUtil,
                                                  @SpringBean NidaMpiProvider mpiProvider) {
 
         Map<String, String> identifiersToSearch = new LinkedHashMap<>();
@@ -55,7 +61,7 @@ public class SearchClientRegistryFragmentController {
             }
         }
 
-        Patient patient = mpiProvider.fetchPatientFromClientOrPopulationRegistry(identifiersToSearch);
+        Patient patient = mpiProvider.fetchPatientFromClientOrPopulationRegistry(identifiersToSearch, uiSessionContext.getSessionLocation());
         if (patient == null) {
             return new FailureResult("imbemr.clientRegistry.patientNotFound");
         }
