@@ -50,6 +50,22 @@ public class ImbEmrConfig {
 		return getPatientIdentifierTypeByUuid(ImbEmrConstants.NATIONAL_ID_UUID);
 	}
 
+	public PatientIdentifierType getNin() {
+		return getPatientIdentifierTypeByUuid(ImbEmrConstants.NIN_UUID);
+	}
+
+	public PatientIdentifierType getNidApplicationNumber() {
+		return getPatientIdentifierTypeByUuid(ImbEmrConstants.NID_APPLICATION_NUMBER_UUID);
+	}
+
+	public PatientIdentifierType getUpid() {
+		return getPatientIdentifierTypeByUuid(ImbEmrConstants.UPID_UUID);
+	}
+
+	public PatientIdentifierType getPassportNumber() {
+		return getPatientIdentifierTypeByUuid(ImbEmrConstants.PASSPORT_NUMBER_UUID);
+	}
+
 	public PersonAttributeType getTelephoneNumber() {
 		return getPersonAttributeTypeByUuid(ImbEmrConstants.TELEPHONE_NUMBER_UUID);
 	}

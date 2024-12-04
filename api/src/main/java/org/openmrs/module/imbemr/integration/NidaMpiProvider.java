@@ -10,6 +10,7 @@
 package org.openmrs.module.imbemr.integration;
 
 import ca.uhn.fhir.context.FhirContext;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -36,6 +37,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import static org.openmrs.module.imbemr.integration.IntegrationConstants.NIDA_IDENTIFIER_SYSTEMS;
+
 /**
  * Supports MPI-related functionality that requires integration with the Rwandan Client Register and UPID Generator
  */
@@ -44,18 +47,21 @@ public class NidaMpiProvider {
 
 	protected Log log = LogFactory.getLog(getClass());
 	private final FhirContext fhirContext;
-	private final NidaPatientTranslator patientTranslator;
+	private final ClientRegistryPatientTranslator clientRegistryPatientTranslator;
+	private final UpidPatientTranslator upidPatientTranslator;
 	private final LocationTagUtil locationTagUtil;
 	private final ImbEmrConfig imbEmrConfig;
 
 	public NidaMpiProvider(
 			@Autowired @Qualifier("fhirR4") FhirContext fhirContext,
-			@Autowired NidaPatientTranslator nidaPatientTranslator,
+			@Autowired ClientRegistryPatientTranslator clientRegistryPatientTranslator,
+			@Autowired UpidPatientTranslator upidPatientTranslator,
 			@Autowired LocationTagUtil locationTagUtil,
 			@Autowired ImbEmrConfig imbEmrConfig
 	) {
 		this.fhirContext = fhirContext;
-		this.patientTranslator = nidaPatientTranslator;
+		this.clientRegistryPatientTranslator = clientRegistryPatientTranslator;
+		this.upidPatientTranslator = upidPatientTranslator;
 		this.locationTagUtil = locationTagUtil;
 		this.imbEmrConfig = imbEmrConfig;
 	}
@@ -111,7 +117,7 @@ public class NidaMpiProvider {
 			log.debug("Incomplete credentials supplied to connect to NIDA, skipping");
 			return null;
 		}
-		if (!NidaPatientTranslator.IDENTIFIER_SYSTEMS.containsKey(identifierSystem)) {
+		if (!NIDA_IDENTIFIER_SYSTEMS.containsKey(identifierSystem)) {
 			log.debug("Identifier system " + identifierSystem + " is not supported, skipping UPID generation");
 			return null;
 		}
@@ -136,15 +142,15 @@ public class NidaMpiProvider {
 				if (statusCode != 200) {
 					throw new IllegalStateException("Http Status Code: " + statusCode + "; Response: " + data);
 				}
-				Bundle bundle = fhirContext.newJsonParser().parseResource(Bundle.class, data);
-				if (bundle == null || bundle.getEntry() == null || bundle.getEntry().size() != 1) {
-					throw new IllegalStateException("Unexpected bundle found: " + bundle);
+				ObjectMapper mapper = new ObjectMapper();
+				UpidPatientTranslator.UpidResponse upidResponse = mapper.readValue(data, UpidPatientTranslator.UpidResponse.class);
+				if (upidResponse.getData() == null || !"ok".equalsIgnoreCase(upidResponse.getStatus())) {
+					throw new IllegalStateException("No patient retrieve.  Status: " + upidResponse.getStatus());
 				}
-				org.hl7.fhir.r4.model.Patient fhirPatient = (org.hl7.fhir.r4.model.Patient) bundle.getEntry().get(0).getResource();
-				return patientTranslator.toOpenmrsType(fhirPatient);
+				return upidPatientTranslator.toOpenmrsType(upidResponse.getData());
 			}
 		} catch (Exception e) {
-			log.debug("An error occurred trying to fetch patients from NIDA, returning null", e);
+			log.debug("An error occurred trying to generate UPID, returning null", e);
 		}
 		return null;
 	}
@@ -178,7 +184,7 @@ public class NidaMpiProvider {
 					throw new IllegalStateException("Unexpected bundle found: " + bundle);
 				}
 				org.hl7.fhir.r4.model.Patient fhirPatient = (org.hl7.fhir.r4.model.Patient) bundle.getEntry().get(0).getResource();
-				return patientTranslator.toOpenmrsType(fhirPatient);
+				return clientRegistryPatientTranslator.toOpenmrsType(fhirPatient);
 			}
 		} catch (Exception e) {
 			log.debug("An error occurred trying to fetch patients from NIDA, returning null", e);
@@ -235,8 +241,8 @@ public class NidaMpiProvider {
 	 * Return the identifier system used to represent a particular identifier type in NIDA, given an identifier type uuid
 	 */
 	public String getIdentifierSystem(String patientIdentifierTypeUuid) {
-		for (String system : NidaPatientTranslator.IDENTIFIER_SYSTEMS.keySet()) {
-			String identifierType = NidaPatientTranslator.IDENTIFIER_SYSTEMS.get(system);
+		for (String system : NIDA_IDENTIFIER_SYSTEMS.keySet()) {
+			String identifierType = NIDA_IDENTIFIER_SYSTEMS.get(system);
 			if (identifierType.equalsIgnoreCase(patientIdentifierTypeUuid)) {
 				return system;
 			}

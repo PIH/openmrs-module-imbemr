@@ -7,8 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.openmrs.Patient;
+import org.openmrs.module.imbemr.integration.ClientRegistryPatientTranslator;
 import org.openmrs.module.imbemr.integration.NidaMpiProvider;
-import org.openmrs.module.imbemr.integration.NidaPatientTranslator;
+import org.openmrs.module.imbemr.integration.UpidPatientTranslator;
 import org.openmrs.util.ConfigUtil;
 
 import java.text.SimpleDateFormat;
@@ -22,7 +23,8 @@ public class NidaMpiProviderTest {
 	protected Log log = LogFactory.getLog(getClass());
 
 	FhirContext fhirContext;
-	NidaPatientTranslator patientTranslator;
+	ClientRegistryPatientTranslator clientRegistryPatientTranslator;
+	UpidPatientTranslator upidPatientTranslator;
 	NidaMpiProvider provider;
 	LocationTagUtil locationTagUtil;
 	ImbEmrConfig imbEmrConfig;
@@ -32,8 +34,9 @@ public class NidaMpiProviderTest {
 		fhirContext = FhirContext.forR4Cached();
 		imbEmrConfig = new MockImbEmrConfig();
 		locationTagUtil = Mockito.mock(LocationTagUtil.class);
-		patientTranslator = new NidaPatientTranslator(imbEmrConfig);
-		provider = new NidaMpiProvider(fhirContext, patientTranslator, locationTagUtil, imbEmrConfig);
+		clientRegistryPatientTranslator = new ClientRegistryPatientTranslator(imbEmrConfig);
+		upidPatientTranslator = new UpidPatientTranslator(imbEmrConfig);
+		provider = new NidaMpiProvider(fhirContext, clientRegistryPatientTranslator, upidPatientTranslator, locationTagUtil, imbEmrConfig);
 	}
 	
 	@Test
