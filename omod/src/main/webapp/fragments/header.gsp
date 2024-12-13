@@ -1,3 +1,9 @@
+<script type="text/javascript">
+    var sessionLocationModel = {
+        id: () => "${ sessionContext.sessionLocationId }",
+        text: () => "${ ui.escapeJs(ui.encodeHtmlContent(ui.format(sessionContext.sessionLocation))) }"
+    }
+</script>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark navigation">
         <div class="logo">
