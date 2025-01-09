@@ -18,7 +18,7 @@ import org.openmrs.Patient;
 import org.openmrs.PatientIdentifier;
 import org.openmrs.PersonAddress;
 import org.openmrs.PersonAttribute;
-import org.openmrs.module.imbemr.ImbEmrConstants;
+import org.openmrs.module.imbemr.ImbEmrConfig;
 import org.openmrs.module.imbemr.integration.NidaMpiProvider;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.fragment.FragmentModel;
@@ -40,7 +40,8 @@ public class SearchClientRegistryFragmentController {
 
     public FragmentActionResult findByIdentifier(@RequestParam("identifier") String identifier,
                                                  @RequestParam("identifierTypeUuid") String identifierType,
-                                                 @SpringBean NidaMpiProvider mpiProvider) {
+                                                 @SpringBean NidaMpiProvider mpiProvider,
+                                                 @SpringBean ImbEmrConfig imbEmrConfig) {
         Patient patient = mpiProvider.fetchPatient(identifier, identifierType);
         if (patient == null) {
             return new FailureResult("imbemr.clientRegistry.patientNotFound");
@@ -62,40 +63,40 @@ public class SearchClientRegistryFragmentController {
         // TODO: Retrieve and configure from registration config, not hard-coded
 
         for (PatientIdentifier pi : patient.getIdentifiers()) {
-            if (pi.getIdentifierType().getUuid().equals(ImbEmrConstants.NATIONAL_ID_UUID)) {
+            if (pi.getIdentifierType().equals(imbEmrConfig.getNationalId())) {
                 data.put("nationalId", pi.getIdentifier());
             }
-            else if (pi.getIdentifierType().getUuid().equals(ImbEmrConstants.NID_APPLICATION_NUMBER_UUID)) {
+            else if (pi.getIdentifierType().equals(imbEmrConfig.getNidApplicationNumber())) {
                 data.put("applicationNumber", pi.getIdentifier());
             }
-            else if (pi.getIdentifierType().getUuid().equals(ImbEmrConstants.UPID_UUID)) {
+            else if (pi.getIdentifierType().equals(imbEmrConfig.getUPID())) {
                 data.put("upid", pi.getIdentifier());
             }
-            else if (pi.getIdentifierType().getUuid().equals(ImbEmrConstants.NIN_UUID)) {
+            else if (pi.getIdentifierType().equals(imbEmrConfig.getNIN())) {
                 data.put("nin", pi.getIdentifier());
             }
-            else if (pi.getIdentifierType().getUuid().equals(ImbEmrConstants.PASSPORT_NUMBER_UUID)) {
+            else if (pi.getIdentifierType().equals(imbEmrConfig.getPassportNumber())) {
                 data.put("passportNumber", pi.getIdentifier());
             }
         }
 
         for (PersonAttribute pa : patient.getAttributes()) {
-            if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.TELEPHONE_NUMBER_UUID)) {
+            if (pa.getAttributeType().equals(imbEmrConfig.getTelephoneNumber())) {
                 data.put("phoneNumber", pa.getValue());
             }
-            else if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.MOTHERS_NAME_UUID)) {
+            else if (pa.getAttributeType().equals(imbEmrConfig.getMothersName())) {
                 data.put("mothersName", pa.getValue());
             }
-            else if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.FATHERS_NAME_UUID)) {
+            else if (pa.getAttributeType().equals(imbEmrConfig.getFathersName())) {
                 data.put("fathersName", pa.getValue());
             }
-            else if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.RELIGION_UUID)) {
+            else if (pa.getAttributeType().equals(imbEmrConfig.getEducationLevel())) {
                 data.put("educationLevel", pa.getValue());
             }
-            else if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.PROFESSION_UUID)) {
+            else if (pa.getAttributeType().equals(imbEmrConfig.getProfession())) {
                 data.put("profession", pa.getValue());
             }
-            else if (pa.getAttributeType().getUuid().equals(ImbEmrConstants.EDUCATION_LEVEL_UUID)) {
+            else if (pa.getAttributeType().equals(imbEmrConfig.getReligion())) {
                 data.put("religion", pa.getValue());
             }
         }

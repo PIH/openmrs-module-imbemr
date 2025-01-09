@@ -14,6 +14,7 @@ import org.openmrs.module.htmlformentry.CustomFormSubmissionAction;
 import org.openmrs.module.htmlformentry.FormEntryContext;
 import org.openmrs.module.htmlformentry.FormEntrySession;
 import org.openmrs.module.htmlformentry.HtmlFormEntryUtil;
+import org.openmrs.module.imbemr.ImbEmrConfig;
 import org.openmrs.module.mohappointment.model.Appointment;
 import org.openmrs.module.mohappointment.utils.AppointmentUtil;
 
@@ -25,8 +26,6 @@ import java.util.Date;
 public class CreateAppointmentAction implements CustomFormSubmissionAction {
 
     protected Log log = LogFactory.getLog(getClass());
-
-    public static final String REGISTRATION_ENCOUNTER_TYPE = "cfe614d5-fa7e-4919-b76b-a66117f57e4c";
 
     @Override
     public void applyAction(FormEntrySession fes) {
@@ -42,7 +41,7 @@ public class CreateAppointmentAction implements CustomFormSubmissionAction {
                 EncounterType encounterType = encounter.getEncounterType();
                 Visit visit = encounter.getVisit();
                 log.debug("Encounter: " + encounter.getUuid() + "; type = " + encounterType + "; visit = " + visit);
-                if (encounter.getEncounterType().getUuid().equals(REGISTRATION_ENCOUNTER_TYPE)) {
+                if (encounter.getEncounterType().equals(getRegistrationEncounterType())) {
                     if (visit.getStopDatetime() == null) {
                         log.debug("This is for an active visit in a registration encounter, proceeding");
                         Concept serviceRequestedConcept = getServiceRequestedConcept();
@@ -76,6 +75,10 @@ public class CreateAppointmentAction implements CustomFormSubmissionAction {
         catch (Exception e) {
             log.error("An error occurred creating appointment for patient", e);
         }
+    }
+
+    EncounterType getRegistrationEncounterType() {
+        return Context.getRegisteredComponents(ImbEmrConfig.class).get(0).getRegistrationEncounterType();
     }
 
     Concept getServiceRequestedConcept() {
