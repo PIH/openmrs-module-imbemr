@@ -9,12 +9,16 @@
  */
 package org.openmrs.module.imbemr;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.EncounterType;
 import org.openmrs.PatientIdentifierType;
 import org.openmrs.PersonAttributeType;
+import org.openmrs.api.EncounterService;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.PersonService;
+import org.openmrs.module.initializer.api.InitializerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,52 +31,93 @@ public class ImbEmrConfig {
 	protected Log log = LogFactory.getLog(getClass());
 
 	private final PersonService personService;
-
 	private final PatientService patientService;
+	private final EncounterService encounterService;
+	private final InitializerService initializerService;
 
 	public ImbEmrConfig(@Autowired PatientService patientService,
-						@Autowired PersonService personService) {
+						@Autowired PersonService personService,
+						@Autowired EncounterService encounterService,
+						@Autowired InitializerService initializerService) {
 		this.patientService = patientService;
 		this.personService = personService;
+		this.encounterService = encounterService;
+		this.initializerService = initializerService;
 	}
 
 	public PatientIdentifierType getPrimaryCareIdentifierType() {
-		return getPatientIdentifierTypeByUuid(ImbEmrConstants.PRIMARY_CARE_ID_UUID);
+		return getPatientIdentifierTypeByJsonKey("identifierType.primaryCareId.uuid");
 	}
 
 	public PatientIdentifierType getNationalId() {
-		return getPatientIdentifierTypeByUuid(ImbEmrConstants.NATIONAL_ID_UUID);
+		return getPatientIdentifierTypeByJsonKey("identifierType.nationalId.uuid");
+	}
+
+	public PatientIdentifierType getNidApplicationNumber() {
+		return getPatientIdentifierTypeByJsonKey("identifierType.applicationNumber.uuid");
+	}
+
+	public PatientIdentifierType getUPID() {
+		return getPatientIdentifierTypeByJsonKey("identifierType.upid.uuid");
+	}
+
+	public PatientIdentifierType getNIN() {
+		return getPatientIdentifierTypeByJsonKey("identifierType.nin.uuid");
+	}
+
+	public PatientIdentifierType getPassportNumber() {
+		return getPatientIdentifierTypeByJsonKey("identifierType.passportNumber.uuid");
 	}
 
 	public PersonAttributeType getTelephoneNumber() {
-		return getPersonAttributeTypeByUuid(ImbEmrConstants.TELEPHONE_NUMBER_UUID);
+		return getPersonAttributeTypeByJsonKey("personAttribute.phoneNumber.uuid");
 	}
 
 	public PersonAttributeType getMothersName() {
-		return getPersonAttributeTypeByUuid(ImbEmrConstants.MOTHERS_NAME_UUID);
+		return getPersonAttributeTypeByJsonKey("personAttribute.mothersName.uuid");
 	}
 
 	public PersonAttributeType getFathersName() {
-		return getPersonAttributeTypeByUuid(ImbEmrConstants.FATHERS_NAME_UUID);
+		return getPersonAttributeTypeByJsonKey("personAttribute.fathersName.uuid");
 	}
 
 	public PersonAttributeType getEducationLevel() {
-		return getPersonAttributeTypeByUuid(ImbEmrConstants.EDUCATION_LEVEL_UUID);
+		return getPersonAttributeTypeByJsonKey("personAttribute.educationLevel.uuid");
 	}
 
 	public PersonAttributeType getProfession() {
-		return getPersonAttributeTypeByUuid(ImbEmrConstants.PROFESSION_UUID);
+		return getPersonAttributeTypeByJsonKey("personAttribute.profession.uuid");
 	}
 
 	public PersonAttributeType getReligion() {
-		return getPersonAttributeTypeByUuid(ImbEmrConstants.RELIGION_UUID);
+		return getPersonAttributeTypeByJsonKey("personAttribute.religion.uuid");
 	}
 
-	public PatientIdentifierType getPatientIdentifierTypeByUuid(String uuid) {
+	public EncounterType getRegistrationEncounterType() {
+		return getEncounterTypeByJsonKey("encounterType.registration.uuid");
+	}
+
+	public PatientIdentifierType getPatientIdentifierTypeByJsonKey(String jsonKey) {
+		String uuid = initializerService.getValueFromKey(jsonKey);
+		if (StringUtils.isBlank(uuid)) {
+			return null;
+		}
 		return patientService.getPatientIdentifierTypeByUuid(uuid);
 	}
 
-	public PersonAttributeType getPersonAttributeTypeByUuid(String uuid) {
+	public PersonAttributeType getPersonAttributeTypeByJsonKey(String jsonKey) {
+		String uuid = initializerService.getValueFromKey(jsonKey);
+		if (StringUtils.isBlank(uuid)) {
+			return null;
+		}
 		return personService.getPersonAttributeTypeByUuid(uuid);
+	}
+
+	public EncounterType getEncounterTypeByJsonKey(String jsonKey) {
+		String uuid = initializerService.getValueFromKey(jsonKey);
+		if (StringUtils.isBlank(uuid)) {
+			return null;
+		}
+		return encounterService.getEncounterTypeByUuid(uuid);
 	}
 }

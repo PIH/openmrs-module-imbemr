@@ -29,7 +29,6 @@ import org.openmrs.PersonAttribute;
 import org.openmrs.PersonAttributeType;
 import org.openmrs.PersonName;
 import org.openmrs.module.imbemr.ImbEmrConfig;
-import org.openmrs.module.imbemr.ImbEmrConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -48,6 +47,7 @@ public class NidaPatientTranslator {
 	protected Log log = LogFactory.getLog(getClass());
 
 	private final ImbEmrConfig imbEmrConfig;
+	private Map<String, PatientIdentifierType> identifierSystems = null;
 
 	public NidaPatientTranslator(
 			@Autowired ImbEmrConfig imbEmrConfig
@@ -55,18 +55,21 @@ public class NidaPatientTranslator {
 		this.imbEmrConfig = imbEmrConfig;
 	}
 
-	public static final Map<String, String> IDENTIFIER_SYSTEMS = new HashMap<>();
-	static {
-		IDENTIFIER_SYSTEMS.put("NID", ImbEmrConstants.NATIONAL_ID_UUID);
-		IDENTIFIER_SYSTEMS.put("NID_APPLICATION_NUMBER", ImbEmrConstants.NID_APPLICATION_NUMBER_UUID);
-		IDENTIFIER_SYSTEMS.put("NIN", ImbEmrConstants.NIN_UUID);
-		IDENTIFIER_SYSTEMS.put("UPI", ImbEmrConstants.UPID_UUID);
-		IDENTIFIER_SYSTEMS.put("PASSPORT", ImbEmrConstants.PASSPORT_NUMBER_UUID);
-	}
-
 	public static final String EDUCATION_EXTENSION_URL = "https://fhir.hie.moh.gov.rw/fhir/StructureDefinition/extensions/patient-educational-level";
 	public static final String RELIGION_EXTENSION_URL = "https://hl7.org/fhir/StructureDefinition/patient-religion";
 	public static final String PROFESSION_EXTENSION_URL = "https://fhir.hie.moh.gov.rw/fhir/StructureDefinition/extensions/patient-profession";
+
+	private synchronized Map<String, PatientIdentifierType> getIdentifierSystems() {
+		if (identifierSystems == null) {
+			identifierSystems = new HashMap<>();
+			identifierSystems.put("NID", imbEmrConfig.getNationalId());
+			identifierSystems.put("NID_APPLICATION_NUMBER", imbEmrConfig.getNidApplicationNumber());
+			identifierSystems.put("NIN", imbEmrConfig.getNIN());
+			identifierSystems.put("UPI", imbEmrConfig.getUPID());
+			identifierSystems.put("PASSPORT", imbEmrConfig.getPassportNumber());
+		}
+		return identifierSystems;
+	}
 
 	public Patient toOpenmrsType(@Nonnull org.hl7.fhir.r4.model.Patient fhirPatient) {
 		Patient p = new Patient();
@@ -76,11 +79,7 @@ public class NidaPatientTranslator {
 				String value = identifier.getValue();
 				if (StringUtils.isNotBlank(value)) {
 					String system = identifier.getSystem();
-					PatientIdentifierType identifierType = null;
-					String patientIdentifierTypeUuid = IDENTIFIER_SYSTEMS.get(system);
-					if (StringUtils.isNotBlank(patientIdentifierTypeUuid)) {
-						identifierType = imbEmrConfig.getPatientIdentifierTypeByUuid(patientIdentifierTypeUuid);
-					}
+					PatientIdentifierType identifierType = getIdentifierSystems().get(system);
 					if (identifierType != null) {
 						PatientIdentifier pi = new PatientIdentifier();
 						pi.setPatient(p);

@@ -50,7 +50,7 @@ public class NidaPatientTranslatorTest {
 			assertThat(identifier, notNullValue());
 			assertThat(identifier.getIdentifier(), equalTo("220919-7657-5617"));
 			assertThat(identifier.getIdentifierType(), notNullValue());
-			assertThat(identifier.getIdentifierType().getUuid(), equalTo(ImbEmrConstants.UPID_UUID));
+			assertThat(identifier.getIdentifierType(), equalTo(imbEmrConfig.getUPID()));
 			assertThat(p.getActiveAttributes().size(), equalTo(6));
 			PersonAttribute phoneNumber = p.getAttribute(imbEmrConfig.getTelephoneNumber());
 			assertThat(phoneNumber, notNullValue());

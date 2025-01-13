@@ -20,13 +20,15 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.hl7.fhir.r4.model.Bundle;
 import org.openmrs.Patient;
+import org.openmrs.PatientIdentifierType;
+import org.openmrs.module.imbemr.ImbEmrConfig;
 import org.openmrs.module.imbemr.ImbEmrConstants;
 import org.openmrs.util.ConfigUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,23 +39,29 @@ public class NidaMpiProvider {
 
 	protected Log log = LogFactory.getLog(getClass());
 
-	public static final List<String> SUPPORTED_IDENTIFIER_TYPES = Arrays.asList(
-			ImbEmrConstants.NATIONAL_ID_UUID,
-			ImbEmrConstants.NID_APPLICATION_NUMBER_UUID,
-			ImbEmrConstants.NIN_UUID,
-			ImbEmrConstants.UPID_UUID,
-			ImbEmrConstants.PASSPORT_NUMBER_UUID
-	);
-
 	private final FhirContext fhirContext;
 	private final NidaPatientTranslator patientTranslator;
+	private final List<String> supportedIdentifierTypes = new ArrayList<>();
 
 	public NidaMpiProvider(
 			@Autowired @Qualifier("fhirR4") FhirContext fhirContext,
-			@Autowired NidaPatientTranslator nidaPatientTranslator
-	) {
+			@Autowired NidaPatientTranslator nidaPatientTranslator,
+			@Autowired ImbEmrConfig imbEmrConfig) {
+
 		this.fhirContext = fhirContext;
 		this.patientTranslator = nidaPatientTranslator;
+
+		addSupportedIdentifierType(imbEmrConfig.getNationalId());
+		addSupportedIdentifierType(imbEmrConfig.getNidApplicationNumber());
+		addSupportedIdentifierType(imbEmrConfig.getNIN());
+		addSupportedIdentifierType(imbEmrConfig.getUPID());
+		addSupportedIdentifierType(imbEmrConfig.getPassportNumber());
+	}
+
+	private void addSupportedIdentifierType(PatientIdentifierType identifierType) {
+		if (identifierType != null) {
+			supportedIdentifierTypes.add(identifierType.getUuid());
+		}
 	}
 
 	public boolean isEnabled() {
@@ -68,7 +76,7 @@ public class NidaMpiProvider {
 	 * https://github.com/openmrs/openmrs-module-clientregistry
 	 */
 	public Patient fetchPatient(String patientId, String identifierTypeUuid) {
-		if (!SUPPORTED_IDENTIFIER_TYPES.contains(identifierTypeUuid)) {
+		if (!supportedIdentifierTypes.contains(identifierTypeUuid)) {
 			return null;
 		}
 		String url = ConfigUtil.getProperty(ImbEmrConstants.CLIENT_REGISTRY_URL_PROPERTY);

@@ -9,7 +9,7 @@ import org.openmrs.PatientIdentifier;
 import org.openmrs.PersonAttribute;
 import org.openmrs.PersonAttributeType;
 import org.openmrs.api.PatientService;
-import org.openmrs.api.PersonService;
+import org.openmrs.module.imbemr.ImbEmrConfig;
 import org.openmrs.module.namephonetics.NamePhoneticsService;
 import org.openmrs.module.namephonetics.phoneticsalgorithm.KinyarwandaSoundex;
 import org.openmrs.module.registrationcore.api.search.PatientAndMatchQuality;
@@ -38,7 +38,7 @@ public class RwandaFastPatientSearchAlgorithm implements SimilarPatientSearchAlg
     PatientService patientService;
 
     @Autowired
-    PersonService personService;
+    ImbEmrConfig imbEmrConfig;
 
     private final DoubleMetaphone doubleMetaphone = new DoubleMetaphone();
 
@@ -101,8 +101,8 @@ public class RwandaFastPatientSearchAlgorithm implements SimilarPatientSearchAlg
 
                     // Refine based on mother's name and father's name if entered, using phonetic match
                     if (match) {
-                        PersonAttributeType mothersNameType = personService.getPersonAttributeTypeByUuid("8d871d18-c2cc-11de-8d13-0010c6dffd0f");
-                        PersonAttributeType fathersNameType = personService.getPersonAttributeTypeByUuid("b7e948d4-9458-4f06-8d93-e859b6be9b76");
+                        PersonAttributeType mothersNameType = imbEmrConfig.getMothersName();
+                        PersonAttributeType fathersNameType = imbEmrConfig.getFathersName();
                         boolean hasMothersName = false;
                         boolean hasMothersNameMatch = false;
                         boolean hasFathersName = false;
