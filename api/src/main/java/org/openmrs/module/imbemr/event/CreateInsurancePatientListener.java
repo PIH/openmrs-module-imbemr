@@ -8,6 +8,10 @@ import org.openmrs.PatientIdentifierType;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.imbemr.ImbEmrConfig;
+import org.openmrs.module.mohbilling.businesslogic.AdmissionUtil;
+import org.openmrs.module.mohbilling.businesslogic.GlobalBillUtil;
+import org.openmrs.module.mohbilling.model.Admission;
+import org.openmrs.module.mohbilling.model.GlobalBill;
 import org.openmrs.module.mohbilling.model.Beneficiary;
 import org.openmrs.module.mohbilling.model.Insurance;
 import org.openmrs.module.mohbilling.model.InsurancePolicy;
@@ -18,6 +22,7 @@ import org.springframework.stereotype.Component;
 
 import javax.jms.MapMessage;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -88,7 +93,7 @@ public class CreateInsurancePatientListener extends PatientEventListener {
 				policy.setCreator(patient.getCreator());
 				policy.setRetired(false);
 
-				Beneficiary beneficiary =new Beneficiary();
+				Beneficiary beneficiary = new Beneficiary();
 				beneficiary.setPatient(policy.getOwner());
 				beneficiary.setInsurancePolicy(policy);
 				beneficiary.setCreatedDate(policy.getCreatedDate());
@@ -99,14 +104,35 @@ public class CreateInsurancePatientListener extends PatientEventListener {
 
 				getBillingService().saveInsurancePolicy(policy);
 				log.debug("Created new insurance policy for patient " + patient.getUuid());
+
+				// Create Admission and Global Bill
+				Admission admission = new Admission();
+				admission.setAdmissionDate(new Date());
+				admission.setInsurancePolicy(policy);
+				admission.setIsAdmitted(true);
+				admission.setCreator(Context.getAuthenticatedUser());
+				admission.setCreatedDate(new Date());
+				admission.setDiseaseType("Default Disease Type");
+				admission.setAdmissionType(1); // Example type for simplicity
+				Admission savedAdmission = AdmissionUtil.savePatientAdmission(admission);
+
+				GlobalBill globalBill = new GlobalBill();
+				globalBill.setAdmission(savedAdmission);
+				globalBill.setBillIdentifier(policy.getInsuranceCardNo() + savedAdmission.getAdmissionId());
+				globalBill.setCreatedDate(new Date());
+				globalBill.setCreator(Context.getAuthenticatedUser());
+				globalBill.setInsurance(policy.getInsurance());
+
+				GlobalBillUtil.saveGlobalBill(globalBill);
+				log.debug("Created new admission and global bill for patient " + patient.getUuid());
 			}
-		}
-		else {
+		} else {
 			if (log.isTraceEnabled()) {
 				log.trace("CreateInsurancePatientListener is not enabled, as GP imbemr.autoCreateInsuranceType is not set");
 			}
 		}
 	}
+
 
 	@Override
 	public void handleException(Exception e) {

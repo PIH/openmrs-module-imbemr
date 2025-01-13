@@ -161,7 +161,6 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
             <th>${ ui.message("imbemr.encounterList.form") }</th>
             <th>${ ui.message("imbemr.encounterList.provider") }</th>
             <th>${ ui.message("imbemr.encounterList.location") }</th>
-            <th>${ ui.message("imbemr.encounterList.enteredDatetime") }</th>
         </tr>
     </thead>
     <tbody>
@@ -215,9 +214,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient.patient ])
             <td>
                 ${ ui.format(e.location) }
             </td>
-            <td class="date-column">
-                ${ ui.format(e.dateCreated) }
-            </td>
+
         </tr>
     <% } %>
     </tbody>
